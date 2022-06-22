@@ -179,6 +179,30 @@ function M.setup()
             end,
         }
 
+        -- Colorizer
+        use {
+            "norcalli/nvim-colorizer.lua",
+            opt = true,
+            event = "BufRead",
+            config = editor.nvim_colorizer
+        }
+
+        -- Term
+        use {
+            "akinsho/toggleterm.nvim",
+            opt = true,
+            event = "BufRead",
+            config = editor.toggleterm,
+        }
+
+        -- Show function and variable
+        use {
+            "simrat39/symbols-outline.nvim",
+            after = "nvim-lsp",
+            opt = true,
+            config = editor.symbol_outline
+        }
+
         if packer_bootstrap then
             print "Restart Neovim required after installation!"
             require("packer").sync()
