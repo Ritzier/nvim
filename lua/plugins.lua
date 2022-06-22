@@ -4,6 +4,9 @@ function M.setup()
     -- Indicate first time installation
     local packer_bootstrap = false
 
+    local ui = require("config.ui")
+    local tool = require("config.tool")
+
     -- packer.nvim configuration
     local conf = {
         profile = {
@@ -41,12 +44,105 @@ function M.setup()
     local function plugins(use)
          -- Packer
         use {"wbthomason/packer.nvim"}
+
+        use {
+            "windwp/nvim-autopairs",
+            config = function()
+                require("nvim-autopairs").setup({
+                    fast_wrap = {
+                        map = '<M-e>',
+                        chars = { '{', '[', '(', '"', "'" },
+                        pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+                        end_key = '$',
+                        keys = 'qwertyuiopzxcvbnmasdfghjkl',
+                        check_comma = true,
+                        highlight = 'Search',
+                        highlight_grey='Comment',
+                    }
+                })
+            end
+        }
+
+        use {
+            "nvim-lua/plenary.nvim",
+            opt = false,
+        }
         
         -- Colorscheme
         use {
             "EdenEast/nightfox.nvim",
+            config = ui.colorscheme
+        }
+        
+        -- Icons
+        use {
+            "kyazdani42/nvim-web-devicons",
+            opt = false,
+        }
+
+        -- Make notification looks better!!!
+        use {
+            "rcarriga/nvim-notify",
+            opt = false,
+            config = ui.notify
+        }
+
+        -- Startup screen
+        use {
+            "goolord/alpha-nvim",
+            opt = true,
+            event = "BufWinEnter",
+            config = ui.alpha
+        }
+
+        -- File Explorer
+        use {
+            "kyazdani42/nvim-tree.lua",
+            opt = true,
+            cmd = { "NvimTreeToggle" },
+            config = ui.nvim_tree
+        }
+
+        -- Git
+        use {
+            "lewis6991/gitsigns.nvim",
+            opt = true,
+            event = { "BufRead", "BufNewFile" },
+            config = ui.gitsigns,
+            requires = { "nvim-lua/plenary.nvim", opt = true },
+        }
+
+        -- Blankline
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            opt = true,
+            event = "BufRead",
+            config = ui.indent_blankline,
+        }
+
+        -- Bufferline
+        use {
+            "akinsho/bufferline.nvim",
+            opt = true,
+            tag = "*",
+            event = "BufRead",
+            config = ui.nvim_bufferline,
+        }
+
+        -- UndoTree
+        use {
+            "mbbill/undotree",
+            opt = true,
+            cmd = "UndoTreeToggle"
+        }
+
+        -- provide a UI for nvim-lsp's progress handler
+        use {
+            "j-hui/fidget.nvim",
+            opt = true,
+            event = "BufRead",
             config = function()
-                vim.cmd "colorscheme duskfox"
+                require("fidget").setup({})
             end
         }
 
