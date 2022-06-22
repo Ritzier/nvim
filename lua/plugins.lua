@@ -159,7 +159,19 @@ function M.setup()
                 { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
                 { "p00f/nvim-ts-rainbow", event = "BufReadPre" },
                 { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
+                { "RRethy/nvim-treesitter-endwise", opt=true, event="InsertEnter", disable = false}
             },
+        }
+
+          -- Auto tag
+        use {
+            "windwp/nvim-ts-autotag",
+            opt = true,
+            wants = "nvim-treesitter",
+            event = "InsertEnter",
+            config = function()
+                require("nvim-ts-autotag").setup { enable = true }
+            end,
         }
 
         if packer_bootstrap then
