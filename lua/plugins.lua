@@ -5,7 +5,6 @@ function M.setup()
     local packer_bootstrap = false
 
     local ui = require("config.ui")
-    local tool = require("config.tool")
 
     -- packer.nvim configuration
     local conf = {
