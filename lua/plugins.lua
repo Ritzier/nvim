@@ -5,6 +5,7 @@ function M.setup()
     local packer_bootstrap = false
 
     local ui = require("config.ui")
+    local editor = require("config.editor")
 
     -- packer.nvim configuration
     local conf = {
@@ -143,6 +144,22 @@ function M.setup()
             config = function()
                 require("fidget").setup({})
             end
+        }
+
+        -- Treesitter
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            opt = true,
+            event = "BufReadPre",
+            run = ":TSUpdate",
+            config = editor.nvim_treesitter,
+            requires = {
+                { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
+                { "windwp/nvim-ts-autotag", event = "InsertEnter" },
+                { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
+                { "p00f/nvim-ts-rainbow", event = "BufReadPre" },
+                { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
+            },
         }
 
         if packer_bootstrap then
