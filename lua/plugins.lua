@@ -45,24 +45,7 @@ function M.setup()
          -- Packer
         use {"wbthomason/packer.nvim"}
 
-        use {
-            "windwp/nvim-autopairs",
-            config = function()
-                require("nvim-autopairs").setup({
-                    fast_wrap = {
-                        map = '<M-e>',
-                        chars = { '{', '[', '(', '"', "'" },
-                        pattern = [=[[%'%"%)%>%]%)%}%,]]=],
-                        end_key = '$',
-                        keys = 'qwertyuiopzxcvbnmasdfghjkl',
-                        check_comma = true,
-                        highlight = 'Search',
-                        highlight_grey='Comment',
-                    }
-                })
-            end
-        }
-
+        
         use {
             "nvim-lua/plenary.nvim",
             opt = false,
@@ -161,6 +144,28 @@ function M.setup()
                 { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
                 { "RRethy/nvim-treesitter-endwise", opt=true, event="InsertEnter", disable = false}
             },
+        }
+
+        use {
+            "windwp/nvim-autopairs",
+            opt = true,
+            event = "InsertEnter",
+            wants = "nvim-treesitter",
+            module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+            config = function()
+                require("nvim-autopairs").setup({
+                    fast_wrap = {
+                        map = '<M-e>',
+                        chars = { '{', '[', '(', '"', "'" },
+                        pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+                        end_key = '$',
+                        keys = 'qwertyuiopzxcvbnmasdfghjkl',
+                        check_comma = true,
+                        highlight = 'Search',
+                        highlight_grey='Comment',
+                    }
+                })
+            end
         }
 
           -- Auto tag
