@@ -231,6 +231,16 @@ function M.setup()
             "junegunn/vim-easy-align",
         }
 
+        -- Comment
+        use {
+            "numToStr/Comment.nvim",
+            module = "Comment",
+            keys = {"gc", "gb"},
+            config = function()
+                require("nvim_comment").setup()
+            end
+        }
+
         if packer_bootstrap then
             print "Restart Neovim required after installation!"
             require("packer").sync()
