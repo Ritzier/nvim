@@ -227,17 +227,113 @@ function M.symbol_outline()
 end
 
 function M.telescope()
-    require('telescope').setup({
-        extensions = {
-            fzf = {
-                fuzzy = true,
-                override_generic_sorter = true,
-                override_file_sorter = true,
-                case_mode = "smart_case",
-            }
-        }
-    })
-    require('telescope').load_extension('fzf')
+    local present, telescope = pcall(require, "telescope")
+
+    if not present then
+        return
+    end
+    vim.g.theme_switcher_loaded = true
+
+    require("telescope").setup{
+        defaults = {
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+            },
+            prompt_prefix = "   ",
+            selection_caret = "  ",
+            entry_prefix = "  ",
+            initial_mode = "insert",
+            selection_strategy = "reset",
+            sorting_strategy = "ascending",
+            layout_strategy = "horizontal",
+            layout_config = {
+                horizontal = {
+                    prompt_position = "top",
+                    preview_width = 0.55,
+                    results_width = 0.8,
+                },
+                vertical = {
+                    mirror = false,
+                },
+                width = 0.87,
+                height = 0.80,
+                preview_cutoff = 120,
+            },
+            file_sorter = require("telescope.sorters").get_fuzzy_file,
+            file_ignore_patterns = { "node_modules" },
+            generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+            path_display = { "truncate" },
+            winblend = 0,
+            border = {},
+            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            color_devicons = true,
+            set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+            file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+            grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+            qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+            -- Developer configurations: Not meant for general override
+            buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+            mappings = {
+                n = { ["q"] = require("telescope.actions").close },
+            },
+        },
+        extensions_list = { "themes", "terms" },
+    }
 end
+
+function trouble()
+    require("trouble").setup({
+		position = "bottom", -- position of the list can be: bottom, top, left, right
+		height = 10, -- height of the trouble list when position is top or bottom
+		width = 50, -- width of the list when position is left or right
+		icons = true, -- use devicons for filenames
+		mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+		fold_open = "", -- icon used for open folds
+		fold_closed = "", -- icon used for closed folds
+		action_keys = {
+			-- key mappings for actions in the trouble list
+			-- map to {} to remove a mapping, for example:
+			-- close = {},
+			close = "q", -- close the list
+			cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+			refresh = "r", -- manually refresh
+			jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
+			open_split = { "<c-x>" }, -- open buffer in new split
+			open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+			open_tab = { "<c-t>" }, -- open buffer in new tab
+			jump_close = { "o" }, -- jump to the diagnostic and close the list
+			toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+			toggle_preview = "P", -- toggle auto_preview
+			hover = "K", -- opens a small popup with the full multiline message
+			preview = "p", -- preview the diagnostic location
+			close_folds = { "zM", "zm" }, -- close all folds
+			open_folds = { "zR", "zr" }, -- open all folds
+			toggle_fold = { "zA", "za" }, -- toggle fold of current file
+			previous = "k", -- preview item
+			next = "j", -- next item
+		},
+		indent_lines = true, -- add an indent guide below the fold icons
+		auto_open = false, -- automatically open the list when you have diagnostics
+		auto_close = false, -- automatically close the list when you have no diagnostics
+		auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+		auto_fold = false, -- automatically fold a file trouble list at creation
+		signs = {
+			-- icons / text used for a diagnostic
+			error = "",
+			warning = "",
+			hint = "",
+			information = "",
+			other = "﫠",
+		},
+		use_lsp_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+	})
+end
+
 
 return M

@@ -211,18 +211,19 @@ function M.setup()
             config = ui.lualine,
         }
 
+        -- Trouble
+        use {
+            "folke/trouble.nvim",
+            opt = true,
+            cmd = {"Trouble", "TroubleToggle", "TroubleRefresh"},
+            config = editor.trouble,
+        }
+
         -- Telescope
         use {
             "nvim-telescope/telescope.nvim",
-            opt      = true,
-            config   = editor.telescope,
-            requires = {{"nvim-lua/plenary.nvim"}},
-        }
-
-        use {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            after = "telescope.nvim",
-            run   = "make",
+            cmd = "Telescope",
+            config = editor.telescope,
         }
 
         -- Aligning code
