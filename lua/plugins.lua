@@ -195,12 +195,20 @@ function M.setup()
             config = editor.toggleterm,
         }
 
-        -- Show function and variable
+        -- GPS
         use {
-            "simrat39/symbols-outline.nvim",
-            after = "nvim-lsp",
+            "SmiteshP/nvim-gps",
             opt = true,
-            config = editor.symbol_outline
+            after = "nvim-treesitter",
+            config = ui.nvim_gps
+        }
+
+        -- Lualine
+        use {
+            "hoob3rt/lualine.nvim",
+            opt = true,
+            after = "nvim-gps",
+            config = ui.lualine,
         }
 
         if packer_bootstrap then
