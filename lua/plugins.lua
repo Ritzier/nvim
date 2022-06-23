@@ -211,6 +211,20 @@ function M.setup()
             config = ui.lualine,
         }
 
+        -- Telescope
+        use {
+            "nvim-telescope/telescope.nvim",
+            opt = true,
+            config = editor.telescope,
+            requires = {{"nvim-lua/plenary.nvim"}},
+        }
+
+        use {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            after = "telescope.nvim",
+            run = "make",
+        }
+
         if packer_bootstrap then
             print "Restart Neovim required after installation!"
             require("packer").sync()
