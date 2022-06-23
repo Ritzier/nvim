@@ -6,6 +6,7 @@ function M.setup()
 
     local ui     = require("config.ui")
     local editor = require("config.editor")
+    local compl  = require("config.compl")
 
     -- packer.nvim configuration
     local conf = {
@@ -238,6 +239,108 @@ function M.setup()
             keys = {"gc", "gb"},
             config = function()
                 require("nvim_comment").setup()
+            end
+        }
+
+        -- Lsp
+        use {
+            "neovim/nvim-lspconfig",
+            opt = true,
+            event = "BufReadPre",
+            config = compl.nvim_lsp
+        }
+        use {
+            "creativenull/efmls-configs-nvim",
+            opt = false,
+            requires = "neovim/nvim-lspconfig",
+        }
+        use {
+            "williamboman/nvim-lsp-installer",
+            opt = false,
+        }
+        use {
+            "kevinhwang91/nvim-bqf",
+            opt = true,
+            ft = "qf",
+            config = compl.bqf
+        }
+        use {
+            "tami5/lspsaga.nvim",
+            opt = true,
+            after = "nvim-lspconfig"
+        }
+        use {
+            "stevearc/aerial.nvim",
+            opt = true,
+            after = "nvim-lspconfig",
+            config = compl.aerial
+        }
+        use {
+            "kosayoda/nvim-lightbulb",
+            opt = true,
+            after = "nvim-lspconfig",
+            config = compl.lightbulb,
+        }
+        use {
+            "ray-x/lsp_signature.nvim",
+            opt = true,
+            after = "nvim-lspconfig",
+        }
+        use {
+            "hrsh7th/nvim-cmp",
+            config = compl.cmp,
+            event = "InsertEnter",
+            requires = {
+                { "lukas-reineke/cmp-under-comparator" },
+                { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
+                { "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" },
+                { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
+                { "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
+                { "hrsh7th/cmp-path", after = "cmp-tmux" },
+                { "f3fora/cmp-spell", after = "cmp-path" },
+                { "hrsh7th/cmp-buffer", after = "cmp-spell" },
+                { "kdheepak/cmp-latex-symbols", after = "cmp-buffer" },
+                -- {
+                -- 	"tzachar/cmp-tabnine",
+                -- 	run = "./install.sh",
+                -- 	after = "cmp-latex-symbols",
+                -- 	config = conf.tabnine,
+                -- },
+            },
+        }
+        use {
+            "L3MON4D3/LuaSnip",
+            after = "nvim-cmp",
+            config = compl.luasnip,
+            requires = "rafamadriz/friendly-snippets"
+        }
+        use {
+            "RRethy/vim-illuminate",
+            event = "BufRead",
+            config = function()
+                vim.g.Illuminate_highlightUnderCursor = 0
+                vim.g.Illuminate_ftblacklist = {
+                    "help",
+                    "dashboard",
+                    "alpha",
+                    "packer",
+                    "norg",
+                    "DoomInfo",
+                    "NvimTree",
+                    "Outline",
+                    "toggleterm",
+                }
+            end
+        }
+        use {
+            "terrortylor/nvim-comment",
+            opt = false,
+            config = function()
+                require("nvim_comment").setup({
+                    hook = function()
+                        require("ts_context_commentstring.internal").update_commentstring()
+                    end
+                })
             end
         }
 
