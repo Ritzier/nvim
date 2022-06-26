@@ -15,3 +15,8 @@ keymap("n", "<C-l>", "<C-w>l", default_opts)
 
 keymap("v", "<", "<gv", default_opts)
 keymap("v", ">", ">gv", default_opts)
+
+keymap("n", "<C-n>", ":NvimTreeToggle<CR>",default_opts)
+
+keymap("n", "<A-j>", ":BufferLineCycleNext<CR>",default_opts)
+keymap("n", "<A-k>", ":BufferLineCyclePrev<CR>",default_opts)
