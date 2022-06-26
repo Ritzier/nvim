@@ -1,1 +1,1 @@
-require("rit")
+require("ritzier")
