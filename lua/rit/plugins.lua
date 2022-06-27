@@ -46,12 +46,47 @@ function M.setup()
     local function plugins(use)
         use {"wbthomason/packer.nvim"}
 
+        -- Colorscheme
         use {"EdenEast/nightfox.nvim"}
         use {
             "catppuccin/nvim",
             opt = false,
             as = "catppuccin",
-            config = req("catppuccin")
+            config = Script.req("catppuccin")
+        }
+
+        -- Bufferline
+        use {
+            "akinsho/bufferline.nvim",
+            opt = true,
+            tag = "*",
+            evetn = "BufRead",
+            config = Script.req("bufferline")
+        }
+
+        -- NvimTree
+        use {
+            "kyazdani42/nvim-tree.lua",
+            opt = true,
+            cmd = { "NvimTreeToggle" },
+            config = Script.req("nvim_tree")
+        }
+
+        -- Git
+        use {
+            "lewis6991/gitsigns.nvim",
+            opt = true,
+            event = { "BufRead", "BufNewFile" },
+            config = Script.req("gitsigns"),
+            requires = { "nvim-lua/plenary.nvim", opt=true},
+        }
+
+        -- Blankline
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            opt = true,
+            event = "BufRead",
+            config = Script.req("indent_blankline"),
         }
 
         if packer_bootstrap then

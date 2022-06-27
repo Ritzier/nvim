@@ -79,7 +79,7 @@ function M.neovide_config()
 end
 
 function M.load_core()
-    neovide_config()
+    M.neovide_config()
     vim.cmd([[colorscheme catppuccin]])
 end
 

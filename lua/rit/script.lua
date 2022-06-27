@@ -1,7 +1,6 @@
 local M = {}
 function M.req(module)
-    --require("rit.config." .. module)
-    print("rit.config."..module)
+    require("rit.config." .. module)
 end
 
 function M.check(module)
