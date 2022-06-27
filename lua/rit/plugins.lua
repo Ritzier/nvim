@@ -17,10 +17,6 @@ function M.setup()
         }
     }
 
-    local function req(module)
-        return require("rit." .. module)
-    end
-
     -- Check if packer.nvim is installed
     -- Run PackerCompile if there are changes in this file
     local function packer_init()
@@ -41,13 +37,16 @@ function M.setup()
         vim.cmd "autocmd BufWritePost plugins.lua source <afile> | PackerCompile"
     end
 
+    local Script = require("rit.script")
+    local function req(modules)
+        require("rit.config."..modules)
+    end
+
     -- Plugins
     local function plugins(use)
-         -- Packer
         use {"wbthomason/packer.nvim"}
-        use {"lewis6991/impatient.nvim"}
 
-        -- Colorscheme
+        use {"EdenEast/nightfox.nvim"}
         use {
             "catppuccin/nvim",
             opt = false,
@@ -55,19 +54,12 @@ function M.setup()
             config = req("catppuccin")
         }
 
-        use {
-            "nvim-treesitter/nvim-treesitter",
-            opt = true,
-            run = ":TSUpdate",
-            event = "BufRead",
-            config = req("nvim_treesitter")
-        }
-
         if packer_bootstrap then
             print "Restart Neovim required after installation!"
             require("packer").sync()
         end
     end
+
     -- Init and start packer
     packer_init()
     local packer = require "packer"

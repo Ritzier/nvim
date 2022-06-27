@@ -1,4 +1,4 @@
 require("rit.options")
+require("rit.mappings")
 require("rit.plugins").setup()
-
-vim.cmd "colorscheme catppuccin"
+require("rit.default").load_core()
