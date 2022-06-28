@@ -1,3 +1,1 @@
---require("ritzier")
---require("rit")
-require("ritz")
+require("core.default").load_config()

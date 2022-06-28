@@ -1,5 +1,0 @@
-require("rit.options")
-require("rit.mappings")
---require("rit.plugins").setup()
-require("rit.plugins").a()
-require("rit.default").load_core()
