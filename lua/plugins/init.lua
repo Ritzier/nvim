@@ -172,4 +172,16 @@ return require('packer').startup(function(use)
         config = req("filetype")
     }
 
+    -- Whichkey
+    use {
+        "folke/which-key.nvim",
+        config = req("which_key"),
+    }
+
+    -- Show all script's function
+    use {
+        "simrat39/symbols-outline.nvim",
+        config = req("symbols_outline"),
+    }
+
 end)

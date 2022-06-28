@@ -28,3 +28,13 @@ keymap("n", "<A-S-k>", ":BufferLineMovePrev<CR>", default_opts)
 -- EasyAlign
 keymap("n", "ga", ":'<,'>EasyAlign<CR>", default_opts)
 keymap("v", "ga", ":'<,'>EasyAlign<CR>", default_opts)
+
+-- Sniprun
+keymap("n", "<leader>sr", ":SnipRun<CR>", default_opts)
+keymap("v", "<leader>sr", ":'<,'>SnipRun<CR>", default_opts)
+keymap("n", "<leader>sc", ":SnipClose<CR>", default_opts)
+keymap("n", "<leader>si", ":SnipInfo<CR>", default_opts)
+
+-- Symbols Outline
+keymap("n", "<F3>", ":SymbolOutline<CR>", default_opts)
+
