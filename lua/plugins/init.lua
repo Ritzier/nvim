@@ -232,6 +232,12 @@ return require('packer').startup(function(use)
         config = req("octo")
     }
 
+    -- Terminal
+    use {
+        "akinsho/toggleterm.nvim",
+        config = req("toggleterm")
+    }
+
     -- Lsp
     use {
         "neovim/nvim-lspconfig",
@@ -239,4 +245,6 @@ return require('packer').startup(function(use)
     use {
         'williamboman/nvim-lsp-installer'
     }
+
+
     end)
