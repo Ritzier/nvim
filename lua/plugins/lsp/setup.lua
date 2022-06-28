@@ -1,33 +1,96 @@
-local lsp_installer = require "nvim-lsp-installer"
+local M = {}
+local script = require("core.script")
 
--- 安装列表
--- https://github.com/williamboman/nvim-lsp-installer#available-lsps
--- { key: 语言 value: 配置文件 }
-local servers = {
-  sumneko_lua = require "plugins.lsp.lua", -- /lua/lsp/lua.lua
-}
-
--- 自动安装 LanguageServers
-for name, _ in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print("Installing " .. name)
-      server:install()
+function M.setup()
+    if script.check("lspconfig") then
+        M.config()
     end
-  end
 end
 
-lsp_installer.on_server_ready(function(server)
-    local opts = servers[server.name]
-    if opts then
-        opts.on_attach = function(_, bufnr)
-            local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-            require("core.mappings").maplsp(buf_set_keymap)
-        end
-        opts.flags = {
-            debounce_text_changes = 150,
-        }
-        server:setup(opts)
+function M.config()
+    local lsp_servers = {
+        "arduino_language_server",
+        "bashls",
+        "ccls",
+        "cmake",
+        "omnisharp",
+        "gopls",
+        "pyright",
+        "tailwindcss",
+        "sumneko_lua",
+        "rust_analyzer",
+        "vimls",
+        "sqlls",
+    }
+
+    local on_attach = function(client, bufnr)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+        -- Mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+        vim.keymap.set('n', '<space>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, bufopts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+        vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+        vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
     end
-end)
+    local lsp_flags = {
+        debounce_text_changes = 150,
+    }
+
+    for _, server in ipairs(lsp_servers) do
+        if server == "sumneko_lua" then
+            require("lspconfig")[server].setup({
+                on_attach = on_attach,
+                flags = lsp_flags,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {'vim'},
+                        },
+                        workspace = {
+                            -- Make the server aware of Neovim runtime files
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
+                    }
+                }
+            })
+        elseif server == "arduino_language_server" then
+            require("lspconfig")[server].setup({
+                cmd = {
+                    "arduino-language-server",
+                    "-cli", "/usr/bin/arduino-cli",
+                },
+                on_attach = on_attach,
+                flags = lsp_flags
+            })
+        elseif server == "omnisharp" then
+            local pid = vim.fn.getpid()
+            local omnisharp_bin = "/usr/bin/omnisharp"
+             require("lspconfig")[server].setup({
+                on_attach = on_attach,
+                flags = lsp_flags,
+                cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
+             })
+        else
+            require("lspconfig")[server].setup({
+                on_attach = on_attach,
+                flags = lsp_flags
+            })
+        end
+    end
+end
+
+M.setup()

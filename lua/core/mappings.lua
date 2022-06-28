@@ -40,6 +40,4 @@ function M.default_mappings()
     keymap("n", "<F3>", ":SymbolOutline<CR>", default_opts)
 end
 
-
-
 return M
