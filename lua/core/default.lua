@@ -40,7 +40,7 @@ end
 
 function M.load_config()
     require("core.options")
-    require("core.mappings")
+    require("core.mappings").default_mappings()
     require("plugins")
     M.colorscheme_duskfox()
     M.neovide_config()
