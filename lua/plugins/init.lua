@@ -120,6 +120,10 @@ return require('packer').startup(function(use)
             vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
         end
     }
+    use {
+        "RRethy/nvim-treesitter-endwise",
+        after = "nvim-treesitter",
+    }
 
     --Colorizer
     use {

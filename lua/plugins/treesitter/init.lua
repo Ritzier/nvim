@@ -52,6 +52,9 @@ function M.config()
             max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
         },
         context_commentstring = { enable = true, enable_autocmd = false },
+        endwise = {
+            enable = true,
+        },
         matchup = { enable = true },
     })
     require("nvim-treesitter.install").prefer_git = true
