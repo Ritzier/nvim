@@ -11,7 +11,7 @@ local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
-  local should_profile = true
+  local should_profile = false
   if should_profile then
     local hrtime = vim.loop.hrtime
     profile_info = {}
@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/rit/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/rit/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/rit/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/rit/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/rit/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/ritzier/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/ritzier/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/ritzier/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/ritzier/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/ritzier/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -69,77 +69,70 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["alpha-nvim"] = {
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
+  },
   ["bufferline.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/opt/bufferline.nvim",
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
   catppuccin = {
     loaded = true,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/start/catppuccin",
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
   ["gitsigns.nvim"] = {
-    after = { "plenary.nvim" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["indent-blankline.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  ["impatient.nvim"] = {
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
   },
   ["nightfox.nvim"] = {
     loaded = true,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
   },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
+  },
   ["nvim-tree.lua"] = {
-    commands = { "NvimTreeToggle" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua",
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
-    load_after = {
-      ["gitsigns.nvim"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/rit/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-time([[Defining lazy-load commands]], false)
-
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim', 'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
-if should_profile then save_profiles(0) end
+if should_profile then save_profiles() end
 
 end)
 

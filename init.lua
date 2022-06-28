@@ -1,2 +1,3 @@
 --require("ritzier")
-require("rit")
+--require("rit")
+require("ritz")

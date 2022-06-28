@@ -125,10 +125,10 @@ function M.a()
     end
 
      vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+     augroup packer_user_config
+        autocmd!
+        autocmd BufWritePost rit.plugins.lua source <afile> | PackerSync
+    augroup end
     ]]
 
     local status_ok, packer = pcall(require, "packer")
@@ -166,6 +166,7 @@ function M.a()
         -- Colorschemes
         -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
         use {"catppuccin/nvim",as="catppuccin"}
+        use "EdenEast/nightfox.nvim"
 
         -- cmp plugins
         use "hrsh7th/nvim-cmp" -- The completion plugin
