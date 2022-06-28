@@ -159,4 +159,17 @@ return require('packer').startup(function(use)
         config = req("lualine")
     }
 
+    -- Sniprun
+    use {
+        "michaelb/sniprun",
+        run = "bash ./install.sh",
+        cmd = { "SnipRun", "'<,'>SnipRun" },
+    }
+
+    -- Filetype
+    use {
+        "nathom/filetype.nvim",
+        config = req("filetype")
+    }
+
 end)
