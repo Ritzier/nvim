@@ -16,7 +16,15 @@ keymap("n", "<C-l>", "<C-w>l", default_opts)
 keymap("v", "<", "<gv", default_opts)
 keymap("v", ">", ">gv", default_opts)
 
-keymap("n", "<C-n>", ":NvimTreeToggle<CR>",default_opts)
+-- NvimTree
+keymap("n", "<C-n>", ":NvimTreeToggle<CR>", default_opts)
 
-keymap("n", "<A-j>", ":BufferLineCycleNext<CR>",default_opts)
-keymap("n", "<A-k>", ":BufferLineCyclePrev<CR>",default_opts)
+-- Bufferline
+keymap("n", "<A-j>", ":BufferLineCycleNext<CR>", default_opts)
+keymap("n", "<A-k>", ":BufferLineCyclePrev<CR>", default_opts)
+keymap("n", "<A-S-j>", ":BufferLineMoveNext<CR>", default_opts)
+keymap("n", "<A-S-k>", ":BufferLineMovePrev<CR>", default_opts)
+
+-- EasyAlign
+keymap("n", "ga", ":'<,'>EasyAlign<CR>", default_opts)
+keymap("v", "ga", ":'<,'>EasyAlign<CR>", default_opts)
