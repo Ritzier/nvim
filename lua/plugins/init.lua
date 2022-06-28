@@ -146,4 +146,17 @@ return require('packer').startup(function(use)
         requires = "nvim-treesitter",
     }
 
+    -- NvimGPS
+    use {
+        "SmiteshP/nvim-gps",
+        config = req("nvim_gps")
+    }
+
+    -- Status Line
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt=true},
+        config = req("lualine")
+    }
+
 end)
