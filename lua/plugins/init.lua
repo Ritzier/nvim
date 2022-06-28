@@ -237,11 +237,6 @@ return require('packer').startup(function(use)
         "neovim/nvim-lspconfig",
     }
     use {
-        "onsails/lspkind-nvim"
+        'williamboman/nvim-lsp-installer'
     }
-    use {
-        "weilbith/nvim-code-action-menu",
-        cmd = "CodeActionMenu"
-    }
-
-end)
+    end)
