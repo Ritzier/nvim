@@ -26,9 +26,15 @@ function M.neovide_config()
     vim.g.neovide_cursor_vfx_particle_density = 5.0
 end
 
-function M.colorscheme()
+function M.colorscheme_catppuccin()
     if script.check("catppuccin") then
         vim.cmd([[colorscheme catppuccin]])
+    end
+end
+
+function M.colorscheme_duskfox()
+    if script.check("nightfox") then
+        vim.cmd([[colorscheme duskfox]])
     end
 end
 
@@ -36,7 +42,7 @@ function M.load_config()
     require("core.options")
     require("core.mappings")
     require("plugins")
-    M.colorscheme()
+    M.colorscheme_duskfox()
     M.neovide_config()
 end
 

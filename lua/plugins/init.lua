@@ -184,4 +184,60 @@ return require('packer').startup(function(use)
         config = req("symbols_outline"),
     }
 
+    -- Trouble
+    use {
+        "folke/trouble.nvim",
+    }
+
+    -- Dap
+    use {
+        "mfussenegger/nvim-dap",
+        config = req("nvim_dap")
+    }
+    use {
+        "rcarriga/nvim-dap-ui",
+        config = req("nvim_dap_ui")
+    }
+    use {
+        "theHamsta/nvim-dap-virtual-text",
+        config = req("nvim_dap_virtual_text")
+    }
+
+    -- Registers & Clipboard
+    use {
+        "AckslD/nvim-neoclip.lua",
+        config = req("nvim_neoclip")
+    }
+
+    -- telescope
+    use {
+        "nvim-telescope/telescope.nvim",
+        config = req("telescope")
+    }
+    use {
+        "nvim-telescope/telescope-fzy-native.nvim",
+    }
+    use {
+        "cljoly/telescope-repo.nvim",
+    }
+    use {
+        "nvim-telescope/telescope-dap.nvim",
+    }
+    use {
+        "pwntester/octo.nvim",
+        config = req("octo")
+    }
+
+    -- Lsp
+    use {
+        "neovim/nvim-lspconfig",
+    }
+    use {
+        "onsails/lspkind-nvim"
+    }
+    use {
+        "weilbith/nvim-code-action-menu",
+        cmd = "CodeActionMenu"
+    }
+
 end)
