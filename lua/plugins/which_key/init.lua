@@ -37,5 +37,4 @@ function M.config()
     })
 end
 
-M.config()
---M.setup()
+M.setup()
