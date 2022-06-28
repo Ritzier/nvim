@@ -76,4 +76,74 @@ return require('packer').startup(function(use)
         requires = {"nvim-lua/plenary.nvim"},
     }
 
+    -- Treesitter
+    use {
+        "terrortylor/nvim-comment",
+        config = function()
+            require("nvim_comment").setup({
+                hook = function()
+                    require("ts_context_commentstring.internal").update_commentstring()
+                end,
+            })
+        end,
+    }
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = req("treesitter")
+    }
+    use {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+    }
+    use {
+        "p00f/nvim-ts-rainbow",
+        after = "nvim-treesitter",
+    }
+    use {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        after = "nvim-treesitter"
+    }
+    use {
+        "mfussenegger/nvim-ts-hint-textobject",
+        after = "nvim-treesitter",
+    }
+    use {
+        "windwp/nvim-ts-autotag",
+        after = "nvim-treesitter",
+        config = req("autotag")
+    }
+    use {
+        "andymass/vim-matchup",
+        after = "nvim-treesitter",
+        config = function()
+            vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
+        end
+    }
+
+    --Colorizer
+    use {
+        "norcalli/nvim-colorizer.lua",
+        config = req("colorizer")
+    }
+
+    -- Bufdelete
+    use {
+        "famiu/bufdelete.nvim",
+        cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
+    }
+    
+    -- Align
+    use {
+        "junegunn/vim-easy-align",
+        cmd = { "EasyAlign" }
+    }
+
+    -- IndentBlankline
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        config = req("indent_blankline"),
+        requires = "nvim-treesitter",
+    }
+
 end)
