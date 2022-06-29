@@ -1,1 +1,1 @@
-require("core.default").load_config()
+require("core.default").init()

@@ -69,171 +69,20 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["alpha-nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/alpha-nvim",
-    url = "https://github.com/goolord/alpha-nvim"
-  },
-  ["bufdelete.nvim"] = {
-    commands = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/bufdelete.nvim",
-    url = "https://github.com/famiu/bufdelete.nvim"
-  },
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
-  },
   catppuccin = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
-  },
-  ["filetype.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/filetype.nvim",
-    url = "https://github.com/nathom/filetype.nvim"
-  },
-  ["gitsigns.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
-    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
-  },
-  ["nvim-colorizer.lua"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
-    url = "https://github.com/norcalli/nvim-colorizer.lua"
-  },
-  ["nvim-comment"] = {
-    config = { "\27LJ\2\n^\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequireO\1\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\1K\0\1\0\thook\1\0\0\0\nsetup\17nvim_comment\frequire\0" },
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-comment",
-    url = "https://github.com/terrortylor/nvim-comment"
-  },
-  ["nvim-dap"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-dap",
-    url = "https://github.com/mfussenegger/nvim-dap"
-  },
-  ["nvim-dap-ui"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
-    url = "https://github.com/rcarriga/nvim-dap-ui"
-  },
-  ["nvim-dap-virtual-text"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
-    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
-  },
-  ["nvim-gps"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-gps",
-    url = "https://github.com/SmiteshP/nvim-gps"
-  },
-  ["nvim-lsp-installer"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com/williamboman/nvim-lsp-installer"
-  },
-  ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
-    url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-neoclip.lua"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
-    url = "https://github.com/AckslD/nvim-neoclip.lua"
-  },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://github.com/rcarriga/nvim-notify"
-  },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdani42/nvim-tree.lua"
-  },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
-  ["nvim-treesitter-endwise"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-endwise",
-    url = "https://github.com/RRethy/nvim-treesitter-endwise"
-  },
-  ["nvim-treesitter-textobjects"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
-  },
-  ["nvim-ts-autotag"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag",
-    url = "https://github.com/windwp/nvim-ts-autotag"
-  },
-  ["nvim-ts-context-commentstring"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/nvim-ts-context-commentstring",
-    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
-  },
-  ["nvim-ts-hint-textobject"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/nvim-ts-hint-textobject",
-    url = "https://github.com/mfussenegger/nvim-ts-hint-textobject"
-  },
-  ["nvim-ts-rainbow"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow",
-    url = "https://github.com/p00f/nvim-ts-rainbow"
-  },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
-  ["octo.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/octo.nvim",
-    url = "https://github.com/pwntester/octo.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -249,106 +98,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
-  },
-  sniprun = {
-    commands = { "SnipRun", "'<,'>SnipRun" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/sniprun",
-    url = "https://github.com/michaelb/sniprun"
-  },
-  ["symbols-outline.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
-    url = "https://github.com/simrat39/symbols-outline.nvim"
-  },
-  ["telescope-dap.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
-    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
-  },
-  ["telescope-fzy-native.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
-    url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
-  },
-  ["telescope-repo.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/telescope-repo.nvim",
-    url = "https://github.com/cljoly/telescope-repo.nvim"
-  },
-  ["telescope.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/telescope.nvim",
-    url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["toggleterm.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
-    url = "https://github.com/akinsho/toggleterm.nvim"
-  },
-  ["trouble.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/trouble.nvim",
-    url = "https://github.com/folke/trouble.nvim"
-  },
-  ["vim-easy-align"] = {
-    commands = { "EasyAlign" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/vim-easy-align",
-    url = "https://github.com/junegunn/vim-easy-align"
-  },
-  ["vim-matchup"] = {
-    after_files = { "/home/ritzier/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
-    config = { "\27LJ\2\n\\\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0=let g:matchup_matchparen_offscreen = {'method': 'popup'}\bcmd\bvim\0" },
-    load_after = {},
-    loaded = true,
-    needs_bufread = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/vim-matchup",
-    url = "https://github.com/andymass/vim-matchup"
-  },
-  ["which-key.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/which-key.nvim",
-    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-comment
-time([[Config for nvim-comment]], true)
-try_loadstring("\27LJ\2\n^\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequireO\1\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\1K\0\1\0\thook\1\0\0\0\nsetup\17nvim_comment\frequire\0", "config", "nvim-comment")
-time([[Config for nvim-comment]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd nvim-treesitter ]]
-vim.cmd [[ packadd nvim-ts-rainbow ]]
-vim.cmd [[ packadd nvim-ts-hint-textobject ]]
-vim.cmd [[ packadd nvim-treesitter-textobjects ]]
-vim.cmd [[ packadd vim-matchup ]]
-
--- Config for: vim-matchup
-try_loadstring("\27LJ\2\n\\\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0=let g:matchup_matchparen_offscreen = {'method': 'popup'}\bcmd\bvim\0", "config", "vim-matchup")
-
-vim.cmd [[ packadd nvim-ts-context-commentstring ]]
-vim.cmd [[ packadd nvim-treesitter-endwise ]]
-vim.cmd [[ packadd nvim-ts-autotag ]]
-time([[Sequenced loading]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file EasyAlign lua require("packer.load")({'vim-easy-align'}, { cmd = "EasyAlign", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SnipRun lua require("packer.load")({'sniprun'}, { cmd = "SnipRun", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[au CmdUndefined '<,'>SnipRun ++once lua require"packer.load"({'sniprun'}, {}, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Bdelete lua require("packer.load")({'bufdelete.nvim'}, { cmd = "Bdelete", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Bwipeout lua require("packer.load")({'bufdelete.nvim'}, { cmd = "Bwipeout", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[au CmdUndefined Bdelete! ++once lua require"packer.load"({'bufdelete.nvim'}, {}, _G.packer_plugins)]])
-pcall(vim.cmd, [[au CmdUndefined Bwipeout! ++once lua require"packer.load"({'bufdelete.nvim'}, {}, _G.packer_plugins)]])
-time([[Defining lazy-load commands]], false)
-
 if should_profile then save_profiles() end
 
 end)

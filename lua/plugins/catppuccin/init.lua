@@ -1,13 +1,6 @@
-local M = {}
-local Script = require("core.script")
+local present, config = pcall(require, 'catppuccin')
 
-function M.setup()
-    if Script.check("catppuccin") then
-        M.config()
-    end
-end
-
-function M.config()
+if present then
     require("catppuccin").setup({
         transparent_background = false,
         term_colors = true,
@@ -56,5 +49,3 @@ function M.config()
         },
     })
 end
-
-M.setup()
