@@ -10,7 +10,7 @@ end
 function M.init()
     require("core.options")
     require("core.mappings")
-    require("plugins")
+    require("plugins").setup()
     M.theme()
 end
 

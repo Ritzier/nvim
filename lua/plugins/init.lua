@@ -1,150 +1,89 @@
--- vim.cmd [[packadd packer.nvim]]
-local execute = vim.api.nvim_command
-local fn = vim.fn
+ local M = {}
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+function M.setup()
+  -- Indicate first time installation
+  local packer_bootstrap = false
 
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-  execute 'packadd packer.nvim'
-end
+  -- packer.nvim configuration
+  local conf = {
+    profile = {
+      enable = true,
+      threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    },
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "plugins.lua",
-  command = "source <afile> | PackerCompile",
-})
-require('packer').init({display = {auto_clean = false}})
+    display = {
+      open_fn = function()
+        return require("packer.util").float { border = "rounded" }
+      end,
+    },
+  }
 
-return require('packer').startup(function(use)
-  -- Load lua path
-    local lua_path = function(name)
-        return string.format("require'plugins.%s'", name)
+  -- Check if packer.nvim is installed
+  -- Run PackerCompile if there are changes in this file
+  local function packer_init()
+    local fn = vim.fn
+    local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+      packer_bootstrap = fn.system {
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+      }
+      vim.cmd [[packadd packer.nvim]]
     end
+    vim.cmd "autocmd BufWritePost plugins.lua source <afile> | PackerCompile"
+  end
 
-    local function req(module)
-        require("plugins." .. module)
-    end
+  -- Plugins
+  local function plugins(use)
+    use { "wbthomason/packer.nvim" }
 
-    use { 'wbthomason/packer.nvim' }
-    use { 'nvim-lua/plenary.nvim' }
-    use { 'nvim-lua/popup.nvim' }
-    use { 'lewis6991/impatient.nvim' }
+    -- Performance
+    use { "lewis6991/impatient.nvim" }
+
+    -- Load only when require
+    use { "nvim-lua/plenary.nvim", module = "plenary" }
+
 
     -- Colorscheme
     use {
-        'EdenEast/nightfox.nvim'
+        "EdenEast/nightfox.nvim",
     }
 
-    -- Icons
+    -- Show colors
     use {
-        "kyazdani42/nvim-web-devicons"
-    }
-
-    -- Bufferline
-    use {
-        "akinsho/bufferline.nvim",
-        config = req("nvim_bufferline"),
-    }
-
-    -- File Explorer
-    use {
-        "kyazdani42/nvim-tree.lua",
-        config = req("nvim_tree"),
-    }
-    
-    -- Change notification
-    use {
-        "rcarriga/nvim-notify",
-        config = req("nvim_notify")
-    }
-
-    -- lualine
-    use {
-    }
-
-    -- Nvim gps
-    use {
-        "SmiteshP/nvim-gps",
-        config = req("nvim_gps")
-    }
-
-    -- Treesitter
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        config = req("treesitter")
-    }
-    use {
-        "p00f/nvim-ts-rainbow",
-        event = "BufRead",
-        after = "nvim-treesitter",
-    }
-    use {
-        "RRethy/nvim-treesitter-endwise",
-        after = "nvim-treesitter",
-    }
-    use {
-        "windwp/nvim-ts-autotag",
-        after = "nvim-treesitter",
-    }
-    use {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        after = "nvim-treesitter",
-    }
-
-    -- Colorizer
-    use {
-        "NvChad/nvim-colorizer.lua",
-        event = "BufRead",
-        opt = true,
-        config = req("colorizer")
-    }
-
-    -- Markdown Preview
-    use {
-        "iamcco/markdown-preview.nvim",
-        run = 'cd app && yarn',
-        cmd = { 'MarkdownPreview', 'MarkdownPreviewStop' },
-        setup = function()
-            vim.g.mkdp_filetypes = { 'markdown' }
-            vim.g.mkdp_auto_close = 0
+        "norcalli/nvim-colorizer.lua",
+        cmd = "ColorizerToggle",
+        config = function()
+            require("colorizer").setup()
         end,
-        ft = { 'markdown' },
     }
-
-    -- Telescope
     use {
-        "nvim-telescope/telescope.nvim",
-        module = 'telescope',
-        cmd = 'Telescope',
-        config = req("telescope")
+        "rktjmp/lush.nvim",
+        cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },
+        disable = false,
     }
 
-    -- Git
-    use {
-        "lewis6991/gitsigns.nvim",
-        opt = true,
-        config = req("gitsigns")
-    }
+    -- Bootstrap Neovim
+    if packer_bootstrap then
+      print "Neovim restart is required after installation!"
+      require("packer").sync()
+    end
+  end
 
-    -- IndentBlankline
-    use {
-        "lukas-reineke/indent-blankline.nvim",
-        after = "nvim-treesitter",
-        config = req("blankline"),
-    }
+  -- Init and start packer
+  packer_init()
+  local packer = require "packer"
 
-    -- Comment
-    use {
-        "numToStr/Comment.nvim",
-        module = "Comment",
-        keys = { { 'n', 'gcc' }, { 'v', 'gc' } },
-        config = req("comment")
-    }
+  -- Performance
+  pcall(require, "impatient")
+  -- pcall(require, "packer_compiled")
 
+  packer.init(conf)
+  packer.startup(plugins)
+end
 
-    -- Terminal
-    use {
-    }
-
-
-    end)
+return M
