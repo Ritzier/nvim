@@ -11,6 +11,7 @@ function M.init()
     require("core.options")
     require("core.mappings")
     require("plugins").setup()
+    require("core.autocmd")
     M.theme()
 end
 
