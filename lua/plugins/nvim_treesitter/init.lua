@@ -2,8 +2,7 @@ local present1, treesitter = pcall(require, "nvim-treesitter")
 
 if present1 then
     require("nvim-treesitter.configs").setup({
-        ensure_installed = "all",
-        sync_install = false,
+        --ensure_installed = "all",
         highlight = { enable = true },
         rainbow = { 
             enable = true,

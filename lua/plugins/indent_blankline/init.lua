@@ -49,5 +49,5 @@ if present then
         space_char_blankline = " ",
     })
     -- because lazy load indent-blankline so need readd this autocmd
-    vim.cmd("autocmd CursorMoved * IndentBlanklineRefresh")
+    --vim.cmd("autocmd CursorMoved * IndentBlanklineRefresh")
 end
