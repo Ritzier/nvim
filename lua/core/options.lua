@@ -1,7 +1,7 @@
 local g = vim.g
 local opt = vim.opt
 
-g.mapleader = ","
+g.mapleader = " "
 
 opt.backup = false
 opt.clipboard = "unnamedplus"
