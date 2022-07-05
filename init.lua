@@ -1,1 +1,2 @@
-require("core.default").init()
+require("core")
+require("simple_modules")
