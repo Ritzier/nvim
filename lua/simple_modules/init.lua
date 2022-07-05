@@ -70,7 +70,7 @@ return packer.startup(function(use)
 	use({
 		"lewis6991/gitsigns.nvim",
 		wants = "plenary.nvim",
-		requires = { "nvim-lua/plenray.nvim" },
+		requires = { "nvim-lua/plenary.nvim" },
 	})
 	use({ "goolord/alpha-nvim" })
 
