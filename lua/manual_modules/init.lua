@@ -1,4 +1,3 @@
-local global = require("global")
 local fn = vim.fn
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
@@ -49,13 +48,13 @@ return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })
 	use({ "nvim-lua/plenary.nvim" })
 	use({ "lewis6991/impatient.nvim" })
-    use({ "nathom/filetype.nvim"})
+	use({ "nathom/filetype.nvim" })
 	use({ "mrjones2014/legendary.nvim" })
 
 	-- Colorscheme
 	use("EdenEast/nightfox.nvim")
 
-	-- Plugins
+	--     useins
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "windwp/nvim-autopairs" })
 	use({ "kyazdani42/nvim-tree.lua" })
@@ -95,32 +94,28 @@ return packer.startup(function(use)
 	})
 	-- Indent Line
 	use({
-        "lukas-reineke/indent-blankline.nvim", 
-        after = "nvim-treesitter" 
-    })
+		"lukas-reineke/indent-blankline.nvim",
+		after = "nvim-treesitter",
+	})
 
-    -- Neovim gps
-    use ({
-        "SmiteshP/nvim-gps",
-        after = "nvim-treesitter",
-    })
-
-    -- Toggleterm
-    use({
-        "akinsho/toggleterm.nvim"
-    })
-
-    -- Lsp
-	use({ "neovim/nvim-lspconfig" }) -- enable LSP
-	use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
-	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+	-- Neovim gps
 	use({
-		"glepnir/lspsaga.nvim",
+		"SmiteshP/nvim-gps",
+		after = "nvim-treesitter",
+	})
+
+	-- Toggleterm
+	use({
+		"akinsho/toggleterm.nvim",
+	})
+
+	-- Other plugins
+	use({
+		"numToStr/Comment.nvim",
 		config = function()
-			require("lspsaga").init_lsp_saga()
+			require("Comment").setup()
 		end,
 	})
-	-- Other plugins
 	use({ "folke/lua-dev.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	use({
@@ -130,10 +125,18 @@ return packer.startup(function(use)
 		end,
 	})
 
-    -- Whichkey
-    use({
-        "folke/which-key.nvim"
-    })
+	-- Whichkey
+	use({
+		"folke/which-key.nvim",
+	})
+
+	-- Show symbols
+	use({ "simrat39/symbols-outline.nvim" })
+
+    -- LSP
+    use ({'neovim/nvim-lspconfig'})
+    use ({'tamago324/nlsp-settings.nvim'})
+    use ({'williamboman/nvim-lsp-installer'})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

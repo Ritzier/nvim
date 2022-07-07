@@ -9,7 +9,7 @@ keymap("n", "<A-j>", ":BufferLineCycleNext<CR>", default_opts)
 keymap("n", "<A-k>", ":BufferLineCyclePrev<CR>", default_opts)
 keymap("n", "<A-S-j>", ":BufferLineMoveNext<CR>", default_opts)
 keymap("n", "<A-S-k>", ":BufferLineMovePrev<CR>", default_opts)
-keymap("n", "<C-x>", ":bd", default_opts)
+keymap("n", "<C-x>", ":bd<CR>", default_opts)
 
 -- Format
 keymap("n", "<leader>f", ":w:!stylua %<CR>", default_opts)
