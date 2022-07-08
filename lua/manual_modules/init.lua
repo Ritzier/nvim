@@ -116,7 +116,6 @@ return packer.startup(function(use)
 			require("Comment").setup()
 		end,
 	})
-	use({ "folke/lua-dev.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	use({
 		"j-hui/fidget.nvim",
@@ -133,10 +132,29 @@ return packer.startup(function(use)
 	-- Show symbols
 	use({ "simrat39/symbols-outline.nvim" })
 
-    -- LSP
-    use ({'neovim/nvim-lspconfig'})
-    use ({'tamago324/nlsp-settings.nvim'})
-    use ({'williamboman/nvim-lsp-installer'})
+	-- LSP
+	use({ "neovim/nvim-lspconfig" })
+	use({ "williamboman/nvim-lsp-installer" })
+	use({ "glepnir/lspsaga.nvim", cmd = "LspSaga" })
+	use({
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		-- config = conf.nvim_cmp,
+        })
+    use{ "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" }
+    use{ "hrsh7th/cmp-path", after = "nvim-cmp" }
+    use{ "hrsh7th/cmp-buffer", after = "nvim-cmp" }
+    use{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }
+
+	use({ 
+        "L3MON4D3/LuaSnip", 
+        event = "InsertCharPre", 
+        -- config = conf.lua_snip 
+    })
+
+    -- language
+    -- lua
+    use({ "folke/lua-dev.nvim" })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

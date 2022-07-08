@@ -75,6 +75,14 @@ _G.packer_plugins = {
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  LuaSnip = {
+    after = { "cmp_luasnip" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["alpha-nvim"] = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/alpha-nvim",
@@ -84,6 +92,44 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
+  },
+  ["cmp-buffer"] = {
+    after_files = { "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    after_files = { "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    after_files = { "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  cmp_luasnip = {
+    after_files = { "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
+    load_after = {
+      LuaSnip = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["fidget.nvim"] = {
     config = { "\27LJ\2\n&\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\vfidget\frequire\0" },
@@ -119,6 +165,14 @@ _G.packer_plugins = {
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/legendary.nvim",
     url = "https://github.com/mrjones2014/legendary.nvim"
   },
+  ["lspsaga.nvim"] = {
+    commands = { "LspSaga" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
+  },
   ["lua-dev.nvim"] = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/lua-dev.nvim",
@@ -134,15 +188,18 @@ _G.packer_plugins = {
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
   },
-  ["nlsp-settings.nvim"] = {
-    loaded = true,
-    path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nlsp-settings.nvim",
-    url = "https://github.com/tamago324/nlsp-settings.nvim"
-  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/ritzier/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
+  },
+  ["nvim-cmp"] = {
+    after = { "cmp-buffer", "cmp-path" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/ritzier/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
     commands = { "ColorizerToggl" },
@@ -245,33 +302,37 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
-time([[Config for Comment.nvim]], false)
 -- Config for: fidget.nvim
 time([[Config for fidget.nvim]], true)
 try_loadstring("\27LJ\2\n&\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\vfidget\frequire\0", "config", "fidget.nvim")
 time([[Config for fidget.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-lspconfig ]]
+vim.cmd [[ packadd cmp-nvim-lsp ]]
 vim.cmd [[ packadd nvim-treesitter ]]
 vim.cmd [[ packadd nvim-gps ]]
+vim.cmd [[ packadd indent-blankline.nvim ]]
 vim.cmd [[ packadd nvim-treesitter-endwise ]]
 vim.cmd [[ packadd nvim-ts-rainbow ]]
-vim.cmd [[ packadd indent-blankline.nvim ]]
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ColorizerToggl lua require("packer.load")({'nvim-colorizer.lua'}, { cmd = "ColorizerToggl", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file LspSaga lua require("packer.load")({'lspsaga.nvim'}, { cmd = "LspSaga", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-ts-autotag'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp', 'nvim-ts-autotag'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'LuaSnip'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

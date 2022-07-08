@@ -7,6 +7,10 @@ req("bufferline")
 req("nvim_tree")
 req("autopairs")
 req("gitsigns")
+
+-- Completion
+req("lsp")
+
 req("notify")
 req("keymaps")
 req("alpha")
