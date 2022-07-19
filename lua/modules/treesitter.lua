@@ -1,9 +1,4 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-    print("Treesitter not work")
-	return
-end
-
+local configs = require("nvim-treesitter.configs")
 configs.setup({
 	ensure_installed = "all", -- one of "all" or a list of languages
 	ignore_install = { "" }, -- List of parsers to ignore installing
@@ -14,7 +9,21 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
-	indent = { enable = true },
+	indent = { enable = true, disable = { "python", "css" } },
     rainbow = { enable = true },
     endwise = { enable = true },
+    autotag = {
+        enable = true, 
+        filetypes = {
+            "html",
+            "xml",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact",
+            "vue",
+        },
+    },
+    context_commentstring = {
+        enable = true
+    },
 })

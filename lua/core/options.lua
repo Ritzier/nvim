@@ -93,3 +93,5 @@ vim.schedule(function()
 	vim.opt.shadafile = vim.fn.expand("$HOME") .. "/.local/share/nvim/shada/main.shada"
 	vim.cmd([[ silent! rsh ]])
 end)
+
+vim.cmd[[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
