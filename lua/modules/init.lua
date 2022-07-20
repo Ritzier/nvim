@@ -107,30 +107,83 @@ return packer.startup(function(use)
     })
 
     --Completion
-    use({ "neovim/nvim-lspconfig" })
-    use({ "williamboman/nvim-lsp-installer" })
-    use({ "creativenull/efmls-configs-nvim" })
-    use({ "tami5/lspsaga.nvim" })
-    use({ "kevinhwang91/nvim-bqf" })
-    use({ "stevearc/aerial.nvim" })
-    use({ "kosayoda/nvim-lightbulb" })
-    use({ "ray-x/lsp_signature.nvim" })
-    use({ "hrsh7th/nvim-cmp" })
-    use({ "lukas-reineke/cmp-under-comparator" })
-    use({ "saadparwaiz1/cmp_luasnip" })
-    use({ "hrsh7th/cmp-nvim-lsp" })
-    use({ "hrsh7th/cmp-nvim-lua" })
-    use({ "andersevenrud/cmp-tmux" })
-    use({ "hrsh7th/cmp-path" })
-    use({ "f3fora/cmp-spell" })
-    use({ "hrsh7th/cmp-buffer" })
-    use({ "kdheepak/cmp-latex-symbols" })
-    use({ "L3MON4D3/LuaSnip" })
+    -- use {
+    --     "ms-jpq/coq_nvim",
+    --     branch = "coq",
+    --     event = "InsertEnter",
+    --     run = ":COQdeps",
+    -- }
+    -- use({ "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" })
+    -- use({ "ms-jpq/coq.artifacts", branch = "artifacts" })
+    --
+    -- use {
+    --     "hrsh7th/nvim-cmp",
+    --     event = "InsertEnter",
+    -- }
+    -- use({"hrsh7th/cmp-buffer"})
+    -- use({"hrsh7th/cmp-path"})
+    -- use({"hrsh7th/cmp-nvim-lua"})
+    -- use({"ray-x/cmp-treesitter"})
+    -- use({"hrsh7th/cmp-cmdline"})
+    -- use({"saadparwaiz1/cmp_luasnip"})
+    -- use({"hrsh7th/cmp-calc"})
+    -- use({"f3fora/cmp-spell"})
+    -- use({"hrsh7th/cmp-emoji"})
+    -- use({"L3MON4D3/LuaSnip"})
+    -- use({"rafamadriz/friendly-snippets"})
+
+    use {
+      "ms-jpq/coq_nvim",
+      branch = "coq",
+      event = "InsertEnter",
+      opt = true,
+      run = ":COQdeps",
+      config = function()
+        require("modules.completion.coq").setup()
+      end,
+      requires = {
+        { "ms-jpq/coq.artifacts", branch = "artifacts" },
+        { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
+      },
+      disable = true,
+    }
+
+    use {
+      "hrsh7th/nvim-cmp",
+      event = "InsertEnter",
+      opt = true,
+      config = function()
+        require("modules.completion.cmp").setup()
+      end,
+      wants = { "LuaSnip" },
+      requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lua",
+        "ray-x/cmp-treesitter",
+        "hrsh7th/cmp-cmdline",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-calc",
+        "f3fora/cmp-spell",
+        "hrsh7th/cmp-emoji",
+        {
+          "L3MON4D3/LuaSnip",
+          wants = "friendly-snippets",
+          config = function()
+            require("modules.completion.luasnip").setup()
+          end,
+        },
+        "rafamadriz/friendly-snippets",
+        disable = false,
+      },
+    }
     use({
-        "github/copilot.vim",
-        cmd = "Copilot",
+        "L3MON4D3/LuaSnip",
+        wants = "friendly-snippets",
+        config = function()
+            require("modules.completion.luasnip").setup()
+        end,
     })
-    use({"RRethy/vim-illuminate"})
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
