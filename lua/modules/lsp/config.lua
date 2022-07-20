@@ -1,5 +1,4 @@
 local navic = require("nvim-navic")
-local a = require("$HOME/1.py")
 
 local config = {}
 
