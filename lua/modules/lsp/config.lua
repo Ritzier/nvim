@@ -42,6 +42,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 	require("aerial").on_attach(client)
+
     if client.name ~= "efm" then
         navic.attach(client, bufnr)
     end
@@ -148,7 +149,7 @@ cmp.setup({
 	},
 	-- You can set mappings if you want
 	mapping = cmp.mapping.preset.insert({
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -219,8 +220,15 @@ local servers = {
 	"bashls",
 	"clangd",
 	"sumneko_lua",
-	-- "efm",
+    "sourcekit",
 	"pyright",
+    "jsonls",
+    "rust_analyzer",
+    "jdtls",
+    "tsserver",
+    "gopls",
+    "julials",
+    "clangd",
 }
 
 for _, server in ipairs(servers) do
@@ -259,18 +267,32 @@ for _, server in ipairs(servers) do
 				capabilities = capabilities,
 			},
 		})
-		-- elseif server == "efm" then
-		-- require("lspconfig").efm.setup({
-		-- 	init_options = { documentFormatting = true },
-		-- 	settings = {
-		-- 		rootMarkers = { ".git/" },
-		-- 		languages = {
-		-- 			lua = {
-		-- 				{ formatCommand = "lua-format -i", formatStdin = true },
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
+    elseif server == "html" then
+        require("lspconfig")[server].setup({
+            cmd = {"html-languageserver", "--stdio"},
+            filetypes = {"html"},
+            init_options = {
+                configurationSection = {"html", "css", "javascript"},
+                embeddedLanguage={css=true,javascript=true},
+            },
+            settings = {},
+            single_file_support = true,
+            on_attach = on_attach,
+			debounce_text_changes = 150,
+			capabilities = capabilities,
+        })
+    elseif server == "jsonls" then
+        require("lspconfig")[server].setup({
+            settings = {
+                json = {
+                    schemas = require('schemastore').json.schemas(),
+                    valdate = {enable = true},
+                },
+            },
+            on_attach = on_attach,
+			debounce_text_changes = 150,
+			capabilities = capabilities,
+        })
 	else
 		require("lspconfig")[server].setup({
 			on_attach = on_attach,
@@ -279,6 +301,8 @@ for _, server in ipairs(servers) do
 		})
 	end
 end
+
+require("nvim-lsp-installer").setup()
 
 local efmls = require("efmls-configs")
 
