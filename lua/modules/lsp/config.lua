@@ -210,13 +210,14 @@ require("lspsaga").init_lsp_saga({
 	infor_sign = "",
 })
 
-require("nvim-lsp-installer").setup()
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local servers = {
+	"bashls",
+	"clangd",
 	"sumneko_lua",
+	-- "efm",
 	"pyright",
 }
 
@@ -246,15 +247,46 @@ for _, server in ipairs(servers) do
 			},
 			on_attach = on_attach,
 			debounce_text_changes = 150,
-            capabilities = capabilities,
+			capabilities = capabilities,
 		})
+	elseif server == "clangd" then
+		require("clangd_extensions").setup({
+			server = {
+				on_attach = on_attach,
+				debounce_text_changes = 150,
+				capabilities = capabilities,
+			},
+		})
+		-- elseif server == "efm" then
+		-- require("lspconfig").efm.setup({
+		-- 	init_options = { documentFormatting = true },
+		-- 	settings = {
+		-- 		rootMarkers = { ".git/" },
+		-- 		languages = {
+		-- 			lua = {
+		-- 				{ formatCommand = "lua-format -i", formatStdin = true },
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 	else
 		require("lspconfig")[server].setup({
 			on_attach = on_attach,
 			debounce_text_changes = 150,
-            capabilities = capabilities,
+			capabilities = capabilities,
 		})
 	end
 end
+
+local efmls = require("efmls-configs")
+
+efmls.init({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	init_options = { documentFormatting = true, codeAction = true },
+})
+
+require("modules.lsp.efm")
+require("modules.lsp.format").configure_format_on_save()
 
 return config

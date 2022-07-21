@@ -47,6 +47,7 @@ return packer.startup(function(use)
 	use({ "rcarriga/nvim-notify" })
 	use({ "lewis6991/impatient.nvim" })
 	use({ "folke/which-key.nvim" })
+    use({ "antoinemadec/FixCursorHold.nvim" })
 
 	-- UI
 	--Colorscheme
@@ -97,6 +98,17 @@ return packer.startup(function(use)
 	})
 	-- Show all function and variable
 	use({ "simrat39/symbols-outline.nvim" })
+    -- Sniprun
+    use({ 
+        "michaelb/sniprun",
+        run = "bash ./install.sh",
+        cmd = { "SnipRun", "'<,'>SnipRun" },
+    })
+    -- Align
+    use({
+        "junegunn/vim-easy-align",
+        cmd = "EasyAlign",
+    })
 
 	-- Open neovim in browser
 	use({
@@ -133,6 +145,9 @@ return packer.startup(function(use)
     use({ "L3MON4D3/LuaSnip" })
     use({ "rafamadriz/friendly-snippets" })
     use({ "github/copilot.vim", cmd="Copilot" })
+
+    -- FIleytpe
+    use({ "p00f/clangd_extensions.nvim"})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

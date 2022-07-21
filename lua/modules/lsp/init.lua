@@ -1,19 +1,18 @@
 local config = require("modules.lsp.config")
-local script = require("core.script")
 
 local function check(plug)
-    if not pcall(require, plug) then
-        vim.notify(plug .. " not found", "error")
-        return false
-    else
-        return true
-    end
+	if not pcall(require, plug) then
+		vim.notify(plug .. " not found", "error")
+		return false
+	else
+		return true
+	end
 end
 
 if check("nvim-lightbulb") then
-    config.lightbulb()
+	config.lightbulb()
 end
 
 if check("luasnip") then
-    config.luasnip()
+	config.luasnip()
 end
