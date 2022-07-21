@@ -41,8 +41,10 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
-	navic.attach(client, bufnr)
 	require("aerial").on_attach(client)
+    if client.name ~= "efm" then
+        navic.attach(client, bufnr)
+    end
 end
 
 local t = function(str)
