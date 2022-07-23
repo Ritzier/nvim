@@ -43,8 +43,7 @@ opt.sidescrolloff = 8
 opt.laststatus = 3
 
 opt.list = true
-opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
-
+opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←", 
 opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
@@ -94,4 +93,4 @@ vim.schedule(function()
 	vim.cmd([[ silent! rsh ]])
 end)
 
-vim.cmd[[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
+vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
