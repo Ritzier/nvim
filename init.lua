@@ -21,3 +21,5 @@ script.req("modules.lsp", "lspconfig")
 script.req("modules.symbols_outline", "symbols-outline")
 
 script.req("keymaps", "packer")
+
+-- script.req("modules.telescope", "telescope")

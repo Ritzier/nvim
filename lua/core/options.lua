@@ -16,8 +16,8 @@ opt.pumheight = 20
 opt.showmode = false
 opt.showtabline = 2
 opt.smartcase = true
-opt.smartindent = true
-opt.smarttab = true
+opt.smartindent = false
+opt.smarttab = false
 opt.splitbelow = true
 opt.splitright = true
 opt.swapfile = false
@@ -43,8 +43,7 @@ opt.sidescrolloff = 8
 opt.laststatus = 3
 
 opt.list = true
-opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←", 
-opt.shortmess:append("c")
+opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←", opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

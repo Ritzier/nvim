@@ -47,7 +47,8 @@ return packer.startup(function(use)
 	use({ "rcarriga/nvim-notify" })
 	use({ "lewis6991/impatient.nvim" })
 	use({ "folke/which-key.nvim" })
-    use({ "antoinemadec/FixCursorHold.nvim" })
+	use({ "antoinemadec/FixCursorHold.nvim" })
+	use({ "nvim-lua/popup.nvim" })
 
 	-- UI
 	--Colorscheme
@@ -98,17 +99,17 @@ return packer.startup(function(use)
 	})
 	-- Show all function and variable
 	use({ "simrat39/symbols-outline.nvim" })
-    -- Sniprun
-    use({ 
-        "michaelb/sniprun",
-        run = "bash ./install.sh",
-        cmd = { "SnipRun", "'<,'>SnipRun" },
-    })
-    -- Align
-    use({
-        "junegunn/vim-easy-align",
-        cmd = "EasyAlign",
-    })
+	-- Sniprun
+	use({
+		"michaelb/sniprun",
+		run = "bash ./install.sh",
+		cmd = { "SnipRun", "'<,'>SnipRun" },
+	})
+	-- Align
+	use({
+		"junegunn/vim-easy-align",
+		cmd = "EasyAlign",
+	})
 
 	-- Open neovim in browser
 	use({
@@ -118,37 +119,60 @@ return packer.startup(function(use)
 		end,
 	})
 
-    -- Completion
-    use({ "neovim/nvim-lspconfig" })
-    use({ "SmiteshP/nvim-navic" })
-    use({"hrsh7th/nvim-cmp"})
-    use({ "lukas-reineke/cmp-under-comparator" })
-    use({ "saadparwaiz1/cmp_luasnip" })
-    use({ "hrsh7th/cmp-nvim-lsp" })
-    use({ "hrsh7th/cmp-nvim-lua" })
-    use({ "andersevenrud/cmp-tmux" })
-    use({ "hrsh7th/cmp-path" })
-    use({ "f3fora/cmp-spell" })
-    use({ "hrsh7th/cmp-buffer" })
-    use({ "kdheepak/cmp-latex-symbols" })
-    use({ "creativenull/efmls-configs-nvim" })
-    use({ "williamboman/nvim-lsp-installer" })
-    -- use({"kevinhwang91/nvim-bqf"})
-    use({ "tami5/lspsaga.nvim" })
-    use({
-        "stevearc/aerial.nvim",
-        config = function()
-            require("aerial").setup()
-        end
-    })
-    use({ "kosayoda/nvim-lightbulb" })
-    use({ "L3MON4D3/LuaSnip" })
-    use({ "rafamadriz/friendly-snippets" })
-    use({ "github/copilot.vim", cmd="Copilot" })
+	-- Completion
+	use({ "neovim/nvim-lspconfig" })
+	use({ "SmiteshP/nvim-navic" })
+	use({ "hrsh7th/nvim-cmp" })
+	use({ "lukas-reineke/cmp-under-comparator" })
+	use({ "saadparwaiz1/cmp_luasnip" })
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-nvim-lua" })
+	use({ "andersevenrud/cmp-tmux" })
+	use({ "hrsh7th/cmp-path" })
+	use({ "f3fora/cmp-spell" })
+	use({ "hrsh7th/cmp-buffer" })
+	use({ "kdheepak/cmp-latex-symbols" })
+	use({ "creativenull/efmls-configs-nvim" })
+	use({ "williamboman/nvim-lsp-installer" })
+	-- use({"kevinhwang91/nvim-bqf"})
+	use({ "tami5/lspsaga.nvim" })
+	use({
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup()
+		end,
+	})
+	use({ "kosayoda/nvim-lightbulb" })
+	use({ "L3MON4D3/LuaSnip" })
+	use({ "rafamadriz/friendly-snippets" })
+	use({ "github/copilot.vim", cmd = "Copilot" })
 
-    -- FIleytpe
-    use({ "p00f/clangd_extensions.nvim"})
-    use({ "b0o/SchemaStore.nvim" })
+	-- FIleytpe
+	use({ "p00f/clangd_extensions.nvim" })
+	use({ "b0o/SchemaStore.nvim" })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
+
+	-- Telescope
+	use({
+		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "make",
+	})
+	use({ "nvim-telescope/telescope-project.nvim" })
+	use({ "nvim-telescope/telescope-frecency.nvim" })
+	use({ "jvgrootveld/telescope-zoxide" })
+	use({ "tami5/sqlite.lua" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
