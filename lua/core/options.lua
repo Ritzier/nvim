@@ -43,7 +43,8 @@ opt.sidescrolloff = 8
 opt.laststatus = 3
 
 opt.list = true
-opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←", opt.shortmess:append("c")
+opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
+opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
