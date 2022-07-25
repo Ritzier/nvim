@@ -159,6 +159,7 @@ return packer.startup(function(use)
 		end,
 		ft = { "markdown" },
 	})
+	use({ "Vimjas/vim-python-pep8-indent" })
 
 	-- Telescope
 	use({
