@@ -43,7 +43,12 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 	require("aerial").on_attach(client)
 
-	if client.name ~= "efm" then
+	if
+		client.name ~= "efm"
+		and client.name ~= "tailwindcss"
+		and client.name ~= "angularls"
+		and client.name ~= "html"
+	then
 		navic.attach(client, bufnr)
 	end
 end
@@ -156,7 +161,7 @@ cmp.setup({
 	},
 	-- You can set mappings if you want
 	mapping = cmp.mapping.preset.insert({
-		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["4"] = cmp.mapping.confirm({ select = true }),
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -250,6 +255,9 @@ local servers = {
 	"gopls",
 	"julials",
 	"clangd",
+	"html",
+	"angularls",
+	"tailwindcss",
 }
 
 for _, server in ipairs(servers) do
@@ -388,6 +396,15 @@ for _, server in ipairs(servers) do
 					border = "none",
 				},
 			},
+		})
+	elseif server == "html" then
+		local capabilities1 = vim.lsp.protocol.make_client_capabilities()
+		capabilities1.textDocument.completion.completionItem.snippetSupport = true
+		require("lspconfig")[server].setup({
+			single_file_support = true,
+			on_attach = on_attach,
+			debounce_text_changes = 150,
+			capabilities = capabilities1,
 		})
 	else
 		require("lspconfig")[server].setup({
