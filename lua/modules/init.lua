@@ -122,6 +122,7 @@ return packer.startup(function(use)
 	-- Completion
 	use({ "neovim/nvim-lspconfig" })
 	use({ "SmiteshP/nvim-navic" })
+	use({ "SmiteshP/nvim-gps" })
 	use({ "hrsh7th/nvim-cmp" })
 	use({ "lukas-reineke/cmp-under-comparator" })
 	use({ "saadparwaiz1/cmp_luasnip" })

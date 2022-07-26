@@ -1,4 +1,5 @@
 local navic = require("nvim-navic")
+local gps = require("nvim-gps")
 
 local config = {}
 
@@ -48,8 +49,24 @@ local on_attach = function(client, bufnr)
 		and client.name ~= "tailwindcss"
 		and client.name ~= "angularls"
 		and client.name ~= "html"
+		and client.name ~= "bashls"
 	then
 		navic.attach(client, bufnr)
+		require("lualine").setup({
+			sections = {
+				lualine_c = {
+					{ navic.get_location, cond = navic.is_available },
+				},
+			},
+		})
+	else
+		require("lualine").setup({
+			sections = {
+				lualine_c = {
+					{ gps.get_location, cond = gps.is_available },
+				},
+			},
+		})
 	end
 end
 

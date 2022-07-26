@@ -62,36 +62,144 @@ end
 
 local navic = require("nvim-navic")
 navic.setup({
-    icons = {
-        File = " ", -- File
-        Module = " ", -- Module
-        Namespace = " ", -- Namespace
-        Package = " ", -- Package
-        Class = "ﴯ ", -- Class
-        Method = " ", -- Method
-        Property = " ", -- Property
-        Field = "ﰠ ", -- Field
-        Constructor = " ", -- Constructor
-        Enum = "", -- Enum
-        Interface = "", -- Interface
-        Function = " ", -- Function
-        Variable = " ", -- Variable
-        Constant = " ", -- Constant
-        String = " ", -- String
-        Number = " ", -- Number
-        Boolean = "◩ ", -- Boolean
-        Array = " ", -- Array
-        Object = " ", -- Object
-        Key = " ", -- Key
-        Null = "ﳠ ", -- Null
-        EnumMember = " ", -- EnumMember
-        Struct = " ", -- Struct
-        Event = " ", -- Event
-        Operator = " ", -- Operator
-        TypeParameter = " ", -- TypeParameter
-    },
-    highlight = false,
-    separator = " > "
+	icons = {
+		File = " ", -- File
+		Module = " ", -- Module
+		Namespace = " ", -- Namespace
+		Package = " ", -- Package
+		Class = "ﴯ ", -- Class
+		Method = " ", -- Method
+		Property = " ", -- Property
+		Field = "ﰠ ", -- Field
+		Constructor = " ", -- Constructor
+		Enum = "", -- Enum
+		Interface = "", -- Interface
+		Function = " ", -- Function
+		Variable = " ", -- Variable
+		Constant = " ", -- Constant
+		String = " ", -- String
+		Number = " ", -- Number
+		Boolean = "◩ ", -- Boolean
+		Array = " ", -- Array
+		Object = " ", -- Object
+		Key = " ", -- Key
+		Null = "ﳠ ", -- Null
+		EnumMember = " ", -- EnumMember
+		Struct = " ", -- Struct
+		Event = " ", -- Event
+		Operator = " ", -- Operator
+		TypeParameter = " ", -- TypeParameter
+	},
+	highlight = false,
+	separator = " > ",
+})
+
+local gps = require("nvim-gps")
+gps.setup({
+	disable_icons = false, -- Setting it to true will disable all icons
+	icons = {
+		["class-name"] = "ﴯ ", -- Classes and class-like objects
+		["function-name"] = " ", -- Functions
+		["method-name"] = " ", -- Methods (functions inside class-like objects)
+		["container-name"] = "⛶ ", -- Containers (example: lua tables)
+		["tag-name"] = "炙", -- Tags (example: html tags)
+	},
+
+	-- Add custom configuration per language or
+	-- Disable the plugin for a language
+	-- Any language not disabled here is enabled by default
+	languages = {
+		-- Some languages have custom icons
+		["json"] = {
+			icons = {
+				["array-name"] = " ",
+				["object-name"] = " ",
+				["null-name"] = "[] ",
+				["boolean-name"] = "ﰰﰴ ",
+				["number-name"] = "# ",
+				["string-name"] = " ",
+			},
+		},
+		["latex"] = {
+			icons = {
+				["title-name"] = "# ",
+				["label-name"] = " ",
+			},
+		},
+		["norg"] = {
+			icons = {
+				["title-name"] = " ",
+			},
+		},
+		["toml"] = {
+			icons = {
+				["table-name"] = " ",
+				["array-name"] = " ",
+				["boolean-name"] = "ﰰﰴ ",
+				["date-name"] = " ",
+				["date-time-name"] = " ",
+				["float-name"] = " ",
+				["inline-table-name"] = " ",
+				["integer-name"] = "# ",
+				["string-name"] = " ",
+				["time-name"] = " ",
+			},
+		},
+		["verilog"] = {
+			icons = {
+				["module-name"] = " ",
+			},
+		},
+		["yaml"] = {
+			icons = {
+				["mapping-name"] = " ",
+				["sequence-name"] = " ",
+				["null-name"] = "[] ",
+				["boolean-name"] = "ﰰﰴ ",
+				["integer-name"] = "# ",
+				["float-name"] = " ",
+				["string-name"] = " ",
+			},
+		},
+		["yang"] = {
+			icons = {
+				["module-name"] = " ",
+				["augment-path"] = " ",
+				["container-name"] = " ",
+				["grouping-name"] = " ",
+				["typedef-name"] = " ",
+				["identity-name"] = " ",
+				["list-name"] = "﬘ ",
+				["leaf-list-name"] = " ",
+				["leaf-name"] = " ",
+				["action-name"] = " ",
+			},
+		},
+
+		-- Disable for particular languages
+		-- ["bash"] = false, -- disables nvim-gps for bash
+		-- ["go"] = false,   -- disables nvim-gps for golang
+
+		-- Override default setting for particular languages
+		-- ["ruby"] = {
+		--	separator = '|', -- Overrides default separator with '|'
+		--	icons = {
+		--		-- Default icons not specified in the lang config
+		--		-- will fallback to the default value
+		--		-- "container-name" will fallback to default because it's not set
+		--		["function-name"] = '',    -- to ensure empty values, set an empty string
+		--		["tag-name"] = ''
+		--		["class-name"] = '::',
+		--		["method-name"] = '#',
+		--	}
+		--}
+	},
+
+	separator = " > ",
+
+	depth = 0,
+
+	depth_limit_indicator = "..",
 })
 
 require("lualine").setup({
@@ -102,8 +210,8 @@ require("lualine").setup({
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
-        depth_limit = 0,
-        depth_limit_indicator = "..",
+		depth_limit = 0,
+		depth_limit_indicator = "..",
 	},
 	sections = {
 		lualine_a = {
@@ -111,8 +219,9 @@ require("lualine").setup({
 		},
 		lualine_b = { branch, diff },
 		lualine_c = {
-            { navic.get_location, cond = navic.is_available },
-        },
+			{ navic.get_location, cond = navic.is_available },
+			-- { gps.get_location, conf = gps.is_available },
+		},
 		lualine_x = { diag, filetype },
 		lualine_y = { location },
 		lualine_z = {
