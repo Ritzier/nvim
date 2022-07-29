@@ -147,7 +147,6 @@ return packer.startup(function(use)
 	use({ "kosayoda/nvim-lightbulb" })
 	use({ "L3MON4D3/LuaSnip" })
 	use({ "rafamadriz/friendly-snippets" })
-	use({ "github/copilot.vim", cmd = "Copilot" })
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })
@@ -176,6 +175,8 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-frecency.nvim" })
 	use({ "jvgrootveld/telescope-zoxide" })
 	use({ "tami5/sqlite.lua" })
+
+	-- Dap
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
