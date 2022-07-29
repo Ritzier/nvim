@@ -70,11 +70,11 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+-- for type, icon in pairs(signs) do
+-- 	local hl = "DiagnosticSign" .. type
+-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- end
 
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -247,12 +247,12 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({ { name = "path" }, { name = "cmdline" } }),
 })
 
-require("lspsaga").init_lsp_saga({
-	error_sign = "",
-	warn_sign = "",
-	hint_sign = "",
-	infor_sign = "",
-})
+-- require("lspsaga").init_lsp_saga({
+-- 	error_sign = "",
+-- 	warn_sign = "",
+-- 	hint_sign = "",
+-- 	infor_sign = "",
+-- })
 
 require("nvim-lsp-installer").setup()
 

@@ -19,6 +19,7 @@ script.req("modules.lsp", "lspconfig")
 script.req("modules.lualine", "lualine", "nvim-navic")
 script.req("modules.lsp", "lspconfig")
 script.req("modules.symbols_outline", "symbols-outline")
+script.req("modules.wilder", "wilder")
 
 script.req("keymaps", "packer")
 

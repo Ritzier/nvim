@@ -119,6 +119,9 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Wilder
+	use({ "gelguy/wilder.nvim" })
+
 	-- Completion
 	use({ "neovim/nvim-lspconfig" })
 	use({ "SmiteshP/nvim-navic" })
@@ -137,7 +140,7 @@ return packer.startup(function(use)
 	use({ "creativenull/efmls-configs-nvim" })
 	use({ "williamboman/nvim-lsp-installer" })
 	-- use({"kevinhwang91/nvim-bqf"})
-	use({ "tami5/lspsaga.nvim" })
+	-- use({ "tami5/lspsaga.nvim" })
 	use({
 		"stevearc/aerial.nvim",
 		config = function()
@@ -175,8 +178,7 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-frecency.nvim" })
 	use({ "jvgrootveld/telescope-zoxide" })
 	use({ "tami5/sqlite.lua" })
-
-	-- Dap
+	use({ "" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
