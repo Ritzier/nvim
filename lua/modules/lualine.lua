@@ -218,10 +218,6 @@ require("lualine").setup({
 			{ "mode", separator = { left = "" }, right_padding = 2 },
 		},
 		lualine_b = { branch, diff },
-		lualine_c = {
-			{ navic.get_location, cond = navic.is_available },
-			-- { gps.get_location, conf = gps.is_available },
-		},
 		lualine_x = { diag, filetype },
 		lualine_y = { location },
 		lualine_z = {
