@@ -235,17 +235,19 @@ cmp.setup({
 	},
 })
 
-cmp.setup.cmdline("/", {
-	mapping = cmp.mapping.preset.cmdline(),
-	source = {
-		{ name = "buffer" },
-	},
-})
+local function cmp_cmdline()
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		source = {
+			{ name = "buffer" },
+		},
+	})
 
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({ { name = "path" }, { name = "cmdline" } }),
-})
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({ { name = "path" }, { name = "cmdline" } }),
+	})
+end
 
 -- require("lspsaga").init_lsp_saga({
 -- 	error_sign = "",
