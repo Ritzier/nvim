@@ -24,4 +24,4 @@ script.req("modules.wilder", "wilder")
 script.req("keymaps", "packer")
 
 -- script.req("modules.telescope", "telescope")
-script.req("modules.scroll", "neoscroll")
+script.req("modules.scroll", "neoscroll", "fzy-lua-native")

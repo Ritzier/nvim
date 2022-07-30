@@ -121,17 +121,8 @@ return packer.startup(function(use)
 	})
 
 	-- Wilder
-	use({
-		"gelguy/wilder.nvim",
-		run = function()
-			vim.cmd([[
-            let &rtp=&rtp
-            UpdateRemotePlugins
-            ]])
-		end,
-	})
-	use({ "roxma/nvim-yarp" })
-	use({ "roxma/vim-hug-neovim-rpc" })
+	use({ "gelguy/wilder.nvim" })
+    use({ "romgrk/fzy-lua-native" })
 
 	-- Completion
 	use({ "neovim/nvim-lspconfig" })
