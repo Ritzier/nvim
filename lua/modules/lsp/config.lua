@@ -411,6 +411,13 @@ for _, server in ipairs(servers) do
 			debounce_text_changes = 150,
 			capabilities = capabilities1,
 		})
+	else
+		require("lspconfig")[server].setup({
+			single_file_support = true,
+			on_attach = on_attach,
+			debounce_text_changes = 150,
+			capabilities = capabilities,
+		})
 	end
 end
 
