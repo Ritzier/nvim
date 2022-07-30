@@ -313,20 +313,6 @@ for _, server in ipairs(servers) do
 				capabilities = capabilities,
 			},
 		})
-	elseif server == "html" then
-		require("lspconfig")[server].setup({
-			cmd = { "html-languageserver", "--stdio" },
-			filetypes = { "html" },
-			init_options = {
-				configurationSection = { "html", "css", "javascript" },
-				embeddedLanguage = { css = true, javascript = true },
-			},
-			settings = {},
-			single_file_support = true,
-			on_attach = on_attach,
-			debounce_text_changes = 150,
-			capabilities = capabilities,
-		})
 	elseif server == "jsonls" then
 		require("lspconfig")[server].setup({
 			settings = {
@@ -422,12 +408,6 @@ for _, server in ipairs(servers) do
 			on_attach = on_attach,
 			debounce_text_changes = 150,
 			capabilities = capabilities1,
-		})
-	else
-		require("lspconfig")[server].setup({
-			on_attach = on_attach,
-			debounce_text_changes = 150,
-			capabilities = capabilities,
 		})
 	end
 end

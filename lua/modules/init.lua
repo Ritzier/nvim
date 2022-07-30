@@ -71,7 +71,6 @@ return packer.startup(function(use)
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	-- GPS
-	use({ "SmiteshP/nvim-gps" })
 	-- Lualine
 	use({ "nvim-lualine/lualine.nvim" })
 	-- Startup Screen
@@ -110,6 +109,8 @@ return packer.startup(function(use)
 		"junegunn/vim-easy-align",
 		cmd = "EasyAlign",
 	})
+	-- Scroll
+	use({ "karb94/neoscroll.nvim" })
 
 	-- Open neovim in browser
 	use({
@@ -139,7 +140,13 @@ return packer.startup(function(use)
 	use({ "kdheepak/cmp-latex-symbols" })
 	use({ "creativenull/efmls-configs-nvim" })
 	use({ "williamboman/nvim-lsp-installer" })
-	-- use({"kevinhwang91/nvim-bqf"})
+	use({ "kevinhwang91/nvim-bqf" })
+	use({
+		"junegunn/fzf",
+		run = function()
+			vim.fn["fzf#install"]()
+		end,
+	})
 	-- use({ "tami5/lspsaga.nvim" })
 	use({
 		"stevearc/aerial.nvim",
@@ -178,7 +185,6 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-frecency.nvim" })
 	use({ "jvgrootveld/telescope-zoxide" })
 	use({ "tami5/sqlite.lua" })
-	use({ "" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
