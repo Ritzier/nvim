@@ -122,7 +122,7 @@ return packer.startup(function(use)
 
 	-- Wilder
 	use({ "gelguy/wilder.nvim" })
-    use({ "romgrk/fzy-lua-native" })
+	use({ "romgrk/fzy-lua-native" })
 
 	-- Completion
 	use({ "neovim/nvim-lspconfig" })
@@ -171,6 +171,7 @@ return packer.startup(function(use)
 		ft = { "markdown" },
 	})
 	use({ "Vimjas/vim-python-pep8-indent" })
+	use({ "folke/lua-dev.nvim" })
 
 	-- Telescope
 	use({

@@ -44,13 +44,32 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 	require("aerial").on_attach(client)
 
-	if
-		client.name ~= "efm"
-		and client.name ~= "tailwindcss"
-		and client.name ~= "angularls"
-		and client.name ~= "html"
-		and client.name ~= "bashls"
-	then
+	-- if
+	-- 	client.name ~= "efm"
+	-- 	and client.name ~= "tailwindcss"
+	-- 	and client.name ~= "angularls"
+	-- 	and client.name ~= "html"
+	-- 	and client.name ~= "bashls"
+	-- then
+	-- 	navic.attach(client, bufnr)
+	-- 	require("lualine").setup({
+	-- 		sections = {
+	-- 			lualine_c = {
+	-- 				{ navic.get_location, cond = navic.is_available },
+	-- 			},
+	-- 		},
+	-- 	})
+	-- else
+	-- 	require("lualine").setup({
+	-- 		sections = {
+	-- 			lualine_c = {
+	-- 				{ gps.get_location, cond = gps.is_available },
+	-- 			},
+	-- 		},
+	-- 	})
+	-- end
+
+	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
 		require("lualine").setup({
 			sections = {
@@ -262,51 +281,53 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local servers = {
+	"angularls",
 	"bashls",
 	"clangd",
-	"sumneko_lua",
-	"sourcekit",
-	"pyright",
-	"jsonls",
-	"rust_analyzer",
-	"jdtls",
-	"tsserver",
-	"gopls",
-	"julials",
 	"clangd",
+	"gopls",
 	"html",
-	"angularls",
+	"jdtls",
+	"jsonls",
+	"julials",
+	"pyright",
+	"rust_analyzer",
+	"sourcekit",
+	"sumneko_lua",
 	"tailwindcss",
+	"tsserver",
 }
 
 for _, server in ipairs(servers) do
 	if server == "sumneko_lua" then
-		require("lspconfig")[server].setup({
-			settings = {
-				Lua = {
-					runtime = {
-						version = "LuaJIT",
-						path = vim.split(package.path, ";"),
-					},
-					diagnostics = {
-						globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins" },
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+		local luadev = require("lua-dev").setup({
+			library = {
+				vimruntime = true,
+				types = true,
+				plugins = { "lua-dev.nvim", "plenary.nvim" },
+			},
+			lspconfig = {
+				on_attach = on_attach,
+				debounce_text_changes = 150,
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
 						},
-						maxPreload = 2000,
-						preloadFileSize = 50000,
+						workpsace = {
+							library = {
+								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+								[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+							},
+							maxPreload = 100000,
+							preloadFileSize = 10000,
+						},
 					},
-					completion = { callSnippet = "Both" },
-					telemetry = { enable = false },
 				},
 			},
-			on_attach = on_attach,
-			debounce_text_changes = 150,
-			capabilities = capabilities,
 		})
+		require("lspconfig")[server].setup(luadev)
 	elseif server == "clangd" then
 		require("clangd_extensions").setup({
 			server = {
@@ -410,6 +431,22 @@ for _, server in ipairs(servers) do
 			on_attach = on_attach,
 			debounce_text_changes = 150,
 			capabilities = capabilities1,
+		})
+	elseif server == "rust_analyzer" then
+		require("lspconfig")[server].setup({
+			settings = {
+				["rust-analyzer"] = {
+					cargo = { allFeatures = true },
+					checkOnSave = {
+						command = "clippy",
+						extraArgs = { "--no-deps" },
+					},
+				},
+			},
+			single_file_support = true,
+			on_attach = on_attach,
+			debounce_text_changes = 150,
+			capabilities = capabilities,
 		})
 	else
 		require("lspconfig")[server].setup({
