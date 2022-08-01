@@ -175,6 +175,9 @@ return packer.startup(function(use)
 	use({ "tom-anders/telescope-vim-bookmarks.nvim" })
 	use({ "nvim-telescope/telescope-packer.nvim" })
 
+	-- DiffView
+	use({ "sindrets/diffview.nvim" })
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
