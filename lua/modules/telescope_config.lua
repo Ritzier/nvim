@@ -27,3 +27,13 @@ telescope.setup({
 		},
 	},
 })
+
+local wk = require("which-key")
+wk.register({
+	f = {
+		name = "Telescope",
+		f = { "<cmd>Telescope find_files<cr>", "Find File" },
+		l = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+		p = { "<cmd>Telescope packer<cr>", "Packer" },
+	},
+}, { prefix = "<leader>" })

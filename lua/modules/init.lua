@@ -84,13 +84,7 @@ return packer.startup(function(use)
 	-- Git
 	use({ "lewis6991/gitsigns.nvim" })
 	-- Show colors
-	use({
-		"norcalli/nvim-colorizer.lua",
-		cmd = "ColorizerToggle",
-		config = function()
-			require("colorizer").setup()
-		end,
-	})
+	use({ "norcalli/nvim-colorizer.lua" })
 	use({
 		"rktjmp/lush.nvim",
 		cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },

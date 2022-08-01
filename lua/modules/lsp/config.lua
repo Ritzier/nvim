@@ -264,13 +264,6 @@ cmp.setup({
 	},
 })
 
--- require("lspsaga").init_lsp_saga({
--- 	error_sign = "",
--- 	warn_sign = "",
--- 	hint_sign = "",
--- 	infor_sign = "",
--- })
-
 require("nvim-lsp-installer").setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
