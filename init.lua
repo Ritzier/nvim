@@ -25,3 +25,4 @@ script.req("keymaps", "packer")
 
 -- script.req("modules.telescope", "telescope")
 script.req("modules.scroll", "neoscroll", "fzy-lua-native")
+script.req("modules.telescope_config", "telescope")

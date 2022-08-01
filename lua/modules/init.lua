@@ -174,19 +174,10 @@ return packer.startup(function(use)
 	use({ "folke/lua-dev.nvim" })
 
 	-- Telescope
-	use({
-		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-	})
-	use({ "nvim-telescope/telescope-project.nvim" })
-	use({ "nvim-telescope/telescope-frecency.nvim" })
-	use({ "jvgrootveld/telescope-zoxide" })
-	use({ "tami5/sqlite.lua" })
+	use({ "nvim-telescope/telescope.nvim" })
+	use({ "nvim-telescope/telescope-media-files.nvim" })
+	use({ "tom-anders/telescope-vim-bookmarks.nvim" })
+	use({ "nvim-telescope/telescope-packer.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
