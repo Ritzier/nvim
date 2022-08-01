@@ -89,11 +89,21 @@ local on_attach = function(client, bufnr)
 	end
 end
 
--- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
--- for type, icon in pairs(signs) do
--- 	local hl = "DiagnosticSign" .. type
--- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
--- end
+local function Signs()
+	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		underline = true,
+		update_in_insert = false,
+		virtual_text = { spacing = 4, prefix = "●" },
+		severity_sort = true,
+	})
+
+	for type, icon in pairs(signs) do
+		local hl = "DiagnosticSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+	end
+end
+Signs()
 
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -253,20 +263,6 @@ cmp.setup({
 		-- { name = "cmp_tabnine" },
 	},
 })
-
-local function cmp_cmdline()
-	cmp.setup.cmdline("/", {
-		mapping = cmp.mapping.preset.cmdline(),
-		source = {
-			{ name = "buffer" },
-		},
-	})
-
-	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = cmp.config.sources({ { name = "path" }, { name = "cmdline" } }),
-	})
-end
 
 -- require("lspsaga").init_lsp_saga({
 -- 	error_sign = "",

@@ -148,7 +148,7 @@ return packer.startup(function(use)
 			vim.fn["fzf#install"]()
 		end,
 	})
-	-- use({ "tami5/lspsaga.nvim" })
+	use({ "tami5/lspsaga.nvim" })
 	use({
 		"stevearc/aerial.nvim",
 		config = function()
@@ -158,6 +158,8 @@ return packer.startup(function(use)
 	use({ "kosayoda/nvim-lightbulb" })
 	use({ "L3MON4D3/LuaSnip" })
 	use({ "rafamadriz/friendly-snippets" })
+	use({ "folke/lsp-colors.nvim" })
+	use({ "folke/trouble.nvim" })
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })
