@@ -73,7 +73,7 @@ navic.setup({
 		Field = "ﰠ ", -- Field
 		Constructor = " ", -- Constructor
 		Enum = "", -- Enum
-		Interface = "", -- Interface
+		Interface = "ﰮ", -- Interface
 		Function = " ", -- Function
 		Variable = " ", -- Variable
 		Constant = " ", -- Constant

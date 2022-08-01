@@ -52,40 +52,71 @@ require("rose-pine").setup({
 })
 
 require("catppuccin").setup({
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+	},
 	transparent_background = false,
-	term_colors = true,
+	term_colors = false,
 	styles = {
-		comments = "italic",
-		functions = "italic,bold",
-		keywords = "italic",
-		strings = "NONE",
-		variables = "NONE",
+		comments = { "italic" },
+		conditionals = { "italic" },
+		loops = {},
+		functions = {},
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
 	},
 	integrations = {
 		treesitter = true,
 		native_lsp = {
 			enabled = true,
 			virtual_text = {
-				errors = "italic",
-				hints = "italic",
-				warnings = "italic",
-				information = "italic",
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
 			},
 			underlines = {
-				errors = "underline",
-				hints = "underline",
-				warnings = "underline",
-				information = "underline",
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
 			},
 		},
+		coc_nvim = false,
 		lsp_trouble = true,
+		cmp = true,
 		lsp_saga = true,
 		gitgutter = false,
 		gitsigns = true,
+		leap = false,
 		telescope = true,
-		nvimtree = { enabled = true, show_root = true },
-		which_key = true,
-		indent_blankline = { enabled = true, colored_indent_levels = false },
+		nvimtree = {
+			enabled = true,
+			show_root = true,
+			transparent_panel = false,
+		},
+		neotree = {
+			enabled = false,
+			show_root = true,
+			transparent_panel = false,
+		},
+		dap = {
+			enabled = false,
+			enable_ui = false,
+		},
+		which_key = false,
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = false,
+		},
 		dashboard = true,
 		neogit = false,
 		vim_sneak = false,
@@ -95,14 +126,23 @@ require("catppuccin").setup({
 		markdown = true,
 		lightspeed = false,
 		ts_rainbow = true,
-		hop = true,
+		hop = false,
+		notify = true,
+		telekasten = true,
+		symbols_outline = true,
+		mini = false,
+		aerial = true,
+		vimwiki = true,
+		beacon = true,
 	},
+	color_overrides = {},
+	highlight_overrides = {},
 })
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme catppuccin")
 
 local M = {}
-M.colors_scheme = { "gruvbox", "duskfox", "tokyonight", "rose-pine" }
+M.colors_scheme = { "gruvbox", "catppuccin", "duskfox", "tokyonight", "rose-pine" }
 local max = 0
 for _ in pairs(M.colors_scheme) do
 	max = max + 1
