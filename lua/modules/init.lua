@@ -154,6 +154,7 @@ return packer.startup(function(use)
 	use({ "rafamadriz/friendly-snippets" })
 	use({ "folke/lsp-colors.nvim" })
 	use({ "folke/trouble.nvim" })
+	use({ "smjonas/inc-rename.nvim" })
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })

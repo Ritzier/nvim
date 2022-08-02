@@ -1,22 +1,6 @@
 local navic = require("nvim-navic")
 local gps = require("nvim-gps")
 
-local config = {}
-
-function config.lightbulb()
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
-end
-
-function config.luasnip()
-	require("luasnip").config.set_config({
-		history = true,
-		updateevents = "TextChanged,TextChangedI",
-	})
-	require("luasnip.loaders.from_lua").lazy_load()
-	require("luasnip.loaders.from_vscode").lazy_load()
-	require("luasnip.loaders.from_snipmate").lazy_load()
-end
-
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -38,7 +22,7 @@ local on_attach = function(client, bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
 	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<space>rn", ":IncRename ", bufopts)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
@@ -382,5 +366,3 @@ efmls.init({
 
 require("modules.lsp.efm")
 require("modules.lsp.format").configure_format_on_save()
-
-return config
