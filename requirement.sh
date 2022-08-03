@@ -4,4 +4,4 @@ paru -S bash-language-server shellcheck shfmt prettier stylelint hadolint golang
 pip3 install pyright black cpplint flake8
 go install golang.org/x/tools/cmd/goimports@latest
 cargo install stylua
-sudo npm install -g @angular/language-server vscode-html-languageserver-bin
+sudo npm install -g @angular/language-server vscode-html-languageserver-bin fastival fanyi-git

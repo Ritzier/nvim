@@ -28,31 +28,6 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 	require("aerial").on_attach(client)
 
-	-- if
-	-- 	client.name ~= "efm"
-	-- 	and client.name ~= "tailwindcss"
-	-- 	and client.name ~= "angularls"
-	-- 	and client.name ~= "html"
-	-- 	and client.name ~= "bashls"
-	-- then
-	-- 	navic.attach(client, bufnr)
-	-- 	require("lualine").setup({
-	-- 		sections = {
-	-- 			lualine_c = {
-	-- 				{ navic.get_location, cond = navic.is_available },
-	-- 			},
-	-- 		},
-	-- 	})
-	-- else
-	-- 	require("lualine").setup({
-	-- 		sections = {
-	-- 			lualine_c = {
-	-- 				{ gps.get_location, cond = gps.is_available },
-	-- 			},
-	-- 		},
-	-- 	})
-	-- end
-
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
 		require("lualine").setup({

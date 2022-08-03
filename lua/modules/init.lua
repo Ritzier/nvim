@@ -118,6 +118,13 @@ return packer.startup(function(use)
 	use({ "gelguy/wilder.nvim" })
 	use({ "romgrk/fzy-lua-native" })
 
+	-- Translate
+	use({ "afc163/fanyi" })
+	use({ "voldikss/vim-translator" })
+
+	-- Sudo
+	use({ "lambdalisue/suda.vim" })
+
 	-- Completion
 	use({ "neovim/nvim-lspconfig" })
 	use({ "SmiteshP/nvim-navic" })
@@ -149,7 +156,6 @@ return packer.startup(function(use)
 			require("aerial").setup()
 		end,
 	})
-	use({ "kosayoda/nvim-lightbulb" })
 	use({ "L3MON4D3/LuaSnip" })
 	use({ "rafamadriz/friendly-snippets" })
 	use({ "folke/lsp-colors.nvim" })
