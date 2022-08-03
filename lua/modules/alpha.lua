@@ -18,7 +18,7 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-	return "chrisatmachine.com"
+	return
 end
 
 dashboard.section.footer.val = footer()
