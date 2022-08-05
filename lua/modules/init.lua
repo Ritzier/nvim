@@ -161,6 +161,7 @@ return packer.startup(function(use)
 	use({ "folke/lsp-colors.nvim" })
 	use({ "folke/trouble.nvim" })
 	use({ "smjonas/inc-rename.nvim" })
+	use({ "rmagatti/goto-preview" })
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })
