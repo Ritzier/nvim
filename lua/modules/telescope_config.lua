@@ -1,29 +1,56 @@
-local telescope = require("telescope")
-telescope.load_extension("media_files")
-telescope.load_extension("packer")
-
-telescope.setup({
+require("telescope").setup({
 	defaults = {
-		prompt_prefix = " ",
-		selection_caret = " ",
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+		},
+		prompt_prefix = "   ",
+		selection_caret = "  ",
+		entry_prefix = "  ",
+		initial_mode = "insert",
+		selection_strategy = "reset",
+		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
-		theme = "ivy",
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		layout_config = {
-			prompt_position = "bottom",
-			horizontal = { preview_width = 0.5 },
-		},
-		extensions = {
-			media_files = {
-				-- filetypes whitelist
-				-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-				filetypes = { "png", "webp", "jpg", "jpeg" },
-				find_cmd = "rg", -- find command (defaults to `fd`)
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.55,
+				results_width = 0.8,
 			},
-			packer = {
-				theme = "ivy",
+			vertical = {
+				mirror = false,
 			},
+			width = 0.87,
+			height = 0.80,
+			preview_cutoff = 120,
 		},
+		file_sorter = require("telescope.sorters").get_fuzzy_file,
+		file_ignore_patterns = { "node_modules" },
+		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+		path_display = { "truncate" },
+		winblend = 0,
+		border = {},
+		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+		color_devicons = true,
+		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+		mappings = {
+			n = { ["q"] = require("telescope.actions").close },
+		},
+	},
+
+	extensions_list = { "themes", "terms" },
+
+	extensions = {
+		packer = {},
 	},
 })
 
@@ -34,5 +61,6 @@ wk.register({
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
 		l = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
 		p = { "<cmd>Telescope packer<cr>", "Packer" },
+		i = { "<cmd>PickEverything<cr>", "Icons Picker" },
 	},
 }, { prefix = "<leader>" })
