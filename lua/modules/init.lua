@@ -49,6 +49,7 @@ return packer.startup(function(use)
 	use({ "folke/which-key.nvim" })
 	use({ "antoinemadec/FixCursorHold.nvim" })
 	use({ "nvim-lua/popup.nvim" })
+	use({ "RishabhRD/popfix" })
 
 	-- UI
 	--Colorscheme
@@ -163,6 +164,7 @@ return packer.startup(function(use)
 	use({ "smjonas/inc-rename.nvim" })
 	use({ "rmagatti/goto-preview" })
 	use({ "j-hui/fidget.nvim" })
+	use({ "ray-x/lsp_signature" })
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })
