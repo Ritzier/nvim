@@ -1,8 +1,35 @@
+require("modules.lsp.lsputils")
+
 require("modules.lsp.config")
-require("modules.lsp.luasnip")
-require("modules.lsp.efm")
+
+require("modules.lsp.docs_view")
+
+require("fidget").setup({})
+
+require("modules.lsp.lsp_line")
+
 require("modules.lsp.lsp_colors")
+
+require("modules.lsp.trouble")
+
 require("modules.lsp.lspsaga")
+
+require("modules.lsp.cmp")
+
 require("modules.lsp.inc_rename")
+
 require("modules.lsp.goto_preview")
-require("modules.lsp.fidget")
+
+require("modules.lsp.lsputils")
+
+require("modules.lsp.luasnip")
+
+require("modules.lsp.wk")
+
+vim.diagnostic.config({
+	virtual_text = false,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = false,
+})
