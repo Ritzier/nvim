@@ -164,7 +164,9 @@ return packer.startup(function(use)
 	use({ "smjonas/inc-rename.nvim" })
 	use({ "rmagatti/goto-preview" })
 	use({ "j-hui/fidget.nvim" })
-	use({ "ray-x/lsp_signature" })
+	use({ "ray-x/lsp_signature.nvim" })
+	use({ "amrbashir/nvim-docs-view" })
+	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })
