@@ -1,5 +1,4 @@
 local telescope = require("telescope")
-local actions = require("telescope.actions")
 telescope.load_extension("media_files")
 telescope.load_extension("packer")
 
@@ -30,7 +29,7 @@ telescope.setup({
 
 local wk = require("which-key")
 wk.register({
-	f = {
+	t = {
 		name = "Telescope",
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
 		l = { "<cmd>Telescope live_grep<cr>", "Live Grep" },

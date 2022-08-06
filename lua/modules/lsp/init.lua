@@ -20,7 +20,7 @@ require("modules.lsp.inc_rename")
 
 require("modules.lsp.goto_preview")
 
-require("modules.lsp.lsputils")
+-- require("modules.lsp.lsputils")
 
 require("modules.lsp.luasnip")
 
