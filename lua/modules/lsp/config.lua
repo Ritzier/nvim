@@ -1,3 +1,5 @@
+local navic = require("nvim-navic")
+local gps = require("nvim-gps")
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -46,6 +48,24 @@ local on_attach = function(client, bufnr)
 	-- vim.keymap.set("n", "", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
 
 	require("lsp_signature").on_attach(client, bufnr)
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+		require("lualine").setup({
+			sections = {
+				lualine_c = {
+					{ navic.get_location, cond = navic.is_available },
+				},
+			},
+		})
+	else
+		require("lualine").setup({
+			sections = {
+				lualine_c = {
+					{ gps.get_location, cond = gps.is_available },
+				},
+			},
+		})
+	end
 end
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -180,6 +200,11 @@ for _, server in ipairs(servers) do
 			capabilities = capabilities,
 		})
 	elseif server == "html" then
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		require("lspconfig")[server].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 	else
 		require("lspconfig")[server].setup({
 			on_attach = on_attach,

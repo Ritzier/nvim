@@ -69,7 +69,7 @@ navic.setup({
 		Package = " ", -- Package
 		Class = "ﴯ ", -- Class
 		Method = " ", -- Method
-		Property = " ", -- Property
+		Property = " ", -- Property
 		Field = "ﰠ ", -- Field
 		Constructor = " ", -- Constructor
 		Enum = "", -- Enum
