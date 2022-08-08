@@ -10,6 +10,13 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+
 	vim.keymap.set("n", "<leader>llc", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "<leader>llD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "<leader>lld", vim.lsp.buf.definition, bufopts)
@@ -48,7 +55,14 @@ local on_attach = function(client, bufnr)
 	-- vim.keymap.set("n", "", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
 
 	require("lsp_signature").on_attach(client, bufnr)
-	if client.server_capabilities.documentSymbolProvider then
+	-- if client.server_capabilities.documentSymbolProvider then
+	if
+		client.name ~= "tailwindcss"
+		and client.name ~= "bashls"
+		and client.name ~= "html"
+		and client.name ~= "angularls"
+		and client.name ~= "efm"
+	then
 		navic.attach(client, bufnr)
 		require("lualine").setup({
 			sections = {
@@ -68,7 +82,7 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

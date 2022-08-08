@@ -88,7 +88,7 @@ cmp.setup({
 	},
 	-- You can set mappings if you want
 	mapping = cmp.mapping.preset.insert({
-		["4"] = cmp.mapping.confirm({ select = true }),
+		-- ["4"] = cmp.mapping.confirm({ select = true }),
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),

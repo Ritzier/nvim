@@ -167,6 +167,7 @@ return packer.startup(function(use)
 	use({ "ray-x/lsp_signature.nvim" })
 	use({ "amrbashir/nvim-docs-view" })
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
+    use({"RishabhRD/nvim-lsputils"})
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })
