@@ -24,6 +24,8 @@ require("modules.lsp.goto_preview")
 
 require("modules.lsp.luasnip")
 
+require("modules.lsp.format")
+
 require("modules.lsp.wk")
 
 vim.diagnostic.config({

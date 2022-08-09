@@ -167,7 +167,7 @@ return packer.startup(function(use)
 	use({ "ray-x/lsp_signature.nvim" })
 	use({ "amrbashir/nvim-docs-view" })
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
-    use({"RishabhRD/nvim-lsputils"})
+	use({ "RishabhRD/nvim-lsputils" })
 
 	-- FIleytpe
 	use({ "p00f/clangd_extensions.nvim" })
@@ -182,6 +182,7 @@ return packer.startup(function(use)
 	})
 	use({ "Vimjas/vim-python-pep8-indent" })
 	use({ "folke/lua-dev.nvim" })
+    use({ "mfussenegger/nvim-jdtls" })
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })

@@ -62,6 +62,7 @@ local on_attach = function(client, bufnr)
 		and client.name ~= "html"
 		and client.name ~= "angularls"
 		and client.name ~= "efm"
+		and client.name ~= "cssls"
 	then
 		navic.attach(client, bufnr)
 		require("lualine").setup({
@@ -82,12 +83,6 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
@@ -95,6 +90,7 @@ local servers = {
 	"angularls",
 	"bashls",
 	"clangd",
+	"cssls",
 	"clangd",
 	"gopls",
 	"html",
@@ -142,6 +138,7 @@ for _, server in ipairs(servers) do
 			},
 		})
 		require("lspconfig")[server].setup(luadev)
+
 	elseif server == "clangd" then
 		require("clangd_extensions").setup({
 			server = {
@@ -202,6 +199,7 @@ for _, server in ipairs(servers) do
 				},
 			},
 		})
+
 	elseif server == "jsonls" then
 		require("lspconfig")[server].setup({
 			settings = {
@@ -213,12 +211,14 @@ for _, server in ipairs(servers) do
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-	elseif server == "html" then
+
+	elseif server == "html" or server == "cssls" then
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		require("lspconfig")[server].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
+
 	else
 		require("lspconfig")[server].setup({
 			on_attach = on_attach,
@@ -236,4 +236,4 @@ efmls.init({
 
 require("modules.lsp.efm")
 
-require("modules.lsp.format").configure_format_on_save()
+-- require("modules.lsp.format").configure_format_on_save()
