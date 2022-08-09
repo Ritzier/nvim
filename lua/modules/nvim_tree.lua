@@ -11,7 +11,7 @@ require("nvim-tree").setup({
     },
     view = {
         side = "left",
-        width = 30,
+        width = "28%",
         hide_root_folder = false,
         signcolumn = "yes",
     },
@@ -43,6 +43,14 @@ require("nvim-tree").setup({
         exclude = {},
     },
     renderer = {
+        indent_markers = {
+            enable = true,
+            icons = {
+                corner = "└ ",
+                edge = "│ ",
+                none = "  ",
+            }
+        },
         add_trailing = true,
         highlight_git = true,
         highlight_opened_files = "none",
@@ -66,14 +74,16 @@ require("nvim-tree").setup({
                     symlink = "",
                     symlink_open = "",
                 },
+                git = {
+                    unstaged = "",
+                    staged = "", --
+                    unmerged = "שׂ",
+                    renamed = "", --
+                    untracked = "ﲉ",
+                    deleted = "",
+                    ignored = "", --◌
+                },
             },
         },
     },
 })
-
-require("which-key").register({
-    f = {
-        name = "Nvimtree",
-        f = { "<cmd>NvimTreeToggle<CR>", "Open Tree"}
-    }
-},{prefix="<leader>"})
