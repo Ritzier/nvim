@@ -1,4 +1,3 @@
-local nvim_lsp = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local navic = require("nvim-navic")
@@ -85,6 +84,21 @@ local on_attach = function(client, bufnr)
 			},
 		})
 	end
+
+	vim.api.nvim_create_autocmd("CursorHold", {
+		buffer = bufnr,
+		callback = function()
+			local options = {
+				focusable = false,
+				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+				border = "rounded",
+				source = "always",
+				scope = "cursor",
+                signs = true
+			}
+			vim.diagnostic.open_float(nil, options)
+		end,
+	})
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -115,6 +129,7 @@ local servers = {
 	"omnisharp",
 }
 
+require("nvim-lsp-installer").setup()
 mason.setup()
 mason_lsp.setup({
 	ensure_installed = servers,
@@ -170,7 +185,8 @@ for _, server in ipairs(servers) do
 				end
 				config.cmd = {
 					"arduino-language-server",
-					"-cli-config", "$HOME/.arduino15/arduino-cli.yaml",
+					"-cli-config",
+					"$HOME/.arduino15/arduino-cli.yaml",
 					"-fqbn",
 					fqbn,
 				}

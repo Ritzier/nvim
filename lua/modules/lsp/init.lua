@@ -30,9 +30,15 @@ require("modules.lsp.format")
 require("modules.lsp.wk")
 
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = {
+        prefix = "●" -- Could be '●', '▎', 'x'
+    },
 	signs = true,
 	underline = true,
 	update_in_insert = false,
 	severity_sort = false,
 })
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+
