@@ -127,8 +127,8 @@ return packer.startup(function(use)
 	use({ "lambdalisue/suda.vim" })
 
 	-- Completion
-    use({ "williamboman/mason.nvim" })
-    use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "neovim/nvim-lspconfig" })
 	use({ "SmiteshP/nvim-navic" })
 	use({ "SmiteshP/nvim-gps" })
@@ -184,7 +184,7 @@ return packer.startup(function(use)
 	})
 	use({ "Vimjas/vim-python-pep8-indent" })
 	use({ "folke/lua-dev.nvim" })
-    use({ "mfussenegger/nvim-jdtls" })
+	use({ "mfussenegger/nvim-jdtls" })
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })
@@ -201,6 +201,24 @@ return packer.startup(function(use)
 	-- Icons
 	use({ "stevearc/dressing.nvim" })
 	use({ "ziontee113/icon-picker.nvim" })
+
+	-- DAP
+	use({
+		"mfussenegger/nvim-dap",
+		module = { "dap" },
+	})
+	use({ "theHamsta/nvim-dap-virtual-text" })
+	use({ "rcarriga/nvim-dap-ui" })
+	use({ 
+        "Pocco81/DAPInstall.nvim" ,
+        module = "dap-install"
+    })
+	use({ "mfussenegger/nvim-dap-python" })
+	use({ "nvim-telescope/telescope-dap.nvim" })
+	use({
+		"jbyuki/one-small-step-for-vimkind",
+		module = "osv",
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
