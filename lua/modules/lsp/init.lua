@@ -1,5 +1,6 @@
 require("modules.lsp.lsputils")
 
+-- require("modules.lsp.config-old")
 require("modules.lsp.config")
 
 require("modules.lsp.docs_view")

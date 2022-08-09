@@ -127,6 +127,8 @@ return packer.startup(function(use)
 	use({ "lambdalisue/suda.vim" })
 
 	-- Completion
+    use({ "williamboman/mason.nvim" })
+    use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "neovim/nvim-lspconfig" })
 	use({ "SmiteshP/nvim-navic" })
 	use({ "SmiteshP/nvim-gps" })

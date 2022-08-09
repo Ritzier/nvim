@@ -1,9 +1,5 @@
-local nvim_lsp = require("lspconfig")
-local mason = require("mason")
-local mason_lsp = require("mason-lspconfig")
 local navic = require("nvim-navic")
 local gps = require("nvim-gps")
-
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -92,33 +88,22 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local servers = {
 	"angularls",
-	"arduino_language_server",
 	"bashls",
 	"clangd",
 	"cssls",
 	"clangd",
-	"cmake",
-	"dotls",
 	"gopls",
-	"dockerls",
 	"html",
 	"jdtls",
 	"jsonls",
 	"julials",
 	"pyright",
 	"rust_analyzer",
-	"kotlin_language_server",
 	"sourcekit",
 	"sumneko_lua",
 	"tailwindcss",
 	"tsserver",
-	"omnisharp",
 }
-
-mason.setup()
-mason_lsp.setup({
-	ensure_installed = servers,
-})
 
 for _, server in ipairs(servers) do
 	if server == "sumneko_lua" then
@@ -153,29 +138,7 @@ for _, server in ipairs(servers) do
 			},
 		})
 		require("lspconfig")[server].setup(luadev)
-	elseif server == "arduino_language_server" then
-		local my_arduino_fqbn = {
-			["$HOME/dev/arduino/blink"] = "arduino:avr:nano",
-			["$HOME/dev/arduino/sensor"] = "arduino:mbed:nanorp2040connect",
-		}
-		local DEFAULT_FQBN = "arduino:avr:uno"
-		require("lspconfig")[server].setup({
-			on_new_config = function(config, root_dir)
-				local fqbn = my_arduino_fqbn[root_dir]
-				if not fqbn then
-					vim.notify(
-						("Could not find which FQBN to use in %q. Defaulting to %q."):format(root_dir, DEFAULT_FQBN)
-					)
-					fqbn = DEFAULT_FQBN
-				end
-				config.cmd = {
-					"arduino-language-server",
-					"-cli-config", "$HOME/.arduino15/arduino-cli.yaml",
-					"-fqbn",
-					fqbn,
-				}
-			end,
-		})
+
 	elseif server == "clangd" then
 		require("clangd_extensions").setup({
 			server = {
@@ -236,6 +199,7 @@ for _, server in ipairs(servers) do
 				},
 			},
 		})
+
 	elseif server == "jsonls" then
 		require("lspconfig")[server].setup({
 			settings = {
@@ -247,12 +211,14 @@ for _, server in ipairs(servers) do
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
+
 	elseif server == "html" or server == "cssls" then
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		require("lspconfig")[server].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
+
 	else
 		require("lspconfig")[server].setup({
 			on_attach = on_attach,
@@ -269,3 +235,5 @@ efmls.init({
 })
 
 require("modules.lsp.efm")
+
+-- require("modules.lsp.format").configure_format_on_save()
