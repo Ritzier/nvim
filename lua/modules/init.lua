@@ -139,13 +139,10 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-nvim-lua" })
 	use({ "andersevenrud/cmp-tmux" })
 	use({ "hrsh7th/cmp-path" })
-	use({ "f3fora/cmp-spell" })
 	use({ "hrsh7th/cmp-buffer" })
-	use({ "hrsh7th/cmp-cmdline" })
 	use({ "kdheepak/cmp-latex-symbols" })
 	use({ "creativenull/efmls-configs-nvim" })
 	use({ "williamboman/nvim-lsp-installer" })
-	use({ "kevinhwang91/nvim-bqf" })
 	use({
 		"junegunn/fzf",
 		run = function()
@@ -168,7 +165,6 @@ return packer.startup(function(use)
 	use({ "j-hui/fidget.nvim" })
 	use({ "ray-x/lsp_signature.nvim" })
 	use({ "amrbashir/nvim-docs-view" })
-	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
 	use({ "RishabhRD/nvim-lsputils" })
 
 	-- FIleytpe

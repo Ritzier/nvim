@@ -7,8 +7,6 @@ require("modules.lsp.docs_view")
 
 require("fidget").setup({})
 
-require("modules.lsp.lsp_line")
-
 require("modules.lsp.lsp_colors")
 
 require("modules.lsp.trouble")
@@ -21,7 +19,7 @@ require("modules.lsp.inc_rename")
 
 require("modules.lsp.goto_preview")
 
--- require("modules.lsp.lsputils")
+require("modules.lsp.lsputils")
 
 require("modules.lsp.luasnip")
 

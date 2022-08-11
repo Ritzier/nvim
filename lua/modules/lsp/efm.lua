@@ -120,6 +120,9 @@ efmls.setup({
 		linter = rubocop,
 		formatter = prettier,
 	},
+    rust = {
+        {formatCommand = "rustfmt", formatStdin = true }
+    },
 	sass = {
 		linter = stylelint,
 	},
