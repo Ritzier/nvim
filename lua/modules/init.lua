@@ -58,6 +58,7 @@ return packer.startup(function(use)
 	use({ "rose-pine/neovim", as = "rose-pine" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "ellisonleao/gruvbox.nvim" })
+	use({ "pineapplegiant/spaceduck" })
 	-- NvimTree
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "kyazdani42/nvim-tree.lua" })
@@ -71,6 +72,8 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-autopairs" })
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+	-- improved syntax highlighting
+    use({"sheerun/vim-polyglot"})
 	-- GPS
 	-- Lualine
 	use({ "nvim-lualine/lualine.nvim" })
@@ -120,8 +123,7 @@ return packer.startup(function(use)
 	use({ "romgrk/fzy-lua-native" })
 
 	-- Translate
-	use({ "afc163/fanyi" })
-	use({ "voldikss/vim-translator" })
+	use({ "uga-rosa/translate.nvim" })
 
 	-- Sudo
 	use({ "lambdalisue/suda.vim" })
@@ -205,10 +207,10 @@ return packer.startup(function(use)
 	})
 	use({ "theHamsta/nvim-dap-virtual-text" })
 	use({ "rcarriga/nvim-dap-ui" })
-	use({ 
-        "Pocco81/DAPInstall.nvim" ,
-        module = "dap-install"
-    })
+	use({
+		"Pocco81/DAPInstall.nvim",
+		module = "dap-install",
+	})
 	use({ "mfussenegger/nvim-dap-python" })
 	use({ "nvim-telescope/telescope-dap.nvim" })
 	use({

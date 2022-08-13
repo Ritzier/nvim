@@ -142,7 +142,7 @@ require("catppuccin").setup({
 vim.cmd("colorscheme catppuccin")
 
 local M = {}
-M.colors_scheme = { "gruvbox", "catppuccin", "duskfox", "tokyonight", "rose-pine" }
+M.colors_scheme = { "gruvbox", "catppuccin", "duskfox", "tokyonight", "rose-pine", "spaceduck" }
 local max = 0
 for _ in pairs(M.colors_scheme) do
 	max = max + 1
@@ -175,13 +175,13 @@ vim.keymap.set(
 	"n",
 	"<A-b>",
 	":lua require('modules.colorscheme').switch_colorscheme()<CR>",
-	{ noremap = true, silent = false }
+	{ noremap = true, silent = true }
 )
 vim.keymap.set(
 	"n",
 	"<A-S-b>",
 	":lua require('modules.colorscheme').switch_colorscheme_shift()<CR>",
-	{ noremap = true, silent = false }
+	{ noremap = true, silent = true }
 )
 
 return M
