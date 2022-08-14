@@ -32,3 +32,5 @@ script.req("modules.lsp", "lspconfig")
 script.req("modules.icons_picker", "icon-picker")
 
 -- script.req("modules.dap", "dap")
+
+script.req("modules.move_config", "packer")
