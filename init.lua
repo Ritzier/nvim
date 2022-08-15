@@ -21,7 +21,7 @@ script.req("modules.wilder", "wilder")
 
 script.req("keymaps", "packer")
 
-script.req("modules.scroll", "neoscroll", "fzy-lua-native")
+--[[ script.req("modules.scroll", "neoscroll", "fzy-lua-native") ]]
 script.req("modules.telescope_config", "telescope")
 script.req("modules.trouble", "trouble")
 script.req("modules.colorizer", "colorizer")
@@ -34,3 +34,4 @@ script.req("modules.icons_picker", "icon-picker")
 -- script.req("modules.dap", "dap")
 
 script.req("modules.move_config", "packer")
+script.req("modules.todo", "todo-comments")

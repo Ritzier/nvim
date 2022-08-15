@@ -1,18 +1,18 @@
 local cmp = require("cmp")
 local compare = require("cmp.config.compare")
 
-local border = function(hl)
-	return {
-		{ "╭", hl },
-		{ "─", hl },
-		{ "╮", hl },
-		{ "│", hl },
-		{ "╯", hl },
-		{ "─", hl },
-		{ "╰", hl },
-		{ "│", hl },
-	}
-end
+--[[ local border = function(hl) ]]
+--[[ 	return { ]]
+--[[ 		{ "╭", hl }, ]]
+--[[ 		{ "─", hl }, ]]
+--[[ 		{ "╮", hl }, ]]
+--[[ 		{ "│", hl }, ]]
+--[[ 		{ "╯", hl }, ]]
+--[[ 		{ "─", hl }, ]]
+--[[ 		{ "╰", hl }, ]]
+--[[ 		{ "│", hl }, ]]
+--[[ 	} ]]
+--[[ end ]]
 
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -24,14 +24,14 @@ local has_words_before = function()
 end
 
 cmp.setup({
-	window = {
-		completion = {
-			border = border("CmpBorder"),
-		},
-		documentation = {
-			border = border("CmpDocBorder"),
-		},
-	},
+	--[[ window = { ]]
+	--[[ 	completion = { ]]
+	--[[ 		border = border("CmpBorder"), ]]
+	--[[ 	}, ]]
+	--[[ 	documentation = { ]]
+	--[[ 		border = border("CmpDocBorder"), ]]
+	--[[ 	}, ]]
+	--[[ }, ]]
 	sorting = {
 		comparators = {
 			compare.offset,

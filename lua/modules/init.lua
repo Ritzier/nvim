@@ -73,12 +73,14 @@ return packer.startup(function(use)
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	-- improved syntax highlighting
-    use({"sheerun/vim-polyglot"})
+	use({ "sheerun/vim-polyglot" })
 	-- GPS
 	-- Lualine
 	use({ "nvim-lualine/lualine.nvim" })
 	-- Startup Screen
 	use({ "goolord/alpha-nvim" })
+	-- Todo
+	use({ "folke/todo-comments.nvim" })
 
 	-- Tools
 	-- Terminal
@@ -218,7 +220,7 @@ return packer.startup(function(use)
 		module = "osv",
 	})
 
-	use({"fedepujol/move.nvim"})
+	use({ "fedepujol/move.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

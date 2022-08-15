@@ -85,20 +85,20 @@ local on_attach = function(client, bufnr)
 		})
 	end
 
-	vim.api.nvim_create_autocmd("CursorHold", {
-		buffer = bufnr,
-		callback = function()
-			local options = {
-				focusable = false,
-				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "rounded",
-				source = "always",
-				scope = "cursor",
-                signs = true
-			}
-			vim.diagnostic.open_float(nil, options)
-		end,
-	})
+	--[[ vim.api.nvim_create_autocmd("CursorHold", { ]]
+	--[[ 	buffer = bufnr, ]]
+	--[[ 	callback = function() ]]
+	--[[ 		local options = { ]]
+	--[[ 			focusable = false, ]]
+	--[[ 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" }, ]]
+	--[[ 			border = "rounded", ]]
+	--[[ 			source = "always", ]]
+	--[[ 			scope = "cursor", ]]
+ --[[                signs = true ]]
+	--[[ 		} ]]
+	--[[ 		vim.diagnostic.open_float(nil, options) ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
