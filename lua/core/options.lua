@@ -3,8 +3,6 @@ local opt = vim.opt
 
 g.mapleader = " "
 
-vim.g.python3_provider = "/usr/bin/python3.9"
-
 opt.backup = false
 opt.clipboard = "unnamedplus"
 opt.cmdheight = 1

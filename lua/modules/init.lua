@@ -56,9 +56,7 @@ return packer.startup(function(use)
 	use({ "EdenEast/nightfox.nvim" })
 	use({ "folke/tokyonight.nvim" })
 	use({ "rose-pine/neovim", as = "rose-pine" })
-	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "ellisonleao/gruvbox.nvim" })
-	use({ "pineapplegiant/spaceduck" })
 	-- NvimTree
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "kyazdani42/nvim-tree.lua" })
@@ -72,13 +70,11 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-autopairs" })
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	-- improved syntax highlighting
-	use({ "sheerun/vim-polyglot" })
-	-- GPS
 	-- Lualine
 	use({ "nvim-lualine/lualine.nvim" })
 	-- Startup Screen
 	use({ "goolord/alpha-nvim" })
+	use({ "sheerun/vim-polyglot" })
 	-- Todo
 	use({ "folke/todo-comments.nvim" })
 
@@ -96,8 +92,6 @@ return packer.startup(function(use)
 		cmd = { "LushRunQuickstart", "LushRunTutorial", "Lushify", "LushImport" },
 		disable = false,
 	})
-	-- Show all function and variable
-	use({ "simrat39/symbols-outline.nvim" })
 	-- Sniprun
 	use({
 		"michaelb/sniprun",
@@ -109,8 +103,10 @@ return packer.startup(function(use)
 		"junegunn/vim-easy-align",
 		cmd = "EasyAlign",
 	})
-	-- Scroll
-	use({ "karb94/neoscroll.nvim" })
+	-- Wilder
+	use({ "gelguy/wilder.nvim" })
+	-- Sudo
+	use({ "lambdalisue/suda.vim" })
 
 	-- Open neovim in browser
 	use({
@@ -120,60 +116,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Wilder
-	use({ "gelguy/wilder.nvim" })
-	use({ "romgrk/fzy-lua-native" })
-
-	-- Translate
-	use({ "uga-rosa/translate.nvim" })
-
-	-- Sudo
-	use({ "lambdalisue/suda.vim" })
-
-	-- Completion
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "neovim/nvim-lspconfig" })
-	use({ "SmiteshP/nvim-navic" })
-	use({ "SmiteshP/nvim-gps" })
-	use({ "hrsh7th/nvim-cmp" })
-	use({ "lukas-reineke/cmp-under-comparator" })
-	use({ "saadparwaiz1/cmp_luasnip" })
-	use({ "hrsh7th/cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-nvim-lua" })
-	use({ "andersevenrud/cmp-tmux" })
-	use({ "hrsh7th/cmp-path" })
-	use({ "hrsh7th/cmp-buffer" })
-	use({ "kdheepak/cmp-latex-symbols" })
-	use({ "creativenull/efmls-configs-nvim" })
-	use({ "williamboman/nvim-lsp-installer" })
-	use({
-		"junegunn/fzf",
-		run = function()
-			vim.fn["fzf#install"]()
-		end,
-	})
-	use({ "tami5/lspsaga.nvim" })
-	use({
-		"stevearc/aerial.nvim",
-		config = function()
-			require("aerial").setup()
-		end,
-	})
-	use({ "L3MON4D3/LuaSnip" })
-	use({ "rafamadriz/friendly-snippets" })
-	use({ "folke/lsp-colors.nvim" })
-	use({ "folke/trouble.nvim" })
-	use({ "smjonas/inc-rename.nvim" })
-	use({ "rmagatti/goto-preview" })
-	use({ "j-hui/fidget.nvim" })
-	use({ "ray-x/lsp_signature.nvim" })
-	use({ "amrbashir/nvim-docs-view" })
-	use({ "RishabhRD/nvim-lsputils" })
-
 	-- FIleytpe
-	use({ "p00f/clangd_extensions.nvim" })
-	use({ "b0o/SchemaStore.nvim" })
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
@@ -183,44 +126,31 @@ return packer.startup(function(use)
 		ft = { "markdown" },
 	})
 	use({ "Vimjas/vim-python-pep8-indent" })
+
+	-- Wilder
+	use({ "gelguy/wilder.nvim" })
+
+	-- Completion
+	use({ "neovim/nvim-lspconfig" })
+	use({ "creativenull/efmls-configs-nvim" })
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
+	use({ "glepnir/lspsaga.nvim" })
+	use({ "ray-x/lsp_signature.nvim" })
+	use({ "hrsh7th/nvim-cmp" })
+	use({ "lukas-reineke/cmp-under-comparator" })
+	use({ "kdheepak/cmp-latex-symbols" })
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-nvim-lua" })
+	use({ "SmiteshP/nvim-navic" })
+	use({ "SmiteshP/nvim-gps" })
+	use({ "folke/lsp-colors.nvim" })
+	use({ "j-hui/fidget.nvim" })
 	use({ "folke/lua-dev.nvim" })
-	use({ "mfussenegger/nvim-jdtls" })
-
-	-- Telescope
-	use({ "nvim-telescope/telescope.nvim" })
-	use({ "nvim-telescope/telescope-media-files.nvim" })
-	use({ "tom-anders/telescope-vim-bookmarks.nvim" })
-	use({ "nvim-telescope/telescope-packer.nvim" })
-
-	-- DiffView
-	use({ "sindrets/diffview.nvim" })
-
-	-- Specs
-	use({ "edluffy/specs.nvim" })
-
-	-- Icons
-	use({ "stevearc/dressing.nvim" })
-	use({ "ziontee113/icon-picker.nvim" })
-
-	-- DAP
-	use({
-		"mfussenegger/nvim-dap",
-		module = { "dap" },
-	})
-	use({ "theHamsta/nvim-dap-virtual-text" })
-	use({ "rcarriga/nvim-dap-ui" })
-	use({
-		"Pocco81/DAPInstall.nvim",
-		module = "dap-install",
-	})
-	use({ "mfussenegger/nvim-dap-python" })
-	use({ "nvim-telescope/telescope-dap.nvim" })
-	use({
-		"jbyuki/one-small-step-for-vimkind",
-		module = "osv",
-	})
-
-	use({ "fedepujol/move.nvim" })
+	use({ "hrsh7th/cmp-path" })
+	use({ "Vimjas/vim-python-pep8-indent" })
+	use({ "b0o/SchemaStore.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

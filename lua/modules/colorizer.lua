@@ -1,5 +1,4 @@
-require("colorizer").setup(nil, {
-	RGB = true, -- #RGB hex codes
+require("colorizer").setup(nil, { RGB = true, -- #RGB hex codes
 	RRGGBB = true, -- #RRGGBB hex codes
 	names = true, -- "Name" codes like Blue
 	RRGGBBAA = true, -- #RRGGBBAA hex codes

@@ -1,31 +1,46 @@
-require("modules.lsp.lsputils")
+local servers = {
+	"angularls",
+	"arduino_language_server",
+	"bashls",
+	"clangd",
+	"cssls",
+	"clangd",
+	"cmake",
+	"dotls",
+	"gopls",
+	"dockerls",
+	"html",
+	"jdtls",
+	"jsonls",
+	"julials",
+	"pyright",
+	"rust_analyzer",
+	"kotlin_language_server",
+	"sourcekit",
+	"sumneko_lua",
+	"tailwindcss",
+	"tsserver",
+	"omnisharp",
+}
 
--- require("modules.lsp.config-old")
-require("modules.lsp.config")
+require("modules.lsp.mason").Mason_setup(servers)
 
-require("modules.lsp.docs_view")
+require("modules.lsp.config").setup(servers)
 
-require("fidget").setup({})
+require("modules.lsp.completion")
 
-require("modules.lsp.lsp_colors")
+require("modules.lsp.efm")
 
-require("modules.lsp.trouble")
+require("fidget").setup()
 
 require("modules.lsp.lspsaga")
 
-require("modules.lsp.cmp")
-
-require("modules.lsp.inc_rename")
-
-require("modules.lsp.goto_preview")
-
-require("modules.lsp.lsputils")
-
-require("modules.lsp.luasnip")
-
-require("modules.lsp.format")
-
-require("modules.lsp.wk")
+require("lsp-colors").setup({
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
 
 vim.diagnostic.config({
 	virtual_text = {
@@ -36,6 +51,3 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = false,
 })
-
-vim.o.updatetime = 250
---vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]

@@ -42,10 +42,6 @@ local vint = require("efmls-configs.linters.vint")
 
 local efmls = require("efmls-configs")
 
-efmls.init({
-	init_options = { documentFormatting = true, codeAction = true },
-})
-
 efmls.setup({
 	bash = {
 		linter = shellcheck,
