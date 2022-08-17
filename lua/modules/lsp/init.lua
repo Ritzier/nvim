@@ -36,6 +36,8 @@ require("fidget").setup()
 
 require("modules.lsp.lspsaga")
 
+require("modules.lsp.wk")
+
 require("lsp-colors").setup({
   Error = "#db4b4b",
   Warning = "#e0af68",

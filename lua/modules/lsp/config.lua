@@ -100,8 +100,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
---[[ local on_attach = require("modules.lsp.attach").attach(client, bufnr) ]]
-
 function M.setup(servers)
 	for _, server in ipairs(servers) do
 		if server == "sumneko_lua" then
