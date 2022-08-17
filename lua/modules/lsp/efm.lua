@@ -42,6 +42,8 @@ local vint = require("efmls-configs.linters.vint")
 
 local efmls = require("efmls-configs")
 
+local rustfmt = { formatCommand = "rustfmt", formatStdin = true }
+
 efmls.setup({
 	bash = {
 		linter = shellcheck,
@@ -116,9 +118,9 @@ efmls.setup({
 		linter = rubocop,
 		formatter = prettier,
 	},
-    rust = {
-        {formatCommand = "rustfmt", formatStdin = true }
-    },
+	rust = {
+		rustfmt,
+	},
 	sass = {
 		linter = stylelint,
 	},

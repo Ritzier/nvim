@@ -57,6 +57,7 @@ return packer.startup(function(use)
 	use({ "folke/tokyonight.nvim" })
 	use({ "rose-pine/neovim", as = "rose-pine" })
 	use({ "ellisonleao/gruvbox.nvim" })
+	use({ "Everblush/everblush.nvim" })
 	-- NvimTree
 	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "kyazdani42/nvim-tree.lua" })
@@ -149,8 +150,8 @@ return packer.startup(function(use)
 	use({ "j-hui/fidget.nvim" })
 	use({ "folke/lua-dev.nvim" })
 	use({ "hrsh7th/cmp-path" })
-	use({ "Vimjas/vim-python-pep8-indent" })
 	use({ "b0o/SchemaStore.nvim" })
+	use({ "mrshmllow/document-color.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

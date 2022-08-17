@@ -91,6 +91,10 @@ local function attach(client, bufnr)
 			},
 		})
 	end
+	if client.server_capabilities.colorProvider then
+		-- Attach document colour support
+		require("document-color").buf_attach(bufnr)
+	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -132,8 +136,9 @@ function M.setup(servers)
 				},
 			})
 			require("lspconfig")[server].setup(luadev)
-		elseif server == "html" or server == "cssls" then
+		elseif server == "html" or server == "cssls" or server == "dartls" then
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			capabilities.textDocument.colorProvider = true
 			require("lspconfig")[server].setup({
 				on_attach = attach,
 				capabilities = capabilities,

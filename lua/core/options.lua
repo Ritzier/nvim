@@ -48,6 +48,7 @@ opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
+vim.cmd("syntax enable")
 
 -- disable some builtin vim plugins
 local disabled_built_ins = {
@@ -76,7 +77,6 @@ local disabled_built_ins = {
 	"perl_provider",
 	"tutor",
 	"rplugin",
-	"syntax",
 	"synmenu",
 	"optwin",
 	"compiler",

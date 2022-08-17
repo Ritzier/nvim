@@ -6,6 +6,7 @@ local servers = {
 	"cssls",
 	"clangd",
 	"cmake",
+	"dartls",
 	"dotls",
 	"gopls",
 	"dockerls",
