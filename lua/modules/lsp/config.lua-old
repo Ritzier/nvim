@@ -66,8 +66,7 @@ local function attach(client, bufnr)
 		handler_opts = { "double" },
 	})
 
-	if
-		client.name ~= "tailwindcss"
+	if client.name ~= "tailwindcss"
 		and client.name ~= "bashls"
 		and client.name ~= "html"
 		and client.name ~= "angularls"
@@ -140,9 +139,9 @@ function M.setup(servers)
 				},
 			})
 			require("lspconfig")[server].setup(luadev)
-		elseif server == "html" or server == "cssls" then
+		elseif server == "html" or server == "cssls" or server == "dartls" then
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
-			-- capabilities.textDocument.colorProvider = true
+			capabilities.textDocument.colorProvider = true
 			require("lspconfig")[server].setup({
 				on_attach = attach,
 				capabilities = capabilities,
@@ -161,21 +160,51 @@ function M.setup(servers)
 		elseif server == "clangd" then
 			local copy_capabilities = capabilities
 			copy_capabilities.offsetEncoding = { "utf-16" }
-			require("lspconfig")[server].setup({
+			require("lspconfig").clangd.setup({
 				capabilities = copy_capabilities,
+				single_file_support = true,
 				on_attach = attach,
-				single_file = true,
 				args = {
 					"--background-index",
+					"-std=c++20",
 					"--pch-storage=memory",
 					"--clang-tidy",
 					"--suggest-missing-includes",
+				},
+				commands = {
+					ClangdSwitchSourceHeader = {
+						function()
+							switch_source_header_splitcmd(0, "edit")
+						end,
+						description = "Open source/header in current buffer",
+					},
+					ClangdSwitchSourceHeaderVSplit = {
+						function()
+							switch_source_header_splitcmd(0, "vsplit")
+						end,
+						description = "Open source/header in a new vsplit",
+					},
+					ClangdSwitchSourceHeaderSplit = {
+						function()
+							switch_source_header_splitcmd(0, "split")
+						end,
+						description = "Open source/header in a new split",
+					},
+				},
+			})
+		elseif server == "rust_analyzer" then
+			require("lspconfig")[server].setup({
+				capabilities = capabilities,
+				on_attach = attach,
+				flags = {
+					exit_timeout = 0,
 				}
+
 			})
 		else
 			require("lspconfig")[server].setup({
-				on_attach = attach,
 				capabilities = capabilities,
+				on_attach = attach,
 			})
 		end
 	end

@@ -50,6 +50,8 @@ return packer.startup(function(use)
 	use({ "antoinemadec/FixCursorHold.nvim" })
 	use({ "nvim-lua/popup.nvim" })
 	use({ "RishabhRD/popfix" })
+	use({ "marko-cerovac/material.nvim" })
+	use({ "pineapplegiant/spaceduck" })
 
 	-- UI
 	--Colorscheme
@@ -152,6 +154,9 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-path" })
 	use({ "b0o/SchemaStore.nvim" })
 	use({ "mrshmllow/document-color.nvim" })
+	use({ "p00f/clangd_extensions.nvim" })
+	use({ "folke/trouble.nvim" })
+	use({ "L3MON4D3/LuaSnip" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

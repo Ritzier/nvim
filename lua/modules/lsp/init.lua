@@ -17,7 +17,6 @@ local servers = {
 	"pyright",
 	"rust_analyzer",
 	"kotlin_language_server",
-	"sourcekit",
 	"sumneko_lua",
 	"tailwindcss",
 	"tsserver",
@@ -25,6 +24,12 @@ local servers = {
 }
 
 require("modules.lsp.mason").Mason_setup(servers)
+
+--[[ for _, server in ipairs(servers) do ]]
+--[[ 	if server == "sumneko_lua" or server=="rust_analyzer" then ]]
+--[[ 		require("lspconfig")[server].setup({ }) ]]
+--[[ 	end ]]
+--[[ end ]]
 
 require("modules.lsp.config").setup(servers)
 

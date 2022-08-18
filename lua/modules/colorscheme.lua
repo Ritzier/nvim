@@ -50,10 +50,13 @@ require("rose-pine").setup({
 		ColorColumn = { bg = "rose" },
 	},
 })
-vim.cmd("colorscheme rose-pine")
+vim.g.material_style = "deep ocean"
+
+-- vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme spaceduck")
 
 local M = {}
-M.colors_scheme = { "gruvbox", "duskfox", "tokyonight", "rose-pine" }
+M.colors_scheme = { "gruvbox", "duskfox", "tokyonight", "rose-pine", "spaceduck", "material" }
 local max = 0
 for _ in pairs(M.colors_scheme) do
 	max = max + 1
