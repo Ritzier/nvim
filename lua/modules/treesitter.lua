@@ -6,9 +6,9 @@ configs.setup({
 		enable = true, -- false will disable the whole extension
 		disable = { "css" }, -- list of language that will be disabled
 	},
-	autopairs = {
-		enable = true,
-	},
+	-- autopairs = {
+	-- 	enable = true,
+	-- },
 	indent = { enable = true, disable = { "python", "css" } },
     rainbow = { enable = true },
     endwise = { enable = true },

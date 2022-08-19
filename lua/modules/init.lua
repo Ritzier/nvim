@@ -70,7 +70,8 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "RRethy/nvim-treesitter-endwise" })
 	use({ "p00f/nvim-ts-rainbow" })
-	use({ "windwp/nvim-autopairs" })
+	-- use({ "windwp/nvim-autopairs" })
+	use({"jiangmiao/auto-pairs"})
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	-- Lualine
@@ -129,6 +130,7 @@ return packer.startup(function(use)
 		ft = { "markdown" },
 	})
 	use({ "Vimjas/vim-python-pep8-indent" })
+	use({ "akinsho/flutter-tools.nvim" })
 
 	-- Wilder
 	use({ "gelguy/wilder.nvim" })
