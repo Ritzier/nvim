@@ -19,7 +19,7 @@ require("flutter-tools").setup({
 			showTodos = true,
 			renameFilesWithClasses = "prompt",
 		},
-		on_attach = require("modules.lsp.config").attach(),
-		capabilities = require("modules.lsp.config").capabilities(),
+		on_attach = require("modules.lsp.config").attach,
+		capabilities = require("modules.lsp.config").capabilities,
 	},
 })

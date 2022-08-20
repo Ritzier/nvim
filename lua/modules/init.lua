@@ -71,7 +71,7 @@ return packer.startup(function(use)
 	use({ "RRethy/nvim-treesitter-endwise" })
 	use({ "p00f/nvim-ts-rainbow" })
 	-- use({ "windwp/nvim-autopairs" })
-	use({"jiangmiao/auto-pairs"})
+	use({ "jiangmiao/auto-pairs" })
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	-- Lualine
@@ -130,7 +130,58 @@ return packer.startup(function(use)
 		ft = { "markdown" },
 	})
 	use({ "Vimjas/vim-python-pep8-indent" })
-	use({ "akinsho/flutter-tools.nvim" })
+	use({
+		"akinsho/flutter-tools.nvim",
+		module = "rust-tools",
+		ft = { "rust" },
+	})
+	use {
+		"saecki/crates.nvim",
+		event = { "BufRead Cargo.toml" },
+		requires = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			-- local null_ls = require "null-ls"
+			require("crates").setup {
+				null_ls = {
+					enabled = true,
+					name = "crates.nvim",
+				},
+			}
+		end,
+	}
+	use({
+		"udalov/kotlin-vim",
+		ft = { "kotlin" },
+	})
+	-- Go
+	use {
+		"ray-x/go.nvim",
+		ft = { "go" },
+		config = function()
+			require("go").setup()
+		end,
+	}
+	-- Java
+	use { "mfussenegger/nvim-jdtls", ft = { "java" } }
+
+	-- renamer.nvim
+	use {
+		"filipdutescu/renamer.nvim",
+		module = { "renamer" },
+		config = function()
+			require("renamer").setup {}
+		end,
+	}
+
+	use({ "jose-elias-alvarez/typescript.nvim" })
+
+	use({
+		"simrat39/inlay-hints.nvim",
+		config = function()
+			require("inlay-hints").setup()
+		end,
+	})
+
 
 	-- Wilder
 	use({ "gelguy/wilder.nvim" })
@@ -159,6 +210,7 @@ return packer.startup(function(use)
 	use({ "p00f/clangd_extensions.nvim" })
 	use({ "folke/trouble.nvim" })
 	use({ "L3MON4D3/LuaSnip" })
+	use({"onsails/lspkind.nvim"})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

@@ -1,6 +1,6 @@
 local M = {}
 
-local function attach(client, bufnr)
+function M.attach(client, bufnr)
 	local opts = { noremap = true, silent = true }
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	local navic = require("nvim-navic")
@@ -34,8 +34,7 @@ local function attach(client, bufnr)
 	vim.keymap.set("n", "<leader>llwl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
-
-	vim.keymap.set("n", "<leader>ltt", "<cmd>TroubleToggle<cr>", bufopts)
+vim.keymap.set("n", "<leader>ltt", "<cmd>TroubleToggle<cr>", bufopts)
 	vim.keymap.set("n", "<leader>ltq", "<cmd>TroubleToggle<cr> quickfix<cr>", bufopts)
 	vim.keymap.set("n", "<leader>ltr", "<cmd>TroubleToggle<cr> lsp_references<cr>", bufopts)
 	vim.keymap.set("n", "<leader>ltl", "<cmd>TroubleToggle<cr> loclist<cr>", bufopts)
@@ -103,8 +102,8 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(M.capabilities)
 
 function M.setup(servers)
 	for _, server in ipairs(servers) do
@@ -135,17 +134,20 @@ function M.setup(servers)
 							},
 						},
 					},
-					on_attach = attach,
-					capabilities = capabilities,
+					on_attach = M.attach,
+					capabilities = M.capabilities,
 				},
 			})
 			require("lspconfig")[server].setup(luadev)
 		elseif server == "html" or server == "cssls" then
-			capabilities.textDocument.completion.completionItem.snippetSupport = true
-			-- capabilities.textDocument.colorProvider = true
+			local copy_capabilities = M.capbilities
+			copy_capabilities = vim.lsp.protocol.make_client_capabilities()
+			copy_capabilities = require("cmp_nvim_lsp").update_capabilities(copy_capabilities)
+			copy_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 			require("lspconfig")[server].setup({
-				on_attach = attach,
-				capabilities = capabilities,
+				on_attach = M.attach,
+				capabilities = M.copy_capabilities,
 			})
 		elseif server == "jsonls" then
 			require("lspconfig")[server].setup({
@@ -155,15 +157,15 @@ function M.setup(servers)
 						valdate = { enable = true },
 					},
 				},
-				on_attach = attach,
-				capabilities = capabilities,
+				on_attach = M.attach,
+				capabilities = M.capabilities,
 			})
 		elseif server == "clangd" then
-			local copy_capabilities = capabilities
+			local copy_capabilities = M.capabilities
 			copy_capabilities.offsetEncoding = { "utf-16" }
 			require("lspconfig")[server].setup({
 				capabilities = copy_capabilities,
-				on_attach = attach,
+				on_attach = M.attach,
 				single_file = true,
 				args = {
 					"--background-index",
@@ -174,15 +176,15 @@ function M.setup(servers)
 			})
 		else
 			require("lspconfig")[server].setup({
-				on_attach = attach,
-				capabilities = capabilities,
+				on_attach = M.attach,
+				capabilities = M.capabilities,
 			})
 		end
 	end
 
 	require("efmls-configs").init({
-		on_attach = attach,
-		capabilities = capabilities,
+		on_attach = M.attach,
+		capabilities = M.capabilities,
 		init_options = { documentFormatting = true, codeAction = true },
 	})
 end
