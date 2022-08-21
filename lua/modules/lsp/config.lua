@@ -5,6 +5,7 @@ function M.attach(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	local navic = require("nvim-navic")
 	local gps = require("nvim-gps")
+
 	vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
@@ -22,7 +23,7 @@ function M.attach(client, bufnr)
 	vim.keymap.set("n", "<leader>llc", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "<leader>llD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "<leader>lld", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "<leader>llf", vim.lsp.buf.formatting, bufopts)
+	vim.keymap.set("n", "<leader>llf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", bufopts)
 	vim.keymap.set("n", "<leader>llh", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "<leader>lli", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "<leader>lls", vim.lsp.buf.signature_help, bufopts)
@@ -34,7 +35,7 @@ function M.attach(client, bufnr)
 	vim.keymap.set("n", "<leader>llwl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
-vim.keymap.set("n", "<leader>ltt", "<cmd>TroubleToggle<cr>", bufopts)
+	vim.keymap.set("n", "<leader>ltt", "<cmd>TroubleToggle<cr>", bufopts)
 	vim.keymap.set("n", "<leader>ltq", "<cmd>TroubleToggle<cr> quickfix<cr>", bufopts)
 	vim.keymap.set("n", "<leader>ltr", "<cmd>TroubleToggle<cr> lsp_references<cr>", bufopts)
 	vim.keymap.set("n", "<leader>ltl", "<cmd>TroubleToggle<cr> loclist<cr>", bufopts)
@@ -104,6 +105,12 @@ end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities = require("cmp_nvim_lsp").update_capabilities(M.capabilities)
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities.textDocument.completion.completionItem.resolveSupport = {
+	"documentation",
+	"detail",
+	"additionalTextEdits",
+}
 
 function M.setup(servers)
 	for _, server in ipairs(servers) do
@@ -171,9 +178,35 @@ function M.setup(servers)
 					"--background-index",
 					"--pch-storage=memory",
 					"--clang-tidy",
-					"--suggest-missing-includes",
-				}
+				},
 			})
+		elseif server == "rust_analyzer" then
+			local opts = {
+				tools = { -- rust-tools options
+					autoSetHints = true,
+					hover_with_actions = true,
+					inlay_hints = {
+						show_parameter_hints = false,
+						parameter_hints_prefix = "",
+						other_hints_prefix = "",
+					},
+				},
+
+				server = {
+					capabilities = M.capabilities,
+					on_attach = M.attach,
+					settings = {
+						["rust-analyzer"] = {
+							-- enable clippy on save
+							checkOnSave = {
+								command = "clippy",
+							},
+						},
+					},
+				},
+			}
+
+			require("rust-tools").setup(opts)
 		else
 			require("lspconfig")[server].setup({
 				on_attach = M.attach,

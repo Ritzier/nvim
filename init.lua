@@ -16,5 +16,6 @@ require("modules.toggleterm")
 require("modules.wilder")
 require("modules.colorizer")
 require("modules.todo")
+require("modules.dressing")
 
 require('modules.lsp')

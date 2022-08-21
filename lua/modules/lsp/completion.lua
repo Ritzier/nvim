@@ -1,6 +1,11 @@
-vim.cmd [[
+vim.cmd([[
+highlight! Pmenu guibg=#24273a guifg=#cad3f5
+highlight! PmenuSel guibg=#4c4f69 guifg=NONE
+
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+highlight! CmpItemMenu guibg=None guifg=#c599aa
+
 " blue
 highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
 highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
@@ -15,7 +20,7 @@ highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
-]]
+]])
 
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -23,19 +28,6 @@ end
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local border = function(hl)
-	return {
-		{ "╭", hl },
-		{ "─", hl },
-		{ "╮", hl },
-		{ "│", hl },
-		{ "╯", hl },
-		{ "─", hl },
-		{ "╰", hl },
-		{ "│", hl },
-	}
 end
 
 local cmp_window = require("cmp.utils.window")
@@ -46,24 +38,34 @@ end
 
 local compare = require("cmp.config.compare")
 
+local lspkind = require('lspkind')
+
+local kind_icons = require("modules.icons").nvim_lsp
+
+local source_mapping = {
+	npm = "   NPM",
+	cmp_tabnine = "  ",
+	nvim_lsp = "  LSP",
+	buffer = " ﬘ BUF",
+	nvim_lua = "  ",
+	luasnip = "  SNP",
+	calc = "  ",
+	path = " ﱮ ",
+	treesitter = "  ",
+	zsh = "   ZSH",
+}
+
 local cmp = require("cmp")
 cmp.setup({
 	window = {
-		completion = {
-			-- border = border("CmpBorder"),
-			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-			col_offset = -3,
-			side_padding = 0,
-		},
-		documentation = {
-			border = border("CmpDocBorder"),
-		},
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	sorting = {
 		comparators = {
-			-- require("cmp_tabnine.compare"),
 			compare.offset,
 			compare.exact,
+			compare.locality,
 			compare.score,
 			require("cmp-under-comparator").under,
 			compare.kind,
@@ -74,30 +76,36 @@ cmp.setup({
 	},
 	formatting = {
 		-- format = function(entry, vim_item)
-		-- 	local lspkind_icons = require("modules.icons").nvim_lsp
-		-- 	-- load lspkind icons
-		-- 	vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
-		--
+		-- 	vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+		-- 	-- Source
 		-- 	vim_item.menu = ({
-		-- 		-- cmp_tabnine = "[TN]",
-		-- 		buffer = "[BUF]",
+		-- 		buffer = "[Buffer]",
 		-- 		nvim_lsp = "[LSP]",
-		-- 		nvim_lua = "[LUA]",
-		-- 		path = "[PATH]",
-		-- 		luasnip = "[SNIP]",
+		-- 		luasnip = "[LuaSnip]",
+		-- 		nvim_lua = "[Lua]",
+		-- 		latex_symbols = "[LaTeX]",
 		-- 	})[entry.source.name]
-		--
 		-- 	return vim_item
-		-- end,
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 60 })(entry, vim_item)
-			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. strings[1] .. " "
-			kind.menu = "    (" .. strings[2] .. ")"
+		-- end
 
-			return kind
-		end,
+		format = function(entry, vim_item)
+			vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
+			local menu = source_mapping[entry.source.name]
+			local maxwidth = 50
+
+			if entry.source.name == 'cmp_tabnine' then
+				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+					menu = menu .. entry.completion_item.data.detail
+				else
+					menu = menu .. 'TBN'
+				end
+			end
+
+			vim_item.menu = menu
+			vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+
+			return vim_item
+		end
 	},
 	-- You can set mappings if you want
 	mapping = cmp.mapping.preset.insert({
@@ -152,6 +160,8 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "latex_symbols" },
-		-- { name = "cmp_tabnine" },
+		{ name = "calc" },
+		{ name = "cmp_tabnine" },
+		{ name = "npm" }
 	},
 })

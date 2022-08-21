@@ -135,43 +135,43 @@ return packer.startup(function(use)
 		module = "rust-tools",
 		ft = { "rust" },
 	})
-	use {
+	use({
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
 		requires = { { "nvim-lua/plenary.nvim" } },
 		config = function()
 			-- local null_ls = require "null-ls"
-			require("crates").setup {
+			require("crates").setup({
 				null_ls = {
 					enabled = true,
 					name = "crates.nvim",
 				},
-			}
+			})
 		end,
-	}
+	})
 	use({
 		"udalov/kotlin-vim",
 		ft = { "kotlin" },
 	})
 	-- Go
-	use {
+	use({
 		"ray-x/go.nvim",
 		ft = { "go" },
 		config = function()
 			require("go").setup()
 		end,
-	}
+	})
 	-- Java
-	use { "mfussenegger/nvim-jdtls", ft = { "java" } }
+	use({ "mfussenegger/nvim-jdtls", ft = { "java" } })
 
 	-- renamer.nvim
-	use {
+	use({
 		"filipdutescu/renamer.nvim",
 		module = { "renamer" },
 		config = function()
-			require("renamer").setup {}
+			require("renamer").setup({})
 		end,
-	}
+	})
 
 	use({ "jose-elias-alvarez/typescript.nvim" })
 
@@ -181,10 +181,6 @@ return packer.startup(function(use)
 			require("inlay-hints").setup()
 		end,
 	})
-
-
-	-- Wilder
-	use({ "gelguy/wilder.nvim" })
 
 	-- Completion
 	use({ "neovim/nvim-lspconfig" })
@@ -210,7 +206,18 @@ return packer.startup(function(use)
 	use({ "p00f/clangd_extensions.nvim" })
 	use({ "folke/trouble.nvim" })
 	use({ "L3MON4D3/LuaSnip" })
-	use({"onsails/lspkind.nvim"})
+	use({ "onsails/lspkind.nvim" })
+	use({ "hrsh7th/nvim-compe" })
+	use({ "hrsh7th/vim-vsnip" })
+	use({ "hrsh7th/cmp-buffer" })
+	use({ "hrsh7th/cmp-cmdline" })
+	use({ "hrsh7th/cmp-calc" })
+	use({ "tzachar/cmp-tabnine", run = "./install.sh" })
+	use({ "David-Kunz/cmp-npm" })
+	use({ "saadparwaiz1/cmp_luasnip" })
+	use({ "MunifTanjim/nui.nvim" })
+	use({ "stevearc/dressing.nvim" })
+	use({ "simrat39/rust-tools.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
