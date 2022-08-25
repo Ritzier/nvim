@@ -17,5 +17,6 @@ require("modules.wilder")
 require("modules.colorizer")
 require("modules.todo")
 require("modules.dressing")
+require("modules.popfix")
 
 require('modules.lsp')

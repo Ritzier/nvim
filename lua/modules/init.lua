@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use({ "antoinemadec/FixCursorHold.nvim" })
 	use({ "nvim-lua/popup.nvim" })
 	use({ "RishabhRD/popfix" })
+	use({ "hood/popui.nvim" })
 	use({ "marko-cerovac/material.nvim" })
 	use({ "pineapplegiant/spaceduck" })
 
