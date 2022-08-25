@@ -181,32 +181,8 @@ function M.setup(servers)
 				},
 			})
 		elseif server == "rust_analyzer" then
-			local opts = {
-				tools = { -- rust-tools options
-					autoSetHints = true,
-					hover_with_actions = true,
-					inlay_hints = {
-						show_parameter_hints = false,
-						parameter_hints_prefix = "",
-						other_hints_prefix = "",
-					},
-				},
+			require("modules.lsp.rust")
 
-				server = {
-					capabilities = M.capabilities,
-					on_attach = M.attach,
-					settings = {
-						["rust-analyzer"] = {
-							-- enable clippy on save
-							checkOnSave = {
-								command = "clippy",
-							},
-						},
-					},
-				},
-			}
-
-			require("rust-tools").setup(opts)
 		else
 			require("lspconfig")[server].setup({
 				on_attach = M.attach,
