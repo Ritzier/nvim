@@ -49,6 +49,9 @@ opt.pumheight = 20
 opt.numberwidth = 3
 g.compeleopt = "menu,menuone,noselct"
 
+g.autoindent = true
+g.smartindent = true
+
 vim.opt.shortmess:append('c');
 vim.opt.formatoptions:remove('c');
 vim.opt.formatoptions:remove('r');
@@ -106,6 +109,7 @@ local disabled_built_ins = {
 	"bugreport",
 	"ftplugin",
 }
+
 
 for _, plugin in pairs(disabled_built_ins) do
 	vim.g["loaded_" .. plugin] = 1
