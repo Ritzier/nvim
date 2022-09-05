@@ -1,5 +1,5 @@
-require("core")
 require("modules")
+require("core")
 require("modules.colorscheme")
 require("modules.which_key")
 require("modules.notify")

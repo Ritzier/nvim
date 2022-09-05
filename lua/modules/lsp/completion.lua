@@ -38,7 +38,7 @@ end
 
 local compare = require("cmp.config.compare")
 
-local lspkind = require('lspkind')
+local lspkind = require("lspkind")
 
 local kind_icons = require("modules.icons").nvim_lsp
 
@@ -93,11 +93,11 @@ cmp.setup({
 			local menu = source_mapping[entry.source.name]
 			local maxwidth = 50
 
-			if entry.source.name == 'cmp_tabnine' then
+			if entry.source.name == "cmp_tabnine" then
 				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
 					menu = menu .. entry.completion_item.data.detail
 				else
-					menu = menu .. 'TBN'
+					menu = menu .. "TBN"
 				end
 			end
 
@@ -105,7 +105,7 @@ cmp.setup({
 			vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
 
 			return vim_item
-		end
+		end,
 	},
 	-- You can set mappings if you want
 	mapping = cmp.mapping.preset.insert({
@@ -152,7 +152,6 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	-- You should specify your *installed* sources.
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
@@ -161,7 +160,6 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "latex_symbols" },
 		{ name = "calc" },
-		{ name = "cmp_tabnine" },
-		{ name = "npm" }
+		{ name = "npm" },
 	},
 })

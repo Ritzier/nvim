@@ -45,8 +45,6 @@ require("modules.lsp.wk")
 
 require("modules.lsp.cmp-npm")
 
-require("modules.lsp.tabnine")
-
 require("lsp-colors").setup({
   Error = "#db4b4b",
   Warning = "#e0af68",
@@ -63,3 +61,5 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = false,
 })
+
+require("modules.lsp.luasnip")
