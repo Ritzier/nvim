@@ -71,8 +71,8 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "RRethy/nvim-treesitter-endwise" })
 	use({ "p00f/nvim-ts-rainbow" })
-	-- use({ "windwp/nvim-autopairs" })
-	use({ "jiangmiao/auto-pairs" })
+	use({ "windwp/nvim-autopairs" })
+	-- use({ "jiangmiao/auto-pairs" })
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	-- Lualine
@@ -220,8 +220,6 @@ return packer.startup(function(use)
 	use({ "stevearc/dressing.nvim" })
 	use({ "simrat39/rust-tools.nvim" })
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
