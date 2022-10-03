@@ -51,6 +51,15 @@ return packer.startup(function(use)
 	use({ "EdenEast/nightfox.nvim" })
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
+
+	-- StatusLine
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("configuration.lualine")
+		end
+	})
+
 	-- Bufferline
 	use({
 		"akinsho/bufferline.nvim",
@@ -58,6 +67,7 @@ return packer.startup(function(use)
 			require("configuration.bufferline")
 		end,
 	})
+
 	-- NvimTree
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -65,6 +75,7 @@ return packer.startup(function(use)
 			require("configuration.nvimtree")
 		end,
 	})
+
 	-- TreeSitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -206,6 +217,18 @@ return packer.startup(function(use)
 			-- 	end,
 			-- },
 			{ "RRethy/vim-illuminate" },
+			{
+				"rmagatti/goto-preview",
+				config = function()
+					require("lsp-config.goto")
+				end
+			},
+			{
+				"SmiteshP/nvim-navic",
+				config = function()
+					require("lsp-config.navic")
+				end
+			},
 
 			{ "folke/lua-dev.nvim" },
 			{ "p00f/clangd_extensions.nvim" },
@@ -262,6 +285,14 @@ return packer.startup(function(use)
 		config = function() require("cmp-config") end
 	})
 
+	-- Telescope
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("telescope-config")
+		end
+	})
+
 
 	use({
 		"stevearc/overseer.nvim",
@@ -280,6 +311,20 @@ return packer.startup(function(use)
 	})
 	use({
 		"habamax/vim-godot"
+	})
+	use({
+		"rust-lang/rust.vim",
+		ft = "rust",
+	})
+	use({
+		"chrisbra/csv.vim",
+		ft = "csv"
+	})
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		ft = "markdown",
+		run = "cd app && yarn install",
 	})
 
 	if PACKER_BOOTSTRAP then

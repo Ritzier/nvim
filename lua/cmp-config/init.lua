@@ -41,7 +41,6 @@ cmp.setup({
 	},
 		{
 			{ name = "path" },
-			{ name = "spell" },
 			{ name = "buffer" },
 			{ name = "latex_symbols" },
 		}),
@@ -82,7 +81,7 @@ cmp.setup({
 				Unit = "",
 				Value = "",
 				Enum = "",
-				Keyword = "",
+				Keyword = "",
 				Snippet = "",
 				Color = "",
 				File = "",
@@ -91,11 +90,19 @@ cmp.setup({
 				EnumMember = "",
 				Constant = "",
 				Struct = "",
+				Key = "",
 				Event = "",
 				Operator = "",
-				TypeParameter = "",
+				TypeParameter = "",
+				Array = "",
+				Boolean = "蘒",
+				Namespace = "",
+				Number = "",
+				Null = "ﳠ",
+				Object = "",
+				Package = "",
+				String = "",
 			}
-			-- load lspkind icons
 			vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
 
 			vim_item.menu = ({
