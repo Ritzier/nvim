@@ -23,6 +23,7 @@ opt.swapfile       = true
 opt.undofile       = true
 g.termguicolors    = true
 opt.list           = true
+opt.spell          = true
 
 opt.smartcase    = true
 opt.smartindent  = true
@@ -56,23 +57,11 @@ opt.numberwidth   = 5
 opt.autoread  = true
 opt.autowrite = true
 
-g.mapleader = " "
+g.mapleader = ","
 g.speeddating_no_mappings = 1
 
-vim.opt.shortmess:append('c');
-vim.opt.formatoptions:remove('c');
-vim.opt.formatoptions:remove('r');
-vim.opt.formatoptions:remove('o');
-vim.opt.fillchars:append('stl: ');
-vim.opt.fillchars:append('eob: ');
-vim.opt.fillchars:append('fold: ');
-vim.opt.fillchars:append('foldopen: ');
-vim.opt.fillchars:append('foldsep: ');
-vim.opt.fillchars:append('foldclose:');
-
-vim.cmd('colorscheme duskfox')
 vim.cmd([[
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 syntax enable
+filetype indent on
+filetype plugin indent on
 ]])

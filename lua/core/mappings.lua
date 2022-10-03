@@ -25,9 +25,4 @@ keymap("n", "<A-S-j>", ":BufferLineMoveNext<CR>", default_opts)
 keymap("n", "<A-S-k>", ":BufferLineMovePrev<CR>", default_opts)
 keymap("n", "<C-x>", ":bd", default_opts)
 
-keymap("n", "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", default_opts)
-keymap("n", "<leader>tr", "<cmd>lua _RANGER_TOGGLE()<CR>", default_opts)
-
-keymap("n", "<leader>mp", ":MarkdownPreview<CR>", default_opts)
-
 keymap("x", "ga", "<Plug>(EasyAlign)<CR>", default_opts)
