@@ -47,8 +47,9 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- UI
+	-- Colorshceme
 	use({ "EdenEast/nightfox.nvim" })
+	use({ "Ritzier/blackdusk" })
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
 
