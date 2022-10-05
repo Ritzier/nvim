@@ -370,11 +370,48 @@ return packer.startup(function(use)
 		disable = false,
 	})
 
+	-- Run file
 	use({
 		"stevearc/overseer.nvim",
 		config = function()
 			require("configuration.overseer")
 		end,
+	})
+	use({
+		"nvim-neotest/neotest",
+		wants = {
+        "plenary.nvim",
+        "nvim-treesitter",
+        "neotest-python",
+        "neotest-plenary",
+        "neotest-go",
+        "neotest-jest",
+        "neotest-vim-test",
+				"neotest-dart",
+				"neotest-dotnet",
+				"neotest-scala",
+        "neotest-rust",
+        "vim-test",
+        "overseer.nvim",
+      },
+      requires = {
+        "vim-test/vim-test",
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-neotest/neotest-python",
+        "nvim-neotest/neotest-plenary",
+        "nvim-neotest/neotest-go",
+        "haydenmeade/neotest-jest",
+        "nvim-neotest/neotest-vim-test",
+        "rouge8/neotest-rust",
+				"sidlatau/neotest-dart",
+				"Issafalcon/neotest-dotnet",
+				"stevanmilic/neotest-scala",
+      },
+      module = { "neotest", "neotest.async" },
+			config = function()
+				require("configuration.neotest")
+			end
 	})
 
 	-- FileType

@@ -123,6 +123,8 @@ function M.setup(on_attach, capabilities)
 					library = {
 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+						plugins = { "neotest" },
+						types = true,
 					},
 					checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
 					maxPreload = 100000,
