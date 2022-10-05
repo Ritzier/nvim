@@ -16,7 +16,7 @@ function M.on_attach(client, bufnr)
 	keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
 	keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", bufopts)
 	keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", bufopts)
-	keymap("n", "<space>f", ":lua vim.lsp.buf.format()<CR>", bufopts)
+	keymap("n", "<space>f", ":lua vim.lsp.buf.formatting_sync()<CR>", bufopts)
 
 	keymap("n", "<space>ln", "<cmd>Lspsaga rename<CR>", bufopts)
 

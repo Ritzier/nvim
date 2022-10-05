@@ -50,6 +50,9 @@ return packer.startup(function(use)
 	-- Colorshceme
 	use({ "EdenEast/nightfox.nvim" })
 	use({ "Ritzier/blackdusk" })
+	use({ "pineapplegiant/spaceduck" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	--
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
 
@@ -58,7 +61,7 @@ return packer.startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("configuration.lualine")
-		end
+		end,
 	})
 
 	-- Bufferline
@@ -96,6 +99,20 @@ return packer.startup(function(use)
 			require("configuration.tree_sitter")
 		end,
 		run = ":TSUpdate",
+	})
+
+	-- Legendary
+	use({
+		"mrjones2014/legendary.nvim",
+		opt = true,
+		keys = { [[<C-p>]] },
+		-- wants = { "dressing.nvim" },
+		module = { "legendary" },
+		cmd = { "Legendary" },
+		config = function()
+			require("configuration.legendary")
+		end,
+		-- requires = { "stevearc/dressing.nvim" },
 	})
 
 	-- Todo
@@ -164,9 +181,9 @@ return packer.startup(function(use)
 				"MunifTanjim/nui.nvim",
 				config = function()
 					require("configuration.nui")
-				end
-			}
-		}
+				end,
+			},
+		},
 	})
 
 	-- Color
@@ -174,16 +191,24 @@ return packer.startup(function(use)
 		"uga-rosa/ccc.nvim",
 		config = function()
 			require("configuration.ccc")
-		end
+		end,
 	})
 	use({
 		"brenoprata10/nvim-highlight-colors",
 		config = function()
 			require("nvim-highlight-colors").setup({
 				render = "background",
-				enable_tailwind = true
+				enable_tailwind = true,
 			})
 			require("nvim-highlight-colors").turnOn()
+		end,
+	})
+
+	-- Terminal
+	use({
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("configuration.toggleterm")
 		end,
 	})
 
@@ -197,7 +222,7 @@ return packer.startup(function(use)
 				"ray-x/lsp_signature.nvim",
 				config = function()
 					require("lsp-config.lsp_signature")
-				end
+				end,
 			},
 			{
 				"j-hui/fidget.nvim",
@@ -222,13 +247,19 @@ return packer.startup(function(use)
 				"rmagatti/goto-preview",
 				config = function()
 					require("lsp-config.goto")
-				end
+				end,
 			},
 			{
 				"SmiteshP/nvim-navic",
 				config = function()
 					require("lsp-config.navic")
-				end
+				end,
+			},
+			{
+				"SmiteshP/nvim-gps",
+				config = function()
+					require("lsp-config.gps")
+				end,
 			},
 
 			{ "folke/lua-dev.nvim" },
@@ -258,7 +289,7 @@ return packer.startup(function(use)
 		},
 		config = function()
 			require("lsp-config")
-		end
+		end,
 	})
 
 	-- CMP
@@ -281,9 +312,16 @@ return packer.startup(function(use)
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "kdheepak/cmp-latex-symbols" },
-			{ "windwp/nvim-autopairs", config = function() require("cmp-config.autopairs") end },
+			{
+				"windwp/nvim-autopairs",
+				config = function()
+					require("cmp-config.autopairs")
+				end,
+			},
 		},
-		config = function() require("cmp-config") end
+		config = function()
+			require("cmp-config")
+		end,
 	})
 
 	-- Telescope
@@ -291,15 +329,52 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		config = function()
 			require("telescope-config")
-		end
+		end,
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-lua/popup.nvim" },
+			{ "jvgrootveld/telescope-zoxide" },
+			{ "nvim-telescope/telescope-project.nvim" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
+			{ "nvim-telescope/telescope-dap.nvim" },
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				requires = { "tami5/sqlite.lua" },
+				run = "make",
+			},
+		},
 	})
 
+	-- DAP - debugger
+	use({
+		"mfussenegger/nvim-dap",
+		opt = true,
+		-- event = "BufReadPre",
+		keys = { [[<leader>d]] },
+		module = { "dap" },
+		wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+		requires = {
+			-- "alpha2phi/DAPInstall.nvim",
+			-- { "Pocco81/dap-buddy.nvim", branch = "dev" },
+			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap-python",
+			"nvim-telescope/telescope-dap.nvim",
+			{ "leoluz/nvim-dap-go", module = "dap-go" },
+			{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+		config = function()
+			require("dap-config").setup()
+		end,
+		disable = false,
+	})
 
 	use({
 		"stevearc/overseer.nvim",
 		config = function()
-			require("overseer").setup()
-		end
+			require("configuration.overseer")
+		end,
 	})
 
 	-- FileType
@@ -308,10 +383,10 @@ return packer.startup(function(use)
 		ft = { "go" },
 		config = function()
 			requrie("go").setup()
-		end
+		end,
 	})
 	use({
-		"habamax/vim-godot"
+		"habamax/vim-godot",
 	})
 	use({
 		"rust-lang/rust.vim",
@@ -319,13 +394,20 @@ return packer.startup(function(use)
 	})
 	use({
 		"chrisbra/csv.vim",
-		ft = "csv"
+		ft = "csv",
 	})
 
 	use({
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
 		run = "cd app && yarn install",
+	})
+
+	use({
+		"akinsho/flutter-tools.nvim",
+		config = function()
+			require("configuration.flutter-tools")
+		end,
 	})
 
 	if PACKER_BOOTSTRAP then
