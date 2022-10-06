@@ -42,11 +42,14 @@ opt.errorbells   = false
 opt.fileencoding = "utf-8"
 opt.incsearch    = true
 opt.showmode     = false
+opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
 
 opt.showtabline   = 2
-opt.winwidth      = 30
+opt.winwidth      = 20
 opt.winminwidth   = 10
 opt.pumheight     = 20
+opt.pumblend      = 10
+opt.winblend      = 10
 opt.helpheight    = 15
 opt.previewheight = 12
 opt.showcmd       = false
