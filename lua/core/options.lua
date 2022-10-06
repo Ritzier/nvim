@@ -16,7 +16,7 @@ opt.timeoutlen     = 500
 opt.ttimeoutlen    = 0
 opt.redrawtime     = 1500
 opt.mouse          = "a"
-opt.completeopt    = "menu,menuone,noselect"
+opt.completeopt    = "menuone,noinsert,noselect"
 opt.cursorline     = true
 opt.cursorcolumn   = true
 opt.swapfile       = true
@@ -25,6 +25,7 @@ g.termguicolors    = true
 opt.list           = true
 opt.spell          = true
 
+opt.expandtab    = true
 opt.smartcase    = true
 opt.smartindent  = true
 opt.smarttab     = true
@@ -59,6 +60,7 @@ opt.autowrite = true
 
 g.mapleader = ","
 g.speeddating_no_mappings = 1
+-- g.completion_enable_auto_popup=1
 
 vim.cmd([[
 syntax enable

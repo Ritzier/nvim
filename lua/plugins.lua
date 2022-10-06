@@ -212,10 +212,14 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Sudo
+	use({ "lambdalisue/suda.vim" })
+
 	-- LSP
 	use({
 		"neovim/nvim-lspconfig",
 		requires = {
+			{ "nvim-lua/completion-nvim" },
 			{ "williamboman/mason.nvim" },
 			{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 			{
@@ -446,6 +450,8 @@ return packer.startup(function(use)
 			require("configuration.flutter-tools")
 		end,
 	})
+
+	use({ "ziglang/zig.vim" })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

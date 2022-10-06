@@ -17,6 +17,7 @@ local servers = {
 	"omnisharp",
 	"dartls",
 	"cmake",
+	"zls",
 }
 
 require("lsp-config.lsp").setup(servers)

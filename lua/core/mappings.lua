@@ -25,10 +25,13 @@ keymap("n", "<A-S-j>", ":BufferLineMoveNext<CR>", default_opts)
 keymap("n", "<A-S-k>", ":BufferLineMovePrev<CR>", default_opts)
 keymap("n", "<C-x>", ":bd", default_opts)
 
-keymap("x", "ga", "<Plug>(EasyAlign)<CR>", default_opts)
-
+-- Overseer
 keymap("n", "<leader>oq", ":OverseerQuickAction<CR>", default_opts)
 keymap("n", "<leader>oo", ":OverseerToggle<CR>", default_opts)
 keymap("n", "<leader>ob", ":OverseerBuild<CR>", default_opts)
 keymap("n", "<leader>r", ":OverseerRun<CR>", default_opts)
 keymap("n", "<leader>t", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", default_opts)
+
+-- Align
+keymap("n", "ga", ":EasyAlign<CR>", silent)
+keymap("x", "ga", ":'<, '>EasyAlign<CR>", silent)
