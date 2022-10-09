@@ -18,6 +18,7 @@ local servers = {
 	"dartls",
 	"cmake",
 	"zls",
+  "jsonls",
 }
 
 require("lsp-config.lsp").setup(servers)

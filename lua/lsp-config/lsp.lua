@@ -43,6 +43,12 @@ function M.setup(servers)
 		elseif server == "clangd" then
 			set_server("clangd", on_attach, capabilities)
 
+    elseif server == "yamlls" then
+			set_server("yamlls", on_attach, capabilities)
+
+    elseif server == "jsonls" then
+      set_server("jsonls", on_attach, capabilities)
+
 		else
 			require("lspconfig")[server].setup({
 				on_attach = on_attach,
