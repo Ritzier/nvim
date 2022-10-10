@@ -16,12 +16,14 @@ function M.setup(on_attach, capabilities)
 
       executor = require("rust-tools/executors").termopen,
 
-      on_initialized = nil,
+      on_initialized = function()
+        require("inlay-hints").set_all()
+      end,
 
       reload_workspace_from_cargo_toml = true,
 
       inlay_hints = {
-        auto = true,
+        auto = false, -- Using another extension
         only_current_line = false,
         show_parameter_hints = true,
         parameter_hints_prefix = "<- ",

@@ -279,7 +279,12 @@ return packer.startup(function(use)
 					require("crates").setup()
 				end,
 			},
-      { "" },
+      { 
+        "simrat39/inlay-hints.nvim",
+        config = function()
+          require("inlay-hints").setup()
+        end
+      },
 			{ "jose-elias-alvarez/typescript.nvim" },
 			{ "b0o/schemastore.nvim" },
 			{ "mfussenegger/nvim-jdtls", ft = { "java" } },
