@@ -69,4 +69,5 @@ vim.cmd([[
 syntax enable
 filetype indent on
 filetype plugin indent on
+set formatoptions-=cro
 ]])
