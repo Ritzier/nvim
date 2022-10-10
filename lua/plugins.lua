@@ -240,12 +240,12 @@ return packer.startup(function(use)
 					require("lsp-config.efm")
 				end,
 			},
-			{
-				"glepnir/lspsaga.nvim",
-				config = function()
-					require("lsp-config.lspsaga")
-				end,
-			},
+			-- {
+			-- 	"glepnir/lspsaga.nvim",
+			-- 	config = function()
+			-- 		require("lsp-config.lspsaga")
+			-- 	end,
+			-- },
 			{ "RRethy/vim-illuminate" },
 			{
 				"rmagatti/goto-preview",
@@ -282,7 +282,7 @@ return packer.startup(function(use)
       { 
         "simrat39/inlay-hints.nvim",
         config = function()
-          require("inlay-hints").setup()
+          require("lsp-config.inlay-hints")
         end
       },
 			{ "jose-elias-alvarez/typescript.nvim" },
