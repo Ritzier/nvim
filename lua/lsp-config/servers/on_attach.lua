@@ -35,8 +35,6 @@ function M.on_attach(client, bufnr)
 		})
 	end
 
-  require("inlay-hints").on_attach(client, bufnr)
-
 	-- require("completion").on_attach()
 
 end

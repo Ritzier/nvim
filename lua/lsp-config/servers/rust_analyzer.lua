@@ -9,6 +9,8 @@ function M.setup(on_attach, capabilities)
 
     vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
     vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+
+    require("inlay-hints").on_attach(client, bufnr)
   end
 
   local opts = {
@@ -24,6 +26,7 @@ function M.setup(on_attach, capabilities)
 
       inlay_hints = {
         auto = false, -- Using another extension
+        -- auto = true,
         only_current_line = false,
         show_parameter_hints = true,
         parameter_hints_prefix = "<- ",

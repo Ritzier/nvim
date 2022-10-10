@@ -49,6 +49,9 @@ function M.setup(servers)
     elseif server == "jsonls" then
       set_server("jsonls", on_attach, capabilities)
 
+    elseif server == "rust_analyzer" then
+      set_server("rust_analyzer", on_attach, capabilitie)
+
 		else
 			require("lspconfig")[server].setup({
 				on_attach = on_attach,

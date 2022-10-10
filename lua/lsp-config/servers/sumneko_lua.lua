@@ -109,9 +109,14 @@ function M.basic_setup(on_attach, capabilities)
 end
 
 function M.setup(on_attach, capabilities)
+  local function custom_attach(client, bufnr)
+    require("lsp-config.servers.on_attach").on_attach(client, bufnr)
+    require("inlay-hints").on_attach(client, bufnr)
+  end
+
 	local luadev = require("lua-dev").setup {}
 	local lspconfig = vim.tbl_deep_extend("force", luadev, {
-		on_attach = on_attach,
+    on_attach = custom_attach,
 		capabilities = capabilities,
 		settings = {
 			Lua = {

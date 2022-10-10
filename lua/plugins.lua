@@ -240,12 +240,12 @@ return packer.startup(function(use)
 					require("lsp-config.efm")
 				end,
 			},
-			-- {
-			-- 	"glepnir/lspsaga.nvim",
-			-- 	config = function()
-			-- 		require("lsp-config.lspsaga")
-			-- 	end,
-			-- },
+			{
+				"glepnir/lspsaga.nvim",
+				config = function()
+					require("lsp-config.lspsaga")
+				end,
+			},
 			{ "RRethy/vim-illuminate" },
 			{
 				"rmagatti/goto-preview",
