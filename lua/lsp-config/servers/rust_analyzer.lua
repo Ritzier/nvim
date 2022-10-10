@@ -6,11 +6,8 @@ function M.setup(on_attach, capabilities)
 
   local function custom_attach(client, bufnr)
     on_attach(client, bufnr)
-
     vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
     vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-
-    require("inlay-hints").on_attach(client, bufnr)
   end
 
   local opts = {
@@ -18,15 +15,12 @@ function M.setup(on_attach, capabilities)
 
       executor = require("rust-tools/executors").termopen,
 
-      on_initialized = function()
-        require("inlay-hints").set_all()
-      end,
+      on_initialized = nil,
 
       reload_workspace_from_cargo_toml = true,
 
       inlay_hints = {
-        auto = false, -- Using another extension
-        -- auto = true,
+        auto = true,
         only_current_line = false,
         show_parameter_hints = true,
         parameter_hints_prefix = "<- ",
@@ -37,7 +31,7 @@ function M.setup(on_attach, capabilities)
 
         max_len_align_padding = 1,
 
-        right_align = true,
+        right_align = false,
 
         right_align_padding = 7,
 
