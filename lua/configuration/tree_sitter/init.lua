@@ -46,7 +46,6 @@ require("nvim-treesitter.configs").setup({
     "pascal",
     "perl",
     "php",
-    "phpdoc",
     "python",
     "query",
     "r",
