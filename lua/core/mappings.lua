@@ -35,3 +35,10 @@ keymap("n", "<leader>t", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR
 -- Align
 keymap("n", "ga", ":EasyAlign<CR>", silent)
 keymap("x", "ga", ":'<, '>EasyAlign<CR>", silent)
+
+-- Goto
+keymap("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", default_opts)
+keymap("n", "gt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", default_opts)
+keymap("n", "gi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", default_opts)
+keymap("n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", default_opts)
+keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", default_opts)
