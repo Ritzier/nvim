@@ -279,6 +279,7 @@ return packer.startup(function(use)
 					require("crates").setup()
 				end,
 			},
+      { "" },
 			{ "jose-elias-alvarez/typescript.nvim" },
 			{ "b0o/schemastore.nvim" },
 			{ "mfussenegger/nvim-jdtls", ft = { "java" } },
