@@ -12,37 +12,23 @@ function M.setup(on_attach, capabilities)
 
   local opts = {
     tools = { -- rust-tools options
-
       executor = require("rust-tools/executors").termopen,
-
       on_initialized = nil,
-
       reload_workspace_from_cargo_toml = true,
-
       inlay_hints = {
         auto = true,
         only_current_line = false,
         show_parameter_hints = true,
         parameter_hints_prefix = "<- ",
-
         other_hints_prefix = "=> ",
-
         max_len_align = false,
-
         max_len_align_padding = 1,
-
         right_align = false,
-
         right_align_padding = 7,
-
         highlight = "Comment",
       },
 
-      -- options same as lsp hover / vim.lsp.util.open_floating_preview()
       hover_actions = {
-
-        -- the border that is used for the hover window
-        -- see vim.api.nvim_open_win()
         border = {
           { "╭", "FloatBorder" },
           { "─", "FloatBorder" },
@@ -54,13 +40,9 @@ function M.setup(on_attach, capabilities)
           { "│", "FloatBorder" },
         },
 
-        -- whether the hover action window gets automatically focused
-        -- default: false
         auto_focus = false,
       },
 
-      -- settings for showing the crate graph based on graphviz and the dot
-      -- command
       crate_graph = {
         backend = "x11",
         output = nil,
@@ -169,7 +151,6 @@ function M.setup(on_attach, capabilities)
   }
 
   require('rust-tools').setup(opts)
-
 end
 
 return M

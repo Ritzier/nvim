@@ -1,6 +1,8 @@
 local keymap = vim.keymap.set
+
 local default_opts = { noremap = true, silent = true }
 
+keymap("n", "<ESC>", "<Esc>:noh | :lua require('goto-preview').close_all_win()<CR>", default_opts)
 keymap("i", "jk", "<ESC>", default_opts)
 keymap("t", "jk", "<C-\\><C-n>", default_opts)
 keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", default_opts)
@@ -25,12 +27,12 @@ keymap("n", "<A-S-j>", ":BufferLineMoveNext<CR>", default_opts)
 keymap("n", "<A-S-k>", ":BufferLineMovePrev<CR>", default_opts)
 keymap("n", "<C-x>", ":bd", default_opts)
 
--- Overseer
-keymap("n", "<leader>oq", ":OverseerQuickAction<CR>", default_opts)
-keymap("n", "<leader>oo", ":OverseerToggle<CR>", default_opts)
-keymap("n", "<leader>ob", ":OverseerBuild<CR>", default_opts)
-keymap("n", "<leader>r", ":OverseerRun<CR>", default_opts)
-keymap("n", "<leader>t", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", default_opts)
+-- -- Overseer
+-- keymap("n", "<leader>oq", ":OverseerQuickAction<CR>", default_opts)
+-- keymap("n", "<leader>oo", ":OverseerToggle<CR>", default_opts)
+-- keymap("n", "<leader>ob", ":OverseerBuild<CR>", default_opts)
+-- keymap("n", "<leader>r", ":OverseerRun<CR>", default_opts)
+-- keymap("n", "<leader>t", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", default_opts)
 
 -- Align
 keymap("n", "ga", ":EasyAlign<CR>", silent)
@@ -42,3 +44,24 @@ keymap("n", "gt", "<cmd>lua require('goto-preview').goto_preview_type_definition
 keymap("n", "gi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", default_opts)
 keymap("n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", default_opts)
 keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", default_opts)
+
+-- require("which-key").register({
+--   w = {
+--     name = "Workspace",
+--     a = { name = "Add Workspace Folder" },
+--     r = { name = "Remove Workspace Folder" },
+--     l = { name = "List Workspace Folder" },
+--   },
+--   e = { name = "Diagnostic Open Float" }
+-- }, { prefix = "<space>" })
+
+require("which-key").register({
+  o = {
+    name = "Overseer",
+    q = { ":OverseerQuickAction<CR>", "OverSeer QuickAction" },
+    o = { ":OverseerToggle<CR>", "OverSeer Toggle" },
+    b = { ":OverseerBuild<CR>", "OverSeer Build" },
+  },
+  r = { ":OverseerRun<CR>", "OverSeer Run" },
+  t = { ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Neotest Run" },
+}, { prefix = "<leader>" })

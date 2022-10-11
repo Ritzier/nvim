@@ -53,6 +53,7 @@ return packer.startup(function(use)
 	use({ "Ritzier/blackdusk" })
 	use({ "pineapplegiant/spaceduck" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
+  use({ "katawful/kat.nvim" })
 	--
 	-- Icons
 	use({ "kyazdani42/nvim-web-devicons" })
@@ -130,6 +131,7 @@ return packer.startup(function(use)
 		config = function()
 			require("configuration.wilder")
 		end,
+    event = "CmdlineEnter",
 	})
 
 	-- Comment
@@ -147,6 +149,7 @@ return packer.startup(function(use)
 		config = function()
 			require("configuration.gitsigns")
 		end,
+    event = { "BufReadPost", "BufNewFile" },
 	})
 
 	-- WhichKey
@@ -219,6 +222,7 @@ return packer.startup(function(use)
 	-- LSP
 	use({
 		"neovim/nvim-lspconfig",
+    event = "BufReadPre",
 		requires = {
 			{ "nvim-lua/completion-nvim" },
 			{ "williamboman/mason.nvim" },
@@ -247,7 +251,7 @@ return packer.startup(function(use)
 			-- 		require("lsp-config.lspsaga")
 			-- 	end,
 			-- },
-			{ "RRethy/vim-illuminate" },
+			{ "RRethy/vim-illuminate", event = "BufReadPost" },
 			{
 				"rmagatti/goto-preview",
 				config = function()
@@ -271,7 +275,7 @@ return packer.startup(function(use)
 			{ "p00f/clangd_extensions.nvim" },
 			{
 				"simrat39/rust-tools.nvim",
-				requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+				requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim", "mattn/webapi-vim" },
 			},
 			{
 				"saecki/crates.nvim",

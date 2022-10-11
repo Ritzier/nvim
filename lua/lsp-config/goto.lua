@@ -13,3 +13,13 @@ require('goto-preview').setup {
   bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
 }
 
+require("which-key").register({
+  g = {
+    name = "Goto-Preview",
+    d = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Definition" },
+    t = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", "Type Difinition" },
+    i = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "Implementation" },
+    r = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", "References" },
+    p = { "<cmd>lua require('goto-preview').close_all_win()<CR>", "Close All Window" }
+  }
+}, { prefix = "<leader>" })
