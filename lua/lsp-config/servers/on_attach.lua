@@ -11,7 +11,6 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
   keymap("n", "K", vim.lsp.buf.hover, bufopts)
-  -- keymap("n", "<space>e", vim.diagnostic.open_float, bufopts)
   keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", bufopts)
   keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
   keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", bufopts)
@@ -40,6 +39,13 @@ function M.on_attach(client, bufnr)
     gt = { vim.lsp.buf.type_definition, "Type Definition" },
     K = { vim.lsp.buf.hover, "Hover" },
   }, { silent = true, noremap = true })
+
+  require("which-key").register({
+    l = {
+      name = "LSP",
+      h = { vim.lsp.buf.hover, "Hover" }
+    }
+  }, { prefix = "<leader>", buffer = bufnr, silent = true, noremap = true })
 
   if client.server_capabilities.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")

@@ -24,9 +24,8 @@ function M.setup()
 
 	-- Diagnostic configuration
 	vim.diagnostic.config({
-		virtual_text = {
-			prefix = "●",
-		},
+		virtual_text = { prefix = "#", },
+    virtual_text = false,
 		signs = true,
 		underline = ture,
 		update_in_insert = true,
@@ -35,7 +34,8 @@ function M.setup()
 	})
 
 	vim.diagnostic.open_float({
-		width = 50
+		width = 10,
+    height = 10,
 	})
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })

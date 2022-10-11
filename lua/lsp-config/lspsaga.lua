@@ -1,4 +1,5 @@
 require("lspsaga").init_lsp_saga({
+  border_style = "rounded",
 	diagnostic_header = { " ", " ", "  ", " " },
 	custom_kind = {
 		File = { " " },
@@ -33,4 +34,11 @@ require("lspsaga").init_lsp_saga({
 		StaticMethod = { "ﴂ " },
 		Macro = { " " },
 	},
+  code_action_lightbulb = {
+    enbale = false,
+    enable_in_insert = false,
+    cache_code_action = false,
+    sign = false,
+  },
+  max_preview_lines = 20,
 })

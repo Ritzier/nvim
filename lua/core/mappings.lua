@@ -16,9 +16,11 @@ keymap("n", "<C-l>", "<C-w>l", default_opts)
 
 keymap("v", "<", "<gv", default_opts)
 keymap("v", ">", ">gv", default_opts)
-keymap("v", "<A-j>", ":m .+1<CR>==", default_opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", default_opts)
+-- keymap("v", "<A-j>", ":m .+1<CR>==", default_opts)
+-- keymap("v", "<A-k>", ":m .-2<CR>==", default_opts)
 
+keymap("v", "<A-k>", ":m '>-2<CR>gv=gv", default_opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", default_opts)
 keymap("n", "<C-n>", ":NvimTreeToggle<CR>", default_opts)
 
 keymap("n", "<A-j>", ":BufferLineCycleNext<CR>", default_opts)
@@ -27,10 +29,16 @@ keymap("n", "<A-S-j>", ":BufferLineMoveNext<CR>", default_opts)
 keymap("n", "<A-S-k>", ":BufferLineMovePrev<CR>", default_opts)
 keymap("n", "<C-x>", ":bd", default_opts)
 
+-- keymap("n", "<C-a>", ":vertical resize -1<CR>", default_opts)
+-- keymap("n", "<C-]>", ":vertical resize +4<CR>", default_opts)
+-- keymap("n", "<C-A-[>", ":echo 'hi'<CR>", default_opts)
+keymap("n", "<S-c", ":vertical resize -1<CR>", default_opts)
+keymap("n", "<A-S-+>", ":vertical resize +1<CR>", default_opts)
+
 -- -- Overseer
 -- keymap("n", "<leader>oq", ":OverseerQuickAction<CR>", default_opts)
--- keymap("n", "<leader>oo", ":OverseerToggle<CR>", default_opts)
 -- keymap("n", "<leader>ob", ":OverseerBuild<CR>", default_opts)
+-- keymap("n", "<leader>oo", ":OverseerToggle<CR>", default_opts)
 -- keymap("n", "<leader>r", ":OverseerRun<CR>", default_opts)
 -- keymap("n", "<leader>t", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", default_opts)
 
@@ -58,10 +66,20 @@ keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", defaul
 require("which-key").register({
   o = {
     name = "Overseer",
-    q = { ":OverseerQuickAction<CR>", "OverSeer QuickAction" },
-    o = { ":OverseerToggle<CR>", "OverSeer Toggle" },
-    b = { ":OverseerBuild<CR>", "OverSeer Build" },
+    q = { ":OverseerQuickAction<CR>", "OverSeerQuickAction" },
+    o = { ":OverseerToggle<CR>", "OverSeerToggle" },
+    b = { ":OverseerBuild<CR>", "OverSeerBuild" },
+    r = { ":OverseerRun<CR>", "OverSeerRun" },
+    C = { ":OverseerClose<CR>", "OverseerClose" },
+    c = { ":OverseerRunCmd<CR>", "OVerseerRunCmd" },
+    s = { "<cmd>OverseerSaveBundle<cr>", "OverseerSaveBundle" },
+    a = { "<cmd>OverseerTaskAction<cr>", "OverseerTaskAction" },
+    d = { "<cmd>OverseerDeleteBundle<cr>", "OverseerDeleteBundle" },
   },
   r = { ":OverseerRun<CR>", "OverSeer Run" },
   t = { ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Neotest Run" },
 }, { prefix = "<leader>" })
+
+require("which-key").register({
+
+}, { silent = true, noremap = true })
