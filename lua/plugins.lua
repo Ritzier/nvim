@@ -46,6 +46,7 @@ return packer.startup(function(use)
 			vim.g.cursorhold_updatetime = 100
 		end,
 	})
+  use({ "dstein64/vim-startuptime" })
 
 	-- Colorshceme
 	use({ "EdenEast/nightfox.nvim" })
