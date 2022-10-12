@@ -82,6 +82,13 @@ return packer.startup(function(use)
 		end,
 	})
 
+  use({ 
+    "sindrets/winshift.nvim",
+    config = function()
+      require("configuration.winshift")
+    end
+  })
+
 	-- TreeSitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
