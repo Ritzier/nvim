@@ -62,13 +62,12 @@ opt.numberwidth   = 5
 opt.autoread  = true
 opt.autowrite = true
 
+g.syntax_on = true
 g.mapleader = ","
 g.speeddating_no_mappings = 1
 -- g.completion_enable_auto_popup=1
 
 vim.cmd([[
-syntax enable
-set syntax=true
 filetype indent on
 filetype plugin indent on
 autocmd VimEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

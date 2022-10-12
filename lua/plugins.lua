@@ -89,9 +89,12 @@ return packer.startup(function(use)
 			{ "windwp/nvim-ts-autotag" },
 			{ "RRethy/nvim-treesitter-endwise" },
 			{ "p00f/nvim-ts-rainbow" },
-			{ "windwp/nvim-autopairs" },
+			-- { "windwp/nvim-autopairs", config = function() require("configuration.tree_sitter.autopairs") end },
 			{
 				"lukas-reineke/indent-blankline.nvim",
+        config = function()
+          require("configuration.tree_sitter.indent-line")
+        end
 			},
 			{ "JoosepAlviste/nvim-ts-context-commentstring" },
 			{ "nvim-treesitter/playground" },
@@ -307,6 +310,13 @@ return packer.startup(function(use)
 		end,
 	})
 
+  use({
+    "echasnovski/mini.nvim",
+    config = function()
+      require("configuration.mini_pairs")
+    end
+  })
+
 	-- CMP
 	use({
 		"hrsh7th/nvim-cmp",
@@ -327,12 +337,18 @@ return packer.startup(function(use)
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "kdheepak/cmp-latex-symbols" },
-			{
-				"windwp/nvim-autopairs",
-				config = function()
-					require("cmp-config.autopairs")
-				end,
-			},
+			-- {
+			-- 	"windwp/nvim-autopairs",
+			-- 	config = function()
+			-- 		require("cmp-config.autopairs")
+			-- 	end,
+			-- },
+      -- {
+      --   "jiangmiao/auto-pairs",
+      --   config = function()
+      --     require("configuration.autopairs")
+      --   end
+      -- }
 		},
 		config = function()
 			require("cmp-config")

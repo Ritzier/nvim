@@ -3,7 +3,7 @@ local keymap = vim.keymap.set
 local default_opts = { noremap = true, silent = true }
 
 keymap("n", "<ESC>", "<Esc>:noh | :lua require('goto-preview').close_all_win()<CR>", default_opts)
-keymap("i", "jk", "<ESC>", default_opts)
+keymap("i", "jk", "<ESC>:w<CR>", default_opts)
 keymap("t", "jk", "<C-\\><C-n>", default_opts)
 keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", default_opts)
 keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", default_opts)
