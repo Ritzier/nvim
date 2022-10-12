@@ -96,7 +96,6 @@ return packer.startup(function(use)
 			{ "windwp/nvim-ts-autotag" },
 			{ "RRethy/nvim-treesitter-endwise" },
 			{ "p00f/nvim-ts-rainbow" },
-			-- { "windwp/nvim-autopairs", config = function() require("configuration.tree_sitter.autopairs") end },
 			{
 				"lukas-reineke/indent-blankline.nvim",
         config = function()
@@ -344,23 +343,20 @@ return packer.startup(function(use)
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "kdheepak/cmp-latex-symbols" },
-			-- {
-			-- 	"windwp/nvim-autopairs",
-			-- 	config = function()
-			-- 		require("cmp-config.autopairs")
-			-- 	end,
-			-- },
-      -- {
-      --   "jiangmiao/auto-pairs",
-      --   config = function()
-      --     require("configuration.autopairs")
-      --   end
-      -- }
 		},
 		config = function()
 			require("cmp-config")
 		end,
 	})
+
+  -- Autopairs
+  use({
+    "windwp/nvim-autopairs",
+    config = function()
+      require("configuration.nvim_autopairs")
+    end,
+    after = {"nvim-cmp", "nvim-treesitter"},
+  })
 
 	-- Telescope
 	use({
@@ -419,7 +415,6 @@ return packer.startup(function(use)
 		"nvim-neotest/neotest",
 		wants = {
         "plenary.nvim",
-        "nvim-treesitter",
         "neotest-python",
         "neotest-plenary",
         "neotest-go",
