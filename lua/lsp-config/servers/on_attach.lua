@@ -40,13 +40,6 @@ function M.on_attach(client, bufnr)
     K = { vim.lsp.buf.hover, "Hover" },
   }, { silent = true, noremap = true })
 
-  require("which-key").register({
-    l = {
-      name = "LSP",
-      h = { vim.lsp.buf.hover, "Hover" }
-    }
-  }, { prefix = "<leader>", buffer = bufnr, silent = true, noremap = true })
-
   if client.server_capabilities.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
   end

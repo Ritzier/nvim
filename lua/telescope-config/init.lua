@@ -42,11 +42,11 @@ telescope.setup({
     entry_prefix = " ",
     scroll_strategy = "limit",
     results_title = false,
+    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
     layout_strategy = "horizontal",
     path_display = { "absolute" },
     file_ignore_patterns = { ".git/", ".cache", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
     layout_config = {
-      prompt_position = "bottom",
       horizontal = {
         preview_width = 0.5,
       },
@@ -56,19 +56,8 @@ telescope.setup({
     qflist_previewer = previewers.vim_buffer_qflist.new,
     file_sorter = previewers.get_fuzzy_file,
     generic_sorter = previewers.get_generic_fuzzy_sorter,
-    border = {},
-    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
     buffer_previewer_maker = preview_maker,
-    mappings = {
-      i = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-n>"] = actions.cycle_history_next,
-        ["<C-p>"] = actions.cycle_history_prev,
-        ["<c-z>"] = trouble.open_with_trouble,
-      },
-    },
   },
   pickers = {
     find_files = {
@@ -108,7 +97,17 @@ telescope.setup({
           '--git ' ..
           '--ignore-glob=.git',
     },
-
+    fzf = {
+      fuzzy = false,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = "smart_case",
+    },
+    frecency = {
+      show_scores = true,
+      show_unindexed = true,
+      ignore_patterns = { "*.git/*", "*/tmp/*" },
+    },
   }
 })
 

@@ -44,7 +44,7 @@ require("lspsaga").init_lsp_saga({
     Operator = { " ", colors.sky },
     TypeParameter = { " ", colors.maroon },
     -- Type
-    Array = { "", colors.peach },
+    Array = { " ", colors.peach },
     Boolean = { " ", colors.peach },
     Null = { "ﳠ ", colors.yellow },
     Object = { " ", colors.yellow },
@@ -63,22 +63,16 @@ require("lspsaga").init_lsp_saga({
   },
   max_preview_lines = 20,
   symbol_in_winbar = {
-    enable = true,
+    enable = false,
     in_custom = false,
     separator = "  ",
     show_file = false,
-    -- define how to customize filename, eg: %:., %
-    -- if not set, use default value `%:t`
-    -- more information see `vim.fn.expand` or `expand`
-    -- ## only valid after set `show_file = true`
     file_formatter = "",
     click_support = function(node, clicks, button, modifiers)
-      -- To see all avaiable details: vim.pretty_print(node)
       local st = node.range.start
       local en = node.range["end"]
       if button == "l" then
         if clicks == 2 then
-          -- double left click to do nothing
         else -- jump to node's starting line+char
           vim.fn.cursor(st.line + 1, st.character + 1)
         end

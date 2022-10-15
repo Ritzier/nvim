@@ -16,7 +16,8 @@ opt.timeoutlen     = 500
 opt.ttimeoutlen    = 0
 opt.redrawtime     = 1500
 opt.mouse          = "a"
--- opt.completeopt    = "menuone,noinsert,noselect"
+-- opt.completeopt = "menuone,noinsert,noselect"
+opt.complete       = ".,w,b,k"
 opt.completeopt    = "menu,menuone,noinsert"
 opt.cursorline     = true
 opt.cursorcolumn   = true
@@ -43,7 +44,11 @@ opt.errorbells   = false
 opt.fileencoding = "utf-8"
 opt.incsearch    = true
 opt.showmode     = false
-opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
+opt.listchars    = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
+
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg    = "rg --hidden --vimgrep --smart-case --"
+opt.ignorecase = true
 
 opt.showtabline   = 2
 opt.winwidth      = 20
@@ -54,13 +59,14 @@ opt.winblend      = 10
 opt.helpheight    = 15
 opt.previewheight = 12
 opt.showcmd       = false
-opt.cmdheight     = 1
+opt.cmdheight     = 2
 opt.cmdwinheight  = 5
 opt.laststatus    = 2
 opt.numberwidth   = 5
 
-opt.autoread  = true
-opt.autowrite = true
+opt.autoread   = true
+opt.autowrite  = true
+opt.redrawtime = 1500
 
 g.syntax_on = true
 g.mapleader = ","

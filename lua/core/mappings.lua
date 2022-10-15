@@ -64,6 +64,26 @@ keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", defaul
 -- }, { prefix = "<space>" })
 
 require("which-key").register({
+  T = {
+    name = "Telescope",
+    l = {"<cmd>lua require('telescope.builtin').find_files()<cr>", "Live Grep"},
+    f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find Files" },
+    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffer" },
+    h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help Tags" }
+  },
+  t = {
+    name = "Trouble",
+    t = { "<cmd>TroubleToggle<CR>", "Toggle" },
+    d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document Diagnostics" },
+    w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Worksapce Diagnostics" },
+    q = { "<cmd>TroubleToggle quickfix<CR>", "Quick Fix" },
+    l = { "<cmd>TroubleToggle loclist<CR>", "Loclist" },
+    r = { "<cmd>TroubleToggle lsp_references<CR>", "References" }
+     
+  }
+}, { prefix = "<leader>" })
+
+require("which-key").register({
   o = {
     name = "Overseer",
     q = { ":OverseerQuickAction<CR>", "OverSeerQuickAction" },
@@ -77,9 +97,14 @@ require("which-key").register({
     d = { "<cmd>OverseerDeleteBundle<cr>", "OverseerDeleteBundle" },
   },
   r = { ":OverseerRun<CR>", "OverSeer Run" },
+  s = {
+    name = "lspsaga",
+    f = { "<cmd>lspsaga lsp_finder<cr>", "finder" },
+    n = { "<cmd>lspsaga rename<cr>", "rename" },
+    c = { "<cmd>lspsaga show_cursor_diagnostics<cr>", "show cursor diagnostics" },
+    k = { "<cmd>lspsaga hover_doc<cr>", "hover doc" },
+    o = { "<cmd>lsoutlinetoggle<cr>", "outline toggle" },
+  },
+
   t = { ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Neotest Run" },
-}, { prefix = "<leader>" })
-
-require("which-key").register({
-
-}, { silent = true, noremap = true })
+}, { prefix = "<space>", silent = true, noremap = true })
