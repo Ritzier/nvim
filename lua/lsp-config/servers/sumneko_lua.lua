@@ -58,7 +58,7 @@ function M.setup(on_attach, capabilities)
       enabled = true,
       runtime = true,
       types = true,
-      plugins = true,
+      plugins = false,
     },
     setup_jsonls = true,
   })

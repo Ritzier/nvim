@@ -144,12 +144,15 @@ cmp.setup({
         npm = "   NPM",
         nvim_lsp = "  LSP",
         buffer = " ﬘ BUF",
-        nvim_lua = "  ",
+        nvim_lua = " ",
         luasnip = "  SNP",
         calc = "  ",
         path = " ﱮ ",
-        treesitter = "  ",
+        treesitter = " ",
         zsh = "   ZSH",
+        Copilot = "",
+        Copilot_alt = "",
+        spell = "暈SPELL",
       })[entry.source.name]
 
       local content = vim_item.abbr

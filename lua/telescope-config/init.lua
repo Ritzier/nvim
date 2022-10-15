@@ -1,0 +1,127 @@
+local actions = require "telescope.actions"
+local telescope = require "telescope"
+local trouble = require "trouble.providers.telescope"
+local previewers = require "telescope.previewers"
+local Job = require "plenary.job"
+local preview_maker = function(filepath, bufnr, opts)
+  filepath = vim.fn.expand(filepath)
+  Job
+      :new({
+        command = "file",
+        args = { "--mime-type", "-b", filepath },
+        on_exit = function(j)
+          local mime_type = vim.split(j:result()[1], "/")[1]
+
+          if mime_type == "text" then
+            -- Check file size
+            vim.loop.fs_stat(filepath, function(_, stat)
+              if not stat then
+                return
+              end
+              if stat.size > 500000 then
+                return
+              else
+                previewers.buffer_previewer_maker(filepath, bufnr, opts)
+              end
+            end)
+          else
+            vim.schedule(function()
+              vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY FILE" })
+            end)
+          end
+        end,
+      })
+      :sync()
+end
+
+telescope.setup({
+  defaults = {
+    initial_mode = "insert",
+    prompt_prefix = " ",
+    selection_caret = " ",
+    entry_prefix = " ",
+    scroll_strategy = "limit",
+    results_title = false,
+    layout_strategy = "horizontal",
+    path_display = { "absolute" },
+    file_ignore_patterns = { ".git/", ".cache", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
+    layout_config = {
+      prompt_position = "bottom",
+      horizontal = {
+        preview_width = 0.5,
+      },
+    },
+    file_previewer = previewers.vim_buffer_cat.new,
+    grep_previewer = previewers.vim_buffer_vimgrep.new,
+    qflist_previewer = previewers.vim_buffer_qflist.new,
+    file_sorter = previewers.get_fuzzy_file,
+    generic_sorter = previewers.get_generic_fuzzy_sorter,
+    border = {},
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    color_devicons = true,
+    buffer_previewer_maker = preview_maker,
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-n>"] = actions.cycle_history_next,
+        ["<C-p>"] = actions.cycle_history_prev,
+        ["<c-z>"] = trouble.open_with_trouble,
+      },
+    },
+  },
+  pickers = {
+    find_files = {
+      theme = "ivy",
+      hidden = true,
+      find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+    },
+    git_files = {
+      theme = "dropdown",
+    },
+  },
+  extensions = {
+    media_files = {
+      filetypes = { "png", "webp", "jpg", "jpeg", "pdf", "mp4", "webm" },
+      find_cmd = "fd",
+    },
+    bookmarks = {
+      selected_browser = "brave",
+      url_open_command = nil,
+      url_open_plugin = "open_browser",
+      full_path = true,
+      firefox_profile_name = nil,
+    },
+    cder = {
+      previewer_command =
+      'exa ' ..
+          '-a ' ..
+          '--color=always ' ..
+          '-T ' ..
+          '--level=3 ' ..
+          '--icons ' ..
+          '--git-ignore ' ..
+          '--long ' ..
+          '--no-permissions ' ..
+          '--no-user ' ..
+          '--no-filesize ' ..
+          '--git ' ..
+          '--ignore-glob=.git',
+    },
+
+  }
+})
+
+telescope.load_extension "fzf"
+telescope.load_extension "project"
+telescope.load_extension "media_files"
+telescope.load_extension "dap"
+telescope.load_extension "frecency"
+telescope.load_extension "bookmarks"
+telescope.load_extension "zoxide"
+telescope.load_extension "file_browser"
+telescope.load_extension "repo"
+telescope.load_extension "neoclip"
+telescope.load_extension "flutter"
+telescope.load_extension "cder"
+telescope.load_extension "arecibo"
