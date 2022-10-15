@@ -27,8 +27,8 @@ require("nvim-navic").setup({
 		Operator      = " ",
 		TypeParameter = " ",
 	},
-	highlight = false,
-	separator = " > ",
+	highlight = true,
+	separator = "  ",
 	depth_limit = 0,
 	depth_limit_indicator = "..",
 })

@@ -52,9 +52,16 @@ return packer.startup(function(use)
   use({ "EdenEast/nightfox.nvim" })
   use({ "Ritzier/blackdusk" })
   use({ "pineapplegiant/spaceduck" })
-  use({ "catppuccin/nvim", as = "catppuccin" })
+  use({ "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require("colorscheme.catppuccin")
+    end
+  })
   use({ "katawful/kat.nvim" })
-  --
+  use({ "sainnhe/edge", config = function() require("colorscheme.edge") end })
+  use({ "shaunsingh/nord.nvim", config = function() require("colorscheme.nord") end })
+
   -- Icons
   use({ "kyazdani42/nvim-web-devicons" })
 
@@ -175,6 +182,7 @@ return packer.startup(function(use)
     run = function()
       vim.fn["firenvim#install"](0)
     end,
+    enable = false,
   })
 
   -- Align
@@ -279,6 +287,12 @@ return packer.startup(function(use)
           require("lsp-config.gps")
         end,
       },
+      {
+        "folke/trouble.nvim",
+        config = function()
+          require("lsp-config.trouble")
+        end
+      },
 
       { "folke/neodev.nvim" },
       { "p00f/clangd_extensions.nvim" },
@@ -380,6 +394,8 @@ return packer.startup(function(use)
       { "dhruvmanila/telescope-bookmarks.nvim" },
       { "nvim-telescope/telescope-github.nvim" },
       { "nvim-telescope/telescope-symbols.nvim" },
+      { "nvim-telescope/telescope-frecency.nvim", requires = { "kkharji/sqlite.lua" } },
+      { "cljoly/telescope-repo.nvim" },
       {
         "alpha2phi/telescope-arecibo.nvim",
         rocks = { "openssl", "lua-http-parser" },

@@ -77,7 +77,7 @@ require("nvim-gps").setup({
 		},
 	},
 
-	separator = " > ",
+	separator = "  ",
 
 	depth = 0,
 
