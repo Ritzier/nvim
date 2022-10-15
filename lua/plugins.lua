@@ -280,7 +280,7 @@ return packer.startup(function(use)
 				end,
 			},
 
-			{ "folke/lua-dev.nvim" },
+			{ "folke/neodev.nvim" },
 			{ "p00f/clangd_extensions.nvim" },
 			{
 				"simrat39/rust-tools.nvim",
