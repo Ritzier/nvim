@@ -73,6 +73,7 @@ function M.setup(on_attach, capabilities)
         },
         workspace = {
           library = {
+            vim.api.nvim_get_runtime_file("", true),
             [vim.fn.expand("$VIMRUNTIME/lua")] = true,
             [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
             plugins = { "neotest" },
@@ -93,8 +94,8 @@ function M.setup(on_attach, capabilities)
           setType = true,
         },
         runtime = {
-          path = { "lua/?.lua", "lua/?/init.lua" },
           version = "LuaJIT",
+          path = vim.split(package.path, ";");
         }
       },
     },

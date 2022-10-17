@@ -52,6 +52,12 @@ function M.setup(servers)
     elseif server == "rust_analyzer" then
       set_server("rust_analyzer", on_attach, capabilitie)
 
+    elseif server == "bashls" then
+      set_server("bashls", on_attach, capabilities)
+
+    elseif server == "pyright" then
+      set_server("pyright", on_attach, capabilities)
+
 		else
 			require("lspconfig")[server].setup({
 				on_attach = on_attach,
