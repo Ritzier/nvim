@@ -291,7 +291,7 @@ return packer.startup(function(use)
           require("lsp-config.lspsaga")
         end,
       },
-      { 
+      {
         "RRethy/vim-illuminate",
         config = function()
           require("lsp-config.illuminate")
@@ -384,11 +384,51 @@ return packer.startup(function(use)
       { "f3fora/cmp-spell" },
       { "hrsh7th/cmp-buffer" },
       { "kdheepak/cmp-latex-symbols" },
+      {
+        "zbirenbaum/copilot.lua",
+        event = "InsertEnter",
+        config = function()
+          vim.schedule(function()
+            -- require("copilot").setup()
+            require("cmp-config.copilot")
+          end)
+        end,
+      },
+      {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function()
+          -- require("copilot_cmp").setup()
+          require("cmp-config.copilot_cmp")
+        end
+      }
+
     },
     config = function()
       require("cmp-config")
     end,
   })
+
+
+  -- use({
+  --   "zbirenbaum/copilot.lua",
+  --   after = "nvim-cmp",
+  --   module = {
+  --     "copilot",
+  --     "copilot.util",
+  --   },
+  --   -- config = function()
+  --   --   require("copilot-config")
+  --   -- end
+  -- })
+  -- use({
+  --   "zbirenbaum/copilot-cmp",
+  --   after = "copilot.lua",
+  --   module = "copilot_cmp",
+  --   config = function()
+  --     require("copilot-config/copilot_cmp")
+  --   end
+  -- })
 
   -- Autopairs
   use({
@@ -512,7 +552,7 @@ return packer.startup(function(use)
     "ray-x/go.nvim",
     ft = { "go" },
     config = function()
-      requrie("go").setup()
+      require("go").setup()
     end,
   })
   use({

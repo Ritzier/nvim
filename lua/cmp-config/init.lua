@@ -65,6 +65,7 @@ cmp.setup({
     -- },
   },
   sources = cmp.config.sources({
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
@@ -80,6 +81,8 @@ cmp.setup({
   sorting = {
     priority_weight = 1.0,
     comparators = {
+      require("copilot_cmp.comparators").prioritize,
+			require("copilot_cmp.comparators").score,
       compare.offset,
       compare.exact,
       compare.score,
