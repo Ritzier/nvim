@@ -53,6 +53,7 @@ return packer.startup(function(use)
   use({ "katawful/kat.nvim" })
   use({ "sainnhe/edge", config = function() require("colorscheme.edge") end })
   use({ "shaunsingh/nord.nvim", config = function() require("colorscheme.nord") end })
+  use({ "rebelot/kanagawa.nvim", config = function() require("colorscheme.kanagawa") end })
 
   -- Icons
   use({ "kyazdani42/nvim-web-devicons" })
@@ -99,7 +100,7 @@ return packer.startup(function(use)
         "lukas-reineke/indent-blankline.nvim",
         config = function()
           require("configuration.tree_sitter.indent-line")
-        end
+        end,
       },
       { "JoosepAlviste/nvim-ts-context-commentstring" },
       { "nvim-treesitter/playground" },
@@ -196,6 +197,12 @@ return packer.startup(function(use)
       },
     },
   })
+  use({
+    "rcarriga/nvim-notify",
+    config = function()
+      require("configuration.notify")
+    end
+  })
 
   -- Color
   use({
@@ -226,11 +233,38 @@ return packer.startup(function(use)
   -- Sudo
   use({ "lambdalisue/suda.vim" })
 
+  -- Make {num} better
+  use({
+    "nacro90/numb.nvim",
+    config = function()
+      require("configuration.numb")
+    end,
+  })
+
+  --- Scrollbar
+  use({
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("configuration.scollbar")
+    end,
+  })
+
+  -- Image
+  use({
+    "samodostal/image.nvim",
+    config = function()
+      require("configuration.image")
+    end,
+  })
+
+  -- Sidebar
+  use({ "sidebar-nvim/sidebar.nvim" })
+
   -- LSP
   use({
     "neovim/nvim-lspconfig",
     requires = {
-      { "nvim-lua/completion-nvim" },
+      --{ "nvim-lua/completion-nvim" },
       { "williamboman/mason.nvim" },
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
       {
@@ -257,7 +291,12 @@ return packer.startup(function(use)
           require("lsp-config.lspsaga")
         end,
       },
-      { "RRethy/vim-illuminate" },
+      { 
+        "RRethy/vim-illuminate",
+        config = function()
+          require("lsp-config.illuminate")
+        end
+      },
       {
         "rmagatti/goto-preview",
         config = function()
@@ -405,7 +444,6 @@ return packer.startup(function(use)
   use({
     "mfussenegger/nvim-dap",
     opt = true,
-    -- event = "BufReadPre",
     keys = { [[<leader>d]] },
     module = { "dap" },
     wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
@@ -503,6 +541,14 @@ return packer.startup(function(use)
   })
 
   use({ "ziglang/zig.vim" })
+
+  use({
+    "sudormrfbin/cheatsheet.nvim",
+    cmd = "Cheatsheet",
+    config = function()
+      require("configuration.cheatsheet")
+    end
+  })
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
