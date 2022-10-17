@@ -1,3 +1,3 @@
 require("overseer").setup({
-  templates = { "builtin", "cpp_build" },
+  templates = { "cargo", "cpp_build", "python", "test", "vscode" },
 })

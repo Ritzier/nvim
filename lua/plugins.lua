@@ -147,7 +147,6 @@ return packer.startup(function(use)
     config = function()
       require("configuration.wilder")
     end,
-    event = "CmdlineEnter",
   })
 
   -- Comment
@@ -165,7 +164,6 @@ return packer.startup(function(use)
     config = function()
       require("configuration.gitsigns")
     end,
-    event = { "BufReadPost", "BufNewFile" },
   })
 
   -- WhichKey
@@ -239,7 +237,6 @@ return packer.startup(function(use)
   -- LSP
   use({
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
     requires = {
       { "nvim-lua/completion-nvim" },
       { "williamboman/mason.nvim" },
@@ -268,7 +265,7 @@ return packer.startup(function(use)
           require("lsp-config.lspsaga")
         end,
       },
-      { "RRethy/vim-illuminate", event = "BufReadPost" },
+      { "RRethy/vim-illuminate" },
       {
         "rmagatti/goto-preview",
         config = function()
@@ -302,7 +299,6 @@ return packer.startup(function(use)
       },
       {
         "saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
         config = function()
           require("crates").setup()
         end,
