@@ -126,8 +126,11 @@ function M.setup(on_attach, capabilities)
               command = "clippy",
             },
             completion = {
-              postfix = {
-                enable = false,
+              -- postfix = {
+              --   enable = false,
+              -- }
+              callable = {
+                snippets = "fill_arguments"
               }
             },
             imports = {

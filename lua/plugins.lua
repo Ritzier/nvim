@@ -80,6 +80,7 @@ return packer.startup(function(use)
     config = function()
       require("configuration.nvimtree")
     end,
+    wants = { "nui.nvim" }
   })
 
   use({
@@ -185,18 +186,43 @@ return packer.startup(function(use)
   -- UserInterface
   use({
     "stevearc/dressing.nvim",
+    event = "BufReadPre",
     config = function()
-      require("configuration.dressing")
+      require("dressing").setup {
+        input = { relative = "editor" },
+        select = {
+          backend = { "telescope", "fzf", "builtin" },
+        },
+      }
+    end,
+    disable = false,
+  })
+  use({
+    "ray-x/guihua.lua",
+    run = "cd lua/fzy && make",
+    disable = true,
+  })
+  use({
+    "doums/suit.nvim",
+    config = function()
+      require("suit").setup {}
+    end,
+    disable = true,
+  })
+  use {
+    "folke/noice.nvim",
+    event = "VimEnter",
+    config = function()
+      require("noice").setup()
     end,
     requires = {
-      {
-        "MunifTanjim/nui.nvim",
-        config = function()
-          require("configuration.nui")
-        end,
-      },
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "hrsh7th/nvim-cmp",
     },
-  })
+    -- disable = true,
+  }
+
   use({
     "rcarriga/nvim-notify",
     config = function()
@@ -326,7 +352,7 @@ return packer.startup(function(use)
       { "p00f/clangd_extensions.nvim" },
       {
         "simrat39/rust-tools.nvim",
-        requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim", "mattn/webapi-vim" },
+        requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim", "mattn/webapi-vim", "MunifTanjim/nui.nvim" },
       },
       {
         "saecki/crates.nvim",
