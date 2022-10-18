@@ -286,6 +286,14 @@ return packer.startup(function(use)
   -- Sidebar
   use({ "sidebar-nvim/sidebar.nvim" })
 
+  -- Autopairs
+  use({
+    "jiangmiao/auto-pairs",
+    config = function()
+      require("configuration.autopairs")
+    end
+  })
+
   -- LSP
   use({
     "neovim/nvim-lspconfig",
@@ -383,13 +391,6 @@ return packer.startup(function(use)
     end,
   })
 
-  use({
-    "echasnovski/mini.nvim",
-    config = function()
-      require("configuration.mini_pairs")
-    end
-  })
-
   -- CMP
   use({
     "hrsh7th/nvim-cmp",
@@ -455,15 +456,6 @@ return packer.startup(function(use)
   --     require("copilot-config/copilot_cmp")
   --   end
   -- })
-
-  -- Autopairs
-  use({
-    "windwp/nvim-autopairs",
-    config = function()
-      require("configuration.nvim_autopairs")
-    end,
-    after = { "nvim-cmp", "nvim-treesitter" },
-  })
 
   -- Telescope
   use({
