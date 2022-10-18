@@ -213,14 +213,14 @@ return packer.startup(function(use)
     "folke/noice.nvim",
     event = "VimEnter",
     config = function()
-      require("noice").setup()
+      require("configuration.noice")
     end,
     requires = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
       "hrsh7th/nvim-cmp",
     },
-    -- disable = true,
+    disable = true,
   }
 
   use({
