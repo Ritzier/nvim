@@ -63,6 +63,9 @@ keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", defaul
 --   e = { name = "Diagnostic Open Float" }
 -- }, { prefix = "<space>" })
 
+keymap("n", "<C-s>", "<cmd>w<CR>", default_opts)
+keymap("i", "<C-s>", "<cmd>w<CR>", default_opts)
+
 require("which-key").register({
   T = {
     name = "Telescope",
