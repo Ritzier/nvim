@@ -421,41 +421,12 @@ return packer.startup(function(use)
           end)
         end,
       },
-      {
-        "zbirenbaum/copilot-cmp",
-        after = { "copilot.lua" },
-        config = function()
-          -- require("copilot_cmp").setup()
-          require("cmp-config.copilot_cmp")
-        end
-      }
-
+      { "zbirenbaum/copilot-cmp" }
     },
     config = function()
       require("cmp-config")
     end,
   })
-
-
-  -- use({
-  --   "zbirenbaum/copilot.lua",
-  --   after = "nvim-cmp",
-  --   module = {
-  --     "copilot",
-  --     "copilot.util",
-  --   },
-  --   -- config = function()
-  --   --   require("copilot-config")
-  --   -- end
-  -- })
-  -- use({
-  --   "zbirenbaum/copilot-cmp",
-  --   after = "copilot.lua",
-  --   module = "copilot_cmp",
-  --   config = function()
-  --     require("copilot-config/copilot_cmp")
-  --   end
-  -- })
 
   -- Telescope
   use({
