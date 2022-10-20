@@ -1,0 +1,7 @@
+require("dap-config.configuration.c")
+require("dap-config.configuration.cpp")
+require("dap-config.configuration.rust")
+require("dap-config.configuration.go")
+require("dap-config.configuration.python")
+require("dap-config.configuration.dart")
+require("dap-config.configuration.cs")

@@ -472,8 +472,6 @@ return packer.startup(function(use)
   -- DAP - debugger
   use({
     "mfussenegger/nvim-dap",
-    opt = true,
-    keys = { [[<leader>d]] },
     module = { "dap" },
     wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
     requires = {
@@ -486,11 +484,11 @@ return packer.startup(function(use)
       { "leoluz/nvim-dap-go", module = "dap-go" },
       { "jbyuki/one-small-step-for-vimkind", module = "osv" },
       { "nvim-lua/plenary.nvim" },
+      { "scalameta/nvim-metals" },
     },
     config = function()
-      require("dap-config").setup()
+      require("dap-config")
     end,
-    disable = false,
   })
 
   -- Run file
@@ -578,6 +576,20 @@ return packer.startup(function(use)
       require("configuration.cheatsheet")
     end
   })
+
+  use({
+    "scalameta/nvim-metals",
+    config = function()
+      require("lsp-config.scala")
+    end,
+    requires = {
+      {"neovim/nvim-lspconfig"},
+      {"nvim-lua/plenary.nvim"},
+      {"mfussenegger/nvim-dap"},
+      {"hrsh7th/nvim-cmp"},
+    }
+  })
+
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
