@@ -1,5 +1,6 @@
 vim.keymap.set("n", "1", "<cmd>RustRunnables<CR>", { silent = true })
-vim.keymap.set("n", "2", "<cmd>RustRun<CR>", { silent = true })
+-- vim.keymap.set("n", "2", "<cmd>RustRun<CR>", { silent = true })
+vim.keymap.set("n", "2", ":!cargo run<CR>", { silent = true })
 vim.keymap.set("n", "3", ":!cargo run --release<CR>", { silent = true })
 
 require("which-key").register({

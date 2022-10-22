@@ -82,7 +82,7 @@ cmp.setup({
     priority_weight = 1.0,
     comparators = {
       require("copilot_cmp.comparators").prioritize,
-			require("copilot_cmp.comparators").score,
+      require("copilot_cmp.comparators").score,
       compare.offset,
       compare.exact,
       compare.score,
@@ -106,7 +106,7 @@ cmp.setup({
       end
 
       local lspkind_icons = {
-        Text = "",
+        Text = "",
         Method = "",
         Function = "",
         Constructor = "",
@@ -119,7 +119,7 @@ cmp.setup({
         Unit = "",
         Value = "",
         Enum = "",
-        Keyword = "",
+        Keyword = "",
         Snippet = "",
         Color = "",
         File = "",
@@ -134,11 +134,12 @@ cmp.setup({
         TypeParameter = "",
         Array = "",
         Boolean = "蘒",
-        Namespace = "",
+        Namespace = "",
         Number = "",
         Null = "ﳠ",
         Object = "",
-        Package = "",
+        -- Package = "",
+        Package = "",
         String = "",
       }
       vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
@@ -155,7 +156,7 @@ cmp.setup({
         zsh = "   ZSH",
         Copilot = "",
         Copilot_alt = "",
-        spell = "暈SPELL",
+        spell = "暈",
       })[entry.source.name]
 
       local content = vim_item.abbr

@@ -36,10 +36,11 @@ local function get_modified_palette()
   return cp
 end
 
-vim.g.catppuccin_flavour = "mocha" -- Set flavour here
 local cp = get_modified_palette()
 
 require("catppuccin").setup({
+  flavour = "mocha",
+  background = { light = "latte", dark = "mocha" },
   dim_inactive = {
     enabled = false,
     -- Dim inactive splits/windows/buffers.
@@ -112,8 +113,11 @@ require("catppuccin").setup({
     vimwiki = true,
     beacon = false,
     navic = { enabled = true },
-    overseer = false,
+    overseer = true,
     fidget = true,
+    mason = true,
+    neotest = true,
+    noice = false,
   },
   color_overrides = {
     mocha = {
