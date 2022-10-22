@@ -48,6 +48,7 @@ return packer.startup(function(use)
     as = "catppuccin",
     config = function()
       require("colorscheme.catppuccin")
+      vim.cmd('colorscheme catppuccin-mocha')
     end
   })
   use({ "katawful/kat.nvim" })
@@ -225,9 +226,6 @@ return packer.startup(function(use)
 
   use({
     "rcarriga/nvim-notify",
-    config = function()
-      require("configuration.notify")
-    end
   })
 
   -- Color

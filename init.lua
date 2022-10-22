@@ -1,4 +1,4 @@
 require("plugins")
 require("core")
 
-require("colorscheme")
+-- vim.cmd('colorscheme catppuccin')

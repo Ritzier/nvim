@@ -1,56 +1,12 @@
-local function get_modified_palette()
-
-  local cp = require("catppuccin.palettes").get_palette() -- Get the palette.
-  cp.none = "NONE" -- Special setting for complete transparent fg/bg.
-
-  if vim.g.catppuccin_flavour == "mocha" then -- We only modify the "mocha" palette.
-    cp.rosewater = "#F5E0DC"
-    cp.flamingo = "#F2CDCD"
-    cp.mauve = "#DDB6F2"
-    cp.pink = "#F5C2E7"
-    cp.red = "#F28FAD"
-    cp.maroon = "#E8A2AF"
-    cp.peach = "#F8BD96"
-    cp.yellow = "#FAE3B0"
-    cp.green = "#ABE9B3"
-    cp.blue = "#96CDFB"
-    cp.sky = "#89DCEB"
-    cp.teal = "#B5E8E0"
-    cp.lavender = "#C9CBFF"
-
-    cp.text = "#D9E0EE"
-    cp.subtext1 = "#BAC2DE"
-    cp.subtext0 = "#A6ADC8"
-    cp.overlay2 = "#C3BAC6"
-    cp.overlay1 = "#988BA2"
-    cp.overlay0 = "#6E6C7E"
-    cp.surface2 = "#6E6C7E"
-    cp.surface1 = "#575268"
-    cp.surface0 = "#302D41"
-
-    cp.base = "#1E1E2E"
-    cp.mantle = "#1A1826"
-    cp.crust = "#161320"
-  end
-
-  return cp
-end
-
-local cp = get_modified_palette()
-
 require("catppuccin").setup({
-  flavour = "mocha",
-  background = { light = "latte", dark = "mocha" },
+  compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
+  transparent_background = false,
+  term_colors = true,
   dim_inactive = {
     enabled = false,
-    -- Dim inactive splits/windows/buffers.
-    -- NOT recommended if you use old palette (a.k.a., mocha).
     shade = "dark",
     percentage = 0.15,
   },
-  transparent_background = false,
-  term_colors = true,
-  compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
   styles = {
     comments = { "italic" },
     properties = { "italic" },
@@ -98,6 +54,9 @@ require("catppuccin").setup({
     markdown = true,
     lightspeed = false,
     ts_rainbow = true,
+    mason = true,
+    neotest = false,
+    noice = false,
     hop = true,
     illuminate = true,
     cmp = true,
@@ -115,9 +74,6 @@ require("catppuccin").setup({
     navic = { enabled = true },
     overseer = true,
     fidget = true,
-    mason = true,
-    neotest = true,
-    noice = false,
   },
   color_overrides = {
     mocha = {
@@ -150,6 +106,12 @@ require("catppuccin").setup({
       crust = "#161320",
     },
   },
+})
+
+vim.g.catppuccin_flavour = "mocha"
+local cp = require("catppuccin.palettes").get_palette()
+
+require("catppuccin").setup({
   highlight_overrides = {
     mocha = {
       -- For base configs.
@@ -207,8 +169,6 @@ require("catppuccin").setup({
       NaivcIconsStaticMethod = { fg = cp.peach },
       NaivcIconsMacro = { fg = cp.red },
 
-
-
       -- For treesitter.
       ["@field"] = { fg = cp.rosewater },
       ["@property"] = { fg = cp.yellow },
@@ -251,7 +211,7 @@ require("catppuccin").setup({
 
       ["@punctuation.delimiter"] = { fg = cp.teal },
       ["@punctuation.bracket"] = { fg = cp.overlay2 },
-      -- ["@string"] = { fg = cp.green },
+      ["@string"] = { fg = cp.green },
       -- ["@string.regex"] = { fg = cp.peach },
       -- ["@type"] = { fg = cp.yellow },
       ["@variable"] = { fg = cp.text },
