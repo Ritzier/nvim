@@ -64,7 +64,7 @@ require("lspsaga").init_lsp_saga({
   max_preview_lines = 20,
   symbol_in_winbar = {
     enable = false,
-    in_custom = false,
+    in_custom = true,
     separator = "  ",
     show_file = false,
     file_formatter = "",

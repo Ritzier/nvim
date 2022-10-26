@@ -1,4 +1,5 @@
 local servers = {
+	"efm",
 	"sumneko_lua",
 	"volar",
 	"pyright",
@@ -10,7 +11,6 @@ local servers = {
 	"svelte",
 	"tailwindcss",
 	"tsserver",
-	"efm",
 	"bashls",
 	"rust_analyzer",
 	"clangd",

@@ -99,3 +99,5 @@ require("lualine").setup({
 	tabline = {},
 	extensions = {},
 })
+
+h = ""

@@ -25,7 +25,7 @@ opt.swapfile       = false
 opt.undofile       = true
 g.termguicolors    = true
 opt.list           = true
-opt.spell          = true
+opt.spell          = false
 
 opt.expandtab    = true
 opt.smartcase    = true

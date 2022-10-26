@@ -8,6 +8,7 @@ function M.setup(on_attach, capabilities)
     on_attach(client, bufnr)
     vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
     vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+
   end
 
   local opts = {
@@ -155,5 +156,13 @@ function M.setup(on_attach, capabilities)
 
   require('rust-tools').setup(opts)
 end
+
+require("lualine").setup({
+  sections = {
+    lualine_c = {
+      { require("nvim-gps").get_location, cond = require("nvim-gps").is_available },
+    },
+  },
+})
 
 return M

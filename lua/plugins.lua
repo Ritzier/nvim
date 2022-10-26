@@ -196,12 +196,10 @@ return packer.startup(function(use)
         },
       }
     end,
-    disable = false,
   })
   use({
     "ray-x/guihua.lua",
     run = "cd lua/fzy && make",
-    disable = true,
   })
   use({
     "doums/suit.nvim",
