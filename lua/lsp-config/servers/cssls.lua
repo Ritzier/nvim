@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(on_attach, capabilities)
+function M.setup(on_attach, capabilities, handlers)
     local copy_capabilities = capabilities
     copy_capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
@@ -16,6 +16,7 @@ function M.setup(on_attach, capabilities)
     require("lspconfig")["cssls"].setup({
         on_attach = copy_attach,
         capabilities = copy_capabilities,
+    handlers = handlers,
     })
 end
 

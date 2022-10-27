@@ -23,6 +23,4 @@ local servers = {
 
 require("lsp-config.lsp").setup(servers)
 
-require("lsp-config.handlers").setup()
-
 require("lsp-config.mason").setup()

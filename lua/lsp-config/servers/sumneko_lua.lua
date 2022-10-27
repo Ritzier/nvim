@@ -1,6 +1,6 @@
 local M = {}
 
-function M.old_setup(on_attach, capabilities)
+function M.old_setup(on_attach, capabilities, handlers)
   local function custom_attach(client, bufnr)
     require("lsp-config.servers.on_attach").on_attach(client, bufnr)
     require("inlay-hints").on_attach(client, bufnr)
@@ -10,6 +10,7 @@ function M.old_setup(on_attach, capabilities)
   local lspconfig = vim.tbl_deep_extend("force", luadev, {
     on_attach = custom_attach,
     capabilities = capabilities,
+    handlers = handlers,
     settings = {
       Lua = {
         diagnostics = {

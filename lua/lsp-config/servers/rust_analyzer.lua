@@ -120,6 +120,7 @@ function M.setup(on_attach, capabilities)
       server = {
         capabilities = capabilities,
         on_attach = custom_attach,
+        handlers = handlers,
 
         settings = {
           ["rust-analyzer"] = {
