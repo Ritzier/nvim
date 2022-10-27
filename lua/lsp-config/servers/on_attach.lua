@@ -10,12 +10,6 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
-  keymap("n", "K", vim.lsp.buf.hover, bufopts)
-  keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", bufopts)
-  keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", bufopts)
-  keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", bufopts)
-  keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", bufopts)
-
   require("which-key").register({
     w = {
       name = "Workspace",
@@ -37,8 +31,24 @@ function M.on_attach(client, bufnr)
     gd = { vim.lsp.buf.definition, "Definition" },
     gi = { vim.lsp.buf.implementation, "Implementaion" },
     gt = { vim.lsp.buf.type_definition, "Type Definition" },
-    K = { vim.lsp.buf.hover, "Hover" },
-  }, { silent = true, noremap = true })
+    K = { "<cmd>Lspsaga hover_doc<CR>", "Hover" },
+    ["[e"] = {
+      "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>",
+      "Prev Error"
+    },
+    ["]e"] = {
+      "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>",
+      "Next Error"
+    },
+    ["[d"] = {
+      "<cmd>lua vim.diagnostic.goto_prev()<CR>",
+      "Prev Diagnostic"
+    },
+    ["]d"] = {
+      "<cmd>lua vim.diagnostic.goto_next()<CR>",
+      "Next Diagnostic"
+    },
+  }, { silent = true, noremap = true, buffer = bufnr })
 
   if client.server_capabilities.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")

@@ -125,11 +125,12 @@ require("which-key").register({
   r = { ":OverseerRun<CR>", "OverSeer Run" },
   s = {
     name = "lspsaga",
-    f = { "<cmd>lspsaga lsp_finder<cr>", "finder" },
-    n = { "<cmd>lspsaga rename<cr>", "rename" },
-    c = { "<cmd>lspsaga show_cursor_diagnostics<cr>", "show cursor diagnostics" },
-    k = { "<cmd>lspsaga hover_doc<cr>", "hover doc" },
-    o = { "<cmd>lsoutlinetoggle<cr>", "outline toggle" },
+    f = { "<cmd>Lspsaga lsp_finder<cr>", "finder" },
+    n = { "<cmd>Lspsaga rename<cr>", "rename" },
+    c = { "<cmd>Lspsaga show_cursor_diagnostics<cr>", "show cursor diagnostics" },
+    k = { "<cmd>Lspsaga hover_doc<cr>", "hover doc" },
+    o = { "<cmd>LSoutlineToggle<cr>", "outline toggle" },
+    d = { "<cmd>Lspsaga peek_definition<CR>", "Peek Definition" },
   },
 
   t = { ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Neotest Run" },
