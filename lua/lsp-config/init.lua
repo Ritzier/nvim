@@ -21,6 +21,8 @@ local servers = {
   "jsonls",
 }
 
+require("lsp-config.handlers").setup()
+
 require("lsp-config.lsp").setup(servers)
 
 require("lsp-config.mason").setup()

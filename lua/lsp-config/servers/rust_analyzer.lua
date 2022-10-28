@@ -2,7 +2,7 @@ local M = {}
 
 local rt = require("rust-tools")
 
-function M.setup(on_attach, capabilities, handlers)
+function M.setup(on_attach, capabilities)
 
   local function custom_attach(client, bufnr)
     on_attach(client, bufnr)
@@ -120,8 +120,6 @@ function M.setup(on_attach, capabilities, handlers)
       server = {
         capabilities = capabilities,
         on_attach = custom_attach,
-        handlers = handlers,
-
         settings = {
           ["rust-analyzer"] = {
             checkOnSave = {

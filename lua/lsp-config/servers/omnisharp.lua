@@ -1,10 +1,9 @@
 local M = {}
 
-function M.setup(on_attach, capabilities, handlers)
+function M.setup(on_attach, capabilities)
   require("lspconfig").omnisharp.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    handlers = handlers,
     cmd = { "dotnet", "" },
     enable_editorconfig_support = true,
     enable_ms_build_load_projects_on_demand = false,

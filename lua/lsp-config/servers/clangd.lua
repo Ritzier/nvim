@@ -24,7 +24,7 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
   end
 end
 
-function M.setup(on_attach, capabilities, handlers)
+function M.setup(on_attach, capabilities)
   local function custom_attach(client, bufnr)
     on_attach(client, bufnr)
   end
@@ -35,7 +35,6 @@ function M.setup(on_attach, capabilities, handlers)
   require("clangd_extensions").setup({
     server = {
       capabilities = copy_capabilities,
-      handlers = handlers,
       single_file_support = true,
       init_options = {
         clangdFileStatus = true,

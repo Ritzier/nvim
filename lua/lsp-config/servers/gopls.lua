@@ -1,10 +1,9 @@
 local M = {}
 
-function M.setup(on_attach, capabilities, handlers)
+function M.setup(on_attach, capabilities)
   require("lspconfig")["gopls"].setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    handlers = handlers,
     flags = {
       debounce_text_changes = 500,
     },

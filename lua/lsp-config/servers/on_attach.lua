@@ -31,7 +31,8 @@ function M.on_attach(client, bufnr)
     gd = { vim.lsp.buf.definition, "Definition" },
     gi = { vim.lsp.buf.implementation, "Implementaion" },
     gt = { vim.lsp.buf.type_definition, "Type Definition" },
-    K = { "<cmd>Lspsaga hover_doc<CR>", "Hover" },
+    K = { vim.lsp.buf.hover, "Hover Doc" },
+    -- K = { "<cmd>Lspsaga hover_doc<CR>", "Hover" },
     ["[e"] = {
       "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>",
       "Prev Error"

@@ -1,10 +1,9 @@
 local M = {}
 
-function M.setup(on_attach, capabilities, handlers)
+function M.setup(on_attach, capabilities)
   require("lspconfig")["jsonls"].setup({
     on_attach = on_attach,
     capbilities = capabilities,
-    handlers = handlers,
     settings = {
       json = {
         schemas = require("schemastore").json.schemas(),

@@ -50,6 +50,19 @@ local border = function(hl)
   }
 end
 
+local border2 = function(hl)
+		return {
+			{ "┌", hl },
+			{ "─", hl },
+			{ "┐", hl },
+			{ "│", hl },
+			{ "┘", hl },
+			{ "─", hl },
+			{ "└", hl },
+			{ "│", hl },
+		}
+	end
+
 local compare = require("cmp.config.compare")
 
 local cmp = require("cmp")
@@ -57,11 +70,11 @@ cmp.setup({
   preselected = None;
   window = {
     completion = {
-      border = border("CmpBorder"),
+      border = border2("CmpBorder"),
       winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
     },
     documentation = {
-      border = border("CmpDocBorder"),
+      border = border2("CmpDocBorder"),
     },
   },
   sources = cmp.config.sources({
@@ -174,8 +187,8 @@ cmp.setup({
     ["<A-CR>"] = cmp.mapping.confirm({ select = true }),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-e>"] = cmp.mapping.close(),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
