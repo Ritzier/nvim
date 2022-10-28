@@ -2,7 +2,7 @@ local M = {}
 
 local rt = require("rust-tools")
 
-function M.setup(on_attach, capabilities)
+function M.setup(on_attach, capabilities, handlers)
 
   local function custom_attach(client, bufnr)
     on_attach(client, bufnr)

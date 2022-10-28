@@ -60,9 +60,9 @@ cmp.setup({
       border = border("CmpBorder"),
       winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
     },
-    -- documentation = {
-    --   border = border("CmpDocBorder"),
-    -- },
+    documentation = {
+      border = border("CmpDocBorder"),
+    },
   },
   sources = cmp.config.sources({
     { name = "copilot" },
