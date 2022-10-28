@@ -70,7 +70,7 @@ cmp.setup({
   preselected = None;
   window = {
     completion = {
-      border = border2("CmpBorder"),
+      border = border("CmpBorder"),
       winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
     },
     documentation = {

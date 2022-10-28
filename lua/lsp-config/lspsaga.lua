@@ -19,6 +19,10 @@ end
 local colors = get_palette()
 
 require("lspsaga").init_lsp_saga({
+  scroll_in_preview = {
+    scroll_down = "<C-d>",
+    scroll_up = "<C-f>",
+  },
   border_style = "rounded",
   diagnostic_header = { " ", " ", "  ", " " },
   custom_kind = {
