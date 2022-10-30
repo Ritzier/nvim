@@ -295,6 +295,12 @@ return packer.startup(function(use)
     "neovim/nvim-lspconfig",
     requires = {
       --{ "nvim-lua/completion-nvim" },
+      {
+        "amrbashir/nvim-docs-view",
+        config = function()
+          require("lsp-config.nvim_doc")
+        end
+      },
       { "williamboman/mason.nvim" },
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
       {
@@ -579,10 +585,10 @@ return packer.startup(function(use)
       require("lsp-config.scala")
     end,
     requires = {
-      {"neovim/nvim-lspconfig"},
-      {"nvim-lua/plenary.nvim"},
-      {"mfussenegger/nvim-dap"},
-      {"hrsh7th/nvim-cmp"},
+      { "neovim/nvim-lspconfig" },
+      { "nvim-lua/plenary.nvim" },
+      { "mfussenegger/nvim-dap" },
+      { "hrsh7th/nvim-cmp" },
     }
   })
 
