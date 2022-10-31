@@ -1,4 +1,4 @@
-require("dap").configurations.c = {
+require("dap").configurations.rust = {
   {
     name = "Launch file",
     type = "codelldb",
@@ -8,5 +8,5 @@ require("dap").configurations.c = {
     end,
     cwd = "${workspaceFolder}",
     stopOnEntry = true,
-  },
+  }
 }

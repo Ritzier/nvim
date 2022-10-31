@@ -379,7 +379,7 @@ return packer.startup(function(use)
       { "jose-elias-alvarez/typescript.nvim" },
       { "b0o/schemastore.nvim" },
       { "mfussenegger/nvim-jdtls", ft = { "java" } },
-      { "udalov/kotlin-vim", ft = { "kotlin" }, disable = true },
+      { "udalov/kotlin-vim", ft = { "kotlin" } },
       { "yuezk/vim-js" },
       { "HerringtonDarkholme/yats.vim" },
       { "maxmellon/vim-jsx-pretty" },
@@ -475,7 +475,6 @@ return packer.startup(function(use)
   use({
     "mfussenegger/nvim-dap",
     module = { "dap" },
-    wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
     requires = {
       -- "alpha2phi/DAPInstall.nvim",
       -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
@@ -487,6 +486,10 @@ return packer.startup(function(use)
       { "jbyuki/one-small-step-for-vimkind", module = "osv" },
       { "nvim-lua/plenary.nvim" },
       { "scalameta/nvim-metals" },
+      {
+        "mxsdev/nvim-dap-vscode-js",
+        run = "npm install --legacy-peer-deps && npm run compile"
+      },
     },
     config = function()
       require("dap-config")

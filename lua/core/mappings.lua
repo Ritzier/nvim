@@ -119,3 +119,10 @@ require("which-key").register({
   },
   t = { ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Neotest Run" },
 }, { prefix = "<space>", silent = true, noremap = true })
+
+require("which-key").register({
+  d = {
+    name = "DAP",
+    e = { "<cmd>lua require'dapui'.eval()<CR>", "Evaluate" },
+  },
+}, { prefix = "<leader>", mode = "v", buffer = nil, silent = ture, noremap = true, nowait = false })

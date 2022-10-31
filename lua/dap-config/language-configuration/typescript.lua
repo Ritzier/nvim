@@ -1,12 +1,12 @@
 local M = {}
 
-function M.setup(chromeDebugger)
+function M.setup(DEBUGGER_LOCATION)
   local dap = require "dap"
 
   dap.adapters.chrome = {
     type = "executable",
     command = "node",
-    args = chromeDebugger,
+    args = { DEBUGGER_LOCATION .. "/out/src/chromeDebug.js" },
   }
 
   dap.configurations.javascript = {

@@ -1,6 +1,1 @@
-require("dap-config.adapter-config.codelldb")
-require("dap-config.adapter-config.corecrl")
-require("dap-config.adapter-config.go")
-require("dap-config.adapter-config.python")
-require("dap-config.adapter-config.dart")
-require("dap-config.adapter-config.godot")
+local path = require("dap-config.path")

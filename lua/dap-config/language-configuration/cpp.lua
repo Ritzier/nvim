@@ -8,5 +8,5 @@ require("dap").configurations.cpp = {
     end,
     cwd = "${workspaceFolder}",
     stopOnEntry = true,
-  },
+  }
 }
