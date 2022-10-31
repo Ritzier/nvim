@@ -592,6 +592,8 @@ return packer.startup(function(use)
     }
   })
 
+  use({ "Vimjas/vim-python-pep8-indent" })
+
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
