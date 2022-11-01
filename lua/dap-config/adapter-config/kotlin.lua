@@ -1,9 +1,11 @@
 local M = {}
 
-require("dap").adapters.kotlin = {
-  type = "executable",
-  command = DEBUGGER_LOCATION .. "/adapter/build/install/adapter/bin/kotlin-debug-adapter",
-  args = { "--interpreter=vscode" },
-}
+function M.setup(KOTLIN_ADAPTER_PATH)
+  require("dap").adapters.kotlin = {
+    type = "executable",
+    args = { "--interpreter=vscode" },
+    command = KOTLIN_ADAPTER_PATH,
+  }
+end
 
 return M

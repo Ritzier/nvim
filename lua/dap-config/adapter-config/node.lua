@@ -1,6 +1,8 @@
 local M = {}
 
-function M.setup(DEBUGGER_PATH)
+local DEBUGGER_PATH = vim.fn.stdpath "data" .. "/site/pack/packer/opt/vscode-js-debug"
+
+function M.setup()
   require("dap-vscode-js").setup({
     node_path = "node",
     debugger_path = DEBUGGER_PATH,

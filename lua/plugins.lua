@@ -486,10 +486,12 @@ return packer.startup(function(use)
       { "jbyuki/one-small-step-for-vimkind", module = "osv" },
       { "nvim-lua/plenary.nvim" },
       { "scalameta/nvim-metals" },
+      { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
       {
-        "mxsdev/nvim-dap-vscode-js",
+        "microsoft/vscode-js-debug",
+        opt = true,
         run = "npm install --legacy-peer-deps && npm run compile"
-      },
+      }
     },
     config = function()
       require("dap-config")
