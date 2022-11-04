@@ -4,11 +4,12 @@ require("todo-comments").setup({
   keywords = {
     FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, },
     TODO = { icon = " ", color = "info" },
-    HACK = { icon = " ", color = "#93ff51" },
+    HACK = { icon = " ", color = "#a2ff45" },
     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
     PERF = { icon = " ", color = "#7C3AED", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
     NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
     TEST = { icon = "☀ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+    METHOD = { icon = "פֿ ", color = "#2860e9" }
   },
   gui_style = { fg = "NONE", bg = "BOLD" },
   merge_keywords = true,
