@@ -11,15 +11,15 @@ declare -a NPMPackage=("bash-language-server" "@angular/language-server" "@tailw
 declare -a PIPPackage=("pyright" "black" "flake8" "xmlformatter")
 
 for package in "${ParuPackage[@]}"; do
-  echo "${package}"
+  paru -S "${package}"
 done
 
 for package in "${NPMPackage[@]}"; do
-  echo "${package}"
+  sudo npm install -g "${package}"
 done
 
 for package in "${PIPPackage[@]}"; do
-  echo "${package}"
+  pip3 "${package}"
 done
 
 sudo npm install -g xo --save-dev
