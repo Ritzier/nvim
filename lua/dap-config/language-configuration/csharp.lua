@@ -1,10 +1,14 @@
 require("dap").configurations.cs = {
   {
-    type = "coreclr",
-    name = "launch - netcoredbg",
+    name = "Launch file",
+    type = "lldb",
     request = "launch",
     program = function()
-      return vim.fn.input("Path to DLL > ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
-  },
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  }
 }

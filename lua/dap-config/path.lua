@@ -14,7 +14,16 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   M.codelldb = M.LOCATION .. "codelldb.cmd"
   M.debugpy_adapter = M.LOCATION .. "debugpy-adapter.cmd"
   M.netcoredbg = M.LOCATION .. "netcoredbg.cmd"
-  M.kotlin_adapter = "" 
+  M.kotlin_adapter = ""
+  M.coreclr = ""
+else
+  M.BASH_DEBUGGER = M.LOCATION .. "bash-debug-adapter"
+  M.chromeAdapter = M.LOCATION .. "chrome-debug-adapter"
+  M.codelldb = M.LOCATION .. "codelldb"
+  M.lldb = "/usr/bin/lldb-vscode"
+  M.debugpy_adapter = M.LOCATION .. "debugpy-adapter"
+  M.netcoredbg = "/usr/bin/netcoredbg"
+  M.kotlin_adapter = ""
   M.coreclr = ""
 end
 
