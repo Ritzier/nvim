@@ -9,8 +9,7 @@ require("dap-config.adapter-config.node")
 require("dap-config.adapter-config.nlua")
 
 require("dap-config.adapter-config.coreclr").setup(netcoredbg)
--- require("dap-config.adapter-config.codelldb").setup(codelldb)
-require("dap-config.adapter-config.lldb").setup(lldb)
+require("dap-config.adapter-config.codelldb").setup(codelldb)
 require("dap-config.adapter-config.kotlin").setup(kotlin)
 
 require("dap-config.adapter-config.go")
