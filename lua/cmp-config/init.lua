@@ -1,3 +1,126 @@
+local lspkind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Key = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = "",
+  Array = "",
+  Boolean = "蘒",
+  Namespace = "",
+  Number = "",
+  Null = "ﳠ",
+  Object = "",
+  -- Package = "",
+  Package = "",
+  String = "",
+}
+
+local formatting1 = {
+  format = function(entry, vim_item)
+    local ELLIPSIS_CHAR = '…'
+    local MAX_LABEL_WIDTH = 30
+    local MAX_KIND_WIDTH = 20
+
+    local get_ws = function(max, len)
+      return (" "):rep(max - len)
+    end
+
+    vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
+    -- vim_item.kind = string.format("%s", lspkind_icons[vim_item.kind])
+
+    -- vim_item.menu = ({
+    --   npm = "   NPM",
+    --   nvim_lsp = "  LSP",
+    --   buffer = " ﬘ BUF",
+    --   nvim_lua = " ",
+    --   luasnip = "  SNP",
+    --   calc = "  ",
+    --   path = " ﱮ ",
+    --   treesitter = " ",
+    --   zsh = "   ZSH",
+    --   Copilot = "",
+    --   Copilot_alt = "",
+    --   spell = "暈",
+    -- })[entry.source.name]
+
+    local content = vim_item.abbr
+    if #content > MAX_LABEL_WIDTH then
+      vim_item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+    else
+      vim_item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+    end
+
+    return vim_item
+  end,
+}
+
+local formatting2 = {
+  format = function(entry, vim_item)
+    local ELLIPSIS_CHAR = "…"
+    local MAX_LABEL_WIDTH = 30
+    local MAX_KIND_WIDTH = 20
+
+    local get_ws = function(max, len)
+      return (" "):rep(max - len)
+    end
+
+    vim_item.kind = (lspkind_icons[vim_item.kind] or '') .. vim_item.kind
+    local content = vim_item.abbr
+    if #content > MAX_LABEL_WIDTH then
+      vim_item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+    else
+      vim_item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+      return vim_item
+
+    end
+  end
+}
+
+local formatting3 = {
+  format = function(entry, vim_item)
+    local ELLIPSIS_CHAR = "…"
+    local MAX_LABEL_WIDTH = 30
+    local MAX_KIND_WIDTH = 20
+
+    local get_ws = function(max, len)
+      return (" "):rep(max - len)
+    end
+
+    -- vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
+    vim_item.menu = " (" .. string.format("%s", vim_item.kind) .. ")"
+    vim_item.kind = string.format("%s", lspkind_icons[vim_item.kind])
+
+    local content = vim_item.abbr
+    if #content > MAX_LABEL_WIDTH then
+      vim_item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+    else
+      vim_item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+      return vim_item
+    end
+  end
+}
+
 local lspkind_comparator = function(conf)
   local lsp_types = require('cmp.types').lsp
   return function(entry1, entry2)
@@ -51,17 +174,17 @@ local border = function(hl)
 end
 
 local border2 = function(hl)
-		return {
-			{ "┌", hl },
-			{ "─", hl },
-			{ "┐", hl },
-			{ "│", hl },
-			{ "┘", hl },
-			{ "─", hl },
-			{ "└", hl },
-			{ "│", hl },
-		}
-	end
+  return {
+    { "┌", hl },
+    { "─", hl },
+    { "┐", hl },
+    { "│", hl },
+    { "┘", hl },
+    { "─", hl },
+    { "└", hl },
+    { "│", hl },
+  }
+end
 
 local compare = require("cmp.config.compare")
 
@@ -72,6 +195,8 @@ cmp.setup({
     completion = {
       border = border("CmpBorder"),
       winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+      -- col_offset = -3,
+      -- side_padding = 0,
     },
     documentation = {
       border = border2("CmpDocBorder"),
@@ -108,80 +233,8 @@ cmp.setup({
     },
   },
 
-  formatting = {
-    format = function(entry, vim_item)
-      local ELLIPSIS_CHAR = '…'
-      local MAX_LABEL_WIDTH = 30
-      local MAX_KIND_WIDTH = 20
+  formatting = formatting1,
 
-      local get_ws = function(max, len)
-        return (" "):rep(max - len)
-      end
-
-      local lspkind_icons = {
-        Text = "",
-        Method = "",
-        Function = "",
-        Constructor = "",
-        Field = "",
-        Variable = "",
-        Class = "ﴯ",
-        Interface = "",
-        Module = "",
-        Property = "ﰠ",
-        Unit = "",
-        Value = "",
-        Enum = "",
-        Keyword = "",
-        Snippet = "",
-        Color = "",
-        File = "",
-        Reference = "",
-        Folder = "",
-        EnumMember = "",
-        Constant = "",
-        Struct = "",
-        Key = "",
-        Event = "",
-        Operator = "",
-        TypeParameter = "",
-        Array = "",
-        Boolean = "蘒",
-        Namespace = "",
-        Number = "",
-        Null = "ﳠ",
-        Object = "",
-        -- Package = "",
-        Package = "",
-        String = "",
-      }
-      vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
-
-      vim_item.menu = ({
-        npm = "   NPM",
-        nvim_lsp = "  LSP",
-        buffer = " ﬘ BUF",
-        nvim_lua = " ",
-        luasnip = "  SNP",
-        calc = "  ",
-        path = " ﱮ ",
-        treesitter = " ",
-        zsh = "   ZSH",
-        Copilot = "",
-        Copilot_alt = "",
-        spell = "暈",
-      })[entry.source.name]
-
-      local content = vim_item.abbr
-      if #content > MAX_LABEL_WIDTH then
-        vim_item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
-      else
-        vim_item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
-      end
-
-      return vim_item
-    end,
-  },
   -- You can set mappings if you want
   mapping = cmp.mapping.preset.insert({
     ["<A-CR>"] = cmp.mapping.confirm({ select = true }),

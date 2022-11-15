@@ -477,6 +477,7 @@ return packer.startup(function(use)
     module = { "dap" },
     requires = {
       -- "alpha2phi/DAPInstall.nvim",
+      "ravenxrz/DAPInstall.nvim",
       -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
@@ -491,6 +492,10 @@ return packer.startup(function(use)
         "microsoft/vscode-js-debug",
         opt = true,
         run = "npm install --legacy-peer-deps && npm run compile"
+      },
+      use {
+        "sakhnik/nvim-gdb",
+        run = "./install.sh"
       }
     },
     config = function()

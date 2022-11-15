@@ -1,8 +1,6 @@
 local M = {}
 
 local rt = require("rust-tools")
-local codelldb_path = require("dap-config.path").codelldb
-local liblldb_path = require("dap-config.path").liblldb
 
 function M.setup(on_attach, capabilities)
 
