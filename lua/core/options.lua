@@ -121,3 +121,5 @@ filetype indent on
 filetype plugin indent on
 autocmd VimEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]])
+
+vim.g.python3_host_prog = "$HOME/bin/python"
