@@ -19,6 +19,7 @@ local servers = {
 	"cmake",
 	"zls",
   "jsonls",
+  "gopls",
 }
 
 require("lsp-config.handlers").setup()

@@ -1,4 +1,7 @@
 -- /home/stevearc/.config/nvim/lua/overseer/template/user/run_script.lua
+--
+local file = vim.fn.expand("%:p")
+print(file)
 return {
   name = "run script",
   builder = function()
