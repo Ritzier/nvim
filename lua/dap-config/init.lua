@@ -1,15 +1,3 @@
-require("dap-config.adapter.codelldb")
-require("dap-config.adapter.coreclr")
-require("dap-config.adapter.nlua")
-require("dap-config.adapter.python")
-
-require("dap-config.language.c")
-require("dap-config.language.cpp")
--- require("dap-config.language.rust")
-require("dap-config.language.cs")
-require("dap-config.language.go")
-require("dap-config.language.lua")
-require("dap-config.language.python")
-
 require("dap-config.dapui")
 require("dap-config.dap")
+require("dap-config.setup")
