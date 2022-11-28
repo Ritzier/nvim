@@ -1,14 +1,14 @@
 local M = {}
 
 local rt = require("rust-tools")
-
+local codelldb_path = require("dap-config.path").codelldb
+local liblldb_path = require("dap-config.path").liblldb
 function M.setup(on_attach, capabilities)
 
   local function custom_attach(client, bufnr)
     on_attach(client, bufnr)
     vim.keymap.set("n", "<C-a>", rt.hover_actions.hover_actions, { buffer = bufnr })
     vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-
   end
 
   local opts = {
@@ -156,9 +156,10 @@ function M.setup(on_attach, capabilities)
     dap = {
       adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
     },
-  },
+  }
 
-      require('rust-tools').setup(opts)
+  require('rust-tools').setup(opts)
+  require("dap").defaults.fallback.terminal_win_cmd = "50vsplit new"
 end
 
 require("lualine").setup({
