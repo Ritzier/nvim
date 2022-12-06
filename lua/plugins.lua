@@ -206,21 +206,19 @@ return packer.startup(function(use)
     config = function()
       require("suit").setup {}
     end,
-    disable = true,
   })
-  use {
-    "folke/noice.nvim",
-    event = "VimEnter",
-    config = function()
-      require("configuration.noice")
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-      "hrsh7th/nvim-cmp",
-    },
-    disable = true,
-  }
+  -- use {
+  --   "folke/noice.nvim",
+  --   event = "VimEnter",
+  --   config = function()
+  --     require("configuration.noice")
+  --   end,
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  -- }
 
   use({
     "rcarriga/nvim-notify",

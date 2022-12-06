@@ -1,12 +1,20 @@
 local dap = require("dap")
-print(require("dap-config.path").codelldb)
-
+local path = require("dap-config.path")
 --------------- ADAPTER ----------------------------
 
 dap.adapters.lldb = {
   type = "executable",
-  command = require("dap-config.path").codelldb,
+  command = path.codelldb,
   name = "codelldb",
+}
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = path.codelldb,
+    args = { "--port", "${port}" },
+  }
 }
 
 dap.adapters.nlua = function(callback, config)
@@ -19,7 +27,7 @@ end
 
 dap.adapters.sh = {
   type = "executable",
-  command = require("dap-config.path").BASH_DEBUGGER
+  command = path.BASH_DEBUGGER
 }
 
 ----------------------------------------------------------------------------
@@ -59,6 +67,18 @@ local lldb = {
   runInTerminal = false,
 }
 
+local codelldb = {
+  name = "Launch CodeLLDB",
+  type = "codelldb",
+  request = "launch",
+  program = function()
+    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+  end,
+  cwd = '${workspaceFolder}',
+  stopOnEntry = true,
+
+}
+
 local tauri_dev = {
   type = "lldb",
   request = "launch",
@@ -88,30 +108,31 @@ local tauri_prod = {
 }
 
 local sh = {
-        {
-            name = "Launch Bash debugger",
-            type = "sh",
-            request = "launch",
-            program = "${file}",
-            cwd = "${fileDirname}",
-            pathBashdb = require("dap-config.path").BASHDB,
-            pathBashdbLib = require("dap-config.path").BASHDB_DIR,
-            pathBash = "bash",
-            pathCat = "cat",
-            pathMkfifo = "mkfifo",
-            pathPkill = "pkill",
-            env = {},
-            args = {},
-            -- showDebugOutput = true,
-            -- trace = true,
-        }
-    }
+  {
+    name = "Launch Bash debugger",
+    type = "sh",
+    request = "launch",
+    program = "${file}",
+    cwd = "${fileDirname}",
+    pathBashdb = path.BASHDB,
+    pathBashdbLib = path.BASHDB_DIR,
+    pathBash = "bash",
+    pathCat = "cat",
+    pathMkfifo = "mkfifo",
+    pathPkill = "pkill",
+    env = {},
+    args = {},
+    -- showDebugOutput = true,
+    -- trace = true,
+  }
+}
 
 
 -------- Configuration -----------------------------------------------------
 
 dap.configurations.rust = {
   lldb,
+  codelldb,
   tauri_dev,
   tauri_prod,
 }
