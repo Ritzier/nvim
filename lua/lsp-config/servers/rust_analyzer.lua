@@ -162,12 +162,4 @@ function M.setup(on_attach, capabilities)
   require("dap").defaults.fallback.terminal_win_cmd = "50vsplit new"
 end
 
-require("lualine").setup({
-  sections = {
-    lualine_c = {
-      { require("nvim-gps").get_location, cond = require("nvim-gps").is_available },
-    },
-  },
-})
-
 return M

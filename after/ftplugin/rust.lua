@@ -14,5 +14,6 @@ require("which-key").register({
     f = { "<cmd>RustFmt<CR>", "Rust Format" },
     m = { "<cmd>RustExpandMacro<CR>", "Rust Expand Marcro" },
     e = { "<cmd>RustParentModule<CR>", "Rust ParentModule" },
+    k = { "<cmd>RustHoverAction<CR>", "Rust HoverAction" },
   },
 }, { prefix = "<space>" })
