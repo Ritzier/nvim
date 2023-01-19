@@ -1,7 +1,6 @@
 local M = {}
 
 local keymap = vim.keymap.set
-local navic = require("nvim-navic")
 
 function M.on_attach(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -54,20 +53,6 @@ function M.on_attach(client, bufnr)
   if client.server_capabilities.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
   end
-
-  if client.name ~= "efm" then
-    require("nvim-navic").attach(client, bufnr)
-    require("lualine").setup({
-      sections = {
-        lualine_c = {
-          { navic.get_location, cond = navic.is_available },
-        },
-      },
-    })
-  end
-
-  -- require("completion").on_attach()
-
 end
 
 return M

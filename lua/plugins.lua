@@ -67,6 +67,14 @@ return packer.startup(function(use)
     end,
   })
 
+  -- Hop
+  use({
+    "phaazon/hop.nvim",
+    config = function()
+      require("configuration.hop")
+    end
+  })
+
   -- Bufferline
   use({
     "akinsho/bufferline.nvim",
@@ -107,6 +115,7 @@ return packer.startup(function(use)
       { "JoosepAlviste/nvim-ts-context-commentstring" },
       { "nvim-treesitter/playground" },
       { "andymass/vim-matchup" },
+      { "nvim-treesitter/nvim-treesitter-textobjects" }
     },
     config = function()
       require("configuration.tree_sitter")
@@ -335,18 +344,6 @@ return packer.startup(function(use)
         "rmagatti/goto-preview",
         config = function()
           require("lsp-config.goto")
-        end,
-      },
-      {
-        "SmiteshP/nvim-navic",
-        config = function()
-          require("lsp-config.navic")
-        end,
-      },
-      {
-        "SmiteshP/nvim-gps",
-        config = function()
-          require("lsp-config.gps")
         end,
       },
       {

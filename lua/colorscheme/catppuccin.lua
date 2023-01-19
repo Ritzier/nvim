@@ -251,6 +251,15 @@ require("catppuccin").setup({
         ["@property.cpp"] = { fg = cp.text },
 
         ["@symbol"] = { fg = cp.flamingo },
+        NormalFloat = { fg = cp.text, bg = transparent_background and cp.none or cp.base },
+        Keyword = { fg = cp.pink },
+        Type = { fg = cp.blue },
+        Typedef = { fg = cp.yellow },
+        StorageClass = { fg = cp.red, style = { "italic" } },
+        TroubleNormal = { bg = cp.base },
+        ["@type.qualifier"] = { link = "@keyword" },
+        ["@type.builtin.c"] = { fg = cp.yellow, style = {} },
+        ["@type.builtin.cpp"] = { fg = cp.yellow, style = {} },
       }
     end,
   },

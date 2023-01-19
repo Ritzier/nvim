@@ -60,3 +60,5 @@ wk.setup({
 		v = { "j", "k" },
 	},
 })
+
+require("core.mappings")

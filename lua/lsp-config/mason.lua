@@ -11,14 +11,14 @@ function M.setup()
       "julia-lsp",
       "html-lsp",
       "json-lsp",
-      "wgsl-analyzer",
+      -- "wgsl-analyzer",
 
       -- DEBUGGER
       "chrome-debug-adapter",
 			-- "netcoredbg",
 			"codelldb",
       "bash-debug-adapter",
-      "debugpy",
+      -- "debugpy",
       "java-debug-adapter",
       "node-debug2-adapter",
       "go-debug-adapter",
