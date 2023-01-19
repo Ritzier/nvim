@@ -115,7 +115,8 @@ return packer.startup(function(use)
       { "JoosepAlviste/nvim-ts-context-commentstring" },
       { "nvim-treesitter/playground" },
       { "andymass/vim-matchup" },
-      { "nvim-treesitter/nvim-treesitter-textobjects" }
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
+      { "nvim-treeistter/nvim-ts-hint-textobject" },
     },
     config = function()
       require("configuration.tree_sitter")

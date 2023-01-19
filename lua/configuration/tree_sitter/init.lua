@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = {
+  ensure_installed = {
     "bash",
     "c",
     "c_sharp",
@@ -63,14 +63,47 @@ require("nvim-treesitter.configs").setup({
     "yang",
     "zig",
   },
-	sync_install = false,
-	auto_install = true,
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-	autotag = { enable = true, },
-	endwise = { enable = true, },
-	rainbow = { enable = true, extended_mode = true },
-	matchup = { enable = true, },
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  autotag = { enable = true, },
+  endwise = { enable = true, },
+  rainbow = { enable = true, extended_mode = true },
+  matchup = { enable = true, },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["]["] = "@function.outer",
+        ["]m"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]]"] = "@function.outer",
+        ["]M"] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[["] = "@function.outer",
+        ["[m"] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[]"] = "@function.outer",
+        ["[M"] = "@class.outer",
+      },
+    },
+  },
+  context_commentstring = { enable = true, enable_autocmd = false },
+
 })
