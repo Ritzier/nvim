@@ -2,7 +2,8 @@ require("impatient")
 local g   = vim.g
 local opt = vim.opt
 
-opt.clipboard      = "unnamed,unnamedplus"
+opt.shada          = "!,'300,<50,@100,s10,h"
+opt.clipboard      = "unnamedplus"
 opt.scrolloff      = 7
 opt.sidescrolloff  = 7
 opt.number         = true
@@ -16,9 +17,10 @@ opt.timeoutlen     = 0
 opt.ttimeoutlen    = 0
 opt.redrawtime     = 1500
 opt.mouse          = "a"
+opt.shiftround     = true
 -- opt.completeopt = "menuone,noinsert,noselect"
 opt.complete       = ".,w,b,k"
-opt.completeopt    = "menu,menuone,noinsert"
+opt.completeopt    = "menuone,noselect"
 opt.cursorline     = true
 opt.cursorcolumn   = true
 opt.swapfile       = false
@@ -26,6 +28,7 @@ opt.undofile       = true
 g.termguicolors    = true
 opt.list           = true
 opt.spell          = false
+opt.jumpoptions    = "stack"
 
 opt.expandtab    = true
 opt.smartcase    = true
@@ -123,3 +126,14 @@ autocmd VimEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 ]])
 
 vim.g.python3_host_prog = "$HOME/bin/python"
+
+
+local function isempty(s)
+  return s == nil or s == ""
+end
+
+local conda_prefix = os.getenv("CONDA_PREFIX")
+if not isempty(conda_prefix) then
+  vim.g.python_host_prog = conda_prefix .. "/bin/python"
+  vim.g.python3_host_prog = conda_prefix .. "/bin/python"
+end

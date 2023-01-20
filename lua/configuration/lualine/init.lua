@@ -84,6 +84,28 @@ local function z()
   return pro .. "/" .. line
 end
 
+local function lspsaga_symbols()
+  local exclude = {
+    ["terminal"] = true,
+    ["toggleterm"] = true,
+    ["prompt"] = true,
+    ["NvimTree"] = true,
+    ["help"] = true,
+  }
+  if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
+    return "" -- Excluded filetypes
+  else
+    local ok, lspsaga = pcall(require, "lspsaga.symbolwinbar")
+    if ok then
+      if lspsaga:get_winbar() ~= nil then
+        return lspsaga:get_winbar()
+      else
+        return "" -- Cannot get node
+      end
+    end
+  end
+end
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
@@ -104,7 +126,7 @@ require("lualine").setup({
       diff
     },
     lualine_c = {
-      -- lspsaga_symbols()
+      lspsaga_symbols()
     },
     lualine_x = {
       diag,
