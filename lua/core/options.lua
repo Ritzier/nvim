@@ -29,16 +29,15 @@ g.termguicolors    = true
 opt.list           = true
 opt.spell          = false
 opt.jumpoptions    = "stack"
-
 opt.expandtab    = true
 opt.smartcase    = true
 opt.smartindent  = true
 opt.smarttab     = true
 opt.autoindent   = true
-opt.softtabstop  = 2
-opt.tabstop      = 2
-opt.showtabline  = 2
-opt.shiftwidth   = 2
+opt.softtabstop  = 4
+opt.tabstop      = 4
+opt.showtabline  = 4
+opt.shiftwidth   = 4
 opt.backspace    = "indent,eol,start"
 opt.backup       = false
 opt.conceallevel = 0
@@ -129,11 +128,11 @@ vim.g.python3_host_prog = "$HOME/bin/python"
 
 
 local function isempty(s)
-  return s == nil or s == ""
+    return s == nil or s == ""
 end
 
 local conda_prefix = os.getenv("CONDA_PREFIX")
 if not isempty(conda_prefix) then
-  vim.g.python_host_prog = conda_prefix .. "/bin/python"
-  vim.g.python3_host_prog = conda_prefix .. "/bin/python"
+    vim.g.python_host_prog = conda_prefix .. "/bin/python"
+    vim.g.python3_host_prog = conda_prefix .. "/bin/python"
 end

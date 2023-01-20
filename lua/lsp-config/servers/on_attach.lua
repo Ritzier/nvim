@@ -26,8 +26,8 @@ function M.on_attach(client, bufnr)
   -- }, { prefix = "<space>", silent = true, noremap = true })
 
   require("which-key").register({
-    gD = { vim.lsp.buf.declaration, "Declaration" },
-    gd = { vim.lsp.buf.definition, "Definition" },
+    gD = { "<cmd>Lspsaga goto_definition<CR>", "Declaration" },
+    gd = { "<cmd>Lspsaga peek_definition<CR>", "Definition" },
     gi = { vim.lsp.buf.implementation, "Implementaion" },
     gt = { vim.lsp.buf.type_definition, "Type Definition" },
     -- K = { vim.lsp.buf.hover, "Hover Doc" },
