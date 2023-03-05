@@ -1,3 +1,4 @@
+-- Now use `<A-k>` or `<A-1>` to back to the `dotstutor`.
 local autocmd = {}
 
 function autocmd.nvim_create_augroups(definitions)
@@ -12,9 +13,58 @@ function autocmd.nvim_create_augroups(definitions)
 	end
 end
 
+-- auto close NvimTree
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("NvimTreeClose", { clear = true }),
+	pattern = "NvimTree_*",
+	callback = function()
+		local layout = vim.api.nvim_call_function("winlayout", {})
+		if
+			layout[1] == "leaf"
+			and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+			and layout[3] == nil
+		then
+			vim.api.nvim_command([[confirm quit]])
+		end
+	end,
+})
+
+-- auto close some filetype with <q>
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"qf",
+		"help",
+		"man",
+		"notify",
+		"nofile",
+		"lspinfo",
+		"terminal",
+		"prompt",
+		"toggleterm",
+		"copilot",
+		"startuptime",
+		"tsplayground",
+		"PlenaryTestPopup",
+	},
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+		vim.api.nvim_buf_set_keymap(event.buf, "n", "q", "<CMD>close<CR>", { silent = true })
+	end,
+})
+
+-- Fix fold issue of files opened by telescope
+vim.api.nvim_create_autocmd("BufRead", {
+	callback = function()
+		vim.api.nvim_create_autocmd("BufWinEnter", {
+			once = true,
+			command = "normal! zx",
+		})
+	end,
+})
+
 function autocmd.load_autocmds()
 	local definitions = {
-		packer = {},
+		lazy = {},
 		bufs = {
 			-- Reload vim config automatically
 			{
@@ -32,19 +82,17 @@ function autocmd.load_autocmds()
 			{ "BufWritePre", "MERGE_MSG", "setlocal noundofile" },
 			{ "BufWritePre", "*.tmp", "setlocal noundofile" },
 			{ "BufWritePre", "*.bak", "setlocal noundofile" },
-			-- auto change directory
-			{ "BufEnter", "*", "silent! lcd %:p:h" },
 			-- auto place to last edit
 			{
 				"BufReadPost",
 				"*",
 				[[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif]],
 			},
-			{
-				"BufEnter",
-				"*",
-				[[if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
-			},
+			-- Auto toggle fcitx5
+			-- {"InsertLeave", "* :silent", "!fcitx5-remote -c"},
+			-- {"BufCreate", "*", ":silent !fcitx5-remote -c"},
+			-- {"BufEnter", "*", ":silent !fcitx5-remote -c "},
+			-- {"BufLeave", "*", ":silent !fcitx5-remote -c "}
 		},
 		wins = {
 			-- Highlight current line only on focused window
@@ -89,22 +137,13 @@ function autocmd.load_autocmds()
 			{
 				"TextYankPost",
 				"*",
-				[[silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=1500})]],
+				[[silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=300})]],
 			},
 		},
 	}
 
 	autocmd.nvim_create_augroups(definitions)
+	vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] })
 end
 
 autocmd.load_autocmds()
-
-vim.api.nvim_create_autocmd("User", {
-	pattern = "MasonToolsUpdateCompleted",
-	callback = function()
-		vim.schedule(function()
-			print("mason-tool-installer has finished")
-			vim.notify("mason-tool-installer has finished!", vim.log.levels.INFO, { title = "MasonToolsInstaller" })
-		end)
-	end,
-})

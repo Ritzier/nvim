@@ -1,0 +1,125 @@
+local bind = require("keymap.bind")
+local map_callback = bind.map_callback
+
+local crates_keymap = {
+	["n|<space>ct"] = map_callback(function()
+			require("crates").toggle()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Toggle spec activities"),
+	["n|<space>cr"] = map_callback(function()
+			require("crates").reload()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Reload crate specs"),
+
+	["n|<space>cs"] = map_callback(function()
+			require("crates").show_popup()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Toggle pop-up window"),
+	["n|<space>cv"] = map_callback(function()
+			require("crates").show_versions_popup()
+			require("crates").show_popup()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Select spec versions"),
+	["n|<space>cf"] = map_callback(function()
+			require("crates").show_features_popup()
+			require("crates").show_popup()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Select spec features"),
+	["n|<space>cd"] = map_callback(function()
+			require("crates").show_dependencies_popup()
+			require("crates").show_popup()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Show project dependencies"),
+
+	["n|<space>cu"] = map_callback(function()
+			require("crates").update_crate()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Update current crate's spec"),
+	["v|<space>cu"] = map_callback(function()
+			require("crates").update_crates()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Update selected crate's spec"),
+	["n|<space>ca"] = map_callback(function()
+			require("crates").update_all_crates()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Update all crates' specs"),
+	["n|<space>cU"] = map_callback(function()
+			require("crates").upgrade_crate()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Upgrade current crate"),
+	["v|<space>cU"] = map_callback(function()
+			require("crates").upgrade_crates()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Upgrade selected crates"),
+	["n|<space>cA"] = map_callback(function()
+			require("crates").upgrade_all_crates()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Upgrade all crates"),
+
+	["n|<space>cH"] = map_callback(function()
+			require("crates").open_homepage()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Open current crate's homepage"),
+	["n|<space>cR"] = map_callback(function()
+			require("crates").open_repository()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Open current crate's repository"),
+	["n|<space>cD"] = map_callback(function()
+			require("crates").open_documentation()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Open current crate's documentation"),
+	["n|<space>cC"] = map_callback(function()
+			require("crates").open_crates_io()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_buffer(0)
+		:with_desc("crates: Browse current crate on crates.io"),
+}
+
+bind.nvim_load_mapping(crates_keymap)
