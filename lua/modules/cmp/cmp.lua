@@ -1,4 +1,49 @@
 return function()
+	local cmp = require("cmp")
+	local lspkind = require("lspkind")
+
+	local t = function(str)
+		return vim.api.nvim_replace_termcodes(str, true, true, true)
+	end
+
+	local symbol_map = {
+		Text = " ",
+		Method = " ",
+		Function = "",
+		Constructor = " ",
+		Field = " ",
+		Variable = "",
+		Class = "ﴯ ",
+		Interface = " ",
+		Module = " ",
+		Property = "ﰠ ",
+		Unit = " ",
+		Value = " ",
+		Enum = " ",
+		Keyword = " ",
+		Snippet = " ",
+		Color = " ",
+		File = " ",
+		Reference = " ",
+		Folder = " ",
+		EnumMember = " ",
+		Constant = " ",
+		Struct = " ",
+		Key = " ",
+		Event = "",
+		Operator = " ",
+		TypeParameter = " ",
+		Array = " ",
+		Boolean = "蘒",
+		Namespace = " ",
+		Number = " ",
+		Null = "ﳠ ",
+		Object = " ",
+		-- Package = "",
+		Package = " ",
+		String = " ",
+	}
+
 	local border = function(hl)
 		return {
 			{ "╭", hl },
@@ -25,44 +70,6 @@ return function()
 		}
 	end
 
-	local lspkind_icons = {
-		Text = "",
-		Method = "",
-		Function = "",
-		Constructor = "",
-		Field = "",
-		Variable = "",
-		Class = "ﴯ",
-		Interface = "",
-		Module = "",
-		Property = "ﰠ",
-		Unit = "",
-		Value = "",
-		Enum = "",
-		Keyword = "",
-		Snippet = "",
-		Color = "",
-		File = "",
-		Reference = "",
-		Folder = "",
-		EnumMember = "",
-		Constant = "",
-		Struct = "",
-		Key = "",
-		Event = "",
-		Operator = "",
-		TypeParameter = "",
-		Array = "",
-		Boolean = "蘒",
-		Namespace = "",
-		Number = "",
-		Null = "ﳠ",
-		Object = "",
-		-- Package = "",
-		Package = "",
-		String = "",
-	}
-
 	local preselect = function(entry1, entry2)
 		local preselect1 = entry1.completion_item.preselect or false
 		local preselect2 = entry2.completion_item.preselect or false
@@ -71,19 +78,32 @@ return function()
 		end
 	end
 
-	local t = function(str)
-		return vim.api.nvim_replace_termcodes(str, true, true, true)
-	end
-
 	local has_words_before = function()
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
 
-	local cmp = require("cmp")
-	local compare = require("cmp.config.compare")
+	local cmp_window = require("cmp.utils.window")
 
-	require("cmp").setup({
+	cmp_window.info_ = cmp_window.info
+	cmp_window.info = function(self)
+		local info = self:info_()
+		info.scrollable = false
+		return info
+	end
+
+	local compare = require("cmp.config.compare")
+	compare.lsp_scores = function(entry1, entry2)
+		local diff
+		if entry1.completion_item.score and entry2.completion_item.score then
+			diff = (entry2.completion_item.score * entry2.score) - (entry1.completion_item.score * entry1.score)
+		else
+			diff = entry2.score - entry1.score
+		end
+		return (diff < 0)
+	end
+
+	cmp.setup({
 		window = {
 			completion = {
 				border = border("CmpBorder"),
@@ -96,6 +116,21 @@ return function()
 			},
 		},
 
+		formatting = {
+			-- fields = { "kind", "abbr", "menu" },
+            -- fields = { "abbr", "menu", "kind" },
+            fields = { "abbr", "kind", "menu" },
+			format = function(entry, vim_item)
+				local kind = lspkind.cmp_format({
+					mode = "text_symbol",
+					maxwidth = 30,
+					symbol_map = symbol_map,
+				})(entry, vim_item)
+
+				return kind
+			end,
+		},
+
 		sources = require("cmp").config.sources({
 			-- { name = "copilot" },
 			{ name = "nvim_lsp" },
@@ -103,11 +138,12 @@ return function()
 			{ name = "luasnip" },
 			{ name = "crates" },
 			{ name = "treesitter" },
-		-- }, {
+			-- }, {
 			{ name = "path" },
 			{ name = "buffer" },
 			-- { name = "latex_symbols" },
 		}),
+
 		sorting = {
 			priority_weight = 2,
 			comparators = {
@@ -126,44 +162,6 @@ return function()
 			},
 		},
 
-		{
-			format = function(entry, vim_item)
-				local ELLIPSIS_CHAR = "…"
-				local MAX_LABEL_WIDTH = 30
-				local MAX_KIND_WIDTH = 20
-
-				local get_ws = function(max, len)
-					return (" "):rep(max - len)
-				end
-
-				vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
-				-- vim_item.kind = string.format("%s", lspkind_icons[vim_item.kind])
-
-				-- vim_item.menu = ({
-				--   npm = "   NPM",
-				--   nvim_lsp = "  LSP",
-				--   buffer = " ﬘ BUF",
-				--   nvim_lua = " ",
-				--   luasnip = "  SNP",
-				--   calc = "  ",
-				--   path = " ﱮ ",
-				--   treesitter = " ",
-				--   zsh = "   ZSH",
-				--   Copilot = "",
-				--   Copilot_alt = "",
-				--   spell = "暈",
-				-- })[entry.source.name]
-
-				local content = vim_item.abbr
-				if #content > MAX_LABEL_WIDTH then
-					vim_item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
-				else
-					vim_item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
-				end
-
-				return vim_item
-			end,
-		},
 		mapping = cmp.mapping.preset.insert({
 			["<A-CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -193,6 +191,7 @@ return function()
 				end
 			end, { "i", "s" }),
 		}),
+
 		snippet = {
 			expand = function(args)
 				require("luasnip").lsp_expand(args.body)

@@ -25,6 +25,7 @@ return {
 				"j-hui/fidget.nvim",
 				event = "BufReadPost",
 				config = require("modules.lsp.fidget"),
+				enabled = true,
 			},
 			{
 				"nvim-lua/lsp-status.nvim",

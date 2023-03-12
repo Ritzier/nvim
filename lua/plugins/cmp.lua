@@ -24,7 +24,10 @@ return {
 					require("luasnip.loaders.from_snipmate").lazy_load()
 				end,
 			},
-			{ "onsails/lspkind.nvim" },
+			{
+				"onsails/lspkind.nvim",
+				-- config = require("modules.cmp.lspkind"),
+			},
 			{ "lukas-reineke/cmp-under-comparator" },
 			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-nvim-lsp" },
