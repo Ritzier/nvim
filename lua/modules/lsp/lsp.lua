@@ -21,7 +21,7 @@ return function()
 	local on_attach = require("modules.lsp.servers.on_attach")
 	local capabilities = require("modules.lsp.servers.capabilities")
 
-	require("modules.lsp.handlers")()
+	-- require("modules.lsp.handlers")()
 
 	for _, server in ipairs(servers) do
 		if server == "lua_ls" then

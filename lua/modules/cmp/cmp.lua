@@ -97,7 +97,7 @@ return function()
 		},
 
 		sources = require("cmp").config.sources({
-			{ name = "copilot" },
+			-- { name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
@@ -106,13 +106,13 @@ return function()
 		-- }, {
 			{ name = "path" },
 			{ name = "buffer" },
-			{ name = "latex_symbols" },
+			-- { name = "latex_symbols" },
 		}),
 		sorting = {
 			priority_weight = 2,
 			comparators = {
-				require("copilot_cmp.comparators").prioritize,
-				require("copilot_cmp.comparators").score,
+				-- require("copilot_cmp.comparators").prioritize,
+				-- require("copilot_cmp.comparators").score,
 				-- require("cmp_tabnine.compare"),
 				compare.offset,
 				compare.exact,

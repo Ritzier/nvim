@@ -33,7 +33,7 @@ return {
 			{ "hrsh7th/cmp-path" },
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
-			{ "kdheepak/cmp-latex-symbols" },
+			{ "kdheepak/cmp-latex-symbols", enabled = false },
 			{ "ray-x/cmp-treesitter" },
 			-- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
 			-- {
@@ -53,8 +53,9 @@ return {
 						require("modules.cmp.copilot")
 					end)
 				end,
+				enbaled = false,
 			},
-			{ "zbirenbaum/copilot-cmp" },
+			{ "zbirenbaum/copilot-cmp", enabled = false },
 			{
 				"Saecki/crates.nvim",
 				lazy = true,
@@ -64,7 +65,7 @@ return {
 				-- config = function()
 				-- 	require("crates").setup()
 				-- end,
-				ft = "rust"
+				ft = "rust",
 			},
 		},
 	},

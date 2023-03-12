@@ -99,6 +99,10 @@ wk.register({
 		v = { ":CccCovert<CR>", "Convert" },
 		p = { ":CccPick<CR>", "Pick" },
 	},
+    l = {
+        name = "Lsp",
+        i = { "<cmd>LspInfo<CR>", "LspInfo" }
+    }
 }, { mode = "n", prefix = "<leader>", silent = true })
 
 return M

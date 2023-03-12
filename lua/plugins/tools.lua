@@ -113,8 +113,19 @@ return {
 
 	{
 		"uga-rosa/ccc.nvim",
-        lazy = true,
-        event = { "CursorHold", "CursorHoldI" },
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
 		config = require("modules.tool.ccc"),
+	},
+	{
+		"jackMort/ChatGPT.nvim",
+		config = require("modules.tool.chatgpt"),
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		enabled = false,
 	},
 }
