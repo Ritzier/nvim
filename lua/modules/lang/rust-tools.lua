@@ -1,7 +1,6 @@
 return function()
 	local opts = {
 		tools = { -- rust-tools options
-
 			-- how to execute terminal commands
 			-- options right now: termopen / quickfix
 			executor = require("rust-tools/executors").termopen,
@@ -98,6 +97,13 @@ return function()
 				-- crates
 				-- default: true
 				full = true,
+				autoSetHints = true,
+				hover_with_actions = true,
+				inlay_hints = {
+					show_parameter_hints = true,
+					parameter_hints_prefix = "",
+					other_hints_prefix = "",
+				},
 
 				-- List of backends found on: https://graphviz.org/docs/outputs/
 				-- Is used for input validation and autocompletion

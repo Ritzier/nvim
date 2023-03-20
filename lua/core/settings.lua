@@ -36,13 +36,20 @@ settings["background"] = "dark"
 -- check the below link for all the supported LSPs:
 -- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
 settings["lsp"] = {
+	"lua_ls",
 	"bashls",
 	"clangd",
+	"cssls",
 	"gopls",
 	"html",
 	"jsonls",
-	"lua_ls",
+	"omnisharp",
 	"pyright",
+	"rust_analyzer",
+	"yamlls",
+	"zls",
+	"null-ls",
+	"vimls",
 }
 
 -- Set the desired non-LSP sources here.

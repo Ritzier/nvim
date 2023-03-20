@@ -13,10 +13,14 @@ return {
 		"rust-lang/rust.vim",
 		lazy = true,
 		ft = "rust",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = require("modules.lang.rust-tools"),
 	},
-	
+	{
+		"Saecki/crates.nvim",
+		lazy = true,
+		event = "BufReadPost Cargo.toml",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = require("modules.lang.crates"),
+	},
 	{
 		"iamcco/markdown-preview.nvim",
 		lazy = true,
@@ -38,8 +42,4 @@ return {
 		lazy = true,
 		ft = "python",
 	},
-    {
-        "diatom-lang/diatom.vim",
-        lazy = true,
-    }
 }

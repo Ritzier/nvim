@@ -1,6 +1,6 @@
 return function()
 	local cmp = require("cmp")
-	local lspkind = require("lspkind")
+	-- local lspkind = require("lspkind")
 
 	local t = function(str)
 		return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -108,28 +108,94 @@ return function()
 			completion = {
 				border = border("CmpBorder"),
 				winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+				-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
 				-- col_offset = -3,
 				-- side_padding = 0,
+				-- completion = {
+				-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+				zindex = 100,
+				scrolloff = 3,
+				-- col_offset = 100,
+				side_padding = 0,
+				scrollbar = true,
 			},
 			documentation = {
 				border = border2("CmpDocBorder"),
+				scrollbar = true,
 			},
 		},
 
+		-- formatting = {
+		-- 	-- fields = { "abbr", "menu", "kind" },
+		-- 	-- fields = { "abbr", "kind", "menu" },
+		--           fields = { "kind", "abbr", "menu" },
+
+		-- 	-- format = function(entry, vim_item)
+		-- 	-- 	local kind = lspkind.cmp_format({
+		-- 	-- 		mode = "text_symbol",
+		-- 	-- 		maxwidth = 30,
+		-- 	-- 		symbol_map = symbol_map,
+		-- 	-- 	})(entry, vim_item)
+		-- 	--              local strings = vim.split(kind.kind, "%s", { trimempty = true })
+		-- 	-- 	kind.kind = " " .. strings[1] .. " "
+		-- 	-- 	kind.menu = "    (" .. strings[2] .. ")"
+
+		-- 	-- 	return kind
+		-- 	-- end,
 		formatting = {
-			-- fields = { "kind", "abbr", "menu" },
-            -- fields = { "abbr", "menu", "kind" },
-            fields = { "abbr", "kind", "menu" },
+			fields = { "abbr", "kind", "menu" },
 			format = function(entry, vim_item)
-				local kind = lspkind.cmp_format({
+				local kind = require("lspkind").cmp_format({
+					-- mode = "symbol_text",
 					mode = "text_symbol",
+					-- mode = "text",
+					-- mode = "symbol",
 					maxwidth = 30,
 					symbol_map = symbol_map,
 				})(entry, vim_item)
 
+				local strings = vim.split(kind.kind, "%s", { trimempty = true })
+				kind.kind = " " .. (strings[2] or "") .. " "
+				-- kind.menu = "    (" .. (strings[2] or "") .. ")"
+				kind.menu = "" .. (strings[1] or "") .. ""
+
 				return kind
 			end,
 		},
+
+		-- formatting = {
+		-- 	fields = { "abbr", "kind", "menu" },
+		-- 	format = function(entry, vim_item)
+		-- 		local kind = require("lspkind").cmp_format({
+		-- 			mode = "symbol_text",
+		-- 			maxwidth = 50,
+		-- 		})(entry, vim_item)
+		-- 		local strings = vim.split(kind.kind, "%s", { trimempty = true })
+		-- 		kind.kind = " " .. (strings[1] or "") .. " "
+		-- 		-- kind.menu = "    (" .. (strings[2] or "") .. ")"
+		-- 		kind.menu = "" .. (strings[2] or "") .. ""
+
+		-- 		return kind
+		-- 	end,
+		-- },
+
+		-- 	format = function(entry, vim_item)
+		-- 		local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+		-- 		local strings = vim.split(kind.kind, "%s", { trimempty = true })
+		-- 		kind.kind = " " .. (strings[1] or "") .. " "
+		-- 		kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+		-- 		return kind
+		-- 	end,
+		-- },
+
+		-- formatting = {
+		--           fields = { "menu","abbr", "kind"  },
+		-- 	format = function(_, vim_item)
+		-- 		vim_item.kind = string.format("%s %s", symbol_map[vim_item.kind], vim_item.kind)
+		-- 		return vim_item
+		-- 	end,
+		-- },
 
 		sources = require("cmp").config.sources({
 			-- { name = "copilot" },

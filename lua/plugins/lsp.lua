@@ -23,9 +23,9 @@ return {
 			{
 				-- Show too much information
 				"j-hui/fidget.nvim",
-				event = "BufReadPost",
+				-- event = "BufReadPost",
 				config = require("modules.lsp.fidget"),
-				enabled = true,
+				-- enabled = true,
 			},
 			{
 				"nvim-lua/lsp-status.nvim",
@@ -45,9 +45,15 @@ return {
 				"folke/trouble.nvim",
 				config = require("modules.lsp.trouble"),
 			},
-			{ "folke/neodev.nvim", },
-			{ "p00f/clangd_extensions.nvim", },
-			{ "simrat39/rust-tools.nvim" },
+			{ "folke/neodev.nvim" },
+			{ "p00f/clangd_extensions.nvim" },
+			{
+				"simrat39/rust-tools.nvim",
+				lazy = true,
+				ft = "rust",
+				dependencies = { "nvim-lua/plenary.nvim" },
+				-- config = require("modules.lang.rust-tools"),
+			},
 			{ "b0o/schemastore.nvim" },
 			{
 				"jose-elias-alvarez/null-ls.nvim",

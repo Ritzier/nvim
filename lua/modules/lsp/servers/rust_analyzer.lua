@@ -1,8 +1,7 @@
-return function(on_attach, capabilities)
-	local rt = require("rust-tools")
-	local opts = {
-		tools = { -- rust-tools options
-			executor = require("rust-tools/executors").termopen,
+if true then
+	return function(attach, capabilities)
+		require("rust-tools").setup({
+			executor = require("rust-tools.executors").termopen,
 			on_initialized = nil,
 			reload_workspace_from_cargo_toml = true,
 			inlay_hints = {
@@ -17,7 +16,6 @@ return function(on_attach, capabilities)
 				right_align_padding = 7,
 				highlight = "Comment",
 			},
-
 			hover_actions = {
 				border = {
 					{ "╭", "FloatBorder" },
@@ -29,22 +27,14 @@ return function(on_attach, capabilities)
 					{ "╰", "FloatBorder" },
 					{ "│", "FloatBorder" },
 				},
-
+				max_width = nil,
+				max_height = nil,
 				auto_focus = false,
 			},
-
 			crate_graph = {
 				backend = "x11",
 				output = nil,
 				full = true,
-				autoSetHints = true,
-				hover_with_actions = true,
-				inlay_hints = {
-					show_parameter_hints = true,
-					parameter_hints_prefix = "",
-					other_hints_prefix = "",
-				},
-
 				enabled_graphviz_backends = {
 					"bmp",
 					"cgimage",
@@ -102,51 +92,147 @@ return function(on_attach, capabilities)
 					"x11",
 				},
 			},
+
+			server = {
+				on_attach = attach,
+				capabilities = capabilities,
+				standalone = true,
+				settings = {
+					["rust-analyzer"] = {
+						checkOnSave = {
+							command = "clippy",
+						},
+						completion = {
+							postfix = {
+								enable = false,
+							},
+							callable = {
+								snippets = "fill_arguments",
+							},
+						},
+						imports = {
+							granularity = {
+								group = "module",
+							},
+							prefix = "self",
+						},
+						cargo = {
+							buildScripts = {
+								enable = true,
+							},
+						},
+						procMacro = {
+							enable = true,
+						},
+					},
+				},
+			},
+		})
+	end
+end
+
+return function(on_attach, capabilities)
+	local opts = {
+		on_initialized = nil,
+		reload_workspace_from_cargo_toml = true,
+		inlay_hints = {
+			auto = true,
+			only_current_line = false,
+			show_parameter_hints = true,
+			parameter_hints_prefix = "<- ",
+			other_hints_prefix = "=> ",
+			max_len_align = false,
+			max_len_align_padding = 1,
+			right_align = false,
+			right_align_padding = 7,
+			highlight = "Comment",
 		},
 
-		server = {
-			standalone = true,
-			-- server = {
-			-- 	capabilities = capabilities,
-			-- 	-- on_attach = on_attach(_, bufnr),
-			-- 	settings = {
-			-- 		["rust-analyzer"] = {
-			-- 			checkOnSave = {
-			-- 				command = "clippy",
-			-- 			},
-			-- 			completion = {
-			-- 				-- postfix = {
-			-- 				--   enable = false,
-			-- 				-- }
-			-- 				callable = {
-			-- 					snippets = "fill_arguments",
-			-- 				},
-			-- 			},
-			-- 			imports = {
-			-- 				granularity = {
-			-- 					group = "module",
-			-- 				},
-			-- 				prefix = "self",
-			-- 			},
-			-- 			cargo = {
-			-- 				buildScripts = {
-			-- 					enable = true,
-			-- 				},
-			-- 			},
-			-- 			procMacro = {
-			-- 				enable = true,
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
+		hover_actions = {
+			border = {
+				{ "╭", "FloatBorder" },
+				{ "─", "FloatBorder" },
+				{ "╮", "FloatBorder" },
+				{ "│", "FloatBorder" },
+				{ "╯", "FloatBorder" },
+				{ "─", "FloatBorder" },
+				{ "╰", "FloatBorder" },
+				{ "│", "FloatBorder" },
+			},
 
-			-- rust-analyer options
+			auto_focus = false,
 		},
-		-- dap = {
-		--   adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
-		-- },
+
+		crate_graph = {
+			backend = "x11",
+			output = nil,
+			full = true,
+			autoSetHints = true,
+			hover_with_actions = true,
+			inlay_hints = {
+				show_parameter_hints = true,
+				parameter_hints_prefix = "",
+				other_hints_prefix = "",
+			},
+
+			enabled_graphviz_backends = {
+				"bmp",
+				"cgimage",
+				"canon",
+				"dot",
+				"gv",
+				"xdot",
+				"xdot1.2",
+				"xdot1.4",
+				"eps",
+				"exr",
+				"fig",
+				"gd",
+				"gd2",
+				"gif",
+				"gtk",
+				"ico",
+				"cmap",
+				"ismap",
+				"imap",
+				"cmapx",
+				"imap_np",
+				"cmapx_np",
+				"jpg",
+				"jpeg",
+				"jpe",
+				"jp2",
+				"json",
+				"json0",
+				"dot_json",
+				"xdot_json",
+				"pdf",
+				"pic",
+				"pct",
+				"pict",
+				"plain",
+				"plain-ext",
+				"png",
+				"pov",
+				"ps",
+				"ps2",
+				"psd",
+				"sgi",
+				"svg",
+				"svgz",
+				"tga",
+				"tiff",
+				"tif",
+				"tk",
+				"vml",
+				"vmlz",
+				"wbmp",
+				"webp",
+				"xlib",
+				"x11",
+			},
+		},
 	}
-
 	require("rust-tools").setup(opts)
 	require("lspconfig")["rust_analyzer"].setup({
 		capabilities = capabilities,
@@ -157,9 +243,9 @@ return function(on_attach, capabilities)
 					command = "clippy",
 				},
 				completion = {
-					-- postfix = {
-					--   enable = false,
-					-- }
+					postfix = {
+						enable = false,
+					},
 					callable = {
 						snippets = "fill_arguments",
 					},

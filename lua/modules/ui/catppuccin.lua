@@ -238,6 +238,10 @@ return function()
 					["@type.builtin.cpp"] = { fg = cp.yellow, style = {} },
 
 					-- ["@symbol"] = { fg = cp.flamingo },
+					CmpItemMenu = { fg = "#e7a6ed", bg = "NONE", style = { "italic" } },
+					CmpItemAbbrDeprecated = { fg = cp.rosewater, bg = "NONE", style = {"strikethrough"} },
+					CmpItemAbbrMatch = { fg = cp.red, bg = "NONE", style = {"bold"} },
+					CmpItemAbbrMatchFuzzy = { fg = cp.red, bg = "NONE", style = {"bold"} },
 				}
 			end,
 		},

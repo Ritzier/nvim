@@ -1,22 +1,7 @@
 return function()
 	local lspconfig = require("lspconfig")
 
-	local servers = {
-		"lua_ls",
-		"bashls",
-		"clangd",
-		"cssls",
-		"gopls",
-		"html",
-		"jsonls",
-		"omnisharp",
-		"pyright",
-		"rust_analyzer",
-		"yamlls",
-		"zls",
-		"null-ls",
-		"vimls",
-	}
+    local servers = require("core.settings")["lsp"]
 
 	local on_attach = require("modules.lsp.servers.on_attach")
 	local capabilities = require("modules.lsp.servers.capabilities")
