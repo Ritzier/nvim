@@ -232,6 +232,13 @@ return function(on_attach, capabilities)
 				"x11",
 			},
 		},
+		dap = {
+			adapter = {
+				type = "executable",
+				command = "lldb-vscode",
+				name = "rt_lldb",
+			},
+		},
 	}
 	require("rust-tools").setup(opts)
 	require("lspconfig")["rust_analyzer"].setup({

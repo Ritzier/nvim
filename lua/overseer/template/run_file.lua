@@ -5,6 +5,12 @@ return {
 		local cmd = { file }
 		if vim.bo.filetype == "go" then
 			cmd = { "go", "run", file }
+        elseif vim.bo.filetype == "python" then
+            cmd = { "python3", file }
+        elseif vim.bo.filetype == "sh" then
+            cmd = { "bash", file }
+        elseif vim.bo.filetype == "lua" then
+            cmd = { "lua", file }
 		end
 		return {
 			cmd = cmd,
@@ -16,6 +22,6 @@ return {
 		}
 	end,
 	condition = {
-		filetype = { "sh", "python", "go" },
+		filetype = { "sh", "python", "go", "lua" },
 	},
 }
