@@ -93,6 +93,14 @@ if true then
 				},
 			},
 
+			dap = {
+				adapter = {
+					type = "executable",
+					command = "lldb-vscode",
+					name = "rt_lldb",
+				},
+			},
+
 			server = {
 				on_attach = attach,
 				capabilities = capabilities,

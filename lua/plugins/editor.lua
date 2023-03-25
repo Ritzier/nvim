@@ -11,10 +11,16 @@ return {
 		config = require("modules.editor.auto-session"),
 	},
 
-    {
-		"jiangmiao/auto-pairs",
-		config = require("modules.editor.autopairs"),
-    },
+	--   {
+	-- "jiangmiao/auto-pairs",
+	-- config = require("modules.editor.autopairs"),
+	--   },
+	{
+		"m4xshen/autoclose.nvim",
+		lazy = true,
+		event = "InsertEnter",
+		config = require("modules.editor.autoclose"),
+	},
 
 	{
 		"max397574/better-escape.nvim",

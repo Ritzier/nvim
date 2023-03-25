@@ -26,4 +26,5 @@ require("which-key").register({
 	f = { ":lua vim.lsp.buf.format()<CR>", "Format" },
 	n = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
 	e = { ":lua vim.diagnostic.open_float()<CR>", "Diagnostic Open Float" },
+	d = { "<cmd>RustDebuggables<CR>", "Debuggables" },
 }, { prefix = "<space>", silent = true, noremap = true })

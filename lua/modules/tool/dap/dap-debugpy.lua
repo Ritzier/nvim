@@ -6,7 +6,7 @@ end
 
 dap.adapters.python = {
 	type = "executable",
-	command = "/usr/bin/python",
+	command = "python",
 	args = { "-m", "debugpy.adapter" },
 }
 dap.configurations.python = {
@@ -22,7 +22,7 @@ dap.configurations.python = {
 			if not isempty(vim.env.CONDA_PREFIX) then
 				return vim.env.CONDA_PREFIX .. "/bin/python"
 			else
-				return "/usr/bin/python3"
+				return "python3"
 			end
 		end,
 	},

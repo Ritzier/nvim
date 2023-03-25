@@ -104,28 +104,77 @@ wk.register({
 		name = "Lsp",
 		i = { "<cmd>LspInfo<CR>", "LspInfo" },
 	},
-    d = {
-        name = "Dap",
-        R = { "<cmd>lua require('dap').run_to_cursor()<CR>", "Run to cursor" },
-        E = { "<cmd>lua require('dapui').eval(vim.fn.input '[Expression] > ')<CR>", "Evaluate Input" },
-        U = { "<cmd>lua require('dapui').toggle<CR>", "Toggle UI" },
-        b = { "<cmd>lua require('dap').step_back<CR>", "Step Back" },
-        c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
-        d = { "<cmd>lua require('dap').disconnect()<CR>", "Disconnect" },
-        e = { "<cmd>lua require('dapui').eval()<CR>", "Evaluate" },
-        g = { "<cmd>lua require('dap').session()CR>", "Get Session" },
-        h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover variables" },
-        S = { "<cmd>lua require('dap.ui.widgets').scopes()<CR>", "Scopes" },
-        i = { "<cmd>lua require('dap').step_into<CR>", "Step Into" },
-        o = { "<cmd>lua require('dap').step_over()<CR>", "Step Over" },
-        p = { "<cmd>lua require('dap').pause.toggle()<CR>", "Pause" },
-        q = { "<cmd>lua require('dap').close()<CR>", "Quit" },
-        r = { "<cmd>lua require('dap').repl.toggle<CR>", "Toggle Repl" },
-        s = { "<cmd>lua require('dap').continue()<CR>", "Start" },
-        t = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Toggle Breakpoint" },
-        x = { "<cmd>lua require('dap').terminate()<CR>", "Terminate" },
-        u = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
-    },
+	d = {
+		name = "Dap",
+		c = {
+			function()
+				require("dap").terminate()
+				require("dapui").close()
+			end,
+			"debug: Stop",
+		},
+		d = {
+			function()
+				require("dap").continue()
+			end,
+			"debug: Run",
+		},
+		b = {
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			"debug: Toggle Breakpoint",
+		},
+		i = {
+			function()
+				require("dap").step_into()
+			end,
+			"debug: Step Into",
+		},
+		o = {
+			function()
+				require("dap").step_out()
+			end,
+			"debug: Step Out",
+		},
+		O = {
+			function()
+				require("dap").step_over()
+			end,
+			"debug: Step Over",
+		},
+		C = {
+			function()
+				require("dap").run_to_cursor()
+			end,
+			"debug: Run to cursor",
+		},
+		r = {
+			function()
+				require("dap").repl.open()
+			end,
+			"debug: Open REPL",
+		},
+		-- R = { "<cmd>lua require('dap').run_to_cursor()<CR>", "Run to cursor" },
+		-- E = { "<cmd>lua require('dapui').eval(vim.fn.input '[Expression] > ')<CR>", "Evaluate Input" },
+		-- U = { "<cmd>lua require('dapui').toggle<CR>", "Toggle UI" },
+		-- b = { "<cmd>lua require('dap').step_back<CR>", "Step Back" },
+		-- c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
+		-- d = { "<cmd>lua require('dap').disconnect()<CR>", "Disconnect" },
+		-- e = { "<cmd>lua require('dapui').eval()<CR>", "Evaluate" },
+		-- g = { "<cmd>lua require('dap').session()CR>", "Get Session" },
+		-- h = { "<cmd>lua require('dap.ui.widgets').hover()<CR>", "Hover variables" },
+		-- S = { "<cmd>lua require('dap.ui.widgets').scopes()<CR>", "Scopes" },
+		-- i = { "<cmd>lua require('dap').step_into<CR>", "Step Into" },
+		-- o = { "<cmd>lua require('dap').step_over()<CR>", "Step Over" },
+		-- p = { "<cmd>lua require('dap').pause.toggle()<CR>", "Pause" },
+		-- q = { "<cmd>lua require('dap').close()<CR>", "Quit" },
+		-- r = { "<cmd>lua require('dap').repl.toggle<CR>", "Toggle Repl" },
+		-- s = { "<cmd>lua require('dap').continue()<CR>", "Start" },
+		-- t = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Toggle Breakpoint" },
+		-- x = { "<cmd>lua require('dap').terminate()<CR>", "Terminate" },
+		-- u = { "<cmd>lua require('dap').step_out()<CR>", "Step Out" },
+	},
 }, { mode = "n", prefix = "<leader>", silent = true })
 
 return M

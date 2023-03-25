@@ -88,6 +88,7 @@ return {
 		},
 		config = require("modules.tool.dap"),
 		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
 			{
 				"rcarriga/nvim-dap-ui",
 				config = require("modules.tool.dap.dapui"),

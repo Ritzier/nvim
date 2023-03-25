@@ -35,6 +35,7 @@ return function()
 
 	-- Config lang adaptors
 	require("modules.tool.dap.dap-lldb")
+    -- require("modules.tool.dap.dap-cppdbg")
 	require("modules.tool.dap.dap-debugpy")
 	require("modules.tool.dap.dap-dlv")
 end
