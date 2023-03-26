@@ -42,4 +42,9 @@ return {
 		lazy = true,
 		ft = "python",
 	},
+    {
+        "uarun/vim-protobuf",
+        lazy = true,
+        ft = "proto,"
+    }
 }

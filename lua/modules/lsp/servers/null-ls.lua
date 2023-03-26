@@ -28,6 +28,7 @@ return function(on_attach)
 		b.formatting.stylua,
         b.formatting.yapf,
         b.formatting.rustfmt,
+        b.formatting.buf,
 
 		-- diagnostics
 		b.diagnostics.write_good,
@@ -35,6 +36,7 @@ return function(on_attach)
 		-- b.diagnostics.eslint_d,
 		b.diagnostics.flake8,
 		b.diagnostics.tsc,
+        b.diagnostics.buf,
 		with_root_file(b.diagnostics.selene, "selene.toml"),
 		with_diagnostics_code(b.diagnostics.shellcheck),
 
