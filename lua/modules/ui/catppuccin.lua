@@ -224,7 +224,7 @@ return function()
 					["@constant.java"] = { fg = cp.teal },
 
 					["@property.typescript"] = { fg = cp.lavender, style = { "italic" } },
-					-- ["@constructor.typescript"] = { fg = cp.lavender },
+					-- ["@constructor.typescript"] = { fg = cp.laender },
 
 					-- ["@constructor.tsx"] = { fg = cp.lavender },
 					-- ["@tag.attribute.tsx"] = { fg = cp.mauve },

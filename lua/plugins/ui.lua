@@ -18,6 +18,14 @@ return {
 	{ "catppuccin/nvim", lazy = false, name = "catppuccin", config = require("modules.ui.catppuccin") },
 
 	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+        config = require("modules.ui.kanagawa")
+	},
+
+	{ "rktjmp/lush.nvim" },
+
+	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
@@ -36,9 +44,9 @@ return {
 		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("modules.ui.lualine"),
-        dependencies = {
-            "arkav/lualine-lsp-progress"
-        },
+		dependencies = {
+			"arkav/lualine-lsp-progress",
+		},
 	},
 
 	{

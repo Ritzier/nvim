@@ -11,15 +11,26 @@ return {
 		config = require("modules.editor.auto-session"),
 	},
 
-	--   {
-	-- "jiangmiao/auto-pairs",
-	-- config = require("modules.editor.autopairs"),
-	--   },
+	{
+		"jiangmiao/auto-pairs",
+		config = require("modules.editor.autopairs"),
+		enabled = true,
+	},
+
+	{
+		"windwp/nvim-autopairs",
+		lazy = true,
+		event = "InsertEnter",
+		-- config = require("modules.editor.autopairs"),
+		enabled = false,
+	},
+
 	{
 		"m4xshen/autoclose.nvim",
 		lazy = true,
 		event = "InsertEnter",
 		config = require("modules.editor.autoclose"),
+		enabled = false,
 	},
 
 	{

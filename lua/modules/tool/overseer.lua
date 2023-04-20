@@ -20,7 +20,7 @@ return function()
 			hidden = false,
 		},
 		-- Template modules to load
-		templates = { "builtin", "run_file" },
+		templates = { "builtin", "run_file", "test" },
 		-- When true, tries to detect a green color from your colorscheme to use for success highlight
 		auto_detect_success_color = true,
 		-- Patch nvim-dap to support preLaunchTask and postDebugTask

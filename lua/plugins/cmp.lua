@@ -37,7 +37,7 @@ return {
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "kdheepak/cmp-latex-symbols", enabled = false },
-			{ "ray-x/cmp-treesitter" },
+			-- { "ray-x/cmp-treesitter" },
 			-- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
 			-- {
 			-- 	"jcdickinson/codeium.nvim",

@@ -203,7 +203,7 @@ return function()
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
 			{ name = "crates" },
-			{ name = "treesitter" },
+			-- { name = "treesitter" },
 			-- }, {
 			{ name = "path" },
 			{ name = "buffer" },

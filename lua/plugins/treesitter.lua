@@ -21,6 +21,7 @@ return {
             { "JoosepAlviste/nvim-ts-context-commentstring" },
             { "nvim-treesitter/playground" },
             { "andymass/vim-matchup" },
+            { "nvim-treesitter/nvim-treesitter-textobjects" },
         },
         keys = {
             { "<c-space>", desc = "Increment selection" },
