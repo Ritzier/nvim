@@ -41,7 +41,7 @@ return function()
 		Object = " ",
 		-- Package = "",
 		Package = " ",
-		String = " ",
+		String = "󰉿",
 	}
 
 	local border = function(hl)
