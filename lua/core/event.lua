@@ -106,11 +106,11 @@ function autocmd.load_autocmds()
 				"*",
 				[[if &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal nocursorline | endif]],
 			},
-			-- Force write shada on leaving nvim
+			-- Attempt to write shada when leaving nvim
 			{
 				"VimLeave",
 				"*",
-				[[if has('nvim') | wshada! | else | wviminfo! | endif]],
+				[[if has('nvim') | wshada | else | wviminfo! | endif]],
 			},
 			-- Check if file changed when its window is focus, more eager than 'autoread'
 			{ "FocusGained", "* checktime" },
@@ -143,7 +143,6 @@ function autocmd.load_autocmds()
 	}
 
 	autocmd.nvim_create_augroups(definitions)
-	vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] })
 end
 
 autocmd.load_autocmds()

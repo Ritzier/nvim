@@ -1,8 +1,8 @@
 return function()
 	local notify = require("notify")
 	local icons = {
-		diagnostics = require("modules.utils.icons").get("diagnostics"),
-		ui = require("modules.utils.icons").get("ui"),
+		diagnostics = require("utils.icons").get("diagnostics"),
+		ui = require("utils.icons").get("ui"),
 	}
 
 	notify.setup({
@@ -20,7 +20,8 @@ return function()
 		render = "default",
 		---@usage highlight behind the window for stages that change opacity
 		background_colour = "Normal",
-        max_width = math.floor(vim.api.nvim_win_get_width(vim.api.nvim_get_current_win()) / 4),
+		---@usage minimum width for notification windows
+		minimum_width = 50,
 		---@usage notifications with level lower than this would be ignored. [ERROR > WARN > INFO > DEBUG > TRACE]
 		level = "TRACE",
 		---@usage Icons for the different levels

@@ -1,77 +1,93 @@
-local settings = {}
-local home = require("core.global").home
-
--- Set it to false if you want to use https to update plugins and treesitter parsers.
-settings["use_ssh"] = false
-
--- Set it to false if there are no need to format on save.
-settings["format_on_save"] = true
-
--- Set the format disabled directories here, files under these dirs won't be formatted on save.
-settings["format_disabled_dirs"] = {
-	home .. "/format_disabled_dir_under_home",
-}
-
--- NOTE: The startup time will be slowed down when it's true.
--- Set it to false if you don't use nvim to open big files.
-settings["load_big_files_faster"] = true
-
----Change the colors of the global palette here.
----Settings will complete their replacement at initialization.
----Parameters will be automatically completed as you type.
----Example: { sky = "#04A5E5" }
----@type palette
-settings["palette_overwrite"] = {}
-
--- Set the colorscheme to use here.
--- Available values are: `catppuccin`, `catppuccin-latte`, `catppucin-mocha`, `catppuccin-frappe`, `catppuccin-macchiato`, `edge`, `nord`.
-settings["colorscheme"] = "kanagawa"
--- settings["colorscheme"] = "catppuccin"
-
--- Set background color to use here.
--- Useful for when you want to use a colorscheme that has a light and dark variant like `edge`.
--- Available values are: `dark`, `light`.
-settings["background"] = "dark"
-
--- Set the desired LSPs here.
--- check the below link for all the supported LSPs:
--- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
-settings["lsp"] = {
-	"lua_ls",
-	"bashls",
-	"clangd",
-	"cssls",
-	"gopls",
-	"html",
-	"jsonls",
-	"omnisharp",
-	"pyright",
-	"rust_analyzer",
-	"yamlls",
-	"zls",
-	"null-ls",
-	"vimls",
-}
-
--- Set the desired non-LSP sources here.
--- check the below link for all supported non-LSP sources
--- in `code_actions`, `completion`, `diagnostics`, `formatting`, `hover` folders:
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins
-settings["null_ls"] = {
-	-- formatting
-	"black",
-	"clang_format",
-	"eslint_d",
-	"jq",
-	"markdownlint",
-	"prettierd",
-	"rustfmt",
-	"shfmt",
-	"stylua",
-
-	-- diagnostics
-	"shellcheck",
-	-- "markdownlint",
-}
-
-return settings
+vim.o.autoindent = true
+vim.o.autoread = true
+vim.o.autowrite = true
+vim.o.backspace = "indent,eol,start"
+vim.o.backup = false
+vim.o.backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim"
+vim.o.breakat = [[\ \	;:,!?]]
+vim.o.breakindentopt = "shift:2,min:20"
+vim.o.clipboard = "unnamedplus"
+vim.o.cmdheight = 2 -- 0, 1,
+vim.o.cmdwinheight = 5
+vim.o.complete = ".,w,b,k"
+vim.o.completeopt = "menuone,noselect"
+vim.o.concealcursor = "niv"
+vim.o.conceallevel = 0
+vim.o.cursorcolumn = true
+vim.o.cursorline = true
+vim.o.diffopt = "filler,iwhite,internal,linematch:60,algorithm:patience"
+vim.o.display = "lastline"
+vim.o.encoding = "utf-8"
+vim.o.equalalways = false
+vim.o.errorbells = true
+vim.o.expandtab = true
+vim.o.fileformats = "unix,mac,dos"
+vim.o.foldenable = true
+vim.o.foldlevelstart = 99
+vim.o.formatoptions = "1jcroql"
+vim.o.grepformat = "%f:%l:%c:%m"
+vim.o.grepprg = "rg --hidden --vimgrep --smart-case --"
+vim.o.helpheight = 12
+vim.o.hidden = true
+vim.o.history = 2000
+vim.o.ignorecase = true
+vim.o.inccommand = "nosplit"
+vim.o.incsearch = true
+vim.o.infercase = true
+vim.o.jumpoptions = "stack"
+vim.o.laststatus = 2
+vim.o.linebreak = true
+vim.o.list = true
+vim.o.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
+vim.o.magic = true
+vim.o.mousescroll = "ver:3,hor:6"
+vim.o.number = true
+vim.o.previewheight = 12
+vim.o.pumheight = 15
+vim.o.redrawtime = 1500
+vim.o.relativenumber = true
+vim.o.ruler = true
+vim.o.scrolloff = 2
+vim.o.sessionoptions = "buffers,curdir,help,tabpages,winsize"
+vim.o.shada = "!,'500,<50,@100,s10,h"
+vim.o.shiftround = true
+vim.o.shiftwidth = 4
+vim.o.shortmess = "aoOTIcF"
+vim.o.showbreak = "↳  "
+vim.o.showcmd = false
+vim.o.showmode = false
+vim.o.showtabline = 2
+vim.o.sidescrolloff = 5
+vim.o.signcolumn = "yes"
+vim.o.smartcase = true
+vim.o.smarttab = true
+vim.o.softtabstop = 4
+vim.o.splitbelow = true
+vim.o.splitkeep = "cursor"
+vim.o.splitright = true
+vim.o.startofline = false
+vim.o.swapfile = false
+vim.o.switchbuf = "usetab,uselast"
+vim.o.synmaxcol = 2500
+vim.o.tabstop = 4
+vim.o.termguicolors = true
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+vim.o.ttimeout = true
+vim.o.ttimeoutlen = 0
+vim.o.undofile = true
+-- Poease do NOT set `updatetime` to above 500, otherwise most plugins may not function correctl
+vim.o.updatetime = 200
+vim.o.viewoptions = "folds,cursor,curdir,slash,unix"
+vim.o.virtualedit = "block"
+vim.g.visualbell = true
+vim.o.whichwrap = "h,l,<,>,[,],~"
+vim.o.wildignore =
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+vim.o.wildignorecase = true
+vim.o.winminwidth = 10
+vim.o.winwidth = 30
+vim.o.wrap = false
+vim.o.wrapscan = true
+vim.o.writebackup = false
+vim.g.mapleader = ","

@@ -12,7 +12,7 @@ return function()
 		if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
 			return "" -- Excluded filetypes
 		else
-			local ok, lspsaga = pcall(require, "lspsaga.symbolwinbar")
+			local ok, lspsaga = pcall(require, "lspsaga.symbol.winbar").get_bar()
 			if ok then
 				if lspsaga:get_winbar() ~= nil then
 					return lspsaga:get_winbar()
