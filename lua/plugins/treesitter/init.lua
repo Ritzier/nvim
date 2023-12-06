@@ -3,7 +3,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-			"JoosepAlviste/nvim-ts-context-commentstring",
 			"RRethy/nvim-treesitter-endwise",
 			"windwp/nvim-ts-autotag",
 			"nvim-treesitter/playground",

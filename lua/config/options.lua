@@ -1,16 +1,17 @@
 local opt = vim.opt
-
+                    
 opt.autoindent = true
 opt.breakindent = true
 opt.clipboard = "unnamedplus"
 opt.cmdheight = 0
 opt.completeopt = "menuone,noselect"
 opt.conceallevel = 0
+opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
 opt.confirm = true
 opt.cursorline = true
 opt.cursorcolumn = true
 opt.expandtab = true
--- opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+opt.backspace = "indent,eol,start"
 opt.foldcolumn = "0"
 opt.foldenable = false
 opt.foldlevel = 99

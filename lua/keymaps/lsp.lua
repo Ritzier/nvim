@@ -1,5 +1,5 @@
 return function(bufnr)
-    local wk = require("which-key")
+	local wk = require("which-key")
 	wk.register({
 		["<space>w"] = {
 			name = "Workspace",
@@ -12,7 +12,9 @@ return function(bufnr)
 				"List Workspace Folder",
 			},
 		},
-		["<space>f"] = { ":lua vim.lsp.buf.format()<CR>", "Format" },
+		["<space>f"] = { function()
+		    vim.lsp.buf.format { async = true }
+		end, "Format" },
 		["<space>n"] = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
 		["<space>e"] = { ":lua vim.diagnostic.open_float()<CR>", "Diagnostic Open Float" },
 		["gd"] = { "<cmd>Lspsaga peek_definition<CR>", "Peek Definition" },
@@ -31,6 +33,7 @@ return function(bufnr)
 			o = { "<cmd>Lspsaga outline<CR>", "Outline" },
 			l = { "<cmd>Lspsaga show_line_diagnsotics<CR>", "Show Line Diagnostic" },
 			f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
+			r = { "<cmd>LspRestart<CR>", "Restart" },
 		},
 	}, { mode = "n", prefix = "", silent = true, buffer = bufnr })
 end

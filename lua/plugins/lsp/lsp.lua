@@ -35,7 +35,7 @@ return function()
 				capabilities = capabilities,
 			})
 		else
-			handler.setup(on_attach, capabilities)
+			handler(on_attach, capabilities)
 		end
 	end
 end
