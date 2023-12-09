@@ -15,7 +15,7 @@ return function()
 			signs = {
 				active = signs,
 			},
-			underline = false,
+			underline = true,
 			update_in_insert = false,
 			severity_sort = true,
 			float = {

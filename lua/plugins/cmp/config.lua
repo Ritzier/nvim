@@ -123,16 +123,16 @@ return function()
 			max_view_entries = 120,
 		},
 
-		-- snippet = {
-		-- 	expand = function(args)
-		-- 		require("luasnip").lsp_expand(args.body)
-		-- 	end,
-		-- },
+		snippet = {
+			expand = function(args)
+				require("luasnip").lsp_expand(args.body)
+			end,
+		},
 
 		sources = {
 			{ name = "nvim_lsp", max_item_count = 300 },
 			{ name = "nvim_lua" },
-			-- { name = "luasnip" },
+			{ name = "luasnip" },
 			{ name = "path" },
 			{ name = "treesitter" },
 			{ name = "latex_symbols" },
