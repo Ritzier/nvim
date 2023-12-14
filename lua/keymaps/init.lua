@@ -44,24 +44,9 @@ wk.register({
 }, { mode = "n", prefix = "<leader>", silent = true })
 
 wk.register({
-	["c"] = {
-		name = "Code",
-		c = { "<cmd>CompilerOpen<CR>", "Compiler Open" },
-		r = {
-			function()
-				vim.cmd("CompilerStop")
-				vim.cmd("CompilerRedo")
-			end,
-			"Stop and Redo",
-		},
-		C = { "<cmd>CompilerToggleResults<cr>", "Toggle Result" },
-	},
+    ["c"] = {
+        name = "Code",
+        c = {"<cmd>OverseerToggle<CR>", "OverseerToggle"},
+        r = { "<cmd>OverseerRun<CR>", "OverseerRun" }
+    }
 }, { mode = "n", prefix = "<space>", silent = true })
-
--- wk.register({
---     ["t"] = {
---         name = "Telescope",
---         h = { ":Telescope highlights<CR>", "Highlight" },
---         l = { ":Telescope live_grep<CR>", "Live Grep" }
---     },
--- }, { mode = "n", prefix = "", silent = true })
