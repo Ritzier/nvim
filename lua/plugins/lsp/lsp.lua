@@ -1,6 +1,7 @@
 return function()
 	require("plugins.lsp.mason")()
 	require("plugins.lsp.settings")()
+    require("plugins.lsp.null_ls")()
 
 	local servers = require("plugins.lsp.servers_list")
 
