@@ -41,6 +41,11 @@ wk.register({
 		p = { ":CccPick<CR>", "Pick" },
 	},
 	["f"] = { "<cmd>GuardFmt<CR>", "Formatter" },
+    ["d"] = {
+        name = "Diffview",
+        d = { "<cmd>DiffviewOpen<CR>", "DiffviewOpen" },
+        c = { "<cmd>DiffviewClose<CR>", "DiffviewClose" },
+    }
 }, { mode = "n", prefix = "<leader>", silent = true })
 
 wk.register({
