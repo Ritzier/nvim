@@ -6,17 +6,17 @@ return {
         }
     },
 
-    -- {
-    --     "nvim-lualine/lualine.nvim",
-    --     event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    --     config = require("plugins.ui.lualine")
-    -- },
-
     {
-        "rebelot/heirline.nvim",
-        event = { "BufreadPost", "BufAdd", "BufNewFile" },
-        config = require("plugins.ui.heirline")
+        "nvim-lualine/lualine.nvim",
+        event = { "BufReadPost", "BufAdd", "BufNewFile" },
+        config = require("plugins.ui.lualine")
     },
+
+    -- {
+    --     "rebelot/heirline.nvim",
+    --     event = { "BufreadPost", "BufAdd", "BufNewFile" },
+    --     config = require("plugins.ui.heirline")
+    -- },
 
     {
         "gelguy/wilder.nvim",
@@ -26,4 +26,10 @@ return {
             "romgrk/fzy-lua-native"
         }
     },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPost", "BufAdd", "BufNewFile" },
+        config = require("plugins.ui.gitsigns"),
+    }
 }

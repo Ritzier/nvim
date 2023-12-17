@@ -1,149 +1,100 @@
 return function()
-  local overseer = require("overseer")
+	local lualine = require("lualine")
 
-  local function lspsaga_symbols()
-    local exclude = {
-      ["terminal"] = true,
-      ["toggleterm"] = true,
-      ["prompt"] = true,
-      ["NvimTree"] = true,
-      ["help"] = true,
-    }
-    if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
-      return "" -- Excluded filetypes
-    else
-      local ok, lspsaga = pcall(require, "lspsaga.symbol.winbar").get_bar()
-      if ok then
-        if lspsaga:get_winbar() ~= nil then
-          return lspsaga:get_winbar()
-        else
-          return "" -- Cannot get node
-        end
-      end
-    end
-  end
+	lualine.setup({
+		options = {
+			icons_enabled = true,
+			theme = "auto",
+			component_separators = { left = "", right = "" },
+			section_separators = { left = "", right = "" },
+			disabled_filetypes = { statusline = { "alpha", "dashboard", "NvimTree", "Outline" } },
+			ignore_focus = {},
+			always_divide_middle = true,
+			globalstatus = false,
+			refresh = {
+				statusline = 100,
+				tabline = 100,
+				winbar = 100,
+			},
+		},
 
-  local branch = {
-    "branch",
-    icons_enabled = true,
-    icon = "",
-  }
+		sections = {
+			lualine_a = {
+				"mode",
+			},
 
-  local function hide_in_width()
-    return vim.fn.winwidth(0) > 80
-  end
+			lualine_b = {
+				{
+					"branch",
+				},
 
-  local diff = {
-    "diff",
-    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-    diff_color = {
-      added = { fg = "#98be65" },
-      modified = { fg = "#FF8800" },
-      removed = { fg = "#ec5f67" },
-    },
-    cond = hide_in_width,
-  }
+				{
+					"diff",
+					source = function()
+						local gitsigns = vim.b.gitsigns_status_dict
+						if gitsigns then
+							return {
+								added = gitsigns.added,
+								modified = gitsigns.changed,
+								removed = gitsigns.removed,
+							}
+						end
+					end,
+				},
 
-  local diag = {
-    "diagnostics",
-    sources = { "nvim_diagnostic" },
-    symbols = { error = " ", warn = " ", info = " " },
-    diagnostics_color = {
-      color_error = { fg = "#ec5f67" },
-      color_warn = { fg = "#ECBE7B" },
-      color_info = { fg = "#008080" },
-    },
-  }
+				{
+					"diagnostics",
+					sources = { "nvim_diagnostic" },
+					sections = { "error", "warn", "info", "hint" },
+				},
+			},
 
-  local filetype = {
-    "filetype",
-    colored = true,
-    icons_enabled = true,
-    icon_only = true,
-    icon = { align = "right" },
-  }
+			lualine_c = {
+				{
+					"overseer",
+					label = "",
+					colored = true,
+					symbols = {
+						[require("overseer").STATUS.FAILURE] = "F:",
+						[require("overseer").STATUS.CANCELED] = "C:",
+						[require("overseer").STATUS.SUCCESS] = "S:",
+						[require("overseer").STATUS.RUNNING] = "R:",
+					},
+					unique = false,
+					name = nil,
+					name_not = false,
+					status = nil,
+					status_not = false,
+				},
+			},
 
-  local location = {
-    "location",
-  }
+			lualine_x = {},
 
-  local max_file_line = function()
-    local line = vim.fn.line("$")
-    return line
-  end
+			lualine_y = {
+				{
+					"location",
+				},
+			},
 
-  local test_progress = function()
-    local current_line = vim.fn.line(".")
-    local total_line = vim.fn.line("$")
-    local text = math.modf((current_line / total_line) * 100) .. tostring("%%")
-    return text
-  end
+			lualine_z = {
+				{
+					function()
+						local current_line = vim.fn.line(".")
+						local total_line = vim.fn.line("$")
+						return math.modf((current_line / total_line) * 100) .. tostring("%%") .. "/" .. total_line
+					end,
+				},
+			},
+		},
 
-  local function z()
-    local line = max_file_line()
-    local pro = test_progress()
-    return pro .. "/" .. line
-  end
+		inactive_sections = {},
 
-  require("lualine").setup({
-    options = {
-      icons_enabled = true,
-      theme = "auto",
-      component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
-      disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
-      always_divide_middle = true,
-      depth_limit = 0,
-      depth_limit_indicator = "..",
-    },
-    sections = {
-      lualine_a = {
-        { "mode", separator = { left = "" }, right_padding = 2 },
-      },
-      lualine_b = {
-        branch,
-        diff,
-      },
-      lualine_c = {
-        lspsaga_symbols,
-        require("lspsaga.symbol.winbar").get_bar()
-      },
-      lualine_d = {
-        "lsp_progress",
-      },
-      lualine_x = {
-        diag,
-        {
-          "overseer",
-          label = "", -- Prefix for task counts
-          colored = true, -- Color the task icons and counts
-          symbols = {
-            [overseer.STATUS.FAILURE] = "F:",
-            [overseer.STATUS.CANCELED] = "C:",
-            [overseer.STATUS.SUCCESS] = "S:",
-            [overseer.STATUS.RUNNING] = "R:",
-          },
-          unique = false, -- Unique-ify non-running task count by name
-          name = nil,    -- List of task names to search for
-          name_not = false, -- When true, invert the name search
-          status = nil,  -- List of task statuses to display
-          status_not = false, -- When true, invert the status search
-        },
-      },
-      lualine_y = { location },
-      lualine_z = {
-        { z, separator = { right = "" }, left_padding = 2 },
-      },
-    },
-    inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {},
-    },
-    tabline = {},
-    extensions = {},
-  })
+		tabline = {},
+
+		winbar = {},
+
+		inactive_winbar = {},
+
+		extensions = {},
+	})
 end
