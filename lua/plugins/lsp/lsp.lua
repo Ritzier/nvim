@@ -1,7 +1,7 @@
 return function()
 	require("plugins.lsp.mason")()
 	require("plugins.lsp.settings")()
-    require("plugins.lsp.null_ls")()
+	require("plugins.lsp.null_ls")()
 
 	local servers = require("plugins.lsp.servers_list")
 
@@ -9,6 +9,14 @@ return function()
 	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 	local on_attach = function(client, bufnr)
+		-- lsp_signature
+		require("lsp_signature").on_attach({
+			bind = true,
+			handler_opts = {
+				border = "rounded",
+			},
+		}, bufnr)
+
 		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 		vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr")
 
