@@ -6,10 +6,16 @@ return {
         }
     },
 
+    -- {
+    --     "nvim-lualine/lualine.nvim",
+    --     event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    --     config = require("plugins.ui.lualine")
+    -- },
+
     {
-        "nvim-lualine/lualine.nvim",
-        event = { "BufReadPost", "BufAdd", "BufNewFile" },
-        config = require("plugins.ui.lualine")
+        "rebelot/heirline.nvim",
+        event = { "BufreadPost", "BufAdd", "BufNewFile" },
+        config = require("plugins.ui.heirline")
     },
 
     {
