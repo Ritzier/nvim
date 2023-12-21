@@ -34,7 +34,8 @@ return {
 
 	{
 		"nvim-tree/nvim-tree.lua",
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+        lazy = false,
+		-- event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.nvim_tree")
 	},
 }
