@@ -18,4 +18,14 @@ return {
 			})
 		end,
 	},
+
+	{
+		"iamcco/markdown-preview.nvim",
+		-- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = "markdown",
+		build = ":call mkdp#util#install()",
+		keys = {
+			{ "1", "<cmd>MarkdownPreviewToggle<CR>" },
+		},
+	},
 }

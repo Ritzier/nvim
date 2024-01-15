@@ -35,5 +35,6 @@ return function(bufnr)
 			f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
 			r = { "<cmd>LspRestart<CR>", "Restart" },
 		},
+        ["3"] = { "<cmd>Lspsaga outline<CR>", "Outline" },
 	}, { mode = "n", prefix = "", silent = true, buffer = bufnr })
 end
