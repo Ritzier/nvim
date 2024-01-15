@@ -3,10 +3,9 @@ return function()
 	null_ls.setup()
 
 	require("mason-null-ls").setup({
-		ensure_installed = { "stylua", "jq" },
+		ensure_installed = { "stylua", "jq", "shfmt", "markdownlint" },
 		automatic_installation = true,
 		handlers = {
-			function() end, -- disables automatic setup of all null-ls sources
 			stylua = function(source_name, methods)
 				null_ls.register(null_ls.builtins.formatting.stylua)
 			end,
