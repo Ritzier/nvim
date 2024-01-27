@@ -151,8 +151,8 @@ return {
 		end,
 	},
 
-    {
-        "sindrets/diffview.nvim",
-        cmd = { "DiffviewOpen", "DiffviewClose" }
-    }
+	{
+		"sindrets/diffview.nvim",
+		cmd = { "DiffviewOpen", "DiffviewClose" },
+	},
 }

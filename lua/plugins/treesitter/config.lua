@@ -3,6 +3,12 @@ return function()
 	vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
 
 	require("nvim-treesitter.configs").setup({
+		rainbow = {
+			enable = true,
+			fuery = "rainbow-parens",
+			-- strategy = require("ts-rainbow").strategy.global,
+		},
+
 		ensure_installed = {
 			"bash",
 			"c",
@@ -58,12 +64,12 @@ return function()
 		endwise = { enable = true },
 
 		autotag = {
-            enable = true,
-            enable_rename = true,
-            enable_close = true,
-            enable_close_on_slash = true,
-            filetypes = { "html", "xml" }
-        },
+			enable = true,
+			enable_rename = true,
+			enable_close = true,
+			enable_close_on_slash = true,
+			filetypes = { "html", "xml" },
+		},
 
 		playground = {
 			enable = true,

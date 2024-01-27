@@ -33,6 +33,7 @@ return {
 					})
 				end,
 			},
+            { "HiPhish/rainbow-delimiters.nvim" }
 		},
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
