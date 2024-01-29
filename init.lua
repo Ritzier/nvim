@@ -6,4 +6,5 @@ require("config.lazy")
 require("config.autocmds")
 --require("utils.contextmenu")
 
-vim.cmd([[colorscheme tokyonight]])
+-- vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme catppuccin]])

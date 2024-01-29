@@ -41,11 +41,15 @@ wk.register({
 		p = { ":CccPick<CR>", "Pick" },
 	},
 	["f"] = { "<cmd>GuardFmt<CR>", "Formatter" },
-    ["d"] = {
+    ["D"] = {
         name = "Diffview",
         d = { "<cmd>DiffviewOpen<CR>", "DiffviewOpen" },
         c = { "<cmd>DiffviewClose<CR>", "DiffviewClose" },
-    }
+    },
+	d = {
+		name = "Dap",
+		d = { ':lua require("dapui").eval()<CR>', "DapEval" },
+	},
 }, { mode = "n", prefix = "<leader>", silent = true })
 
 wk.register({
