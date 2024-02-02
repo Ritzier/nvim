@@ -2,13 +2,24 @@ return function()
 	require("plugins.debugger.dapui")
 	require("plugins.debugger.dap-virtual-text")
 
+	local dap, dapui = require("dap"), require("dapui")
+	dap.listeners.before.attach.dapui_config = function()
+		dapui.open()
+	end
+	dap.listeners.before.launch.dapui_config = function()
+		dapui.open()
+	end
+	dap.listeners.before.event_terminated.dapui_config = function()
+		dapui.close()
+	end
+	dap.listeners.before.event_exited.dapui_config = function()
+		dapui.close()
+	end
+
 	vim.fn.sign_define("DapBreakpoint", { text = "󰝥", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 	vim.fn.sign_define("DapBreakpointCondition", { text = "󰟃", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 	vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "", numhl = "" })
-	vim.fn.sign_define(
-		"DapBreakpointRejected",
-		{ text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" }
-	)
+	vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 	vim.fn.sign_define("DapLogPoint", { text = "", linehl = "", numhl = "" })
 
 	local mason_dap = require("mason-nvim-dap")

@@ -18,4 +18,5 @@ return {
 	"lemminx",
 	"yamlls",
 	"zls",
+    "sqls"
 }
