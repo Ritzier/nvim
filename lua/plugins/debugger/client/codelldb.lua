@@ -13,6 +13,18 @@ return function()
 
 	dap.configurations.c = {
 		{
+			name = "LLDB: Launch",
+			type = "codelldb",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+			end,
+			cwd = "${workspaceFolder}",
+			stopOnEntry = false,
+			args = {},
+			console = "integratedTerminal",
+		},
+		{
 			name = "Debug",
 			type = "codelldb",
 			request = "launch",
@@ -42,4 +54,17 @@ return function()
 	}
 	dap.configurations.cpp = dap.configurations.c
 	dap.configurations.rust = dap.configurations.c
+	-- dap.configurations.rust = {
+	-- 	{
+	-- 		name = "Rust debug",
+	-- 		type = "codelldb",
+	-- 		request = "launch",
+	-- 		program = function()
+ --                vim.fn.jobstart("cargo build")
+	-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+	-- 		end,
+	-- 		cwd = "${workspaceFolder}",
+	-- 		stopOnEntry = true,
+	-- 	},
+	-- }
 end

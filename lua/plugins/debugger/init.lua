@@ -1,6 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+        lazy = false,
 		cmd = {
 			"DapSetLogLevel",
 			"DapShowLog",
@@ -16,7 +17,7 @@ return {
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 			{ "jay-babu/mason-nvim-dap.nvim" },
-			{ "theHamsta/nvim-dap-virtual-text" },
+			{ "theHamsta/nvim-dap-virtual-text",  lazy = false },
 		},
 	},
 }

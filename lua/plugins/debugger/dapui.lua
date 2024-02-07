@@ -1,8 +1,3 @@
-if true then
-    return function()
-        require("dapui").setup()
-    end
-end
 return function()
 	require("dapui").setup({
 		force_buffers = true,
