@@ -10,6 +10,8 @@ wk.register({
 	["<A-S-j>"] = { ":BufferLineMoveNext<CR>", "Move Next Buffer" },
 	["<A-S-k>"] = { ":BufferLineMovePrev<CR>", "Move Prev Buffer" },
 	["<C-x>"] = { ":bdelete<CR>", "Delete buffer" },
+    ["1"] = { ":OverseerRun<CR>", "Overseer" },
+    ["!"] = { ":OverseerToggle<CR>", "Overseer" },
 	["6"] = { ":lua require('dap').continue()<CR>", "debug: Run/Continue" },
 	["7"] = { ":lua require('dap').terminate()<CR>", "debug: Stop" },
 	["8"] = { ":lua require('dap').toggle_breakpoint()<CR>", "debug: Toggle breakpoint" },
