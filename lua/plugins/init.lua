@@ -72,7 +72,7 @@ return {
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				config = function()
 					require("ts_context_commentstring").setup({})
-                    vim.g.skip_ts_context_commentstring_module = true
+					vim.g.skip_ts_context_commentstring_module = true
 				end,
 			},
 		},
@@ -153,5 +153,11 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		cmd = { "DiffviewOpen", "DiffviewClose" },
+	},
+
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
+		ft = { "rust" },
 	},
 }
