@@ -1,5 +1,6 @@
 local wk = require("which-key")
 wk.register({
+    ["<C-a>"] = { ":wincmd w<CR>", "Focus Float" },
 	["<C-h>"] = { "<C-w>h", "Focus left" },
 	["<C-j>"] = { "<C-w>l", "Focus down" },
 	["<C-k>"] = { "<C-w>k", "Focus up" },
@@ -18,7 +19,7 @@ wk.register({
 	["9"] = { ":lua require('dap').step_into()<CR>", "debug: Step into" },
 	["10"] = { ":lua require('dap').step_out()<CR>", "debug: Step out" },
 	["11"] = { ":lua require('dap').step_over()<CR>", "debug: Step over" },
-}, { mode = "n", prefix = "", silent = true })
+}, { mode = "n", prefix = "", {silent = true, noremap = true} })
 
 wk.register({
 	["<"] = { "<gv", "Decrease Indent" },
