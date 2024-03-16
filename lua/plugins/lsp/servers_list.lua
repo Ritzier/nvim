@@ -11,7 +11,7 @@ return {
 	"jsonls",
 	"texlab",
 	"lua_ls",
-	"rust_analyzer",
+	-- "rust_analyzer",
 	"opencl_ls",
 	"pylsp",
 	"tailwindcss",

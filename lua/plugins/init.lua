@@ -159,5 +159,24 @@ return {
 		"mrcjkb/rustaceanvim",
 		version = "^4", -- Recommended
 		ft = { "rust" },
+		config = function()
+			vim.g.rustaceanvim = {
+				tools = {},
+				server = {
+					on_attach = function(client, bufnr)
+						require("keymaps.rustacean")(client, bufnr)
+					end,
+					default_settings = {
+						["rust-analyzer"] = {
+							cargo = { features = "all" },
+							checkOnSave = true,
+							check = { command = "clippy", features = "all" },
+							procMacro = { enable = true },
+						},
+					},
+				},
+				dap = {},
+			}
+		end,
 	},
 }

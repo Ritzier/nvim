@@ -1,6 +1,21 @@
 local wk = require("which-key")
-return function(bufnr)
+return function(client, bufnr)
+	require("lsp_signature").on_attach({
+		bind = true,
+		handler_opts = {
+			border = "rounded",
+		},
+	}, bufnr)
+
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr")
+
+	if client.server_capabilities.definitionProvider then
+		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+	end
+
 	wk.register({
+        ["<C-a>"] = { ":RustLsp hover actions<CR>", "Hover Actions" },
 		["<space>w"] = {
 			name = "Workspace",
 			a = { ":lua vim.lsp.buf.add_workspace_folder", "Add WorkSpace Folder" },
@@ -32,12 +47,17 @@ return function(bufnr)
 				i = { "<cmd>Lspsaga incoming_calls<CR>", "Incoming Calls" },
 				o = { "<cmd>Lspsaga outgoing_calls<CR>", "Outgoing Calls" },
 			},
-			t = { "<cmd>Lspsaga term_toggle<CR>", "Term Toggle" },
+            t = { ":RustLsp testables<CR>", "Tests" },
 			o = { "<cmd>Lspsaga outline<CR>", "Outline" },
 			l = { "<cmd>Lspsaga show_line_diagnsotics<CR>", "Show Line Diagnostic" },
 			f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
-			r = { "<cmd>LspRestart<CR>", "Restart" },
+			R = { ":Rust", "Restart" },
 		},
-		["3"] = { "<cmd>Lspsaga outline<CR>", "Outline" },
-	}, { mode = "n", prefix = "", silent = true, buffer = bufnr })
+		["<space>a"] = {
+			function()
+				vim.cmd.RustLsp("codeAction")
+			end,
+			"Code Action",
+		},
+	}, { mode = "n", prefix = "", { silent = true, noremap = true } })
 end

@@ -15,6 +15,7 @@ return {
 			},
 			{
 				"shellRaining/hlchunk.nvim",
+				-- enabled = false,
 				event = { "UIEnter" },
 				config = function()
 					require("hlchunk").setup({
@@ -33,7 +34,7 @@ return {
 					})
 				end,
 			},
-            { "HiPhish/rainbow-delimiters.nvim" }
+			{ "HiPhish/rainbow-delimiters.nvim" },
 		},
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },

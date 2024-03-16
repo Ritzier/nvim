@@ -1,6 +1,6 @@
 local wk = require("which-key")
 wk.register({
-    ["<C-a>"] = { ":wincmd w<CR>", "Focus Float" },
+	["<C-a>"] = { ":wincmd w<CR>", "Focus Float" },
 	["<C-h>"] = { "<C-w>h", "Focus left" },
 	["<C-j>"] = { "<C-w>l", "Focus down" },
 	["<C-k>"] = { "<C-w>k", "Focus up" },
@@ -11,15 +11,20 @@ wk.register({
 	["<A-S-j>"] = { ":BufferLineMoveNext<CR>", "Move Next Buffer" },
 	["<A-S-k>"] = { ":BufferLineMovePrev<CR>", "Move Prev Buffer" },
 	["<C-x>"] = { ":bdelete<CR>", "Delete buffer" },
-    ["1"] = { ":OverseerRun<CR>", "Overseer" },
-    ["!"] = { ":OverseerToggle<CR>", "Overseer" },
+	["1"] = { ":OverseerRun<CR>", "Overseer" },
+	["!"] = { ":OverseerToggle<CR>", "Overseer" },
 	["6"] = { ":lua require('dap').continue()<CR>", "debug: Run/Continue" },
 	["7"] = { ":lua require('dap').terminate()<CR>", "debug: Stop" },
 	["8"] = { ":lua require('dap').toggle_breakpoint()<CR>", "debug: Toggle breakpoint" },
 	["9"] = { ":lua require('dap').step_into()<CR>", "debug: Step into" },
 	["10"] = { ":lua require('dap').step_out()<CR>", "debug: Step out" },
 	["11"] = { ":lua require('dap').step_over()<CR>", "debug: Step over" },
-}, { mode = "n", prefix = "", {silent = true, noremap = true} })
+}, { mode = "n", prefix = "", { silent = true, noremap = true } })
+
+wk.register({
+	["<A-l>"] = { "<Plug>(TaboutMulti)", "Tabout Next" },
+	["<A-h>"] = { "<Plug>(TaboutBackMulti)", "Tabout Prev" },
+}, { mode = "i", prefix = "", { silent = true, noremap = true } })
 
 wk.register({
 	["<"] = { "<gv", "Decrease Indent" },
