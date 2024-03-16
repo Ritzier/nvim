@@ -28,16 +28,16 @@ return {
 						-- "show features"
 						-- description = "Show features"
 					},
-                    {
-                        "<leader>Cp",
-                        ":Crates expand_plain_crate_to_inline_table<CR>",
-                        desc = "Expand To Inline Table"
-                    },
-                    {
-                        "<leader>Ct",
-                        ":Crates extract_crate_into_table<CR>",
-                        desc = "Extract Into Table",
-                    }
+					{
+						"<leader>Cp",
+						":Crates expand_plain_crate_to_inline_table<CR>",
+						desc = "Expand To Inline Table",
+					},
+					{
+						"<leader>Ct",
+						":Crates extract_crate_into_table<CR>",
+						desc = "Extract Into Table",
+					},
 				},
 				event = { "BufRead Cargo.toml" },
 				dependencies = { "nvim-lua/plenary.nvim" },
@@ -46,16 +46,6 @@ return {
 					-- require("keymaps.crates")
 				end,
 			},
-            {
-                "Jezda1337/nvim-html-css",
-                dependencies = {
-                    "nvim-treesitter/nvim-treesitter",
-                    "nvim-lua/plenary.nvim"
-                },
-                config = function()
-                    require("html-css").setup()
-                end
-            }
 		},
 		config = require("plugins.cmp.config"),
 	},

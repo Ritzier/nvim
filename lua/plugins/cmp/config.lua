@@ -100,10 +100,6 @@ return function()
 		formatting = {
 			fields = { "abbr", "kind", "menu" },
 			format = function(entry, vim_item)
-                if entry.source.name == "html-css" then
-                    vim_item.menu = entry.completion_item.menu
-                end
-
 				local kind = require("lspkind").cmp_format({
 					mod = "text_symbol",
 					maxwidth = 30,
@@ -141,7 +137,6 @@ return function()
 			{ name = "treesitter" },
 			{ name = "latex_symbols" },
 			{ name = "crates" },
-			{ name = "html-css" },
 		},
 
 		mapping = cmp.mapping.preset.insert({
