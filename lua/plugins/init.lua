@@ -171,7 +171,14 @@ return {
 							cargo = { features = "all" },
 							checkOnSave = true,
 							check = { command = "clippy", features = "all" },
-							procMacro = { enable = true },
+							procMacro = {
+								enable = true,
+								ignored = {
+									leptos_macro = {
+										"server",
+									},
+								},
+							},
 						},
 					},
 				},
