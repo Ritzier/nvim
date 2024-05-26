@@ -1,0 +1,41 @@
+return {
+    {
+        "ray-x/go.nvim",
+        lazy = true,
+        ft = { "go", "gomod", "gosum" },
+        build = ":GoInstallBinaries",
+        config = require("plugins.lang.config.go"),
+        dependencies = { "ray-x/guihua.lua" },
+    },
+
+    {
+        "mrcjkb/rustaceanvim",
+        lazy = true,
+        ft = "rust",
+        version = "^4",
+        init = require("plugins.lang.config.rust"),
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
+    {
+        "Saecki/crates.nvim",
+        lazy = true,
+        event = "BufReadPost Cargo.toml",
+        config = require("plugins.lang.config.crates"),
+        dependencies = { "nvim-lua/plenary.nvim" },
+
+    },
+
+    {
+        "iamcco/markdown-preview.nvim",
+        lazy = true,
+        ft = "markdown",
+        build = ":call mkdp#util#install()",
+    },
+
+    {
+        "chrisbra/csv.vim",
+        lazy = true,
+        ft = "csv",
+    }
+}

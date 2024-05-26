@@ -1,41 +1,76 @@
 return {
 	{
-		"folke/edgy.nvim",
-		event = "VeryLazy",
-		opts = {},
+		"Jint-lzxy/nvim",
+		lazy = true,
+		branch = "refactor/syntax-highlighting",
+		name = "catppuccin",
+		config = require("plugins.ui.config.catppuccin"),
 	},
-
 	{
-		"nvim-lualine/lualine.nvim",
+		"akinsho/bufferline.nvim",
+		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = require("plugins.ui.lualine"),
+		config = require("plugins.ui.config.bufferline"),
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	},
+	{
+		"dstein64/nvim-scrollview",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+		config = require("plugins.ui.config.scrollview"),
+	},
+	{
+		"folke/todo-comments.nvim",
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
+		config = require("plugins.ui.config.todo"),
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
-	-- {
-	--     "rebelot/heirline.nvim",
-	--     event = { "BufreadPost", "BufAdd", "BufNewFile" },
-	--     config = require("plugins.ui.heirline")
-	-- },
+	{
+		"rcarriga/nvim-notify",
+		lazy = true,
+		event = "VeryLazy",
+		config = require("plugins.ui.config.notify"),
+	},
 
 	{
-		"gelguy/wilder.nvim",
-		event = "CmdlineEnter",
-		config = require("plugins.ui.wilder"),
-		dependencies = {
-			"romgrk/fzy-lua-native",
-		},
+		"j-hui/fidget.nvim",
+		lazy = true,
+		event = "LspAttach",
+		config = require("plugins.ui.config.fidget"),
 	},
 
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = require("plugins.ui.gitsigns"),
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
+		config = require("plugins.ui.config.gitsigns"),
 	},
 
 	{
-		"nvim-tree/nvim-tree.lua",
-        lazy = false,
-		-- event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = require("plugins.ui.nvim_tree")
+		"lukas-reineke/indent-blankline.nvim",
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
+
+		config = require("plugins.ui.config.indent-blankline"),
 	},
+
+	{
+		"karb94/neoscroll.nvim",
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
+		config = require("plugins.ui.config.neoscroll"),
+	},
+
+    {
+        "nvim-lualine/lualine.nvim",
+        lazy = true,
+        event = { "BufReadPost", "BufAdd", "BufNewFile" },
+        config = require("plugins.ui.config.lualine")
+    }
 }

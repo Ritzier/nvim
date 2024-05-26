@@ -1,5 +1,6 @@
 local wk = require("which-key")
-return function(bufnr)
+local a = {}
+function a:on_attach(bufnr)
 	wk.register({
 		["<space>w"] = {
 			name = "Workspace",
@@ -41,3 +42,5 @@ return function(bufnr)
 		["3"] = { "<cmd>Lspsaga outline<CR>", "Outline" },
 	}, { mode = "n", prefix = "", silent = true, buffer = bufnr })
 end
+
+return a

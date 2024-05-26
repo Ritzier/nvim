@@ -1,98 +1,133 @@
-local opt = vim.opt
+local global_local = {
+	-- backupdir = global.cache_dir .. "backup/",
+	-- directory = global.cache_dir .. "swap/",
+	-- spellfile = global.cache_dir .. "spell/en.uft-8.add",
+	-- viewdir = global.cache_dir .. "view/",
+	autoindent = true,
+	autoread = true,
+	autowrite = true,
+	backspace = "indent,eol,start",
+	backup = false,
+	backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
+	breakat = [[\ \	;:,!?]],
+	breakindentopt = "shift:2,min:20",
+	clipboard = "unnamedplus",
+	cmdheight = 1, -- 0, 1, 2
+	cmdwinheight = 5,
+	complete = ".,w,b,k",
+	completeopt = "menuone,noselect",
+	concealcursor = "niv",
+	conceallevel = 0,
+	cursorcolumn = true,
+	cursorline = true,
+	diffopt = "filler,iwhite,internal,linematch:60,algorithm:patience",
+	display = "lastline",
+	encoding = "utf-8",
+	equalalways = false,
+	errorbells = true,
+	expandtab = true,
+	fileformats = "unix,mac,dos",
+	foldenable = true,
+	foldlevelstart = 99,
+	formatoptions = "1jcroql",
+	grepformat = "%f:%l:%c:%m",
+	grepprg = "rg --hidden --vimgrep --smart-case --",
+	helpheight = 12,
+	hidden = true,
+	history = 2000,
+	ignorecase = true,
+	inccommand = "nosplit",
+	incsearch = true,
+	infercase = true,
+	jumpoptions = "stack",
+	laststatus = 2,
+	linebreak = true,
+	list = true,
+	listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
+	magic = true,
+	mousescroll = "ver:3,hor:6",
+	number = true,
+	previewheight = 12,
+	-- Do NOT adjust the following option (pumblend) if you're using transparent background
+	pumblend = 0,
+	pumheight = 15,
+	redrawtime = 1500,
+	relativenumber = true,
+	ruler = true,
+	scrolloff = 8,
+	sessionoptions = "buffers,curdir,folds,help,tabpages,winpos,winsize",
+	shada = "!,'500,<50,@100,s10,h",
+	shiftround = true,
+	shiftwidth = 4,
+	shortmess = "aoOTIcF",
+	showbreak = "↳  ",
+	showcmd = false,
+	showmode = false,
+	showtabline = 2,
+	sidescrolloff = 10,
+	signcolumn = "yes",
+	smartcase = true,
+	smarttab = true,
+	softtabstop = 4,
+	splitbelow = true,
+	splitkeep = "screen",
+	splitright = true,
+	startofline = false,
+	swapfile = false,
+	switchbuf = "usetab,uselast",
+	synmaxcol = 2500,
+	tabstop = 4,
+	termguicolors = true,
+	timeout = true,
+	timeoutlen = 300,
+	ttimeout = true,
+	ttimeoutlen = 0,
+	undofile = true,
+	-- Please do NOT set `updatetime` to above 500, otherwise most plugins may not function correctly
+	updatetime = 50,
+	viewoptions = "folds,cursor,curdir,slash,unix",
+	virtualedit = "block",
+	visualbell = true,
+	whichwrap = "h,l,<,>,[,],~",
+	wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
+	wildignorecase = true,
+	-- Do NOT adjust the following option (winblend) if you're using transparent background
+	winblend = 0,
+	winminwidth = 10,
+	winwidth = 30,
+	wrap = false,
+	wrapscan = true,
+	writebackup = false,
+}
 
-opt.autoindent = true
-opt.breakindent = true
-opt.clipboard = "unnamedplus"
-opt.cmdheight = 0
-opt.completeopt = "menuone,noselect"
-opt.conceallevel = 0
--- opt.listchars = "tab:|·,nbsp:+,trail:·,extends:→,precedes:←"
-opt.confirm = true
-opt.cursorline = true
-opt.cursorcolumn = true
-opt.expandtab = true
-opt.backspace = "indent,eol,start"
-opt.foldcolumn = "0"
-opt.foldenable = false
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.formatoptions = "jqlnt"
-opt.hidden = true
-opt.hlsearch = true
-opt.incsearch = true
-opt.magic = true
-opt.ignorecase = true
-opt.inccommand = "nosplit"
-opt.joinspaces = false
-opt.laststatus = 3
-opt.list = true
-vim.opt.listchars = { eol = "↵" }
-vim.opt.list = true
-opt.mouse = "a"
-opt.number = true
-opt.pumblend = 10
-opt.pumheight = 10
-opt.relativenumber = true
-opt.scrollback = 100000
-opt.scrolloff = 9
-opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
-opt.shiftround = true
-opt.shiftwidth = 2
-opt.shortmess:append({ w = true, I = true, c = true, C = true })
-opt.showcmd = false
-opt.showmode = false
-opt.sidescrolloff = 9
+local function isempty(s)
+	return s == nil or s == ""
+end
+local function use_if_defined(val, fallback)
+	return val ~= nil and val or fallback
+end
 
-opt.signcolumn = "yes"
-opt.smartcase = true
-opt.smartindent = true
-opt.splitbelow = true
-opt.splitkeep = "screen"
-opt.splitright = true
-opt.tabstop = 2
-opt.termguicolors = true
-opt.timeoutlen = 300
-opt.title = true
-opt.undofile = true
-opt.updatetime = 200
-opt.wildmode = "longest:full,full"
+-- -- custom python provider
+-- local conda_prefix = os.getenv("CONDA_PREFIX")
+-- if not isempty(conda_prefix) then
+-- 	vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, conda_prefix .. "/bin/python")
+-- 	vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, conda_prefix .. "/bin/python")
+-- else
+-- 	vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, "python")
+-- 	vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, "python3")
+-- end
+
+-- custom sqlite3 provider
+local sqlite_clib_path = os.getenv("SQLITE_CLIB_PATH")
+if not isempty(sqlite_clib_path) then
+	-- Try environment variable first
+	vim.g.sqlite_clib_path = sqlite_clib_path
+end
+
+for name, value in pairs(global_local) do
+	vim.o[name] = value
+end
+
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
-
-vim.g.markdown_recommended_style = 0
-
-local opt = vim.opt
-local cmd = vim.cmd
-local api = vim.api
-local nvim_create_autocmd = api.nvim_create_autocmd
-local nvim_set_hl = api.nvim_set_hl
-
-opt.list = true
-
-local space = "·"
-opt.listchars:append {
-	tab = "│─",
-	multispace = space,
-	lead = space,
-	trail = space,
-	nbsp = space
-}
-
-cmd([[match TrailingWhitespace /\s\+$/]])
-
-nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
-
-nvim_create_autocmd("InsertEnter", {
-	callback = function()
-		opt.listchars.trail = nil
-		nvim_set_hl(0, "TrailingWhitespace", { link = "Whitespace" })
-	end
-})
-
-nvim_create_autocmd("InsertLeave", {
-	callback = function()
-		opt.listchars.trail = space
-		nvim_set_hl(0, "TrailingWhitespace", { link = "Error" })
-	end
-})
