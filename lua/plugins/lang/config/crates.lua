@@ -77,5 +77,5 @@ return function()
 	})
 
 	-- Set buffer-local keymaps
-	require("lang.crates-keymap")
+	-- require("lang.crates-keymap")
 end

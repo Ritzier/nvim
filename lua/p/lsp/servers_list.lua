@@ -20,5 +20,5 @@ return {
 	"sqls",
 	"marksman",
 	"jedi_language_server",
-    "pyright"
+	"pyright"
 }

@@ -22,7 +22,7 @@ return vim.schedule_wrap(function()
             "julia",
             "rust",
             "lua",
-            "python"
+            "python",
         },
         highlight = {
             enable = true,

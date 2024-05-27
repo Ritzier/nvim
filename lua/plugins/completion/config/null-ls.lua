@@ -22,6 +22,10 @@ return function()
 				"markdown",
 			},
 		}),
+
+		btns.diagnostics.markdownlint,
+		-- btns.diagnostics.write_good,
+		-- btns.formatting.markdownlint,
 	}
 
 	require("null-ls").setup({
