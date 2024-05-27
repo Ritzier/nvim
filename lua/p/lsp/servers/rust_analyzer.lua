@@ -120,8 +120,8 @@ return function(on_attach, capabilities)
 
 		server = {
 			standalone = false,
-            capabilities = capabilities,
-            on_attach = on_attach,
+			capabilities = capabilities,
+			on_attach = on_attach,
 			experimental = {
 				serverStatusNotification = true,
 			},
