@@ -13,6 +13,13 @@ return {
 		config = require("plugins.ui.config.bufferline"),
 	},
 	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+		opts = {
+		},
+		config = require("plugins.ui.config.dressing")
+	},
+	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
@@ -67,10 +74,10 @@ return {
 		config = require("plugins.ui.config.neoscroll"),
 	},
 
-    {
-        "nvim-lualine/lualine.nvim",
-        lazy = true,
-        event = { "BufReadPost", "BufAdd", "BufNewFile" },
-        config = require("plugins.ui.config.lualine")
-    }
+	{
+		"nvim-lualine/lualine.nvim",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+		config = require("plugins.ui.config.lualine")
+	}
 }
