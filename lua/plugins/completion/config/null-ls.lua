@@ -23,7 +23,7 @@ return function()
 			},
 		}),
 
-		btns.diagnostics.markdownlint,
+		-- btns.diagnostics.markdownlint,
 		-- btns.diagnostics.write_good,
 		-- btns.formatting.markdownlint,
 	}
