@@ -99,12 +99,14 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = true,
-		build = function()
-			if #vim.api.nvim_list_uis() ~= 0 then
-				vim.api.nvim_command([[TSUpdate]])
-			end
-		end,
-		event = "BufReadPre",
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+		build = ":TSUpdate",
+		-- config = function()
+		-- 	require("nvim-treesitter.configs").setup({
+		-- 		endwise = { enable = true }
+		-- 	})
+		-- end,
 		config = require("plugins.editor.config.treesitter"),
 		dependencies = {
 			{ "RRethy/nvim-treesitter-endwise" },

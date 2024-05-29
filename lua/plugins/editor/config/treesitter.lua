@@ -2,7 +2,7 @@ return vim.schedule_wrap(function()
     vim.api.nvim_set_option_value("foldmethod", "expr", {})
     vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
 
-    require("nvim-treesitter").setup({
+    require("nvim-treesitter.configs").setup({
         ensure_installed = {
             "bash",
             "c",
@@ -69,7 +69,6 @@ return vim.schedule_wrap(function()
         },
         indent = { enable = true },
         matchup = { enable = true },
-        endwise = {enable = true},
-    }, false, require("nvim-treesitter.configs").setup)
-    require("nvim-treesitter.install").prefer_git = true
+        endwise = { enable = true },
+    })
 end)
