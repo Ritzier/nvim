@@ -4,6 +4,9 @@ return function()
 	local cond = require("nvim-autopairs.conds")
 	local utils = require("nvim-autopairs.utils")
 
+
+	nap.setup({ map_cr = true })
+
 	local function multiline_close_jump(open, close)
 		return rule(close, "")
 			:with_pair(function()
@@ -49,13 +52,6 @@ return function()
 			end)
 	end
 
-	nap.setup({ map_cr = true })
-
-	nap.add_rules({
-		multiline_close_jump("(", ")"),
-		multiline_close_jump("[", "]"),
-		multiline_close_jump("{", "}"),
-	})
 
 	local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
 	nap.add_rules {
@@ -86,6 +82,7 @@ return function()
 	}
 	for _, bracket in pairs(brackets) do
 		nap.add_rules {
+			multiline_close_jump(bracket[1], bracket[2]),
 			-- Each of these rules is for a pair with left-side '( ' and right-side ' )' for each bracket type
 			rule(bracket[1] .. ' ', ' ' .. bracket[2])
 				:with_pair(cond.none())
