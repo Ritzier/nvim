@@ -4,8 +4,12 @@ return function()
 	local cond = require("nvim-autopairs.conds")
 	local utils = require("nvim-autopairs.utils")
 
-
-	nap.setup({ map_cr = true })
+	nap.setup({
+		map_cr = true,
+		fast_wrap = {
+			manual_position = true
+		},
+	})
 
 	local function multiline_close_jump(open, close)
 		return rule(close, "")
@@ -52,6 +56,17 @@ return function()
 			end)
 	end
 
+	-- nap.add_rules({
+	-- 	rule("<", ">")
+	-- 		:with_pair(cond.none)
+	-- 		-- :with_move(cond.not_after_regex(">"))
+	-- })
+
+	nap.add_rules({
+		rule("<", ">")
+			:with_pair(cond.is_bracket_line())
+			:with_move(cond.is_bracket_line_move())
+	})
 
 	local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
 	nap.add_rules {

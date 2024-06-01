@@ -22,6 +22,7 @@ return vim.schedule_wrap(function()
             "julia",
             "rust",
             "lua",
+            "markdown",
             "python",
         },
         highlight = {
