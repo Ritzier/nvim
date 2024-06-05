@@ -30,6 +30,7 @@ local global_local = {
 	foldenable = true,
 	foldlevelstart = 99,
 	formatoptions = "1jcroql",
+	-- formatoptions -= "cro",
 	grepformat = "%f:%l:%c:%m",
 	grepprg = "rg --hidden --vimgrep --smart-case --",
 	helpheight = 12,
@@ -89,7 +90,8 @@ local global_local = {
 	virtualedit = "block",
 	visualbell = true,
 	whichwrap = "h,l,<,>,[,],~",
-	wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
+	wildignore =
+	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
 	wildignorecase = true,
 	-- Do NOT adjust the following option (winblend) if you're using transparent background
 	winblend = 0,
@@ -99,6 +101,7 @@ local global_local = {
 	wrapscan = true,
 	writebackup = false,
 }
+
 
 local function isempty(s)
 	return s == nil or s == ""
@@ -117,6 +120,9 @@ end
 -- 	vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, "python3")
 -- end
 
+vim.g.python_host_prog = "/home/ritzier/python312/bin/python"
+vim.g.python3_host_prog = "/home/ritzier/python312/bin/python"
+
 -- custom sqlite3 provider
 local sqlite_clib_path = os.getenv("SQLITE_CLIB_PATH")
 if not isempty(sqlite_clib_path) then
@@ -128,6 +134,24 @@ for name, value in pairs(global_local) do
 	vim.o[name] = value
 end
 
-
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+
+vim.o.guifont = "JetBrainsMono Nerd Font:h9.5"
+
+if vim.g.neovide then
+	vim.g.neovide_text_gamma = 0.0
+	vim.g.neovide_text_contrast = 0.5
+	vim.g.no_idle = true
+	vim.g.refresh_rate = 165
+	vim.g.cursor_vfx_mode = "railgun"
+	vim.g.cursor_vfx_opacity = 200.0
+	vim.g.cursor_antialiasing = true
+	vim.g.cursor_trail_length = 0.05
+	vim.g.cursor_animation_length = 0.03
+	vim.g.cursor_vfx_particle_speed = 20.0
+	vim.g.cursor_vfx_particle_density = 5.0
+	vim.g.cursor_vfx_particle_lifetime = 1.2
+end
