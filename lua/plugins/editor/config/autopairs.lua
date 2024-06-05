@@ -56,16 +56,11 @@ return function()
 			end)
 	end
 
-	-- nap.add_rules({
-	-- 	rule("<", ">")
-	-- 		:with_pair(cond.none)
-	-- 		-- :with_move(cond.not_after_regex(">"))
-	-- })
-
 	nap.add_rules({
 		rule("<", ">")
-			:with_pair(cond.is_bracket_line())
-			:with_move(cond.is_bracket_line_move())
+			:with_pair(cond.none)
+			:with_move(cond.done())
+			-- :with_move(cond.not_after_regex(">"))
 	})
 
 	local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }

@@ -67,13 +67,6 @@ return function()
 				loading = " " .. "",
 			},
 		},
-		-- src = {
-		-- 	insert_closing_quote = true,
-		-- 	text = {
-		-- 		prerelease = " " .. "󰀪" .. "pre-release ",
-		-- 		yanked = " " .. "󰅚" .. "yanked ",
-		-- 	},
-		-- },
 	})
 
 	-- Set buffer-local keymaps

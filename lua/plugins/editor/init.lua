@@ -71,6 +71,7 @@ return {
 
 	{
 		"tzachar/local-highlight.nvim",
+		enabled = false,
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
 
