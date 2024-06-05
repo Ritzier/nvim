@@ -1,6 +1,7 @@
 local wk = require("which-key")
 local a = {}
 function a:on_attach(bufnr)
+	vim.lsp.inlay_hint.enable(true, { bufnr=bufnr })
 	wk.register({
 		["<space>w"] = {
 			name = "Workspace",

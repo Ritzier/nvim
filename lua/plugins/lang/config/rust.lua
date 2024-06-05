@@ -6,13 +6,34 @@ return function()
 			on_attach = require("keymaps.lsp").on_attach,
 			default_settings = {
 				['rust-analyzer'] = {
+					["rustfmt.overrideCommand"] = { "leptosfmt", "--stdin", "--rustfmt" },
+					cargo = {
+						allFeatures = true,
+						loadOutDirFromCheck = true,
+						runBuildScripts = true,
+					},
+					checkOnSave = {
+						allFeatures = true,
+						command = "clippy",
+						extraArgs = { "--no-deps" },
+					},
 					procMacro = {
+						enble = true,
 						ignored = {
 							leptos_macro = {
 								-- optional: --
 								-- "component",
 								"server",
 							},
+							["async-trait"] = {
+								"async_trait"
+							},
+							["napi-derive"] = {
+								"nap"
+							},
+							["async-resursion"] = {
+								"async_recursion"
+							}
 						},
 					},
 				},
