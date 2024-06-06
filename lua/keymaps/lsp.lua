@@ -1,7 +1,6 @@
 local wk = require("which-key")
 local a = {}
 function a:on_attach(bufnr)
-	vim.lsp.inlay_hint.enable(true, { bufnr=bufnr })
 	wk.register({
 		["<space>w"] = {
 			name = "Workspace",
@@ -16,7 +15,7 @@ function a:on_attach(bufnr)
 		},
 		["<space>f"] = {
 			function()
-				vim.lsp.buf.format({ async = true })
+				require("conform").format({ async = true, lsp_fallback = true })
 			end,
 			"Format",
 		},
@@ -40,7 +39,6 @@ function a:on_attach(bufnr)
 			f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
 			r = { "<cmd>LspRestart<CR>", "Restart" },
 		},
-		["3"] = { "<cmd>Lspsaga outline<CR>", "Outline" },
 	}, { mode = "n", prefix = "", silent = true, buffer = bufnr })
 end
 

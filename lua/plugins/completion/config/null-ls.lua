@@ -34,7 +34,6 @@ return function()
 		log_level = "warn",
 		update_in_insert = false,
 		sources = sources,
-
 	})
 
 	require("plugins.completion.config.mason-null-ls")

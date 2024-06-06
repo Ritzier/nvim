@@ -54,6 +54,13 @@ return {
 	},
 
 	{
+		"stevearc/conform.nvim",
+		lazy = true,
+		event = { "BufWritePre" },
+		config = require("plugins.completion.config.conform")
+	},
+
+	{
 		"hrsh7th/nvim-cmp",
 		lazy = true,
 		event = "InsertEnter",

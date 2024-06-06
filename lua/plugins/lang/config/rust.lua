@@ -5,7 +5,7 @@ return function()
 		server = {
 			on_attach = require("keymaps.lsp").on_attach,
 			default_settings = {
-				['rust-analyzer'] = {
+				["rust-analyzer"] = {
 					["rustfmt.overrideCommand"] = { "leptosfmt", "--stdin", "--rustfmt" },
 					cargo = {
 						allFeatures = true,
@@ -18,7 +18,7 @@ return function()
 						extraArgs = { "--no-deps" },
 					},
 					procMacro = {
-						enble = true,
+						enable = true,
 						ignored = {
 							leptos_macro = {
 								-- optional: --
@@ -26,18 +26,18 @@ return function()
 								"server",
 							},
 							["async-trait"] = {
-								"async_trait"
+								"async_trait",
 							},
 							["napi-derive"] = {
-								"nap"
+								"nap",
 							},
 							["async-resursion"] = {
-								"async_recursion"
-							}
+								"async_recursion",
+							},
 						},
 					},
 				},
-			}
+			},
 		},
 		-- Disable automatic DAP configuration to avoid conflicts with previous user configs
 		dap = {
