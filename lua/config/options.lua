@@ -90,8 +90,7 @@ local global_local = {
 	virtualedit = "block",
 	visualbell = true,
 	whichwrap = "h,l,<,>,[,],~",
-	wildignore =
-	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
+	wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
 	wildignorecase = true,
 	-- Do NOT adjust the following option (winblend) if you're using transparent background
 	winblend = 0,
@@ -101,7 +100,6 @@ local global_local = {
 	wrapscan = true,
 	writebackup = false,
 }
-
 
 local function isempty(s)
 	return s == nil or s == ""
@@ -145,8 +143,9 @@ if vim.g.neovide then
 	vim.g.neovide_text_gamma = 0.0
 	vim.g.neovide_text_contrast = 0.5
 	vim.g.no_idle = true
+	vim.g.neovide_refresh_rate_idle = 1
 	vim.g.refresh_rate = 165
-	vim.g.cursor_vfx_mode = "railgun"
+	vim.g.cursor_vfx_mode = "torpedo"
 	vim.g.cursor_vfx_opacity = 200.0
 	vim.g.cursor_antialiasing = true
 	vim.g.cursor_trail_length = 0.05

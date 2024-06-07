@@ -1,6 +1,6 @@
 return function()
-    require("catppuccin").setup({
-background = { light = "latte", dark = "mocha" }, -- latte, frappe, macchiato, mocha
+	require("catppuccin").setup({
+		background = { light = "latte", dark = "mocha" }, -- latte, frappe, macchiato, mocha
 		dim_inactive = {
 			enabled = false,
 			-- Dim inactive splits/windows/buffers.
@@ -8,7 +8,7 @@ background = { light = "latte", dark = "mocha" }, -- latte, frappe, macchiato, m
 			shade = "dark",
 			percentage = 0.15,
 		},
-show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+		show_end_of_buffer = false, -- show the '~' characters after the end of buffers
 		term_colors = true,
 		compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
 		styles = {
@@ -160,6 +160,10 @@ show_end_of_buffer = false, -- show the '~' characters after the end of buffers
 						bg = cp.none or cp.base,
 						style = { "bold", "underline" },
 					},
+
+					-- Dressing
+					DressingTitle = { bg = cp.lavender, fg = cp.lavender },
+					DressingBorder = { fg = cp.green },
 
 					-- For treesitter
 					["@keyword.return"] = { fg = cp.pink, style = clear },

@@ -3,7 +3,7 @@ return {
 		"nvimdev/lspsaga.nvim",
 		lazy = true,
 		event = "LspAttach",
-		config = require("plugins.completion.config.lspsaga")
+		config = require("plugins.completion.config.lspsaga"),
 	},
 
 	{
@@ -18,6 +18,10 @@ return {
 			{
 				"Jint-lzxy/lsp_signature.nvim",
 				config = require("plugins.completion.config.lsp-signature"),
+			},
+			{
+				"MysticalDevil/inlay-hints.nvim",
+				config = require("plugins.completion.config.inlay_hint"),
 			},
 		},
 	},
@@ -57,7 +61,7 @@ return {
 		"stevearc/conform.nvim",
 		lazy = true,
 		event = { "BufWritePre" },
-		config = require("plugins.completion.config.conform")
+		config = require("plugins.completion.config.conform"),
 	},
 
 	{
@@ -79,7 +83,7 @@ return {
 			{ "f3fora/cmp-spell" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "kdheepak/cmp-latex-symbols" },
-			{ "ray-x/cmp-treesitter",              commit = "c8e3a74" },
+			{ "ray-x/cmp-treesitter", commit = "c8e3a74" },
 			{ "onsails/lspkind.nvim" },
 			-- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
 			-- {
