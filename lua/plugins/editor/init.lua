@@ -21,7 +21,6 @@ return {
 		config = require("plugins.editor.config.autopairs"),
 	},
 
-
 	{
 		"L3MON4D3/LuaSnip",
 		keys = function()
@@ -40,13 +39,6 @@ return {
 		lazy = true,
 		cmd = { "BufDel", "BufDelAll", "BufDelOthers" },
 	},
-	{
-		"folke/flash.nvim",
-		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
-		config = require("plugins.editor.config.flash"),
-	},
-
 	{
 		"folke/flash.nvim",
 		lazy = true,
@@ -143,6 +135,6 @@ return {
 		event = { "InsertEnter" },
 		config = function()
 			require("better_escape").setup()
-		end
-	}
+		end,
+	},
 }
