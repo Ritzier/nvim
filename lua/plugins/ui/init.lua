@@ -15,14 +15,24 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
-		opts = {
-		},
-		config = require("plugins.ui.config.dressing")
+		opts = {},
+		config = require("plugins.ui.config.dressing"),
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		config = require("plugins.ui.config.kanagawa"),
+	},
+	{
+		"rose-pine/neovim",
+		lazy = false,
+		name = "rose-pine",
+		config = require("plugins.ui.config.rosepine"),
 	},
 	{
 		"dstein64/nvim-scrollview",
@@ -78,6 +88,6 @@ return {
 		"nvim-lualine/lualine.nvim",
 		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = require("plugins.ui.config.lualine")
-	}
+		config = require("plugins.ui.config.lualine"),
+	},
 }
