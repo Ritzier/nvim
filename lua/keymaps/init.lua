@@ -11,7 +11,7 @@ wk.register({
 	["<A-S-j>"] = { ":BufferLineMoveNext<CR>", "Move Next Buffer" },
 	["<A-S-k>"] = { ":BufferLineMovePrev<CR>", "Move Prev Buffer" },
 	["<C-x>"] = { ":bdelete<CR>", "Delete buffer" },
-	-- ["<C-\\>"] = { ":ToggleTermToggleAll<CR>", "Toggle Term"},
+	["<C-\\>"] = { ":ToggleTerm<CR>", "Toggle Term" },
 }, { mode = "n", prefix = "", { silent = true, noremap = true } })
 
 wk.register({

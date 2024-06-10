@@ -96,4 +96,11 @@ return {
 			-- },
 		},
 	},
+
+	{
+		"amrbashir/nvim-docs-view",
+		lazy = true,
+		event = "LspAttach",
+		config = require("plugins.completion.config.nvimd-doc-view"),
+	},
 }
