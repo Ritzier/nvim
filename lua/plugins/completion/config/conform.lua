@@ -4,7 +4,7 @@ return function()
 			javascript = { { "prettierd", "prettier" } },
 			lua = { "stylua" },
 			python = { "isort", "black" },
-			rust = { "leptosfmt" },
+			rust = { "rustfmt", "leptosfmt" },
 		},
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	})

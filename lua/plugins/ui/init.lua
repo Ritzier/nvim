@@ -50,6 +50,7 @@ return {
 
 	{
 		"rcarriga/nvim-notify",
+		enabled = false,
 		lazy = true,
 		event = "VeryLazy",
 		config = require("plugins.ui.config.notify"),
