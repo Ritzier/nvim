@@ -87,7 +87,7 @@ return {
 
 	{
 		"pocco81/auto-save.nvim",
-		config = require("plugins.tool.config.auto-save")
+		config = require("plugins.tool.config.auto-save"),
 	},
 
 	-- TODO:
@@ -117,4 +117,18 @@ return {
 	-- 		{ "jay-babu/mason-nvim-dap.nvim" },
 	-- 	},
 	-- }
+
+	{
+		"amitds1997/remote-nvim.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		version = "*",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = true,
+		-- config = require("plugins.tool.config.remote-nvim"),
+	},
 }
