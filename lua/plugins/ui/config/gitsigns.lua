@@ -1,39 +1,7 @@
 return function()
-    -- local mapping = require("keymaps.gitsigns")
+	-- local mapping = require("keymaps.gitsigns")
 
-    require("gitsigns").setup({
-		signs = {
-			add = {
-				hl = "GitSignsAdd",
-				text = "│",
-				numhl = "GitSignsAddNr",
-				linehl = "GitSignsAddLn",
-			},
-			change = {
-				hl = "GitSignsChange",
-				text = "│",
-				numhl = "GitSignsChangeNr",
-				linehl = "GitSignsChangeLn",
-			},
-			delete = {
-				hl = "GitSignsDelete",
-				text = "_",
-				numhl = "GitSignsDeleteNr",
-				linehl = "GitSignsDeleteLn",
-			},
-			topdelete = {
-				hl = "GitSignsDelete",
-				text = "‾",
-				numhl = "GitSignsDeleteNr",
-				linehl = "GitSignsDeleteLn",
-			},
-			changedelete = {
-				hl = "GitSignsChange",
-				text = "~",
-				numhl = "GitSignsChangeNr",
-				linehl = "GitSignsChangeLn",
-			},
-		},
+	require("gitsigns").setup({
 		-- on_attach = mapping.gitsigns,
 		watch_gitdir = { interval = 1000, follow_files = true },
 		current_line_blame = true,

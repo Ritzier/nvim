@@ -18,6 +18,7 @@ return {
 			{
 				"Jint-lzxy/lsp_signature.nvim",
 				config = require("plugins.completion.config.lsp-signature"),
+				enabled = false,
 			},
 			{
 				"MysticalDevil/inlay-hints.nvim",
