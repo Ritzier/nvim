@@ -11,7 +11,6 @@ return function()
 		thousands_separator = ",",
 		notification_title = "Crates",
 		curl_args = { "-sL", "--retry", "1" },
-		disable_invalid_feature_diagnostic = false,
 		text = {
 			loading = " " .. "" .. "Loading",
 			version = " " .. "󰄳" .. "%s",
@@ -68,7 +67,4 @@ return function()
 			},
 		},
 	})
-
-	-- Set buffer-local keymaps
-	-- require("lang.crates-keymap")
 end

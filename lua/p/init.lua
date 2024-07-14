@@ -30,7 +30,7 @@ return {
 
 	{
 		"rcarriga/nvim-notify",
-        enabled = false,
+		enabled = false,
 		event = "VeryLazy",
 		opts = {
 			-- background_colour = "#A3CCBE",
@@ -164,9 +164,7 @@ return {
 			vim.g.rustaceanvim = {
 				tools = {},
 				server = {
-					on_attach = function(client, bufnr)
-						require("keymaps.rustacean")(client, bufnr)
-					end,
+					on_attach = require("keymaps.lsp"),
 					default_settings = {
 						["rust-analyzer"] = {
 							cargo = { features = "all" },
