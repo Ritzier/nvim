@@ -9,7 +9,7 @@ wk.add({
 		{ "<C-k>", "<C-w>k", desc = "Focus up" },
 		{ "<C-l>", "<C-w>l", desc = "Focus right" },
 		{ "<A-j>", ":BufferLineCycleNext<CR>", desc = "Focus Next Buffer" },
-		{ "<A-K>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer" },
+		{ "<A-k>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer" },
 		{ "<A-S-j>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer" },
 		{ "<A-S-k>", ":BufferLineMovePrev<CR>", desc = "Move Prev Buffer" },
 		{ "<C-x>", ":bdelete<CR>", desc = "Delete buffer" },
