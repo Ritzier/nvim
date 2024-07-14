@@ -8,6 +8,7 @@ list["lsp_deps"] = {
 	"lua_ls",
 	"pylsp",
 	"marksman",
+	"tsserver",
 	-- use Rust's neovim plugin
 	-- "rust-analyzer",
 }
