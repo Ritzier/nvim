@@ -1,4 +1,4 @@
-local a = {}j
+local a = {}
 function a:on_attach(bufnr)
 	local wk = require("which-key")
 	wk.add({
