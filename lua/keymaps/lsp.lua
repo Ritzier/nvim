@@ -4,6 +4,9 @@ function a:on_attach(bufnr)
 	wk.add({
 		{
 			mode = { "n" },
+			{ "<space>d", group = "Doc View" },
+			{ "<space>dt", "<cmd>DocsViewToggle<CR>", desc = "DocsViewToggle" },
+			{ "<space>du", "<cmd>DocsViewToggle<CR>", desc = "DocsViewToggle" },
 			{ "<space>w", group = "workspace" },
 			{ "<space>wa", ":lua vim.lsp.buf.add_workspace_folder", desc = "Add Workspace Folder" },
 			{ "<space>wr", ":lua vim.lsp.buf.remove_workspace_folder", desc = "Remove Workspace Folder" },

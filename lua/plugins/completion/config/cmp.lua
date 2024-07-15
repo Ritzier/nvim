@@ -1,4 +1,5 @@
 return function()
+	local cmp_mapping = require("cmp.config.mapping")
 
 	local kind_icons = {
 		Class = "󰠱",
@@ -140,14 +141,14 @@ return function()
 		},
 
 		mapping = cmp.mapping.preset.insert({
-			["<A-CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-			["<C-p>"] = cmp.mapping.select_prev_item(),
-			["<C-n>"] = cmp.mapping.select_next_item(),
-			["<C-d>"] = cmp.mapping.scroll_docs(-4),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
-			["<C-w>"] = cmp.mapping.close(),
+			["<C-p>"] = cmp_mapping(cmp_mapping.select_prev_item(), { "i", "c" }),
+			["<C-n>"] = cmp_mapping(cmp_mapping.select_next_item(), { "i", "c" }),
+			["<C-d>"] = cmp_mapping.scroll_docs(-4),
+			["<C-f>"] = cmp_mapping.scroll_docs(4),
+			["<C-w>"] = cmp_mapping.close(),
 			["<Tab>"] = vim.NIL,
 			["<S-Tab>"] = vim.NIL,
+			["<A-CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
 		}),
 	})
 end

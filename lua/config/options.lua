@@ -137,7 +137,7 @@ vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-vim.o.guifont = "JetBrainsMono Nerd Font:h9.5"
+vim.o.guifont = "JetBrainsMono Nerd Font:h8"
 
 if vim.g.neovide then
 	vim.g.neovide_text_gamma = 0.0
