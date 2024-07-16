@@ -1,5 +1,8 @@
 return function()
-    require("nvim-tree").setup({
+	vim.g.loaded_netrw = 1
+	vim.g.loaded_netrwPlugin = 1
+
+	require("nvim-tree").setup({
 		auto_reload_on_write = true,
 		create_in_closed_folder = false,
 		disable_netrw = false,

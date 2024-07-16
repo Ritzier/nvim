@@ -130,4 +130,12 @@ return {
 		config = true,
 		-- config = require("plugins.tool.config.remote-nvim"),
 	},
+
+	{
+		"nosduco/remote-sshfs.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = require("plugins.tool.config.remote-sshfs"),
+	},
 }
