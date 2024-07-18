@@ -103,7 +103,6 @@ return {
 		config = require("plugins.editor.config.treesitter"),
 		dependencies = {
 			{ "RRethy/nvim-treesitter-endwise" },
-			{ "andymass/vim-matchup" },
 			{ "mfussenegger/nvim-treehopper" },
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			{

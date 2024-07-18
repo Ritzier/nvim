@@ -17,6 +17,7 @@ return {
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
 		config = require("plugins.tool.config.which-key"),
+		dependencies = "echasnovski/mini.icons",
 	},
 
 	{
@@ -54,6 +55,7 @@ return {
 
 	{
 		"folke/trouble.nvim",
+		enabled = false,
 		lazy = true,
 		cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
 		config = require("plugins.tool.config.trouble"),
