@@ -31,6 +31,7 @@ return {
 		lazy = true,
 		-- You need to cd to `~/.local/share/nvim/site/lazy/sniprun/` and execute `bash ./install.sh`,
 		-- if you encountered error about no executable sniprun found.
+		event = { "CursorHold", "CursorHoldI" },
 		build = "bash ./install.sh",
 		cmd = { "SnipRun", "SnipReset", "SnipInfo" },
 		config = require("plugins.tool.config.sniprun"),
@@ -139,5 +140,11 @@ return {
 		event = "CmdlineEnter",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = require("plugins.tool.config.remote-sshfs"),
+	},
+
+	{
+		"sQVe/sort.nvim",
+		lazy = true,
+		event = { "CursorHold" },
 	},
 }

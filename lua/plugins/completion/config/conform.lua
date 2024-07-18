@@ -5,6 +5,7 @@ return function()
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			rust = { "rustfmt", "leptosfmt" },
+			toml = { "taplo" },
 		},
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
 		notify_on_error = false,

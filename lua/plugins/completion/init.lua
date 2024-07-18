@@ -42,12 +42,6 @@ return {
 	},
 
 	{
-		"joechrisellis/lsp-format-modifications.nvim",
-		lazy = true,
-		event = "LspAttach",
-	},
-
-	{
 		"nvimtools/none-ls.nvim",
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },

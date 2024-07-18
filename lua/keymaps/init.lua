@@ -22,12 +22,6 @@ wk.add({
 		{ "<leader>dc", "<cmd>DiffviewClose", desc = "DiffView Close" },
 	},
 
-	-- {
-	-- 	mode = { "i" },
-	-- 	{ "<A-l>", "<Plug>(TaboutMulti)<CR>", desc = "Tabout Next" },
-	-- 	{ "<A-h>", "<Plug>(TaboutBackMulti)<CR>", desc = "Tabout Prev" },
-	-- },
-
 	{
 		mode = { "v" },
 		{ "<", "<gv", desc = "Decrease Indent" },
@@ -35,6 +29,6 @@ wk.add({
 		{ "<A-j>", ":m '>+1<CR>gv=gv'", desc = "Move line down" },
 		{ "<A-k>", ":m '>-2<CR>gv=gv'", desc = "Move line up" },
 		-- { "ga", ":'<,'>EasyAlign<CR>", desc = "EasyAlign" },
-		-- { "<space>", ":'<,'>Sort", desc = "" },
+		{ "s", ":'<,'>Sort u<CR>", desc = "Sort" },
 	},
 })

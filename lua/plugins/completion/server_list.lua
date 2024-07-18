@@ -6,8 +6,9 @@ list["lsp_deps"] = {
 	"html",
 	"jsonls",
 	"lua_ls",
-	"pylsp",
 	"marksman",
+	"pylsp",
+	"taplo",
 	"tsserver",
 	-- use Rust's neovim plugin
 	-- "rust-analyzer",
@@ -16,11 +17,11 @@ list["lsp_deps"] = {
 list["null_ls_deps"] = {
 	"gofumpt",
 	"goimports",
+	"markdownlint",
 	"prettier",
 	"shfmt",
 	"stylua",
 	"vint",
-	"markdownlint",
 }
 
 list["dap_deps"] = {

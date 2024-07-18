@@ -20,10 +20,11 @@ return vim.schedule_wrap(function()
 			"json",
 			"json5",
 			"julia",
-			"rust",
 			"lua",
 			"markdown",
 			"python",
+			"rust",
+			"toml",
 		},
 		highlight = {
 			enable = true,
