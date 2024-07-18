@@ -48,6 +48,7 @@ return {
 
 	{
 		"numToStr/Comment.nvim",
+		enabled = false,
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
 		config = require("plugins.editor.config.comment"),
@@ -59,6 +60,13 @@ return {
 		version = "*",
 		event = { "CursorHold", "CursorHoldI" },
 		config = require("plugins.editor.config.hop"),
+		keys = {
+			{
+				"<leader>f",
+				":HopWord<CR>",
+				desc = "hop",
+			},
+		},
 	},
 
 	{
@@ -123,6 +131,7 @@ return {
 			},
 			{
 				"JoosepAlviste/nvim-ts-context-commentstring",
+				enabled = false,
 				config = require("plugins.editor.config.ts-context-commentstring"),
 			},
 		},

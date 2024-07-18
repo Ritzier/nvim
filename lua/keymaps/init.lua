@@ -22,11 +22,11 @@ wk.add({
 		{ "<leader>dc", "<cmd>DiffviewClose", desc = "DiffView Close" },
 	},
 
-	{
-		mode = { "i" },
-		{ "<A-l>", "<Plug>(TaboutMulti)<CR>", desc = "Tabout Next" },
-		{ "<A-h>", "<Plug>(TaboutBackMulti)<CR>", desc = "Tabout Prev" },
-	},
+	-- {
+	-- 	mode = { "i" },
+	-- 	{ "<A-l>", "<Plug>(TaboutMulti)<CR>", desc = "Tabout Next" },
+	-- 	{ "<A-h>", "<Plug>(TaboutBackMulti)<CR>", desc = "Tabout Prev" },
+	-- },
 
 	{
 		mode = { "v" },
@@ -34,9 +34,7 @@ wk.add({
 		{ ">", ">gv", desc = "Increase Indent" },
 		{ "<A-j>", ":m '>+1<CR>gv=gv'", desc = "Move line down" },
 		{ "<A-k>", ":m '>-2<CR>gv=gv'", desc = "Move line up" },
-		{ "ga", ":'<,'>EasyAlign<CR>", desc = "EasyAlign" },
-		{ "e", "<cmd>lua require('dapui').eval()<CR>", desc = "Evaluate" },
-		{ "<space>v", "<cmd>GuardFmt<CR>", desc = "Formatter" },
-		{ "<space>", ":'<,'>Sort", desc = "" },
+		-- { "ga", ":'<,'>EasyAlign<CR>", desc = "EasyAlign" },
+		-- { "<space>", ":'<,'>Sort", desc = "" },
 	},
 })
