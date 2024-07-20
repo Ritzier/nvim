@@ -4,6 +4,18 @@ return {
 		lazy = true,
 		event = "LspAttach",
 		config = require("plugins.completion.config.lspsaga"),
+		keys = {
+			{
+				"K",
+				"<cmd>Lspsaga hover_doc<CR>",
+				desc = "Hover",
+				mode = "n",
+			},
+			{ "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition", mode = "n" },
+			{ "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition", mode = "n" },
+			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump prev Diagnostic" },
+			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump next Diagnostic" },
+		},
 	},
 
 	{
@@ -97,5 +109,9 @@ return {
 		lazy = true,
 		event = "LspAttach",
 		config = require("plugins.completion.config.nvimd-doc-view"),
+		keys = {
+			{ "<space>dt", "<cmd>DocsViewToggle<CR>", desc = "DocsViewToggle", mode = "n" },
+			{ "<space>du", "<cmd>DocsViewUpdate<CR>", desc = "DocsViewUpdate", mode = "n" },
+		},
 	},
 }

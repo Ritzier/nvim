@@ -4,9 +4,6 @@ function a:on_attach(bufnr)
 	wk.add({
 		{
 			mode = { "n" },
-			{ "<space>d", group = "Doc View" },
-			{ "<space>dt", "<cmd>DocsViewToggle<CR>", desc = "DocsViewToggle" },
-			{ "<space>du", "<cmd>DocsViewUpdate<CR>", desc = "DocsViewUpdate" },
 			{ "<space>w", group = "workspace" },
 			{ "<space>wa", ":lua vim.lsp.buf.add_workspace_folder", desc = "Add Workspace Folder" },
 			{ "<space>wr", ":lua vim.lsp.buf.remove_workspace_folder", desc = "Remove Workspace Folder" },
@@ -27,11 +24,11 @@ function a:on_attach(bufnr)
 
 			{ "<space>n", ":lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
 			{ "<space>e", ":lua vim.diagnostic.open_float()<CR>", desc = "Diagnostic Open Float" },
-			{ "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
-			{ "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition" },
-			{ "K", "<cmd>Lspsaga hover_doc<CR>", desc = "Hover Doc" },
-			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump prev Diagnostic" },
-			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump next Diagnostic" },
+			-- { "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition", noremap = false, mode = "n" },
+			-- { "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition" },
+			-- { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "Hover Doc", noremap = false, mode = "n" },
+			-- { "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump prev Diagnostic" },
+			-- { "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump next Diagnostic" },
 		},
 	})
 end

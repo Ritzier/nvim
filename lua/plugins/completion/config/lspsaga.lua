@@ -1,6 +1,6 @@
 return function()
 	require("lspsaga").setup({
-				symbol_in_winbar = {
+		symbol_in_winbar = {
 			enable = true,
 			hide_keyword = false,
 			show_file = false,
@@ -59,7 +59,7 @@ return function()
 			max_width = 0.45,
 			max_height = 0.7,
 			open_link = "gl",
-			open_cmd = "silent !chrome-cli open"
+			open_cmd = "silent !chrome-cli open",
 		},
 		-- Impl: https://nvimdev.github.io/lspsaga/implement/
 		implement = {

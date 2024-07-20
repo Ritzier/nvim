@@ -20,6 +20,9 @@ wk.add({
 		{ "<leader>d", group = "DiffView" },
 		{ "<leader>dd", "<cmd>DiffviewOpen", desc = "DiffView Open" },
 		{ "<leader>dc", "<cmd>DiffviewClose", desc = "DiffView Close" },
+
+		{ "<space>d", group = "Doc View" },
+		{ "<space>l", group = "Lsp" },
 	},
 
 	{

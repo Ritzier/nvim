@@ -54,13 +54,13 @@ return {
 		config = require("plugins.tool.config.toggleterm"),
 	},
 
-	{
-		"folke/trouble.nvim",
-		enabled = false,
-		lazy = true,
-		cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
-		config = require("plugins.tool.config.trouble"),
-	},
+	-- {
+	-- 	"folke/trouble.nvim",
+	-- 	enabled = false,
+	-- 	lazy = true,
+	-- 	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+	-- 	config = require("plugins.tool.config.trouble"),
+	-- },
 
 	{
 		"gelguy/wilder.nvim",
