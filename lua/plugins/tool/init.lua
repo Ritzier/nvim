@@ -10,6 +10,9 @@ return {
 			"NvimTreeRefresh",
 		},
 		config = require("plugins.tool.config.nvim-tree"),
+		keys = {
+			{ "<C-n>", ":NvimTreeToggle<CR>", desc = "NvimTreeToggle", mode = "n" },
+		},
 	},
 
 	{
@@ -85,6 +88,11 @@ return {
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
+		keys = {
+			{ "<leader>tt", "<cmd>Telescope<CR>", desc = "Telescope", mode = "n" },
+			{ "<leader>tl", "<cmd>Telescope live_grep<CR>", desc = "Live Grep", mode = "n" },
+			{ "<leader>tf", "<cmd>Telescope find_files<CR>", desc = "Find Files", mode = "n" },
+		},
 	},
 
 	{
@@ -146,5 +154,15 @@ return {
 		"sQVe/sort.nvim",
 		lazy = true,
 		event = { "CursorHold" },
+	},
+
+	{
+		"sindrets/diffview.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		keys = {
+			{ "<leader>dd", "<cmd>DiffviewOpen", desc = "DiffView Open" },
+			{ "<leader>dc", "<cmd>DiffviewClose", desc = "DiffView Close" },
+		},
 	},
 }

@@ -69,6 +69,16 @@ return {
 		lazy = true,
 		event = { "BufWritePre" },
 		config = require("plugins.completion.config.conform"),
+		keys = {
+			{
+				"<space>f",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				desc = "Format",
+				mode = "n",
+			},
+		},
 	},
 
 	{

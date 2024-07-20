@@ -14,21 +14,8 @@ function a:on_attach(bufnr)
 				end,
 				desc = "List Workspace Folder",
 			},
-			{
-				"<space>f",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				desc = "Format",
-			},
-
 			{ "<space>n", ":lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
 			{ "<space>e", ":lua vim.diagnostic.open_float()<CR>", desc = "Diagnostic Open Float" },
-			-- { "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition", noremap = false, mode = "n" },
-			-- { "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition" },
-			-- { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "Hover Doc", noremap = false, mode = "n" },
-			-- { "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump prev Diagnostic" },
-			-- { "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump next Diagnostic" },
 		},
 	})
 end
