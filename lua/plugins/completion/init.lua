@@ -28,11 +28,6 @@ return {
 			{ "williamboman/mason-lspconfig.nvim" },
 			{ "folke/neoconf.nvim" },
 			{
-				"Jint-lzxy/lsp_signature.nvim",
-				config = require("plugins.completion.config.lsp-signature"),
-				enabled = false,
-			},
-			{
 				"MysticalDevil/inlay-hints.nvim",
 				config = require("plugins.completion.config.inlay_hint"),
 			},
