@@ -2,10 +2,10 @@ return function()
 	vim.api.nvim_set_hl(
 		0,
 		"FlashLabel",
-		{ underline = true, bold = true, fg = "Orange", bg = "NONE", ctermfg = "Red", ctermbg = "NONE" }
+		{ underline = true, bold = true, fg = "#c8d1f4", bg = "#ff007c", ctermfg = "Red", ctermbg = "NONE" }
 	)
 
-    require("flash").setup({
+	require("flash").setup({
 		labels = "asdfghjklqwertyuiopzxcvbnm",
 		label = {
 			-- allow uppercase labels
