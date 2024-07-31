@@ -127,6 +127,7 @@ return {
 			},
 			{
 				"nvim-treesitter/nvim-treesitter-context",
+				enabled = false,
 				config = require("plugins.editor.config.ts-context"),
 			},
 			{
