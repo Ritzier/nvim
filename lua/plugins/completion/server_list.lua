@@ -7,11 +7,10 @@ list["lsp_deps"] = {
 	"jsonls",
 	"lua_ls",
 	"marksman",
+	"pbls",
 	"pylsp",
 	"taplo",
 	"tsserver",
-	-- use Rust's neovim plugin
-	-- "rust-analyzer",
 }
 
 list["null_ls_deps"] = {
@@ -25,7 +24,7 @@ list["null_ls_deps"] = {
 }
 
 list["dap_deps"] = {
-	"codelldb", --C
+	"codelldb",
 	"delve",
 	"python",
 }

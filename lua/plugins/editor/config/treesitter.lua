@@ -22,6 +22,7 @@ return vim.schedule_wrap(function()
 			"julia",
 			"lua",
 			"markdown",
+			"proto",
 			"python",
 			"rust",
 			"toml",
