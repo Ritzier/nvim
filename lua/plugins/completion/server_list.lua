@@ -8,7 +8,6 @@ list["lsp_deps"] = {
 	"lua_ls",
 	"marksman",
 	"pbls",
-	"pylsp",
 	"taplo",
 	"tsserver",
 }
