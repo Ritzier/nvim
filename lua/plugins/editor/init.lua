@@ -17,8 +17,22 @@ return {
 
 	{
 		"windwp/nvim-autopairs",
-		event = { "Insertenter", "CmdlineEnter" },
+		event = { "InsertEnter", "CmdlineEnter" },
 		config = require("plugins.editor.config.autopairs"),
+		enabled = false,
+	},
+
+	-- ERROR: Not working
+	{
+		"windwp/nvim-ts-autotag",
+		config = require("plugins.editor.config.autotag"),
+		enabled = false,
+	},
+
+	{
+		"m4xshen/autoclose.nvim",
+		config = require("plugins.editor.config.autoclose"),
+		event = { "InsertEnter", "CmdlineEnter" },
 	},
 
 	{
@@ -113,10 +127,6 @@ return {
 			{ "RRethy/nvim-treesitter-endwise" },
 			{ "mfussenegger/nvim-treehopper" },
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-			{
-				"windwp/nvim-ts-autotag",
-				config = require("plugins.editor.config.autotag"),
-			},
 			{
 				"NvChad/nvim-colorizer.lua",
 				config = require("plugins.editor.config.colorizer"),
