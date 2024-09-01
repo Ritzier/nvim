@@ -1,31 +1,27 @@
-local list = {}
+local M = {}
 
-list["lsp_deps"] = {
+M["lsp_list"] = {
 	"bashls",
-	"gopls",
-	"html",
-	"jsonls",
+	"json-lsp",
 	"lua_ls",
 	"marksman",
-	"pbls",
 	"taplo",
-	"tsserver",
 }
 
-list["null_ls_deps"] = {
-	"gofumpt",
-	"goimports",
-	"markdownlint",
+M["null_ls"] = {
+	-- Formatter
+	"black",
+	"clang-format",
+	"isort",
 	"prettier",
-	"shfmt",
+	"prettierd",
 	"stylua",
-	"vint",
+	"taplo",
+	-- "rustfmt" -- Download with system
+
+	-- Diagnostics
+
+	-- Lint
 }
 
-list["dap_deps"] = {
-	"codelldb",
-	"delve",
-	"python",
-}
-
-return list
+return M

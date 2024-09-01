@@ -7,6 +7,7 @@ return function()
 			rust = { "rustfmt", "leptosfmt" },
 			toml = { "taplo" },
 			proto = { "clang-format" },
+			markdown = {},
 		},
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
 		notify_on_error = false,

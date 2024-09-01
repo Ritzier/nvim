@@ -1,4 +1,65 @@
 return {
+
+	{
+		"stevearc/aerial.nvim",
+		lazy = true,
+		event = "LspAttach",
+		config = require("plugins.completion.config.aerial"),
+	},
+
+	{
+		"dnlhc/glance.nvim",
+		lazy = true,
+		event = "LspAttach",
+		config = require("plugins.completion.config.glance"),
+	},
+
+	-- Formatter without LSP, seperate from it
+
+	-- Downloader formatter, lint, lsp
+	{
+		"neovim/nvim-lspconfig",
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
+		config = require("plugins.completion.config.mason-lsp"),
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				config = require("plugins.completion.config.mason"),
+			},
+			"williamboman/mason-lspconfig.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	-- Mason download, configuration in conform and none-ls
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			{
+				"nvimtools/none-ls.nvim",
+				config = require("plugins.completion.config.nonels"),
+			},
+			{
+				"stevearc/conform.nvim",
+				config = require("plugins.completion.config.conform"),
+				keys = {
+					{
+						"<space>f",
+						function()
+							require("conform").format({ async = true, lsp_fallback = true })
+						end,
+						desc = "Format",
+						mode = "n",
+					},
+				},
+			},
+		},
+		config = require("plugins.completion.config.mason-null-ls"),
+	},
+
 	{
 		"nvimdev/lspsaga.nvim",
 		lazy = true,
@@ -15,64 +76,6 @@ return {
 			{ "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition", mode = "n" },
 			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump prev Diagnostic" },
 			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump next Diagnostic" },
-		},
-	},
-
-	{
-		"neovim/nvim-lspconfig",
-		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
-		config = require("plugins.completion.config.lsp"),
-		dependencies = {
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-			{ "folke/neoconf.nvim" },
-			{
-				"MysticalDevil/inlay-hints.nvim",
-				config = require("plugins.completion.config.inlay_hint"),
-			},
-		},
-	},
-
-	{
-		"stevearc/aerial.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = require("plugins.completion.config.aerial"),
-	},
-
-	{
-		"dnlhc/glance.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = require("plugins.completion.config.glance"),
-	},
-
-	{
-		"nvimtools/none-ls.nvim",
-		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
-		config = require("plugins.completion.config.null-ls"),
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"jay-babu/mason-null-ls.nvim",
-		},
-	},
-
-	{
-		"stevearc/conform.nvim",
-		lazy = true,
-		event = { "BufWritePre" },
-		config = require("plugins.completion.config.conform"),
-		keys = {
-			{
-				"<space>f",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				desc = "Format",
-				mode = "n",
-			},
 		},
 	},
 
@@ -113,7 +116,7 @@ return {
 		"amrbashir/nvim-docs-view",
 		lazy = true,
 		event = "LspAttach",
-		config = require("plugins.completion.config.nvimd-doc-view"),
+		config = require("plugins.completion.config.nvim-doc-view"),
 		keys = {
 			{ "<space>dt", "<cmd>DocsViewToggle<CR>", desc = "DocsViewToggle", mode = "n" },
 			{ "<space>du", "<cmd>DocsViewUpdate<CR>", desc = "DocsViewUpdate", mode = "n" },

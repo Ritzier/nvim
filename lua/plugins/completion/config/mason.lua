@@ -1,10 +1,9 @@
-local M = {}
-
-function M.setup()
+return function()
 	local mason_registry = require("mason-registry")
-	require("lspconfig.ui.windows").default_options.border = "rounded"
 
 	require("mason").setup({
+		ensure_installed = require("plugins.completion.server_list").lsp_list,
+		automatic_installation = true,
 		ui = {
 			border = "single",
 			icons = {
@@ -82,5 +81,3 @@ function M.setup()
 		end)
 	)
 end
-
-return M
