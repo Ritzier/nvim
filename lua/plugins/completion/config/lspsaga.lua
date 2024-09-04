@@ -1,7 +1,7 @@
 return function()
 	require("lspsaga").setup({
 		symbol_in_winbar = {
-			enable = false,
+			enable = true,
 			hide_keyword = false,
 			show_file = false,
 			folder_level = 1,

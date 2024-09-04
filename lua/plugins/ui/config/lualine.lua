@@ -37,17 +37,11 @@ return function()
 						end
 					end,
 				},
-
-				{
-					"diagnostics",
-					sources = { "nvim_diagnostic" },
-					sections = { "error", "warn", "info", "hint" },
-				},
 			},
 			lualine_c = {
-				function()
-					return require("lspsaga.symbol.winbar").get_bar()
-				end,
+				-- function()
+				-- 	return require("lspsaga.symbol.winbar").get_bar()
+				-- end,
 			},
 
 			lualine_x = {},
