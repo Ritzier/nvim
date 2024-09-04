@@ -3,7 +3,7 @@ return function()
 		formatters_by_ft = {
 			css = { "prettier" },
 			html = { "prettier" },
-			javascript = { { "prettierd", "prettier" } },
+			javascript = { "prettier" },
 			lua = { "stylua" },
 			-- markdown = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			markdown = { "prettier" },

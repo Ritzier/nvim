@@ -122,4 +122,19 @@ return {
 			{ "<space>du", "<cmd>DocsViewUpdate<CR>", desc = "DocsViewUpdate", mode = "n" },
 		},
 	},
+
+	{
+		"MysticalDevil/inlay-hints.nvim",
+		event = "LspAttach",
+		dependencies = { "neovim/nvim-lspconfig" },
+		config = require("plugins.completion.config.inlay-hints"),
+		keys = {
+			{
+				"<space>i",
+				"<cmd>InlayHintsToggle<CR>",
+				desc = "InlayHintsToggle",
+				mode = "n",
+			},
+		},
+	},
 }

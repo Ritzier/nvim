@@ -24,6 +24,9 @@ return function(opts)
 				telemetry = {
 					enable = false,
 				},
+				-- hint = {
+				-- 	enable = true,
+				-- },
 			},
 		},
 	})
