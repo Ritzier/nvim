@@ -44,6 +44,11 @@ return function()
 					sections = { "error", "warn", "info", "hint" },
 				},
 			},
+			lualine_c = {
+				function()
+					return require("lspsaga.symbol.winbar").get_bar()
+				end,
+			},
 
 			lualine_x = {},
 
