@@ -49,6 +49,7 @@ return {
 	{
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
 		dependencies = {
 			"jay-babu/mason-null-ls.nvim",
 		},
