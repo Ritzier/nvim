@@ -7,6 +7,7 @@ M["lsp_list"] = {
 	"lua_ls",
 	"marksman",
 	"taplo",
+	"yaml-language-server",
 }
 
 -- Automate download, but need for
@@ -21,6 +22,7 @@ M["null_ls"] = {
 	"prettierd",
 	"stylua",
 	"taplo",
+	"yamlfmt",
 	-- "rustfmt" -- Download with system
 
 	-- Diagnostics
