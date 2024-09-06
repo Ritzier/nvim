@@ -42,22 +42,27 @@ return {
 				"nvimtools/none-ls.nvim",
 				config = require("plugins.completion.config.nonels"),
 			},
-			{
-				"stevearc/conform.nvim",
-				config = require("plugins.completion.config.conform"),
-				keys = {
-					{
-						"<space>f",
-						function()
-							require("conform").format({ async = true, lsp_fallback = true })
-						end,
-						desc = "Format",
-						mode = "n",
-					},
-				},
-			},
 		},
 		config = require("plugins.completion.config.mason-null-ls"),
+	},
+
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		dependencies = {
+			"jay-babu/mason-null-ls.nvim",
+		},
+		config = require("plugins.completion.config.conform"),
+		keys = {
+			{
+				"<space>f",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				desc = "Format",
+				mode = "n",
+			},
+		},
 	},
 
 	{

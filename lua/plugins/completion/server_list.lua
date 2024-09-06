@@ -6,6 +6,7 @@ M["lsp_list"] = {
 	"json-lsp",
 	"lua_ls",
 	"marksman",
+	"python-lsp-server",
 	"taplo",
 	"yaml-language-server",
 }

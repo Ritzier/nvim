@@ -20,7 +20,10 @@ return function()
 		local ok, custom_handler = pcall(require, "plugins.completion.server." .. lsp_name)
 
 		if not ok then
-			nvim_lsp[lsp_name].setup(opts)
+			nvim_lsp[lsp_name].setup({
+				capabilities = opts.capabilities,
+				on_attach = opts.on_attach,
+			})
 		elseif type(custom_handler) == "function" then
 			custom_handler(opts)
 		elseif type(custom_handler) == "table" then
