@@ -10,6 +10,7 @@ return function()
 			proto = { "clang-format" },
 			python = { "isort", "black" },
 			rust = { "rustfmt", "leptosfmt" },
+			scss = { "prettier" },
 			toml = { "taplo" },
 			yaml = { "yamlfmt" },
 		},
