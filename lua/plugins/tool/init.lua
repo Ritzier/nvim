@@ -95,11 +95,6 @@ return {
 		},
 	},
 
-	{
-		"pocco81/auto-save.nvim",
-		config = require("plugins.tool.config.auto-save"),
-	},
-
 	-- TODO:
 	-- {
 	-- 	"mfussenegger/nvim-dap",
