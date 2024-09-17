@@ -3,12 +3,26 @@ return function()
 	local mason_lspconfig = require("mason-lspconfig")
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		signs = true,
+	vim.diagnostic.config({
+		virtual_text = {
+			source = "if_many",
+			prefix = "● ",
+		},
+		update_in_insert = true,
 		underline = true,
-		virtual_text = true,
-		-- set update_in_insert to false because it was enabled by lspsaga
-		update_in_insert = false,
+		severity_sort = true,
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = "",
+				[vim.diagnostic.severity.WARN] = "",
+			},
+			linehl = {
+				[vim.diagnostic.severity.ERROR] = "ErrorMsg",
+			},
+			numhl = {
+				[vim.diagnostic.severity.WARN] = "WarningMsg",
+			},
+		},
 	})
 
 	local opts = {
