@@ -82,6 +82,32 @@ return {
 			{ "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition", mode = "n" },
 			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump prev Diagnostic" },
 			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump next Diagnostic" },
+			{
+				"[e",
+				function()
+					require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+				end,
+				desc = "Jump prev error",
+				mode = "n",
+			},
+			{
+				"]e",
+				function()
+					require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+				end,
+				desc = "Jump next error",
+				mode = "n",
+			},
+			{
+				"<space>n",
+				vim.lsp.buf.rename,
+				desc = "Rename",
+			},
+			{
+				"<space>e",
+				"<cmd>Lspsaga show_line_diagnostics",
+				desc = "Show Diagnostic",
+			},
 		},
 	},
 
