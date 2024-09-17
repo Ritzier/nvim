@@ -1,12 +1,26 @@
 local a = {}
 function a:on_attach(bufnr)
-	local function map(mode, l, r, opts)
-		opts = opts or {}
-		opts.buffer = bufnr
-		opts.noremap = true
-		opts.silent = true
-		vim.keymap.set(mode, l, r, opts)
-	end
+	require("better-diagnostic-virtual-text.api").setup_buf(bufnr, {
+		ui = {
+			wrap_line_after = false, -- wrap the line after this length to avoid the virtual text is too long
+			left_kept_space = 3, --- the number of spaces kept on the left side of the virtual text, make sure it enough to custom for each line
+			right_kept_space = 3, --- the number of spaces kept on the right side of the virtual text, make sure it enough to custom for each line
+			arrow = "  ",
+			up_arrow = "  ",
+			down_arrow = "  ",
+			above = false, -- the virtual text will be displayed above the line
+		},
+		priority = 2003, -- the priority of virtual text
+		inline = false,
+	})
+
+	-- local function map(mode, l, r, opts)
+	-- 	opts = opts or {}
+	-- 	opts.buffer = bufnr
+	-- 	opts.noremap = true
+	-- 	opts.silent = true
+	-- 	vim.keymap.set(mode, l, r, opts)
+	-- end
 
 	-- map("n", "<space>wa", ":lua vim.lsp.buf.add_workspace_folder<CR>", { desc = "Add Workspace" })
 	-- map("n", "<space>wr", ":lua vim.lsp.buf.remove_workspace_folder<CR>", { desc = "Add Workspace" })

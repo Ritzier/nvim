@@ -29,6 +29,7 @@ return {
 			},
 			"williamboman/mason-lspconfig.nvim",
 			"nvim-lua/plenary.nvim",
+			{ "sontungexpt/better-diagnostic-virtual-text" },
 		},
 	},
 

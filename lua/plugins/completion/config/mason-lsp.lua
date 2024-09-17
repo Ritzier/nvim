@@ -4,11 +4,11 @@ return function()
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
 	vim.diagnostic.config({
-		virtual_text = {
-			source = "if_many",
-			prefix = "● ",
-		},
-		update_in_insert = true,
+		-- virtual_text = {
+		-- 	prefix = "● ",
+		-- },
+		virtual_text = false,
+		update_in_insert = false,
 		underline = true,
 		severity_sort = true,
 		signs = {
