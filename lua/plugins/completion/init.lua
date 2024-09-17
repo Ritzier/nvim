@@ -105,7 +105,7 @@ return {
 			},
 			{
 				"<space>e",
-				"<cmd>Lspsaga show_line_diagnostics",
+				"<cmd>Lspsaga show_line_diagnostics<CR>",
 				desc = "Show Diagnostic",
 			},
 		},
