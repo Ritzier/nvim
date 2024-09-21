@@ -79,16 +79,16 @@ return {
 	},
 
 	{
-		"karb94/neoscroll.nvim",
-		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
-		config = require("plugins.ui.config.neoscroll"),
-	},
-
-	{
 		"nvim-lualine/lualine.nvim",
 		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.config.lualine"),
+	},
+
+	{
+		"petertriho/nvim-scrollbar",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+		config = require("plugins.ui.config.scrollbar"),
 	},
 }
