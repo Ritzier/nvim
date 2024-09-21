@@ -84,4 +84,11 @@ return {
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.config.lualine"),
 	},
+
+	{
+		"karb94/neoscroll.nvim",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+		config = require("plugins.ui.config.neoscroll"),
+	},
 }
