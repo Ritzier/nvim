@@ -41,12 +41,6 @@ return {
 		config = require("plugins.ui.config.rosepine"),
 	},
 	{
-		"dstein64/nvim-scrollview",
-		lazy = true,
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = require("plugins.ui.config.scrollview"),
-	},
-	{
 		"folke/todo-comments.nvim",
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
