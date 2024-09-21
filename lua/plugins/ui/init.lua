@@ -84,11 +84,4 @@ return {
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.config.lualine"),
 	},
-
-	{
-		"petertriho/nvim-scrollbar",
-		lazy = true,
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = require("plugins.ui.config.scrollbar"),
-	},
 }
