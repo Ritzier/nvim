@@ -16,6 +16,7 @@ return function()
 		on_attach = function(bufnr)
 			require("nvim-tree.api").config.mappings.default_on_attach(bufnr)
 			vim.keymap.del("n", "<C-e>", { buffer = bufnr })
+			vim.keymap.set("n", "?", api.tree.toggle_help, { desc = "Help", buffer = bufnr })
 		end,
 		view = {
 			adaptive_size = false,
