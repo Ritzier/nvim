@@ -109,6 +109,11 @@ return {
 				"<cmd>Lspsaga show_line_diagnostics<CR>",
 				desc = "Show Diagnostic",
 			},
+			{
+				"<space>D",
+				"<cmd>Lspsaga show_workspace_diagnostics<CR>",
+				desc = "Show Workspace Diagnostic",
+			},
 		},
 	},
 
