@@ -3,7 +3,6 @@ return function()
 		tools = {},
 		-- LSP configuration
 		server = {
-			on_attach = require("keymaps.lsp").on_attach,
 			default_settings = {
 				["rust-analyzer"] = {
 					["rustfmt.overrideCommand"] = { "leptosfmt", "--stdin", "--rustfmt" },

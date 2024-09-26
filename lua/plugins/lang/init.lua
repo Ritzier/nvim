@@ -12,9 +12,20 @@ return {
 		"mrcjkb/rustaceanvim",
 		lazy = true,
 		ft = "rust",
-		version = "^4",
 		init = require("plugins.lang.config.rust"),
 		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = {
+			{
+				"<space>E",
+				"<cmd>RustLsp expandMacro<CR>",
+				desc = "Expand Macro",
+			},
+			{
+				"<space>R",
+				"<cmd>RustAnalyzer Restart<CR>",
+				desc = "LSP Restart",
+			},
+		},
 	},
 
 	{
