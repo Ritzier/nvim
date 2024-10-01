@@ -32,6 +32,7 @@ M["null_ls"] = {
 	-- Diagnostics
 
 	-- Lint
+	"ruff",
 }
 
 return M
