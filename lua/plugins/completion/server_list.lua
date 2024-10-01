@@ -7,7 +7,7 @@ M["lsp_list"] = {
 	"jsonls",
 	"lua_ls",
 	"marksman",
-	"pylsp",
+	--"pylsp",
 	"pyright",
 	"tailwindcss",
 	"taplo",
