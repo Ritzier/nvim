@@ -45,7 +45,10 @@ return {
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
 		config = require("plugins.ui.config.todo"),
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+		keys = {
+			{ "<leader>td", "<cmd>TodoTelescope<CR>", "Find Todo" },
+		},
 	},
 
 	{
