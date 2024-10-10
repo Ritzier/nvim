@@ -12,9 +12,7 @@ return function()
 						runBuildScripts = true,
 					},
 					checkOnSave = {
-						allFeatures = true,
-						command = "clippy",
-						extraArgs = { "-- -A clippy::needless_return" },
+						false,
 					},
 					procMacro = {
 						enable = true,
