@@ -179,5 +179,11 @@ return {
 		"rachartier/tiny-inline-diagnostic.nvim",
 		lazy = false,
 		config = require("plugins.completion.config.tiny-inline-diagnostic"),
+		keys = {
+			{
+				"<space>t",
+				":lua require('tiny-inline-diagnostic').toggle()<CR>",
+			},
+		},
 	},
 }
