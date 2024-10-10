@@ -14,7 +14,7 @@ return function()
 					checkOnSave = {
 						allFeatures = true,
 						command = "clippy",
-						extraArgs = { "--no-deps" },
+						extraArgs = { "-- -A clippy::needless_return" },
 					},
 					procMacro = {
 						enable = true,
