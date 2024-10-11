@@ -12,6 +12,7 @@ M["lsp_list"] = {
 	"tailwindcss",
 	"taplo",
 	"yamlls",
+	"ts_ls",
 }
 
 -- Automate download, but need for
