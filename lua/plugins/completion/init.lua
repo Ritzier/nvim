@@ -113,6 +113,11 @@ return {
 				"<cmd>Lspsaga show_workspace_diagnostics<CR>",
 				desc = "Show Workspace Diagnostic",
 			},
+			{
+				"<C-a>",
+				"<cmd>Lspsaga code_action<CR>",
+				desc = "Code Action",
+			},
 		},
 	},
 
