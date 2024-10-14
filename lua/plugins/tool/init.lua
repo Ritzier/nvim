@@ -44,6 +44,7 @@ return {
 		"akinsho/toggleterm.nvim",
 		keys = {
 			{ [[<C-\>]] },
+			{ [[<C-S-\>]], ":ToggleTerm direction=horizontal<CR>" },
 		},
 		lazy = true,
 		cmd = {
