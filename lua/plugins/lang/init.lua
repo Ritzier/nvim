@@ -22,7 +22,7 @@ return {
 			},
 			{
 				"<space>R",
-				"<cmd>RustAnalyzer Restart<CR>",
+				":RustAnalyzer restart<CR>",
 				desc = "LSP Restart",
 			},
 		},
