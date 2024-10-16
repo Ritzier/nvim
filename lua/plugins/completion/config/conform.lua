@@ -1,7 +1,7 @@
 return function()
 	require("conform").setup({
 		formatters_by_ft = {
-			-- markdown = { "prettier", "markdownlint-cli2", "markdown-toc" },
+			sh = { "beautysh" },
 			css = { "prettier" },
 			html = { "prettier" },
 			javascript = { "prettier" },
