@@ -1,7 +1,6 @@
 return function()
 	require("conform").setup({
 		formatters_by_ft = {
-			sh = { "beautysh" },
 			css = { "prettier" },
 			html = { "prettier" },
 			javascript = { "prettier" },
@@ -10,9 +9,10 @@ return function()
 			proto = { "clang-format" },
 			python = { "isort", "black" },
 			rust = { "rustfmt", "leptosfmt" },
-			typescript = { "prettier" },
 			scss = { "prettier" },
+			sh = { "beautysh" },
 			toml = { "taplo" },
+			typescript = { "prettier" },
 			yaml = { "yamlfmt" },
 		},
 		default_format_opts = {
