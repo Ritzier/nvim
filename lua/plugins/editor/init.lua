@@ -152,4 +152,14 @@ return {
 			require("better_escape").setup()
 		end,
 	},
+
+	{
+		"kevinhwang91/nvim-ufo",
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
+		config = require("plugins.editor.config.ufo"),
+		dependencies = {
+			"kevinhwang91/promise-async",
+		},
+	},
 }

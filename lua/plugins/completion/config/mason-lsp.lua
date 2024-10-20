@@ -20,6 +20,11 @@ return function()
 		on_attach = require("keymaps.lsp").on_attach,
 	}
 
+	opts.capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
+
 	local function mason_lsp_handler(lsp_name)
 		local ok, custom_handler = pcall(require, "plugins.completion.server." .. lsp_name)
 
