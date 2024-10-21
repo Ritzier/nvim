@@ -169,6 +169,10 @@ return function()
 					["@keyword.return"] = { fg = cp.pink, style = clear },
 					["@error.c"] = { fg = cp.none, style = clear },
 					["@error.cpp"] = { fg = cp.none, style = clear },
+
+					-- -- UFO folding
+					Folded = { bg = cp.none, fg = cp.none },
+					MoreMsg = { bg = cp.mauve, fg = cp.crust, style = { "bold" } },
 				}
 			end,
 		},

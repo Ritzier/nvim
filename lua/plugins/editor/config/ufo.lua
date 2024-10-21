@@ -27,20 +27,8 @@ return function()
 		return newVirtText
 	end
 
-	-- global handler
-	-- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
-	-- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
 	require("ufo").setup({
 		fold_virt_text_handler = handler,
+		open_fold_hl_timeout = 0,
 	})
-	--
-	-- -- buffer scope handler
-	-- -- will override global handler if it is existed
-	-- -- local bufnr = vim.api.nvim_get_current_buf()
-	-- -- require('ufo').setFoldVirtTextHandler(bufnr, handler)
-	-- 	require("ufo").setup({
-	-- 		provider_selector = function()
-	-- 			return { "treesitter", "indent" }
-	-- 		end,
-	-- 	})
 end
