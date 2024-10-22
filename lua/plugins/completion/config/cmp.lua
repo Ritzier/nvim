@@ -38,10 +38,6 @@ return function()
 		Macro = "",
 	}
 
-	local t = function(str)
-		return vim.api.nvim_replace_termodes(str, true, true, true)
-	end
-
 	local cmp = require("cmp")
 
 	local border = function(hl)
@@ -58,17 +54,30 @@ return function()
 	end
 
 	local compare = require("cmp.config.compare")
-	compare.lsp_scores = function(entry1, entry2)
-		local diff
-		if entry1.completion_item.score and entry2.completion_item.score then
-			diff = (entry2.completion_item.score * entry2.score) - (entry1.completion_item.score * entry1.score)
-		else
-			diff = entry2.score - entry1.score
-		end
-		return (diff < 0)
+	local types = require("cmp.types")
+	local kind_priority = {
+		[types.lsp.CompletionItemKind.Field] = 1,
+		[types.lsp.CompletionItemKind.Property] = 1,
+		[types.lsp.CompletionItemKind.Variable] = 1,
+		[types.lsp.CompletionItemKind.Method] = 2,
+		[types.lsp.CompletionItemKind.Function] = 2,
+		[types.lsp.CompletionItemKind.Constructor] = 2,
+		[types.lsp.CompletionItemKind.Class] = 3,
+		[types.lsp.CompletionItemKind.Interface] = 3,
+		[types.lsp.CompletionItemKind.Module] = 4,
+		[types.lsp.CompletionItemKind.Snippet] = 5,
+	}
+
+	-- Custom comparator function
+	local kind_comparator = function(entry1, entry2)
+		local kind1 = entry1:get_kind()
+		local kind2 = entry2:get_kind()
+		local priority1 = kind_priority[kind1] or 100
+		local priority2 = kind_priority[kind2] or 100
+		return priority1 < priority2
 	end
 
-	cmp.setup({
+	require("cmp").setup({
 		preselect = cmp.PreselectMode.Item,
 
 		window = {
@@ -87,12 +96,11 @@ return function()
 		sorting = {
 			priority_weight = 2,
 			comparators = {
+				kind_comparator,
 				compare.offset,
 				compare.exact,
-				compare.lsp_scores,
 				compare.sort_text,
 				compare.score,
-				require("cmp-under-comparator").under,
 				compare.kind,
 				compare.length,
 				compare.order,
@@ -103,7 +111,6 @@ return function()
 			fields = { "abbr", "kind", "menu" },
 			format = function(entry, vim_item)
 				local kind = require("lspkind").cmp_format({
-					mod = "text_symbol",
 					maxwidth = 30,
 					symbol_map = kind_icons,
 				})(entry, vim_item)
@@ -117,26 +124,19 @@ return function()
 		},
 
 		matching = {
-			disallow_partial_fuzzy_matching = false,
+			disallow_fuzzy_matching = true, -- Disallow fuzzy matching
+			disallow_partial_fuzzy_matching = true, -- Disallow partial fuzzy matching
+			disallow_partial_matching = true, -- Disallow partial matching
+			disallow_prefix_unmatching = false, -- Allow prefix unmatching (e.g., match only when prefix matches)
 		},
 
 		preformance = {
 			async_budget = 1,
-			max_view_entries = 120,
-		},
-
-		snippet = {
-			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
-			end,
 		},
 
 		sources = {
-			{ name = "nvim_lsp", max_item_count = 300 },
-			{ name = "nvim_lua" },
-			{ name = "luasnip" },
+			{ name = "nvim_lsp" },
 			{ name = "path" },
-			-- { name = "treesitter" },
 			{ name = "crates" },
 		},
 
