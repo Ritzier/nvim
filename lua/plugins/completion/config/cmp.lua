@@ -62,6 +62,7 @@ return function()
 		[types.lsp.CompletionItemKind.Method] = 2,
 		[types.lsp.CompletionItemKind.Function] = 2,
 		[types.lsp.CompletionItemKind.Constructor] = 2,
+		[types.lsp.CompletionItemKind.Keyword] = 3,
 		[types.lsp.CompletionItemKind.Class] = 3,
 		[types.lsp.CompletionItemKind.Interface] = 3,
 		[types.lsp.CompletionItemKind.Module] = 4,
