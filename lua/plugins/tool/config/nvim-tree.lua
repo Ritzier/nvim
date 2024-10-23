@@ -110,18 +110,19 @@ return function()
 				-- Get target path based on node under cursor
 				local target_path
 				if node.type == "directory" and node.open then
-					-- If cursor is on an open directory, create inside it
 					target_path = node.absolute_path
 				else
-					-- Otherwise create in parent directory
 					target_path = vim.fn.fnamemodify(node.absolute_path, ":h")
 				end
 
-				-- Create file/directory using vim's native functions
 				vim.ui.input({ prompt = "Create file: ", default = target_path .. "/" }, function(name)
 					if not name then
 						return
 					end
+
+					-- Create parent directories if they don't exist
+					local parent_dir = vim.fn.fnamemodify(name, ":h")
+					vim.fn.mkdir(parent_dir, "p")
 
 					-- Handle directory creation (ends with /)
 					if name:sub(-1) == "/" then
