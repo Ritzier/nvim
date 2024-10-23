@@ -42,6 +42,14 @@ return {
 		config = require("plugins.ui.config.rosepine"),
 		enabled = false,
 	},
+
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		config = require("plugins.ui.config.nightfox"),
+		enabled = false,
+	},
+
 	{
 		"folke/todo-comments.nvim",
 		lazy = true,
