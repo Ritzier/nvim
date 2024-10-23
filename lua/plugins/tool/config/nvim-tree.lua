@@ -29,6 +29,30 @@ return function()
 			},
 			icons = {
 				webdev_colors = true,
+				glyphs = {
+					default = "",
+					symlink = "",
+					bookmark = "󰃃",
+					git = {
+						unstaged = "",
+						staged = "",
+						unmerged = "󰘬",
+						renamed = "",
+						untracked = "󰞋",
+						deleted = "",
+						ignored = "",
+					},
+					folder = {
+						arrow_open = "",
+						arrow_closed = "",
+						default = "󰉋",
+						open = "",
+						empty = "",
+						empty_open = "",
+						symlink = "",
+						symlink_open = "",
+					},
+				},
 			},
 		},
 		hijack_directories = {
