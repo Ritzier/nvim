@@ -33,12 +33,14 @@ return {
 		"rebelot/kanagawa.nvim",
 		lazy = false,
 		config = require("plugins.ui.config.kanagawa"),
+		enabled = false,
 	},
 	{
 		"rose-pine/neovim",
 		lazy = false,
 		name = "rose-pine",
 		config = require("plugins.ui.config.rosepine"),
+		enabled = false,
 	},
 	{
 		"folke/todo-comments.nvim",
