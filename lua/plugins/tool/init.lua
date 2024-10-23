@@ -147,12 +147,6 @@ return {
 	},
 
 	{
-		"sQVe/sort.nvim",
-		lazy = true,
-		event = { "CursorHold" },
-	},
-
-	{
 		"sindrets/diffview.nvim",
 		lazy = true,
 		event = "CmdlineEnter",
