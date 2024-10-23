@@ -49,7 +49,7 @@ return function()
 
 				-- Ufo
 				Folded = { bg = "NONE", fg = "NONE" },
-				MoreMSg = { bg = palette.sakuraPink, fg = palette.sumiInk5 },
+				MoreMSg = { bg = palette.sakuraPink, fg = palette.springBlue },
 			}
 		end,
 		theme = "wave", -- Load "wave" theme when 'background' option is not set
