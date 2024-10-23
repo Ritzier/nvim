@@ -139,7 +139,7 @@ return function()
 				end)
 			end
 
-			vim.keymap.set("n", "e", create_in_cursor_dir, { desc = "", buffer = bufnr, noremap = true, silent = true })
+			vim.keymap.set("n", "a", create_in_cursor_dir, { desc = "", buffer = bufnr, noremap = true, silent = true })
 		end,
 	})
 end
