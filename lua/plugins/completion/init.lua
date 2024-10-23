@@ -162,6 +162,7 @@ return {
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		lazy = false,
+		event = "LspAttach",
 		config = require("plugins.completion.config.tiny-inline-diagnostic"),
 		keys = {
 			{
