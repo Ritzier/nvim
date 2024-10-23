@@ -38,14 +38,6 @@ return {
 	},
 
 	{
-		"L3MON4D3/LuaSnip",
-		keys = function()
-			-- Disable default tab keybinding in LuaSnip
-			return {}
-		end,
-	},
-
-	{
 		"LunarVim/bigfile.nvim",
 		lazy = false,
 		config = require("plugins.editor.config.bigfile"),
