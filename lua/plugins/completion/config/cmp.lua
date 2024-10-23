@@ -70,13 +70,14 @@ return function()
 	}
 
 	-- Custom comparator function
-	local kind_comparator = function(entry1, entry2)
-		local kind1 = entry1:get_kind()
-		local kind2 = entry2:get_kind()
-		local priority1 = kind_priority[kind1] or 100
-		local priority2 = kind_priority[kind2] or 100
-		return priority1 < priority2
-	end
+	-- INFO: weird problem, sometime would popup something useless
+	-- local kind_comparator = function(entry1, entry2)
+	-- 	local kind1 = entry1:get_kind()
+	-- 	local kind2 = entry2:get_kind()
+	-- 	local priority1 = kind_priority[kind1] or 100
+	-- 	local priority2 = kind_priority[kind2] or 100
+	-- 	return priority1 < priority2
+	-- end
 
 	require("cmp").setup({
 		preselect = cmp.PreselectMode.Item,
@@ -97,7 +98,7 @@ return function()
 		sorting = {
 			priority_weight = 2,
 			comparators = {
-				kind_comparator,
+				-- kind_comparator,
 				compare.offset,
 				compare.exact,
 				compare.sort_text,
