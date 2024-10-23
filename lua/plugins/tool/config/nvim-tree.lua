@@ -1,74 +1,34 @@
 return function()
-	local api = require("nvim-tree.api")
-	vim.g.loaded_netrw = 1
-	vim.g.loaded_netrwPlugin = 1
+	local nvim_tree = require("nvim-tree")
 
-	require("nvim-tree").setup({
+	nvim_tree.setup({
 		auto_reload_on_write = true,
-		create_in_closed_folder = false,
 		disable_netrw = false,
-		hijack_cursor = true,
 		hijack_netrw = true,
-		hijack_unnamed_buffer_when_opening = true,
+		hijack_cursor = true,
+		hijack_unnamed_buffer_when_opening = false,
 		open_on_tab = false,
-		respect_buf_cwd = false,
 		sort_by = "name",
-		sync_root_with_cwd = true,
-		on_attach = function(bufnr)
-			require("nvim-tree.api").config.mappings.default_on_attach(bufnr)
-			vim.keymap.del("n", "<C-e>", { buffer = bufnr })
-			vim.keymap.set("n", "?", api.tree.toggle_help, { desc = "Help", buffer = bufnr })
-		end,
+		update_cwd = false,
 		view = {
-			adaptive_size = false,
-			centralize_selection = false,
 			width = 30,
 			side = "left",
 			preserve_window_proportions = false,
 			number = false,
 			relativenumber = false,
 			signcolumn = "yes",
-			float = {
-				enable = false,
-				open_win_config = {
-					relative = "editor",
-					border = "rounded",
-					width = 30,
-					height = 30,
-					row = 1,
-					col = 1,
-				},
-			},
 		},
 		renderer = {
-			add_trailing = false,
-			group_empty = true,
-			highlight_git = true,
-			full_name = false,
-			highlight_opened_files = "none",
-			special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "CMakeLists.txt" },
-			symlink_destination = true,
 			indent_markers = {
-				enable = true,
+				enable = false,
 				icons = {
 					corner = "└ ",
 					edge = "│ ",
-					item = "│ ",
 					none = "  ",
 				},
 			},
-			root_folder_label = ":.:s?.*?/..?",
 			icons = {
 				webdev_colors = true,
-				git_placement = "after",
-				show = {
-					file = true,
-					folder = true,
-					folder_arrow = true,
-					git = true,
-				},
-				padding = " ",
-				symlink_arrow = " 󰁔 ",
 			},
 		},
 		hijack_directories = {
@@ -77,19 +37,39 @@ return function()
 		},
 		update_focused_file = {
 			enable = true,
-			update_root = true,
+			update_cwd = false,
 			ignore_list = {},
+		},
+		system_open = {
+			cmd = "",
+			args = {},
+		},
+		diagnostics = {
+			enable = false,
+			show_on_dirs = false,
+			icons = {
+				hint = "",
+				info = "",
+				warning = "",
+				error = "",
+			},
 		},
 		filters = {
 			dotfiles = false,
-			custom = { ".DS_Store" },
+			custom = {},
 			exclude = {},
+		},
+		git = {
+			enable = true,
+			ignore = true,
+			timeout = 400,
 		},
 		actions = {
 			use_system_clipboard = true,
 			change_dir = {
 				enable = true,
 				global = false,
+				restrict_above_cwd = false,
 			},
 			open_file = {
 				quit_on_open = false,
@@ -99,36 +79,14 @@ return function()
 					chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
 					exclude = {
 						filetype = { "notify", "qf", "diff", "fugitive", "fugitiveblame" },
-						buftype = { "terminal", "help" },
+						buftype = { "nofile", "terminal", "help" },
 					},
 				},
 			},
-			remove_file = {
-				close_window = true,
-			},
-		},
-		diagnostics = {
-			enable = false,
-			show_on_dirs = false,
-			debounce_delay = 50,
-		},
-		filesystem_watchers = {
-			enable = true,
-			debounce_delay = 50,
-		},
-		git = {
-			enable = true,
-			ignore = false,
-			show_on_dirs = true,
-			timeout = 400,
 		},
 		trash = {
-			cmd = "gio trash",
+			cmd = "trash",
 			require_confirm = true,
-		},
-		live_filter = {
-			prefix = "[FILTER]: ",
-			always_show_folders = true,
 		},
 		log = {
 			enable = false,
@@ -137,12 +95,51 @@ return function()
 				all = false,
 				config = false,
 				copy_paste = false,
-				dev = false,
 				diagnostics = false,
 				git = false,
 				profile = false,
-				watcher = false,
 			},
 		},
+		on_attach = function(bufnr)
+			local api = require("nvim-tree.api")
+
+			api.config.mappings.default_on_attach(bufnr)
+
+			local function create_in_cursor_dir()
+				local node = api.tree.get_node_under_cursor()
+				-- Get target path based on node under cursor
+				local target_path
+				if node.type == "directory" and node.open then
+					-- If cursor is on an open directory, create inside it
+					target_path = node.absolute_path
+				else
+					-- Otherwise create in parent directory
+					target_path = vim.fn.fnamemodify(node.absolute_path, ":h")
+				end
+
+				-- Create file/directory using vim's native functions
+				vim.ui.input({ prompt = "Create file: ", default = target_path .. "/" }, function(name)
+					if not name then
+						return
+					end
+
+					-- Handle directory creation (ends with /)
+					if name:sub(-1) == "/" then
+						vim.fn.mkdir(name, "p")
+					else
+						-- Create file
+						local file = io.open(name, "w")
+						if file then
+							file:close()
+						end
+					end
+
+					-- Refresh tree
+					api.tree.reload()
+				end)
+			end
+
+			vim.keymap.set("n", "e", create_in_cursor_dir, { desc = "", buffer = bufnr, noremap = true, silent = true })
+		end,
 	})
 end
