@@ -114,11 +114,8 @@ return function()
 			format = function(entry, vim_item)
 				local kind = require("lspkind").cmp_format({
 					maxwidth = 45,
-					ellipsis_char = "...",
-					show_labelDetails = true,
 					symbol_map = kind_icons,
 				})(entry, vim_item)
-
 				local strings = vim.split(kind.kind, "%s", { trimempty = true })
 				kind.kind = " " .. (strings[2] or "") .. ""
 				kind.menu = "" .. (strings[1] or "") .. ""
