@@ -46,6 +46,18 @@ return {
 		"ojroques/nvim-bufdel",
 		lazy = true,
 		cmd = { "BufDel", "BufDelAll", "BufDelOthers" },
+		keys = {
+			{
+				"x",
+				"<cmd>BufDel<CR>",
+				"Delete Current Buffer",
+			},
+			{
+				"X",
+				"<cmd>BufDelOthers<CR>",
+				"Delete Other Buffers",
+			},
+		},
 	},
 	{
 		"folke/flash.nvim",
