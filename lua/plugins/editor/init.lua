@@ -48,12 +48,12 @@ return {
 		cmd = { "BufDel", "BufDelAll", "BufDelOthers" },
 		keys = {
 			{
-				"x",
+				"<C-x>",
 				"<cmd>BufDel<CR>",
 				"Delete Current Buffer",
 			},
 			{
-				"X",
+				"<C-s-x>",
 				"<cmd>BufDelOthers<CR>",
 				"Delete Other Buffers",
 			},
