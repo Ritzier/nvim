@@ -34,6 +34,7 @@ M["null_ls"] = {
 
 	-- Lint
 	"ruff",
+	"shellharden",
 }
 
 return M
