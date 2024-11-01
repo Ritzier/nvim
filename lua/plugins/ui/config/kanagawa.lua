@@ -27,10 +27,10 @@ return function()
 				PmenuSbar = { bg = theme.ui.bg_m1 },
 				PmenuThumb = { bg = theme.ui.bg_p2 },
 
-				-- use Default
-				-- CmpItemAbbrDeprecated = { bold = false },
-				-- CmpItemAbbrMatch = { bold = true },
-				-- CmpItemAbbrMatchFuzzy = { bold = true },
+				CmpItemAbbr = { fg = palette.dragonGray },
+				CmpItemAbbrDeprecated = { fg = palette.dragonGray },
+				CmpItemAbbrMatch = { fg = palette.crystalBlue, bold = true },
+				CmpItemAbbrMatchFuzzy = { fg = palette.dragonGray, bold = true },
 				CmpItemKindVariable = { fg = palette.lotusYellow3, bold = true },
 				CmpItemKindFunction = { fg = palette.oniViolet, bold = true },
 				CmpItemKindEnum = { fg = palette.sakuraPink, bold = true },
