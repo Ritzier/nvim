@@ -33,7 +33,7 @@ return {
 		"rebelot/kanagawa.nvim",
 		lazy = false,
 		config = require("plugins.ui.config.kanagawa"),
-		enabled = false,
+		-- enabled = false,
 	},
 	{
 		"rose-pine/neovim",
