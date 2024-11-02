@@ -50,6 +50,9 @@ return function()
 				-- Ufo
 				Folded = { bg = "NONE", fg = "NONE" },
 				MoreMsg = { bg = palette.sakuraPink, fg = palette.springBlue },
+
+				-- IndentBlankline
+				IblScope = { fg = palette.waveRed },
 			}
 		end,
 		theme = "wave", -- Load "wave" theme when 'background' option is not set
