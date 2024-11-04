@@ -11,7 +11,7 @@ return {
 		},
 		config = require("plugins.tool.config.nvim-tree"),
 		keys = {
-			{ "<C-n>", ":NvimTreeToggle<CR>", desc = "NvimTreeToggle", mode = "n" },
+			{ "<C-n>", ":NvimTreeToggle<CR>", desc = "NvimTreeToggle", mode = "n", silent = true },
 		},
 	},
 
