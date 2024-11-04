@@ -155,4 +155,15 @@ return {
 			{ "<leader>dc", "<cmd>DiffviewClose", desc = "DiffView Close" },
 		},
 	},
+
+	{
+		"stevearc/overseer.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		config = require("plugins.tool.config.overseer"),
+		keys = {
+			{ "<leader>or", "<cmd>OverseerRun<CR>", desc = "Overseer Run" },
+			{ "<leader>oo", "<cmd>OverseerToggle<CR>", desc = "Overseer Toggle" },
+		},
+	},
 }
