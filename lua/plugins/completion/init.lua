@@ -30,6 +30,14 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"nvim-lua/plenary.nvim",
 		},
+		keys = {
+			{
+				"<space>R",
+				":LspRestart<CR>",
+				desc = "Restart LSP server",
+				silent = true,
+			},
+		},
 	},
 
 	-- Mason download, configuration in conform and none-ls
