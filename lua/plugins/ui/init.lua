@@ -96,6 +96,9 @@ return {
 		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.config.lualine"),
+		dependencies = {
+			"stevearc/overseer.nvim",
+		},
 	},
 
 	{
