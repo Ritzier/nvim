@@ -21,7 +21,6 @@ return function()
 
 	local opts = {
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = require("keymaps.lsp").on_attach,
 	}
 
 	opts.capabilities.textDocument.foldingRange = {
