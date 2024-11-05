@@ -31,7 +31,7 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		lazy = false,
+		lazy = true,
 		config = require("plugins.ui.config.kanagawa"),
 		-- enabled = false,
 	},
