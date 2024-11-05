@@ -63,6 +63,7 @@ return {
 		"iamcco/markdown-preview.nvim",
 		lazy = true,
 		ft = "markdown",
+		event = "CmdlineEnter",
 		build = ":call mkdp#util#install()",
 	},
 
