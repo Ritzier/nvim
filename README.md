@@ -20,3 +20,9 @@
 
 - `LSP` & `linter`: `lua/plugins/completion/server_list.lua`
 - `formatter`: `lua/plugins/completion/config/conform.lua`
+
+## Other Awesome Repository:
+
+- [ayamir/nvimdots](https://github.com/ayamir/nvimdots)
+- [glepnir/nvim](https://github.com/glepnir/nvim)
+- [nshen/learn-neovim-lua](https://github.com/nshen/learn-neovim-lua)
