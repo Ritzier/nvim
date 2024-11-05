@@ -1,5 +1,5 @@
 return function()
-    require("aerial").setup({
+	require("aerial").setup({
 		lazy_load = false,
 		close_on_select = true,
 		highlight_on_jump = false,

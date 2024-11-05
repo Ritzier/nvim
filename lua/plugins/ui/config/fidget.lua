@@ -1,5 +1,5 @@
 return function()
-    require("fidget").setup({
+	require("fidget").setup({
 		progress = {
 			suppress_on_insert = false, -- Suppress new messages while in insert mode
 			ignore_done_already = false, -- Ignore new tasks that are already complete

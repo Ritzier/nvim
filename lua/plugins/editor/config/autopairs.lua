@@ -23,10 +23,16 @@ return function()
 
 				local unclosed_count = 0
 				for c in line:gmatch("[\\" .. open .. "\\" .. close .. "]") do
-					if c == open then unclosed_count = unclosed_count + 1 end
-					if unclosed_count > 0 and c == close then unclosed_count = unclosed_count - 1 end
+					if c == open then
+						unclosed_count = unclosed_count + 1
+					end
+					if unclosed_count > 0 and c == close then
+						unclosed_count = unclosed_count - 1
+					end
 				end
-				if unclosed_count > 0 then return false end
+				if unclosed_count > 0 then
+					return false
+				end
 
 				local nextrow = row + 1
 
@@ -46,10 +52,9 @@ return function()
 			end)
 	end
 
-	nap.add_rules {
-		multiline_close_jump('(', ')'),
-		multiline_close_jump('[', ']'),
-		multiline_close_jump('{', '}'),
-
-	}
+	nap.add_rules({
+		multiline_close_jump("(", ")"),
+		multiline_close_jump("[", "]"),
+		multiline_close_jump("{", "}"),
+	})
 end
