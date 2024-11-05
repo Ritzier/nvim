@@ -67,6 +67,14 @@ return {
 	},
 
 	{
+		"Kicamon/markdown-table-mode.nvim",
+		lazy = true,
+		event = { "CursorHold", "CursorHoldI" },
+		ft = "markdown",
+		opts = {},
+	},
+
+	{
 		"chrisbra/csv.vim",
 		lazy = true,
 		ft = "csv",
