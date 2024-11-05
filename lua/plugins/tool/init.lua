@@ -164,6 +164,7 @@ return {
 		keys = {
 			{ "<leader>or", "<cmd>OverseerRun<CR>", desc = "Overseer Run" },
 			{ "<leader>oo", "<cmd>OverseerToggle<CR>", desc = "Overseer Toggle" },
+			{ "<leader>oa", "<cmd>OverseerTaskAction<CR>", desc = "Overseer Task Action" },
 		},
 	},
 }
