@@ -46,6 +46,7 @@ return function()
 				-- Dressing INFO: not work
 				DressingTitle = { bg = "NONE", fg = palette.springGreen },
 				DressingBorder = { bg = palette.springGreen, fg = palette.springGreen },
+				FloatBorder = { bg = "NONE" },
 
 				-- Ufo
 				Folded = { bg = "NONE", fg = "NONE" },
