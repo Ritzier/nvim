@@ -122,6 +122,11 @@ return {
 				desc = "Show Workspace Diagnostic",
 			},
 			{
+				"<space>o",
+				"<cmd>Lspsaga outline<CR>",
+				desc = "Outline",
+			},
+			{
 				"<C-a>",
 				"<cmd>Lspsaga code_action<CR>",
 				desc = "Code Action",

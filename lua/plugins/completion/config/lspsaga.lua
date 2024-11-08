@@ -103,6 +103,9 @@ return function()
 			scroll_down = "<C-d>",
 			scroll_up = "<C-u>",
 		},
+		outline = {
+			win_position = "left",
+		},
 		request_timeout = 3000,
 	})
 end
