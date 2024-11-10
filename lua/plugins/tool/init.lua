@@ -87,7 +87,7 @@ return {
 			{ "debugloop/telescope-undo.nvim" },
 			{ "jvgrootveld/telescope-zoxide" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "cmake" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 		keys = {
 			{ "<leader>tt", "<cmd>Telescope<CR>", desc = "Telescope", mode = "n" },
