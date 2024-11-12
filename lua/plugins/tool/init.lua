@@ -88,11 +88,13 @@ return {
 			{ "jvgrootveld/telescope-zoxide" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{ "debugloop/telescope-undo.nvim" },
 		},
 		keys = {
 			{ "<leader>tt", "<cmd>Telescope<CR>", desc = "Telescope", mode = "n" },
 			{ "<leader>tl", "<cmd>Telescope live_grep<CR>", desc = "Live Grep", mode = "n" },
 			{ "<leader>tf", "<cmd>Telescope find_files<CR>", desc = "Find Files", mode = "n" },
+			{ "<leader>tu", "<cmd>Telescope undo<CR>", desc = "Undo" },
 		},
 	},
 
