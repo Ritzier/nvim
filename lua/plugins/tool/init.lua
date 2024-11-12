@@ -167,4 +167,13 @@ return {
 			{ "<leader>oa", "<cmd>OverseerTaskAction<CR>", desc = "Overseer Task Action" },
 		},
 	},
+
+	{
+		"mbbill/undotree",
+		lazy = true,
+		event = "CmdlineEnter",
+		keys = {
+			{ "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "UndoTree Toggle" },
+		},
+	},
 }
