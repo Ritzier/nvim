@@ -108,6 +108,7 @@ for name, value in pairs(global_local) do
 	vim.o[name] = value
 end
 
+vim.opt.foldopen:remove("block")
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 vim.g.mapleader = ","
