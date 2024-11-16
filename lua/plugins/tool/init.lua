@@ -178,4 +178,11 @@ return {
 			{ "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "UndoTree Toggle" },
 		},
 	},
+
+	{
+		"jbyuki/venn.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		config = require("plugins.tool.config.venn"),
+	},
 }
