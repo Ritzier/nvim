@@ -31,6 +31,7 @@ local global_local = {
 	foldenable = true,
 	foldlevel = 99,
 	foldlevelstart = 99,
+	viewdir = vim.fn.expand("~/.local/share/nvim/view"),
 	foldmethod = "manual",
 	formatoptions = "1jcroql",
 	-- formatoptions -= "cro",
@@ -138,3 +139,15 @@ if vim.g.neovide then
 	vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
 	vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
 end
+
+-- Auto loading last saved fold
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+	pattern = { "*.*" },
+	desc = "save view (folds), when closing file",
+	command = "mkview",
+})
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+	pattern = { "*.*" },
+	desc = "load view (folds), when opening file",
+	command = "silent! loadview",
+})
