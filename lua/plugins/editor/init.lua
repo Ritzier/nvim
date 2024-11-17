@@ -22,11 +22,10 @@ return {
 		enabled = true,
 	},
 
-	-- ERROR: Not working
 	{
 		"windwp/nvim-ts-autotag",
+		event = { "InsertEnter" },
 		config = require("plugins.editor.config.autotag"),
-		enabled = false,
 	},
 
 	{

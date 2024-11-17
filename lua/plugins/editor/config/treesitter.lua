@@ -72,6 +72,9 @@ return vim.schedule_wrap(function()
 				},
 			},
 		},
+		-- autotag = {
+		-- 	enable = fasle,
+		-- },
 		indent = { enable = true },
 		endwise = { enable = true },
 	})
