@@ -29,14 +29,6 @@ return {
 	},
 
 	{
-		"m4xshen/autoclose.nvim",
-		config = require("plugins.editor.config.autoclose"),
-		event = { "InsertEnter", "CmdlineEnter" },
-		priority = 1000,
-		-- enabled = false
-	},
-
-	{
 		"LunarVim/bigfile.nvim",
 		lazy = false,
 		config = require("plugins.editor.config.bigfile"),
