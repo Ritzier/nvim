@@ -26,5 +26,10 @@ return function()
 		},
 	})
 
+	-- Prettier format with 4 tab width
+	require("conform").formatters.prettier = {
+		prepend_args = { "--tab-width", "4" },
+	}
+
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 end
