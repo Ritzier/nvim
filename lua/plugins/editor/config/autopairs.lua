@@ -1,60 +1,52 @@
 return function()
-	local nap = require("nvim-autopairs")
-	local rule = require("nvim-autopairs.rule")
-	local cond = require("nvim-autopairs.conds")
-	local utils = require("nvim-autopairs.utils")
+	local npairs = require("nvim-autopairs")
+	local Rule = require("nvim-autopairs.rule")
+	local ts_conds = require("nvim-autopairs.ts-conds")
 
-	nap.setup({
-		-- map_cr = true,
-		fast_wrap = {
-			manual_position = true,
-		},
+	npairs.setup({
+		check_ts = true,
 	})
 
-	local function multiline_close_jump(open, close)
-		return rule(close, "")
-			:with_pair(function()
-				local row, col = utils.get_cursor(0)
-				local line = utils.text_get_current_line(0)
+	npairs.add_rule(Rule("<", ">"):with_pair(function(opts)
+		local bufnr = opts.bufnr
 
-				if #line ~= col then --not at EOL
-					return false
-				end
+		-- Function to check if is inside a view! macro
+		local function is_in_view_macro()
+			local current_linenr = vim.api.nvim_win_get_cursor(0)[1]
 
-				local unclosed_count = 0
-				for c in line:gmatch("[\\" .. open .. "\\" .. close .. "]") do
-					if c == open then
-						unclosed_count = unclosed_count + 1
-					end
-					if unclosed_count > 0 and c == close then
-						unclosed_count = unclosed_count - 1
-					end
-				end
-				if unclosed_count > 0 then
-					return false
-				end
+			-- Search backwards for view! macro start
+			for i = current_linenr, 1, -1 do
+				local line_content = vim.api.nvim_buf_get_lines(bufnr, i - 1, i, false)[1]
 
-				local nextrow = row + 1
-
-				if nextrow < vim.api.nvim_buf_line_count(0) and vim.regex("^\\s*" .. close):match_line(0, nextrow) then
+				-- Check if line contains view! macro start
+				if line_content:match("view!%s*{") then
 					return true
 				end
-				return false
-			end)
-			:with_move(cond.none())
-			:with_cr(cond.none())
-			:with_del(cond.none())
-			:set_end_pair_length(0)
-			:replace_endpair(function(opts)
-				local row, _col = utils.get_cursor(0)
-				local action = vim.regex("^" .. close):match_line(0, row + 1) and "a" or ("0f%sa"):format(opts.char)
-				return ("<esc>xj%s"):format(action)
-			end)
-	end
 
-	nap.add_rules({
-		multiline_close_jump("(", ")"),
-		multiline_close_jump("[", "]"),
-		multiline_close_jump("{", "}"),
-	})
+				-- Stop searching if we find a closing brace that's not part of the macro
+				if line_content:match("%s*}") then
+					break
+				end
+			end
+
+			return false
+		end
+
+		-- Start checking view! macro
+		if is_in_view_macro() then
+			return false
+		end
+
+		-- Check is it start with if and match
+		if opts.line:match("^%s*if%s+") or opts.line:match("^%s*match%s+") then
+			return false
+		end
+
+		return true
+	end):with_move(function(opts)
+		return opts.char == ">"
+	end))
+
+	-- Single quote for life time
+	npairs.get_rule("'")[2]:with_pair(ts_conds.is_not_ts_node({ "type_arguments", "bounded_type" }))
 end

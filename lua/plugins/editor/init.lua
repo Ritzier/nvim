@@ -19,13 +19,14 @@ return {
 		"windwp/nvim-autopairs",
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = require("plugins.editor.config.autopairs"),
-		enabled = true,
+		-- enabled = false,
 	},
 
 	{
 		"windwp/nvim-ts-autotag",
 		event = { "InsertEnter" },
 		config = require("plugins.editor.config.autotag"),
+		enabled = false,
 	},
 
 	{
