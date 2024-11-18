@@ -24,9 +24,9 @@ return {
 
 	{
 		"windwp/nvim-ts-autotag",
-		event = { "InsertEnter" },
 		config = require("plugins.editor.config.autotag"),
-		enabled = true,
+		event = { "BufReadPost", "BufNewFile" },
+		lazy = true,
 	},
 
 	{
