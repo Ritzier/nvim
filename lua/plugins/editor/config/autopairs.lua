@@ -34,6 +34,7 @@ return function()
 			return false
 		end
 
+		-- If line start with if and match statement
 		if opts.line:match("^%s*if%s+") or opts.line:match("^%s*match%s+") then
 			return false
 		end
