@@ -137,6 +137,7 @@ return {
 
 	{
 		"rayliwell/tree-sitter-rstml",
+		event = { "BufReadPost", "BufNewFile" },
 		dependencies = { "nvim-treesitter" },
 		build = ":TSUpdate",
 		config = function()
