@@ -26,7 +26,7 @@ return {
 		"windwp/nvim-ts-autotag",
 		event = { "InsertEnter" },
 		config = require("plugins.editor.config.autotag"),
-		enabled = false,
+		enabled = true,
 	},
 
 	{
@@ -138,6 +138,16 @@ return {
 				config = require("plugins.editor.config.ts-context-commentstring"),
 			},
 		},
+	},
+
+	{
+		"rayliwell/tree-sitter-rstml",
+		dependencies = { "nvim-treesitter" },
+		build = ":TSUpdate",
+		config = function()
+			require("tree-sitter-rstml").setup()
+		end,
+		ft = "rust",
 	},
 
 	{

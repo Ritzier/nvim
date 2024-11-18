@@ -28,6 +28,8 @@ return vim.schedule_wrap(function()
 			"python",
 			"rust",
 			"toml",
+			"query",
+			"rust_with_rstml",
 		},
 		highlight = {
 			enable = true,
