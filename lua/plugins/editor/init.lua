@@ -109,11 +109,6 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
-		-- config = function()
-		-- 	require("nvim-treesitter.configs").setup({
-		-- 		endwise = { enable = true }
-		-- 	})
-		-- end,
 		config = require("plugins.editor.config.treesitter"),
 		dependencies = {
 			{ "RRethy/nvim-treesitter-endwise" },
