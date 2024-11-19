@@ -31,17 +31,17 @@ return function()
 				CmpItemAbbrDeprecated = { fg = palette.dragonGray },
 				CmpItemAbbrMatch = { fg = palette.crystalBlue, bold = true },
 				CmpItemAbbrMatchFuzzy = { fg = palette.dragonGray, bold = true },
-				CmpItemKindVariable = { fg = palette.lotusYellow3, bold = true },
-				CmpItemKindFunction = { fg = palette.oniViolet, bold = true },
-				CmpItemKindEnum = { fg = palette.sakuraPink, bold = true },
-				CmpItemKindEnumMember = { fg = palette.carpYellow, bold = true },
-				CmpItemKindMethod = { fg = palette.surimiOrange, bold = true },
-				CmpItemKindField = { fg = palette.springBlue, bold = true },
-				CmpItemKindKeyword = { fg = palette.waveRed, bold = true },
-				CmpItemKindConstant = { fg = palette.lotusOrange2, bold = true },
-				CmpItemKindInterface = { fg = palette.lotusWhite5, bold = true },
-				CmpItemKindReference = { fg = palette.springGreen, bold = true },
-				CmpItemKindStruct = { fg = palette.crystalBlue, bold = true },
+				-- CmpItemKindVariable = { fg = palette.lotusYellow3, bold = true },
+				-- CmpItemKindFunction = { fg = palette.oniViolet, bold = true },
+				-- CmpItemKindEnum = { fg = palette.sakuraPink, bold = true },
+				-- CmpItemKindEnumMember = { fg = palette.carpYellow, bold = true },
+				-- CmpItemKindMethod = { fg = palette.surimiOrange, bold = true },
+				-- CmpItemKindField = { fg = palette.springBlue, bold = true },
+				-- CmpItemKindKeyword = { fg = palette.waveRed, bold = true },
+				-- CmpItemKindConstant = { fg = palette.lotusOrange2, bold = true },
+				-- CmpItemKindInterface = { fg = palette.lotusWhite5, bold = true },
+				-- CmpItemKindReference = { fg = palette.springGreen, bold = true },
+				-- CmpItemKindStruct = { fg = palette.crystalBlue, bold = true },
 
 				-- Dressing INFO: not work
 				DressingTitle = { bg = "NONE", fg = palette.springGreen },
@@ -50,7 +50,7 @@ return function()
 
 				-- Ufo
 				Folded = { bg = "NONE", fg = "NONE" },
-				MoreMsg = { bg = palette.sakuraPink, fg = palette.springBlue },
+				MoreMsg = { bg = "NONE", fg = palette.sakuraPink },
 
 				-- IndentBlankline
 				IblScope = { fg = palette.waveRed },
