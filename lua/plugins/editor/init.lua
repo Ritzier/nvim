@@ -22,11 +22,13 @@ return {
 		-- enabled = false,
 	},
 
+	-- Conflict with autopairs <> configuration in Rust
 	{
 		"windwp/nvim-ts-autotag",
 		config = require("plugins.editor.config.autotag"),
 		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
+		ft = { "html" },
 	},
 
 	{
