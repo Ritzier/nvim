@@ -9,7 +9,7 @@ return function()
 		hijack_unnamed_buffer_when_opening = false,
 		open_on_tab = false,
 		sort_by = "name",
-		update_cwd = false,
+		update_cwd = true,
 		view = {
 			width = 30,
 			side = "left",
