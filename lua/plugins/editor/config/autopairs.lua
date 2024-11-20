@@ -49,6 +49,16 @@ return function()
 			return false
 		end
 
+		-- ::<> for turbofish
+		local row, col = utils.get_cursor(0)
+		local line = utils.text_get_current_line(0)
+		if col > 2 then
+			local chars_before_cursor = line:sub(col - 1, col)
+			if chars_before_cursor == "::" then
+				return true
+			end
+		end
+
 		-- If line start with if and match statement
 		if opts.line:match("^%s*if%s+") or opts.line:match("^%s*match%s+") then
 			return false
