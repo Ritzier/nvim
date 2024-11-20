@@ -5,6 +5,7 @@ return function()
 			html = { "prettier" },
 			javascript = { "prettier" },
 			lua = { "stylua" },
+			jinja = { "djlint" },
 			markdown = { "prettier" },
 			proto = { "clang-format" },
 			python = { "isort", "black" },

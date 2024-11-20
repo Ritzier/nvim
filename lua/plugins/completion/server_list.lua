@@ -21,6 +21,7 @@ M["null_ls"] = {
 	-- Formatter
 	"black",
 	"clang-format",
+	"djlint",
 	"isort",
 	"prettier",
 	"prettierd",
