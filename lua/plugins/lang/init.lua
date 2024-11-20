@@ -80,4 +80,11 @@ return {
 		lazy = true,
 		ft = "csv",
 	},
+
+	{
+		"HiPhish/jinja.vim",
+		event = { "BufNewFile", "BufReadPost", "BufFilePost" },
+		lazy = true,
+		ft = "jinja",
+	},
 }
