@@ -28,7 +28,6 @@ return {
 		config = require("plugins.editor.config.autotag"),
 		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
-		ft = { "html" },
 	},
 
 	{

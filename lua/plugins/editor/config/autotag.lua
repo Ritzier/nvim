@@ -10,6 +10,9 @@ return function()
 			["html"] = {
 				enable_close = true,
 			},
+			["rust"] = {
+				enable_close = false,
+			},
 		},
 	})
 end
