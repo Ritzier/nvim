@@ -22,9 +22,9 @@ return function()
 								-- "component",
 								"server",
 							},
-							["async-trait"] = {
-								"async_trait",
-							},
+							-- ["async-trait"] = {
+							-- 	"async_trait",
+							-- },
 							["napi-derive"] = {
 								"nap",
 							},
