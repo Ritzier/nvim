@@ -23,48 +23,68 @@ return function()
 		},
 	})
 
-	-- Existing Rust-specific rule
-	npairs.add_rule(Rule("<", ">", "rust"):with_pair(function(opts)
-		local bufnr = opts.bufnr
-
-		local function is_in_view_macro()
-			local current_linenr = vim.api.nvim_win_get_cursor(0)[1]
-
-			for i = current_linenr, 1, -1 do
-				local line_content = vim.api.nvim_buf_get_lines(bufnr, i - 1, i, false)[1]
-
-				if line_content:match("view!%s*{") then
-					return true
-				end
-
-				if line_content:match("%s*}") then
-					break
-				end
-			end
-
+	local function is_turbofish_context(col, line)
+		if col <= 2 then
 			return false
 		end
 
-		if is_in_view_macro() then
-			return false
-		end
+		return line:sub(col - 1, col) == "::"
+	end
 
-		-- ::<> for turbofish
-		local row, col = utils.get_cursor(0)
-		local line = utils.text_get_current_line(0)
-		if col > 2 then
-			local chars_before_cursor = line:sub(col - 1, col)
-			if chars_before_cursor == "::" then
+	local function is_type_context(line)
+		local type_patterns = {
+			-- Function declarations and implementations
+			"^%s*fn%s+[%w_]+%s*%([^%)]*%)",
+			"^%s*impl%s+",
+
+			-- Type annotations and constraints
+			":%s*[%w_]+%s*$",
+			"<%s*[%w_]+%s*=%s*$",
+
+			-- Variable declarations
+			"let%s+[%w_]+:%s*$",
+			"where%s+[%w_]+:%s*$",
+
+			-- Common Rust types
+			"%f[%w]Vec%s*$",
+			"%f[%w]Option%s*$",
+			"%f[%w]Result%s*$",
+			"%f[%w]Box%s*$",
+			"%f[%w]Rc%s*$",
+			"%f[%w]Arc%s*$",
+
+			-- Trait bounds and dynamic dispatch
+			"dyn%s+",
+		}
+
+		for _, pattern in ipairs(type_patterns) do
+			if line:match(pattern) then
 				return true
 			end
 		end
+	end
 
-		-- If line start with if and match statement
-		if opts.line:match("^%s*if%s+") or opts.line:match("^%s*match%s+") then
-			return false
-		end
+	-- Existing Rust-specific rule
+	npairs.add_rule(Rule("<", ">", "rust"):with_pair(function(opts)
+		local _row, col = utils.get_cursor(0)
+		local line = utils.text_get_current_line(0)
 
-		return true
+		return is_turbofish_context(col, line) or is_type_context(line)
+
+		-- Autopairs TS is not working
+		-- return ts_conds.is_ts_node({
+		-- 	"type_identifier",
+		-- 	"type_parameters",
+		-- 	"type_arguments",
+		-- 	"generic_type",
+		-- 	"qualified_type",
+		-- 	"reference_type",
+		-- 	"trait_bounds",
+		-- 	"impl_item",
+		-- 	"type_bound",
+		-- 	"where_clause",
+		-- 	"type_annotation",
+		-- })(opts)
 	end):with_move(function(opts)
 		return opts.char == ">"
 	end))
