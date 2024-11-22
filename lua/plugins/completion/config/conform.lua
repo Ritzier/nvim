@@ -1,19 +1,20 @@
 return function()
 	require("conform").setup({
 		formatters_by_ft = {
-			css = { "prettier" },
-			html = { "prettier" },
-			javascript = { "prettier" },
-			lua = { "stylua" },
+			css = { "prettierd" },
+			html = { "prettierd" },
+			htmldjango = { "prettierd" },
+			javascript = { "prettierd" },
 			jinja = { "djlint" },
-			markdown = { "prettier" },
+			lua = { "stylua" },
+			markdown = { "prettierd" },
 			proto = { "clang-format" },
 			python = { "isort", "black" },
 			rust = { "rustfmt", "leptosfmt" },
-			scss = { "prettier" },
+			scss = { "prettierd" },
 			sh = { "beautysh" },
 			toml = { "taplo" },
-			typescript = { "prettier" },
+			typescript = { "prettierd" },
 			yaml = { "yamlfmt" },
 		},
 		default_format_opts = {
@@ -27,9 +28,8 @@ return function()
 		},
 	})
 
-	-- Prettier format with 4 tab width
-	require("conform").formatters.prettier = {
-		prepend_args = { "--tab-width", "4" },
+	require("conform").formatters.prettierd = {
+		prepend_args = { "--tab-width=4" },
 	}
 
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
