@@ -69,7 +69,15 @@ return function()
 		local _row, col = utils.get_cursor(0)
 		local line = utils.text_get_current_line(0)
 
-		return is_turbofish_context(col, line) or is_type_context(line)
+		if is_turbofish_context(col, line) then
+			return true
+		end
+
+		if is_type_context(line) then
+			return true
+		end
+
+		return false
 
 		-- Autopairs TS is not working
 		-- return ts_conds.is_ts_node({
