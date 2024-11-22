@@ -19,6 +19,17 @@ return {
 		"altermo/ultimate-autopair.nvim",
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = require("plugins.editor.config.ultimate-autopairs"),
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			{
+				"abecodes/tabout.nvim",
+				config = require("plugins.editor.config.tabout"),
+				keys = {
+					{ "<C-]>", "<Plug>(TaboutMulti)", mode = "i" },
+					{ "<C-[>", "<Plug>(TaboutBackMulti)", mode = "i" },
+				},
+			},
+		},
 	},
 
 	-- Conflict with autopairs <> configuration in Rust
@@ -162,19 +173,6 @@ return {
 		config = require("plugins.editor.config.ufo"),
 		dependencies = {
 			"kevinhwang91/promise-async",
-		},
-	},
-
-	{
-		"abecodes/tabout.nvim",
-		event = "InsertCharPre",
-		config = require("plugins.editor.config.tabout"),
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		keys = {
-			{ "<C-]>", "<Plug>(TaboutMulti)", mode = "i" },
-			{ "<C-[>", "<Plug>(TaboutBackMulti)", mode = "i" },
 		},
 	},
 }
