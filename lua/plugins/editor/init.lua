@@ -16,10 +16,9 @@ return {
 	},
 
 	{
-		"windwp/nvim-autopairs",
+		"altermo/ultimate-autopair.nvim",
 		event = { "InsertEnter", "CmdlineEnter" },
-		config = require("plugins.editor.config.autopairs"),
-		-- enabled = false,
+		config = require("plugins.editor.config.ultimate-autopairs"),
 	},
 
 	-- Conflict with autopairs <> configuration in Rust

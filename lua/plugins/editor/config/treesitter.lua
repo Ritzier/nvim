@@ -78,6 +78,7 @@ return vim.schedule_wrap(function()
 		-- autotag = {
 		-- 	enable = fasle,
 		-- },
+		autopairs = { enable = true },
 		indent = { enable = false },
 		endwise = { enable = true },
 	})

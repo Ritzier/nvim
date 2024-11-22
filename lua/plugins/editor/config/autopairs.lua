@@ -23,79 +23,55 @@ return function()
 		},
 	})
 
-	local function is_turbofish_context(col, line)
-		if col <= 2 then
+	local function is_in_view_macro()
+		local node = vim.treesitter.get_node()
+		if not node then
 			return false
 		end
 
-		return line:sub(col - 1, col) == "::"
-	end
-
-	local function is_type_context(line)
-		local type_patterns = {
-			-- Function declarations and implementations
-			"^%s*fn%s+[%w_]+%s*%([^%)]*%)",
-			"^%s*impl%s+",
-
-			-- Type annotations and constraints
-			":%s*[%w_]+%s*$",
-			"<%s*[%w_]+%s*=%s*$",
-
-			-- Variable declarations
-			"let%s+[%w_]+:%s*$",
-			"where%s+[%w_]+:%s*$",
-
-			-- Common Rust types
-			"%f[%w]Vec%s*$",
-			"%f[%w]Option%s*$",
-			"%f[%w]Result%s*$",
-			"%f[%w]Box%s*$",
-			"%f[%w]Rc%s*$",
-			"%f[%w]Arc%s*$",
-
-			-- Trait bounds and dynamic dispatch
-			"dyn%s+",
-		}
-
-		for _, pattern in ipairs(type_patterns) do
-			if line:match(pattern) then
-				return true
+		while node do
+			if node:type() == "macro_invocation" then
+				local macro_name = vim.treesitter.get_node_text(node:child(0), 0)
+				if macro_name == "view" then
+					return true
+				end
 			end
-		end
-	end
-
-	-- Existing Rust-specific rule
-	npairs.add_rule(Rule("<", ">", "rust"):with_pair(function(opts)
-		local _row, col = utils.get_cursor(0)
-		local line = utils.text_get_current_line(0)
-
-		if is_turbofish_context(col, line) then
-			return true
-		end
-
-		if is_type_context(line) then
-			return true
+			node = node:parent()
 		end
 
 		return false
+	end
 
-		-- Autopairs TS is not working
-		-- return ts_conds.is_ts_node({
-		-- 	"type_identifier",
-		-- 	"type_parameters",
-		-- 	"type_arguments",
-		-- 	"generic_type",
-		-- 	"qualified_type",
-		-- 	"reference_type",
-		-- 	"trait_bounds",
-		-- 	"impl_item",
-		-- 	"type_bound",
-		-- 	"where_clause",
-		-- 	"type_annotation",
-		-- })(opts)
-	end):with_move(function(opts)
-		return opts.char == ">"
-	end))
+	local function should_pair_angle_brackets()
+		if is_in_view_macro() then
+			return false
+		end
+
+		if ts_conds.is_ts_node({ "if_expression", "match_expression" }) then
+			return false
+		end
+
+		return true
+	end
+
+	-- Existing Rust-specific rule
+	-- npairs.add_rule(Rule("<", ">", "rust"):with_pair(function()
+	-- 	if ts_conds.is_ts_node({ "if_statement" }) then
+	-- 		return false
+	-- 	end
+	--
+	-- 	return true
+	-- end):with_move(function(opts)
+	-- 	return opts.char == ">"
+	-- end))
+	--
+	npairs.add_rule(
+		Rule("<", ">", "rust")
+			:with_pair(ts_conds.is_ts_node({ "type_identifier", "let_declartion", "parameters" }))
+			:with_move(function(opts)
+				return opts.char == ">"
+			end)
+	)
 
 	-- Single quote for life time
 	npairs.get_rule("'")[2]:with_pair(ts_conds.is_not_ts_node({ "type_arguments", "bounded_type" }))
