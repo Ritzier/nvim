@@ -165,4 +165,17 @@ return {
 			"kevinhwang91/promise-async",
 		},
 	},
+
+	{
+		"abecodes/tabout.nvim",
+		event = "InsertCharPre",
+		config = require("plugins.editor.config.tabout"),
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		keys = {
+			{ "<C-]>", "<Plug>(TaboutMulti)", mode = "i" },
+			{ "<C-[>", "<Plug>(TaboutBackMulti)", mode = "i" },
+		},
+	},
 }
