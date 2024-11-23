@@ -1,6 +1,6 @@
 return function()
 	require("ultimate-autopair").setup({
-		{ "<", ">", fly = true, dosuround = true, multiline = false, space = true, surround = true },
+		{ "<", ">", fly = true, dosuround = true, multiline = false, space = true, surround = true, ft = { "rust" } },
 		config_internal_pairs = {
 			{
 				"'",
