@@ -156,7 +156,6 @@ return {
 			require("tree-sitter-rstml").setup()
 		end,
 		ft = "rust",
-		enabled = false,
 	},
 
 	{

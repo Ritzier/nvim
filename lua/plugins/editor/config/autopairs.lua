@@ -23,66 +23,13 @@ return function()
 		},
 	})
 
-	local function is_in_view_macro()
-		local node = vim.treesitter.get_node()
-		if not node then
-			return false
-		end
-
-		while node do
-			if node:type() == "macro_invocation" then
-				local macro_name = vim.treesitter.get_node_text(node:child(0), 0)
-				if macro_name == "view" then
-					return true
-				end
-			end
-			node = node:parent()
-		end
-
-		return false
-	end
-
-	local function should_pair_angle_brackets()
-		if is_in_view_macro() then
-			return false
-		end
-
-		if ts_conds.is_ts_node({ "if_expression", "match_expression" }) then
-			return false
-		end
-
-		return true
-	end
-
-	-- Existing Rust-specific rule
-	-- npairs.add_rule(Rule("<", ">", "rust"):with_pair(function()
-	-- 	if ts_conds.is_ts_node({ "if_statement" }) then
-	-- 		return false
-	-- 	end
-	--
-	-- 	return true
-	-- end):with_move(function(opts)
-	-- 	return opts.char == ">"
-	-- end))
-	--
 	npairs.add_rule(Rule("<", ">", "rust"):with_pair(function()
-		if
-			ts_conds.is_ts_node({
-				"type_identifier",
-				"let_declartion",
-				"parameters",
-				"generic_type",
-				"type_arguments",
-				"type_parameters",
-				"type_arguments",
-			})
-		then
-			return true
+		-- Add your regex logic here to check for 'if' or 'match'
+		local line = vim.api.nvim_get_current_line()
+		if line:match("^%s*if") or line:match("^%s*match") then
+			return false
 		end
-
-		if is_in_view_macro() then
-			return true
-		end
+		return true
 	end):with_move(function(opts)
 		return opts.char == ">"
 	end))
