@@ -30,6 +30,7 @@ return {
 				},
 			},
 		},
+		enabled = false,
 	},
 
 	-- Conflict with autopairs <> configuration in Rust
@@ -155,6 +156,7 @@ return {
 			require("tree-sitter-rstml").setup()
 		end,
 		ft = "rust",
+		enabled = false,
 	},
 
 	{
@@ -174,5 +176,22 @@ return {
 		dependencies = {
 			"kevinhwang91/promise-async",
 		},
+	},
+
+	{
+		"abecodes/tabout.nvim",
+		event = { "InsertEnter", "CmdlineEnter" },
+		config = require("plugins.editor.config.tabout"),
+		keys = {
+			{ "<C-]>", "<Plug>(TaboutMulti)", mode = "i" },
+			{ "<C-[>", "<Plug>(TaboutBackMulti)", mode = "i" },
+		},
+	},
+
+	{
+		"windwp/nvim-autopairs",
+		config = require("plugins.editor.config.autopairs"),
+		event = { "InsertEnter", "CmdlineEnter" },
+		lazy = true,
 	},
 }

@@ -52,7 +52,7 @@ return {
 			{
 				"<leader>cv",
 				function()
-					require("crates").show_version_popup()
+					require("crates").show_versions_popup()
 				end,
 				desc = "Show Version",
 			},

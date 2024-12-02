@@ -65,13 +65,27 @@ return function()
 	-- 	return opts.char == ">"
 	-- end))
 	--
-	npairs.add_rule(
-		Rule("<", ">", "rust")
-			:with_pair(ts_conds.is_ts_node({ "type_identifier", "let_declartion", "parameters" }))
-			:with_move(function(opts)
-				return opts.char == ">"
-			end)
-	)
+	npairs.add_rule(Rule("<", ">", "rust"):with_pair(function()
+		if
+			ts_conds.is_ts_node({
+				"type_identifier",
+				"let_declartion",
+				"parameters",
+				"generic_type",
+				"type_arguments",
+				"type_parameters",
+				"type_arguments",
+			})
+		then
+			return true
+		end
+
+		if is_in_view_macro() then
+			return true
+		end
+	end):with_move(function(opts)
+		return opts.char == ">"
+	end))
 
 	-- Single quote for life time
 	npairs.get_rule("'")[2]:with_pair(ts_conds.is_not_ts_node({ "type_arguments", "bounded_type" }))

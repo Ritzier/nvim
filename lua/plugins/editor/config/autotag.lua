@@ -12,6 +12,7 @@ return function()
 			},
 			["rust"] = {
 				enable_close = false,
+				enable_close_on_slash = false, -- Auto close on trailing </
 			},
 		},
 	})
