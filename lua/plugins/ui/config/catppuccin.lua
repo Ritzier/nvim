@@ -173,6 +173,9 @@ return function()
 					-- -- UFO folding
 					Folded = { bg = cp.none, fg = cp.none },
 					MoreMsg = { bg = cp.mauve, fg = cp.crust, style = { "bold" } },
+
+					-- Cursor
+					Cursor = { bg = "fg", fg = "bg" },
 				}
 			end,
 		},

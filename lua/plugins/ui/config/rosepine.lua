@@ -51,6 +51,9 @@ return function()
 		highlight_groups = {
 			-- Comment = { fg = "foam" },
 			-- VertSplit = { fg = "muted", bg = "muted" },
+
+			-- Cursor
+			Cursor = { bg = "fg", fg = "bg" },
 		},
 
 		before_highlight = function(group, highlight, palette)

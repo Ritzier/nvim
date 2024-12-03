@@ -54,6 +54,9 @@ return function()
 
 				-- IndentBlankline
 				IblScope = { fg = palette.waveRed },
+
+				-- Cursor
+				Cursor = { bg = "fg", fg = "bg" },
 			}
 		end,
 		theme = "wave", -- Load "wave" theme when 'background' option is not set
