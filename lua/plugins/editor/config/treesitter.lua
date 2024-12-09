@@ -30,8 +30,8 @@ return vim.schedule_wrap(function()
 			"rust",
 			"rust_with_rstml",
 			"toml",
-			"ts",
 			"tsx",
+			"typescript",
 			"yaml",
 		},
 		highlight = {
