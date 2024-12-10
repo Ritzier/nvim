@@ -14,7 +14,9 @@ return function()
 			scss = { "prettierd" },
 			sh = { "beautysh" },
 			toml = { "taplo" },
-			typescript = { "prettierd" },
+			tsx = { "prettier" },
+			typescriptreact = { "prettier" },
+			typescript = { "prettier" },
 			yaml = { "yamlfmt" },
 		},
 		default_format_opts = {
