@@ -175,6 +175,7 @@ return {
 		dependencies = {
 			"kevinhwang91/promise-async",
 		},
+		priority = 100,
 	},
 
 	{
