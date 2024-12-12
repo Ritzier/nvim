@@ -32,7 +32,7 @@ return function()
 				CmpItemAbbrMatch = { fg = palette.crystalBlue, bold = true },
 				CmpItemAbbrMatchFuzzy = { fg = palette.dragonGray, bold = true },
 				-- CmpItemKindVariable = { fg = palette.lotusYellow3, bold = true },
-				-- CmpItemKindFunction = { fg = palette.oniViolet, bold = true },
+				CmpItemKindFunction = { fg = palette.oniViolet, bold = true },
 				-- CmpItemKindEnum = { fg = palette.sakuraPink, bold = true },
 				-- CmpItemKindEnumMember = { fg = palette.carpYellow, bold = true },
 				-- CmpItemKindMethod = { fg = palette.surimiOrange, bold = true },
