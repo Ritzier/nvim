@@ -22,7 +22,8 @@ return function()
 		default_format_opts = {
 			lsp_format = "fallback",
 		},
-		format_on_save = { timeout_ms = 500, lsp_fallback = true },
+		-- Weird when enabled, write and append `markdown` file, it wouldn't format the last status
+		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
 		notify_on_error = false,
 
 		format_after_save = {
