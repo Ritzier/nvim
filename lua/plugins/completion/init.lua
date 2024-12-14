@@ -46,10 +46,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
-			{
-				"nvimtools/none-ls.nvim",
-				config = require("plugins.completion.config.nonels"),
-			},
+			"nvimtools/none-ls.nvim",
 		},
 		config = require("plugins.completion.config.mason-null-ls"),
 	},
