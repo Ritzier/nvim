@@ -7,7 +7,7 @@ return function()
 			javascript = { "prettierd" },
 			jinja = { "djlint" },
 			lua = { "stylua" },
-			markdown = { "prettierd" },
+			markdown = { "markdown_prettier" },
 			proto = { "clang-format" },
 			python = { "isort", "black" },
 			rust = { "rustfmt", "leptosfmt" },
@@ -27,6 +27,17 @@ return function()
 
 		format_after_save = {
 			lsp_format = "fallback",
+		},
+
+		formatters = {
+			markdown_prettier = {
+				command = "prettier",
+				args = {
+					"--print-width=120",
+					"--prose-wrap=always",
+					"$FILENAME",
+				},
+			},
 		},
 	})
 
