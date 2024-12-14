@@ -6,7 +6,6 @@ M["lsp_list"] = {
 	"cssls",
 	"jsonls",
 	"lua_ls",
-	"marksman",
 	"pylsp",
 	"tailwindcss",
 	"taplo",
@@ -14,9 +13,9 @@ M["lsp_list"] = {
 	"ts_ls",
 }
 
--- Automate download, but need for
--- modify formatter at ./config/conform.lua
--- modify lint and diagnostic at ./config/nonels.lua
+-- Automatic configuration by `mason-null-ls`
+-- Manually handle formatter with `conform`
+-- Modify configuration file `config/conform.lua`
 M["null_ls"] = {
 	-- Formatter
 	"black",
@@ -28,13 +27,9 @@ M["null_ls"] = {
 	"stylua",
 	"taplo",
 	"yamlfmt",
-	-- "rustfmt" -- Download with system
 
-	-- Diagnostics
-
-	-- Lint
+	-- Linter
 	"ruff",
-	"shellharden",
 }
 
 return M
