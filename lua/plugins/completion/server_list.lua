@@ -5,12 +5,13 @@ M["lsp_list"] = {
 	"bashls",
 	"cssls",
 	"jsonls",
+	"ltex",
 	"lua_ls",
 	"pylsp",
 	"tailwindcss",
 	"taplo",
-	"yamlls",
 	"ts_ls",
+	"yamlls",
 }
 
 -- Automatic configuration by `mason-null-ls`
