@@ -5,7 +5,7 @@ M["lsp_list"] = {
 	"bashls",
 	"cssls",
 	"jsonls",
-	"ltex",
+	-- "ltex", -- replace with `ltex-plus`, but mason haven't add `ltex-plus` to packages
 	"lua_ls",
 	"pylsp",
 	"tailwindcss",
