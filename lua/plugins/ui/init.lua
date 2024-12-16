@@ -1,4 +1,5 @@
 return {
+	-------------------------- Colorscheme ---------------------------------------
 	{
 		"Jint-lzxy/nvim",
 		lazy = true,
@@ -6,35 +7,14 @@ return {
 		name = "catppuccin",
 		config = require("plugins.ui.config.catppuccin"),
 	},
-	{
-		"akinsho/bufferline.nvim",
-		lazy = true,
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-		config = require("plugins.ui.config.bufferline"),
-		keys = {
-			{ "<A-j>", ":BufferLineCycleNext<CR>", desc = "Focus Next Buffer", mode = "n" },
-			{ "<A-k>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer", mode = "n" },
-			{ "<A-S-j>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer", mode = "n" },
-			{ "<A-S-k>", ":BufferLineMovePrev<CR>", desc = "Move Prev Buffer", mode = "n" },
-		},
-	},
-	{
-		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-		opts = {},
-		config = require("plugins.ui.config.dressing"),
-	},
-	{
-		"nvim-tree/nvim-web-devicons",
-		lazy = true,
-		event = { "BufReadPost", "BufAdd", "BufNewFile" },
-	},
+
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = true,
 		config = require("plugins.ui.config.kanagawa"),
 		-- enabled = false,
 	},
+
 	{
 		"rose-pine/neovim",
 		lazy = false,
@@ -50,6 +30,34 @@ return {
 		enabled = false,
 	},
 
+	------------------------------------------------------------------------------
+
+	{
+		"akinsho/bufferline.nvim",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+		config = require("plugins.ui.config.bufferline"),
+		keys = {
+			{ "<A-j>", ":BufferLineCycleNext<CR>", desc = "Focus Next Buffer", mode = "n" },
+			{ "<A-k>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer", mode = "n" },
+			{ "<A-S-j>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer", mode = "n" },
+			{ "<A-S-k>", ":BufferLineMovePrev<CR>", desc = "Move Prev Buffer", mode = "n" },
+		},
+	},
+
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = require("plugins.ui.config.dressing"),
+	},
+
+	{
+		"nvim-tree/nvim-web-devicons",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	},
+
 	{
 		"folke/todo-comments.nvim",
 		lazy = true,
@@ -59,14 +67,6 @@ return {
 		keys = {
 			{ "<leader>td", "<cmd>TodoTelescope<CR>", "Find Todo" },
 		},
-	},
-
-	{
-		"rcarriga/nvim-notify",
-		enabled = false,
-		lazy = true,
-		event = "VeryLazy",
-		config = require("plugins.ui.config.notify"),
 	},
 
 	{
