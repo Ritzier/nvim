@@ -4,14 +4,16 @@ local M = {}
 M["lsp_list"] = {
 	"bashls",
 	"cssls",
-	"jsonls",
+	"html-lsp",
 	-- "ltex", -- replace with `ltex-plus`, but mason haven't add `ltex-plus` to packages
+	"jsonls",
 	"lua_ls",
 	"pylsp",
 	"tailwindcss",
 	"taplo",
 	"ts_ls",
 	"yamlls",
+	-- "ltex", -- replace with `ltex-plus`, but mason haven't add `ltex-plus` to packages
 }
 
 -- Automatic configuration by `mason-null-ls`
