@@ -1,4 +1,12 @@
 return function()
+	vim.api.nvim_create_autocmd("BufRead", {
+		group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
+		pattern = "Cargo.toml",
+		callback = function()
+			require("cmp").setup.buffer({ sources = { { name = "crates" } } })
+		end,
+	})
+
 	require("crates").setup({
 		smart_insert = true,
 		insert_closing_quote = true,
@@ -21,7 +29,7 @@ return function()
 			error = " " .. " " .. "Error fetching crate",
 		},
 		popup = {
-			autofocus = false,
+			autofocus = true,
 			hide_on_select = true,
 			copy_register = '"',
 			style = "minimal",
@@ -65,6 +73,15 @@ return function()
 				dependency_version = "  %s",
 				loading = " " .. "",
 			},
+		},
+		completion = {
+			cmp = { enabled = true },
+		},
+		lsp = {
+			enabled = true,
+			actions = true,
+			completion = true,
+			hover = true,
 		},
 	})
 end

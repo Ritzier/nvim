@@ -33,7 +33,7 @@ return {
 		lazy = true,
 		event = "BufReadPost Cargo.toml",
 		config = require("plugins.lang.config.crates"),
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
 		keys = {
 			{
 				"<leader>cf",
