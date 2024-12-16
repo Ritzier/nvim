@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		lazy = true,
+		event = "CmdlineEnter",
 		cmd = {
 			"NvimTreeToggle",
 			"NvimTreeOpen",
@@ -42,6 +43,7 @@ return {
 
 	{
 		"akinsho/toggleterm.nvim",
+		event = "CmdlineEnter",
 		keys = {
 			{ [[<C-\>]] },
 			{ [[<C-S-\>]], ":ToggleTerm direction=horizontal<CR>" },
@@ -79,6 +81,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		lazy = true,
+		event = "CmdlineEnter",
 		cmd = "Telescope",
 		config = require("plugins.tool.config.telescope"),
 		dependencies = {
