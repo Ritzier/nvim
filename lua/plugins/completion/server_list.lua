@@ -4,7 +4,7 @@ local M = {}
 M["lsp_list"] = {
 	"bashls",
 	"cssls",
-	"html-lsp",
+	"html",
 	"jsonls",
 	"lua_ls",
 	"pylsp",
