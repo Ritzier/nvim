@@ -1,6 +1,7 @@
 return {
 	{
 		"olimorris/persisted.nvim",
+		event = "CmdlineEnter",
 		lazy = true,
 		cmd = {
 			"SessionToggle",
