@@ -41,11 +41,12 @@ return {
 		lazy = true,
 	},
 
-	{
-		"LunarVim/bigfile.nvim",
-		lazy = false,
-		config = require("plugins.editor.config.bigfile"),
-	},
+	-- {
+	-- 	"LunarVim/bigfile.nvim",
+	-- 	lazy = false,
+	-- 	config = require("plugins.editor.config.bigfile"),
+	-- },
+
 	{
 		"ojroques/nvim-bufdel",
 		lazy = true,
