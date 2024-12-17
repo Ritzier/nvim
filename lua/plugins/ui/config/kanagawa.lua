@@ -36,7 +36,7 @@ return function()
 				-- CmpItemKindEnum = { fg = palette.sakuraPink, bold = true },
 				-- CmpItemKindEnumMember = { fg = palette.carpYellow, bold = true },
 				-- CmpItemKindMethod = { fg = palette.surimiOrange, bold = true },
-				-- CmpItemKindField = { fg = palette.springBlue, bold = true },
+				CmpItemKindField = { fg = palette.springBlue, bold = true },
 				-- CmpItemKindKeyword = { fg = palette.waveRed, bold = true },
 				-- CmpItemKindConstant = { fg = palette.lotusOrange2, bold = true },
 				-- CmpItemKindInterface = { fg = palette.lotusWhite5, bold = true },
