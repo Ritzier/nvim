@@ -87,4 +87,15 @@ return {
 		lazy = true,
 		ft = "jinja",
 	},
+
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		lazy = true,
+		ft = "markdown",
+		config = require("plugins.lang.config.render_markdown"),
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 }
