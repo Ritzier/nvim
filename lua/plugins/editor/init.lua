@@ -165,7 +165,11 @@ return {
 		lazy = true,
 		event = { "InsertEnter" },
 		config = function()
-			require("better_escape").setup()
+			require("better_escape").setup({
+				mappings = {
+					v = {},
+				},
+			})
 		end,
 	},
 
