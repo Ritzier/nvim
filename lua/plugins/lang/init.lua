@@ -56,6 +56,13 @@ return {
 				end,
 				desc = "Show Version",
 			},
+			{
+				"<leader>ce",
+				function()
+					require("crates").expand_plain_crate_to_inline_table()
+				end,
+				desc = "Show Version",
+			},
 		},
 	},
 
