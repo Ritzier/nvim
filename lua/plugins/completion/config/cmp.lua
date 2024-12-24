@@ -36,6 +36,9 @@ return function()
 		Parameter = "",
 		StaticMethod = "",
 		Macro = "",
+		-- Crates
+		Feature = "",
+		Version = "󰎠",
 	}
 
 	local cmp = require("cmp")

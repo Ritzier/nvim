@@ -42,6 +42,8 @@ return function()
 				-- CmpItemKindInterface = { fg = palette.lotusWhite5, bold = true },
 				-- CmpItemKindReference = { fg = palette.springGreen, bold = true },
 				-- CmpItemKindStruct = { fg = palette.crystalBlue, bold = true },
+				CmpItemKindVersion = { fg = palette.springBlue, bold = true },
+				CmpItemKindFeature = { fg = palette.crystalBlue, bold = true },
 
 				-- Dressing INFO: not work
 				DressingTitle = { bg = "NONE", fg = palette.springGreen },
