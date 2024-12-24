@@ -20,6 +20,7 @@ M["lsp_list"] = {
 -- Modify configuration file `config/conform.lua`
 M["null_ls"] = {
 	-- Formatter
+	"beautysh",
 	"black",
 	"clang-format",
 	"djlint",
