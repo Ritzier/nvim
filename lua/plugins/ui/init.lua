@@ -38,10 +38,10 @@ return {
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.config.bufferline"),
 		keys = {
-			{ "<A-j>", ":BufferLineCycleNext<CR>", desc = "Focus Next Buffer", mode = "n" },
-			{ "<A-k>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer", mode = "n" },
-			{ "<A-S-j>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer", mode = "n" },
-			{ "<A-S-k>", ":BufferLineMovePrev<CR>", desc = "Move Prev Buffer", mode = "n" },
+			{ "<A-j>", ":BufferLineCycleNext<CR>", desc = "Focus Next Buffer", mode = "n", silent = true },
+			{ "<A-k>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer", mode = "n", silent = true },
+			{ "<A-S-j>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer", mode = "n", silent = true },
+			{ "<A-S-k>", ":BufferLineMovePrev<CR>", desc = "Move Prev Buffer", mode = "n", silent = true },
 		},
 	},
 
