@@ -31,7 +31,7 @@ return function()
 				CmpItemAbbrDeprecated = { fg = palette.dragonGray },
 				CmpItemAbbrMatch = { fg = palette.crystalBlue, bold = true },
 				CmpItemAbbrMatchFuzzy = { fg = palette.dragonGray, bold = true },
-				-- CmpItemKindVariable = { fg = palette.lotusYellow3, bold = true },
+				CmpItemKindVariable = { fg = palette.lotusYellow3, bold = true },
 				CmpItemKindFunction = { fg = palette.oniViolet, bold = true },
 				-- CmpItemKindEnum = { fg = palette.sakuraPink, bold = true },
 				-- CmpItemKindEnumMember = { fg = palette.carpYellow, bold = true },
