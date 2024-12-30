@@ -84,6 +84,7 @@ return {
 
 	{
 		"chrisbra/csv.vim",
+		event = { "BufNewFile", "BufReadPost", "BufFilePost" },
 		lazy = true,
 		ft = "csv",
 	},
