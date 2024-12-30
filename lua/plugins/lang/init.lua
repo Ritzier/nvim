@@ -97,6 +97,7 @@ return {
 
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		event = { "BufNewFile", "BufReadPost", "BufFilePost" },
 		lazy = true,
 		ft = "markdown",
 		config = require("plugins.lang.config.render_markdown"),

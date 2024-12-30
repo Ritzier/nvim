@@ -1,6 +1,6 @@
 return function()
 	require("render-markdown").setup({
-		enabled = true,
+		enabled = false,
 		max_file_size = 2.0,
 		debounce = 100,
 		render_modes = { "n", "c", "t" },
