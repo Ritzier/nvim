@@ -5,7 +5,7 @@ return function(opts)
 			ltex = {
 				-- Additional word that wouldn't count as spelling errors
 				dictionary = {
-					["en-US"] = { "enums", "url" },
+					["en-US"] = { "enums", "url", "LTO", "Leptos" },
 				},
 			},
 		},

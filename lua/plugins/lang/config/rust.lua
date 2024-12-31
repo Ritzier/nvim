@@ -20,7 +20,7 @@ return function()
 							leptos_macro = {
 								-- optional: --
 								-- "component",
-								"server",
+								-- "server",
 							},
 							-- ["async-trait"] = {
 							-- 	"async_trait",

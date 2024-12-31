@@ -84,7 +84,6 @@ return {
 
 	{
 		"chrisbra/csv.vim",
-		event = { "BufNewFile", "BufReadPost", "BufFilePost" },
 		lazy = true,
 		ft = "csv",
 	},
@@ -98,7 +97,6 @@ return {
 
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		event = { "BufNewFile", "BufReadPost", "BufFilePost" },
 		lazy = true,
 		ft = "markdown",
 		config = require("plugins.lang.config.render_markdown"),

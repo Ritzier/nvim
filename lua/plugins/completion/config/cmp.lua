@@ -115,7 +115,7 @@ return function()
 		formatting = {
 			fields = { "abbr", "kind", "menu" },
 			format = require("lspkind").cmp_format({
-					symbol_map = kind_icons,
+				symbol_map = kind_icons,
 				mode = "text_symbol",
 				maxwidth = {
 					menu = 55,
