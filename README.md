@@ -14,7 +14,7 @@
 
 ## Performance
 
-![ss](https://files.catbox.moe/2dznwc.png)
+![performance](https://files.catbox.moe/7qiufd.png)
 
 ## Customize
 
