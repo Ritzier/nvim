@@ -129,10 +129,6 @@ return {
 			{ "mfussenegger/nvim-treehopper" },
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			{
-				"NvChad/nvim-colorizer.lua",
-				config = require("plugins.editor.config.colorizer"),
-			},
-			{
 				"hiphish/rainbow-delimiters.nvim",
 				config = require("plugins.editor.config.rainbow_delims"),
 			},
