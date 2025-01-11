@@ -194,9 +194,12 @@ return {
 		lazy = true,
 		event = "CmdlineEnter",
 		keys = {
-			"<leader>pp",
-			"<Plug>CccPick<CR>",
-			desc = "CccPick",
+			{
+				"<leader>pp",
+				":CccPick<CR>",
+				desc = "CccPick",
+				silent = true,
+			},
 		},
 		config = require("plugins.tool.config.ccc"),
 	},
