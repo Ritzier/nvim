@@ -193,7 +193,12 @@ return {
 		"uga-rosa/ccc.nvim",
 		lazy = true,
 		event = "CmdlineEnter",
-		opts = {},
+		keys = {
+			"<leader>pp",
+			"<Plug>CccPick<CR>",
+			desc = "CccPick",
+		},
+		config = require("plugins.tool.config.ccc"),
 	},
 
 	{
