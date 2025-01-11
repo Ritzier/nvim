@@ -195,4 +195,27 @@ return {
 		event = "CmdlineEnter",
 		opts = {},
 	},
+
+	{
+		"NTBBloodbath/color-converter.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		keys = {
+			{
+				"<leader>pc",
+				"<Plug>ColorConvertCycle<CR>",
+				desc = "Convert Cycle",
+			},
+			{
+				"<leader>ph",
+				"<Plug>ColorConvertHEX<CR>",
+				desc = "To Hex",
+			},
+			{
+				"<leader>pr",
+				"<Plug>ColorConvertHEX<CR>",
+				desc = "To RGB",
+			},
+		},
+	},
 }
