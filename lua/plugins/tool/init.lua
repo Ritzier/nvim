@@ -188,4 +188,11 @@ return {
 		event = "CmdlineEnter",
 		config = require("plugins.tool.config.venn"),
 	},
+
+	{
+		"uga-rosa/ccc.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		opts = {},
+	},
 }
