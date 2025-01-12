@@ -134,13 +134,14 @@ return {
 			},
 			{
 				"nvim-treesitter/nvim-treesitter-context",
-				enabled = false,
 				config = require("plugins.editor.config.ts-context"),
 			},
 			{
 				"JoosepAlviste/nvim-ts-context-commentstring",
-				enabled = false,
 				config = require("plugins.editor.config.ts-context-commentstring"),
+			},
+			{
+				"rayliwell/tree-sitter-rstml",
 			},
 		},
 	},
