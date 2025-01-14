@@ -43,6 +43,7 @@ return {
 			{ "<A-S-j>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer", mode = "n", silent = true },
 			{ "<A-S-k>", ":BufferLineMovePrev<CR>", desc = "Move Prev Buffer", mode = "n", silent = true },
 		},
+		version = "*",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
