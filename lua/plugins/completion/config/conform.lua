@@ -13,10 +13,11 @@ return function()
 			rust = { "rustfmt", "leptosfmt" },
 			scss = { "prettierd" },
 			sh = { "beautysh" },
+			sql = { "sql_formatter" },
 			toml = { "taplo" },
 			tsx = { "prettier" },
-			typescriptreact = { "prettier" },
 			typescript = { "prettier" },
+			typescriptreact = { "prettier" },
 			yaml = { "yamlfmt" },
 		},
 		default_format_opts = {
