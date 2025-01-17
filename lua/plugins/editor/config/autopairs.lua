@@ -36,7 +36,11 @@ return function()
 
 	npairs.add_rules({
 		-- Not working
-		Rule("<", ">", "rust"):with_pair(ts_conds.is_not_ts_node({ "if_statement", "match_statement" })),
+		Rule("<", ">", "rust")
+			:with_pair(ts_conds.is_not_ts_node({ "if_statement", "match_statement" }))
+			:with_move(function(opts)
+				return opts.char == ">"
+			end),
 	})
 
 	-- Single quote for life time
