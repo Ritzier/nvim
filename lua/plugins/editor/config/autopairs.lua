@@ -23,16 +23,21 @@ return function()
 		},
 	})
 
-	npairs.add_rule(Rule("<", ">", "rust"):with_pair(function()
-		-- Add your regex logic here to check for 'if' or 'match'
-		local line = vim.api.nvim_get_current_line()
-		if line:match("^%s*if") or line:match("^%s*match") then
-			return false
-		end
-		return true
-	end):with_move(function(opts)
-		return opts.char == ">"
-	end))
+	-- npairs.add_rule(Rule("<", ">", "rust"):with_pair(function()
+	-- 	-- Add your regex logic here to check for 'if' or 'match'
+	-- 	local line = vim.api.nvim_get_current_line()
+	-- 	if line:match("^%s*if") or line:match("^%s*match") then
+	-- 		return false
+	-- 	end
+	-- 	return true
+	-- end):with_move(function(opts)
+	-- 	return opts.char == ">"
+	-- end))
+
+	npairs.add_rules({
+		-- Not working
+		Rule("<", ">", "rust"):with_pair(ts_conds.is_not_ts_node({ "if_statement", "match_statement" })),
+	})
 
 	-- Single quote for life time
 	npairs.get_rule("'")[2]:with_pair(ts_conds.is_not_ts_node({ "type_arguments", "bounded_type" }))
