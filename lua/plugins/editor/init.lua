@@ -16,24 +16,6 @@ return {
 		config = require("plugins.editor.config.persisted"),
 	},
 
-	{
-		"altermo/ultimate-autopair.nvim",
-		event = { "InsertEnter", "CmdlineEnter" },
-		config = require("plugins.editor.config.ultimate-autopairs"),
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			{
-				"abecodes/tabout.nvim",
-				config = require("plugins.editor.config.tabout"),
-				keys = {
-					{ "<C-]>", "<Plug>(TaboutMulti)", mode = "i" },
-					{ "<C-[>", "<Plug>(TaboutBackMulti)", mode = "i" },
-				},
-			},
-		},
-		enabled = false,
-	},
-
 	-- Conflict with autopairs <> configuration in Rust
 	{
 		"windwp/nvim-ts-autotag",
@@ -155,6 +137,7 @@ return {
 			require("tree-sitter-rstml").setup()
 		end,
 		ft = "rust",
+		enabled = false,
 	},
 
 	{
@@ -189,12 +172,5 @@ return {
 			{ "<C-]>", "<Plug>(TaboutMulti)", mode = "i" },
 			{ "<C-[>", "<Plug>(TaboutBackMulti)", mode = "i" },
 		},
-	},
-
-	{
-		"windwp/nvim-autopairs",
-		config = require("plugins.editor.config.autopairs"),
-		event = { "InsertEnter", "CmdlineEnter" },
-		lazy = true,
 	},
 }

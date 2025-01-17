@@ -6,7 +6,7 @@ return function()
 	local utils = require("nvim-autopairs.utils")
 
 	npairs.setup({
-		check_ts = true,
+		check_ts = false,
 		map_cr = true,
 		fast_wrap = {
 			map = "<M-e>",
