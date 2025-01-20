@@ -36,7 +36,4 @@ return function()
 			},
 		},
 	})
-
-	-- Remapping `<S-CR>`
-	vim.keymap.set("i", "<S-CR>", "<CR><Esc>O", { noremap = true, silent = true })
 end
