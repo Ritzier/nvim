@@ -4,8 +4,9 @@ return function()
 			["("] = { escape = false, close = true, pair = "()" },
 			["["] = { escape = false, close = true, pair = "[]" },
 			["{"] = { escape = false, close = true, pair = "{}" },
+			["<"] = { escape = false, close = true, pair = "<>", enabled_filetype = { "rust" } },
 
-			[">"] = { escape = true, close = false, pair = "<>", fly = true },
+			[">"] = { escape = true, close = false, pair = "<>" },
 			[")"] = { escape = true, close = false, pair = "()", fly = true },
 			["]"] = { escape = true, close = false, pair = "[]", fly = true },
 			["}"] = { escape = true, close = false, pair = "{}", fly = true },
