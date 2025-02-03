@@ -22,6 +22,8 @@ return function()
 			-- `f`, `F`, `t`, `T`, `;` and `,` motions
 			char = {
 				enabled = true,
+				--       keys = { "f", "F", "t", "T", ";", "," },
+				keys = { "f", "F", ";", "," },
 				-- hide after jump when not using jump labels
 				autohide = false,
 				-- show jump labels
