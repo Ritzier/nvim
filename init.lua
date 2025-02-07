@@ -6,5 +6,3 @@ require("keymaps")
 vim.cmd([[colorscheme kanagawa]])
 
 vim.o.autoread = true
-
-require("keymaps.mtgap")
