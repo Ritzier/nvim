@@ -43,7 +43,7 @@ return {
 				desc = "Show Features",
 			},
 			{
-				"<leader>cd",
+				"<leader>cp",
 				function()
 					require("crates").show_dependencies_popup()
 				end,
@@ -61,7 +61,35 @@ return {
 				function()
 					require("crates").expand_plain_crate_to_inline_table()
 				end,
-				desc = "Show Version",
+				desc = "Expand into table",
+			},
+			{
+				"<leader>cc",
+				function()
+					require("crates").open_cratesio()
+				end,
+				desc = "",
+			},
+			{
+				"<leader>ch",
+				function()
+					require("crates").open_homepage()
+				end,
+				desc = "",
+			},
+			{
+				"<leader>cr",
+				function()
+					require("crates").open_respository()
+				end,
+				desc = "Repository",
+			},
+			{
+				"<leader>cd",
+				function()
+					require("crates").open_documentation()
+				end,
+				desc = "Repository",
 			},
 		},
 	},
