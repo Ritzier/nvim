@@ -12,6 +12,7 @@ return function()
 
 	vim.diagnostic.config({
 		virtual_text = false,
+		reverity_sort = true,
 	})
 
 	vim.fn.sign_define("DiagnosticSignError", { text = "●", texthl = "DiagnosticSignError" })

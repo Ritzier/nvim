@@ -28,7 +28,7 @@ return vim.schedule_wrap(function()
 			"python",
 			"query",
 			"rust",
-			"rust_with_rstml",
+			--"rust_with_rstml",
 			"toml",
 			"tsx",
 			"typescript",
