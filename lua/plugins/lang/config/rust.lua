@@ -10,6 +10,9 @@ return function()
 						allFeatures = true,
 						loadOutDirFromCheck = true,
 						runBuildScripts = true,
+						buildScripts = {
+							enable = true,
+						},
 					},
 					checkOnSave = {
 						false,
@@ -64,6 +67,12 @@ return function()
 							hideClosureInitialization = false,
 							hideNamedConstructor = false,
 						},
+					},
+					imports = {
+						granularity = {
+							group = "module",
+						},
+						prefix = "self",
 					},
 				},
 			},
