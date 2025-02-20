@@ -70,11 +70,11 @@ return function()
 		},
 		-- LightBulb: https://nvimdev.github.io/lspsaga/lightbulb/
 		lightbulb = {
-			enable = false,
+			enable = true,
 			sign = true,
 			virtual_text = false,
 			debounce = 10,
-			sign_priority = 20,
+			sign_priority = 40,
 		},
 		-- Rename: https://nvimdev.github.io/lspsaga/rename/
 		rename = {
