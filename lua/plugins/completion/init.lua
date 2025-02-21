@@ -136,6 +136,11 @@ return {
 				"<cmd>Lspsaga code_action<CR>",
 				desc = "Code Action",
 			},
+			{
+				"<C-/>",
+				"<cmd>Lspsaga code_action<CR>",
+				desc = "Code Action",
+			},
 		},
 	},
 
