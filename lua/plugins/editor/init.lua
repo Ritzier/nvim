@@ -144,17 +144,7 @@ return {
 		"max397574/better-escape.nvim",
 		lazy = true,
 		event = { "InsertEnter" },
-<<<<<<< HEAD
 		config = require("plugins.editor.config.better-escape"),
-=======
-		config = function()
-			require("better_escape").setup({
-				mappings = {
-					v = {},
-				},
-			})
-		end,
->>>>>>> 0bc010a7e15befbb51d48700ce38e5f774467ddc
 	},
 
 	{
