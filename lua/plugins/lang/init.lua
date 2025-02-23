@@ -68,28 +68,28 @@ return {
 				function()
 					require("crates").open_cratesio()
 				end,
-				desc = "",
+				desc = "Open Crates",
 			},
 			{
 				"<leader>ch",
 				function()
 					require("crates").open_homepage()
 				end,
-				desc = "",
+				desc = "Open Homepage",
 			},
 			{
 				"<leader>cr",
 				function()
-					require("crates").open_respository()
+					require("crates").open_repository()
 				end,
-				desc = "Repository",
+				desc = "Open Repository",
 			},
 			{
 				"<leader>cd",
 				function()
 					require("crates").open_documentation()
 				end,
-				desc = "Repository",
+				desc = "Open Documentation",
 			},
 		},
 	},
