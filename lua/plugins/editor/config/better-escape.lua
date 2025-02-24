@@ -5,19 +5,19 @@ return function()
 		mappings = {
 			i = {
 				h = {
-					t = "<Esc>",
+					m = "<Esc>",
 					h = "<Esc>",
 				},
 			},
 			c = {
 				h = {
-					t = "<Esc>",
+					m = "<Esc>",
 					h = "<Esc>",
 				},
 			},
 			t = {
 				h = {
-					t = "<C-\\><C-n>",
+					m = "<C-\\><C-n>",
 				},
 			},
 			-- v = {
@@ -27,7 +27,7 @@ return function()
 			-- },
 			s = {
 				h = {
-					t = "<Esc>",
+					m = "<Esc>",
 				},
 			},
 		},
