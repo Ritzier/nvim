@@ -178,8 +178,8 @@ return {
 				desc = "Quickfix List (Trouble)",
 			},
 			{
-				"<leader>D",
-				"<cmd>Trouble diagnostics win = { type = split, position=right}",
+				"<space>D",
+				"<cmd>Trouble diagnostics win = { type = split, position=right}<cr>",
 				desc = "Show workspace diagnostic",
 			},
 		},
