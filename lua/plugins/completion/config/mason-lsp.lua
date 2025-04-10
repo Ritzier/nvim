@@ -48,7 +48,7 @@ return function()
 	mason_lspconfig.setup_handlers({ mason_lsp_handler })
 
 	-- INFO: Manually setup `ltex_plus`
-	require("plugins.completion.server.ltex_plus")(opts)
+	-- require("plugins.completion.server.ltex_plus")(opts)
 
 	vim.api.nvim_command([[LspStart]])
 end
