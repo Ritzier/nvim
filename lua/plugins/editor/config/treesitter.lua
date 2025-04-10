@@ -60,20 +60,10 @@ return vim.schedule_wrap(function()
 				enable = true,
 				set_jumps = true, -- whether to set jumps in the jumplist
 				goto_next_start = {
-					["]["] = "@function.outer",
-					["]m"] = "@class.outer",
-				},
-				goto_next_end = {
-					["]]"] = "@function.outer",
-					["]M"] = "@class.outer",
+					["]]"] = "@parameter.inner",
 				},
 				goto_previous_start = {
-					["[["] = "@function.outer",
-					["[m"] = "@class.outer",
-				},
-				goto_previous_end = {
-					["[]"] = "@function.outer",
-					["[M"] = "@class.outer",
+					["[["] = "@parameter.inner",
 				},
 			},
 		},
