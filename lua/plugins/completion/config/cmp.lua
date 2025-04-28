@@ -151,7 +151,7 @@ return function()
 			["<C-w>"] = cmp_mapping.close(),
 			["<Tab>"] = vim.NIL,
 			["<S-Tab>"] = vim.NIL,
-			["<A-CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+			["<A-CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
 		}),
 	})
 end
