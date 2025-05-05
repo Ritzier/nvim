@@ -14,7 +14,7 @@ return function()
 							enable = true,
 						},
 					},
-					checkOnSave = false,
+					checkOnSave = true,
 					procMacro = {
 						enable = true,
 						ignored = {
