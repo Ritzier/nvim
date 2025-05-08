@@ -44,6 +44,7 @@ return function()
 				CmpItemKindStruct = { fg = palette.crystalBlue, bold = true },
 				CmpItemKindVersion = { fg = palette.springBlue, bold = true },
 				CmpItemKindFeature = { fg = palette.crystalBlue, bold = true },
+				CmpItemKindText = { fg = palette.crystalBlue, bold = true },
 
 				-- Dressing INFO: not work
 				DressingTitle = { bg = "NONE", fg = palette.springGreen },
