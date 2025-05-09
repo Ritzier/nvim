@@ -26,8 +26,9 @@ return {
 			{
 				"williamboman/mason.nvim",
 				config = require("plugins.completion.config.mason"),
+				version = "1.11",
 			},
-			"williamboman/mason-lspconfig.nvim",
+			{ "williamboman/mason-lspconfig.nvim", version = "1.32" },
 			"nvim-lua/plenary.nvim",
 		},
 		keys = {
@@ -45,7 +46,7 @@ return {
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			"williamboman/mason.nvim",
+			{ "williamboman/mason.nvim", version = "1.11" },
 			"nvimtools/none-ls.nvim",
 		},
 		config = require("plugins.completion.config.mason-null-ls"),
