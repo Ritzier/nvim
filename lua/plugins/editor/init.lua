@@ -18,7 +18,7 @@ return {
 
 	-- Conflict with autopairs <> configuration in Rust
 	{
-		"windwp/nvim-ts-autotag",
+		"ritzier/nvim-ts-autotag",
 		config = require("plugins.editor.config.autotag"),
 		event = { "BufReadPost", "BufNewFile" },
 		lazy = true,
@@ -133,7 +133,7 @@ return {
 	{
 		"rayliwell/tree-sitter-rstml",
 		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "nvim-treesitter/nvim-treesitter", "windwp/nvim-ts-autotag" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		build = ":TSUpdate",
 		config = function()
 			require("tree-sitter-rstml").setup()
