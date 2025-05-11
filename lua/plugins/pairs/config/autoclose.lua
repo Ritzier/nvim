@@ -5,14 +5,11 @@ return function()
 			["["] = { escape = false, close = true, pair = "[]" },
 			["{"] = { escape = false, close = true, pair = "{}" },
 
-			-- -- Enable when: TurboFish, Generic
 			["<"] = {
 				escape = false,
 				close = true,
 				pair = "<>",
 				enabled_filetypes = "rust",
-				ts_node = { "macro_invocation" }, -- Disable when
-				-- ts_node = { "if_statement", "match_statement" },
 			},
 
 			[">"] = { escape = true, close = false, pair = "<>" },
