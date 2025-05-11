@@ -33,7 +33,7 @@ return vim.schedule_wrap(function()
 			"tsx",
 			"typescript",
 			"yaml",
-			--"rust_with_rstml",
+			"rust_with_rstml",
 		},
 		highlight = {
 			enable = true,

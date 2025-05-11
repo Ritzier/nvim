@@ -128,16 +128,18 @@ return {
 		},
 	},
 
+	-- Rust html highlight & html autotag
+	-- TODO: autotag not working
 	{
 		"rayliwell/tree-sitter-rstml",
 		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "nvim-treesitter" },
+		dependencies = { "nvim-treesitter/nvim-treesitter", "windwp/nvim-ts-autotag" },
 		build = ":TSUpdate",
 		config = function()
 			require("tree-sitter-rstml").setup()
 		end,
 		ft = "rust",
-		enabled = false,
+		-- enabled = false,
 	},
 
 	{
