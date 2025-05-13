@@ -24,4 +24,6 @@ vim.keymap.set({ "n", "v", "o", "s" }, "s", "<Right>", { noremap = true })
 vim.keymap.set("v", "H", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 vim.keymap.set("v", "T", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
 
+vim.keymap.set("i", "<A-,>", "</><Left><Left>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })
