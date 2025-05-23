@@ -78,6 +78,9 @@ return {
 		lazy = true,
 		event = "LspAttach",
 		config = require("plugins.ui.config.fidget"),
+		enabled = function()
+			return vim.bo.filetype ~= "rust"
+		end,
 	},
 
 	{
