@@ -1,13 +1,6 @@
 return {
 
 	{
-		"stevearc/aerial.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = require("plugins.completion.config.aerial"),
-	},
-
-	{
 		"dnlhc/glance.nvim",
 		lazy = true,
 		event = "LspAttach",
