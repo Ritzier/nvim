@@ -7,6 +7,7 @@ return function()
 				["rust-analyzer"] = {
 					["rustfmt.overrideCommand"] = { "leptosfmt", "--stdin", "--rustfmt" },
 					cargo = {
+						features = "all",
 						allFeatures = true,
 						loadOutDirFromCheck = true,
 						runBuildScripts = true,
@@ -15,6 +16,9 @@ return function()
 						},
 					},
 					checkOnSave = true,
+					diagnostics = {
+						disabled = { "inactive-code" },
+					},
 					procMacro = {
 						enable = true,
 						ignored = {
