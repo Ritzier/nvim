@@ -91,10 +91,9 @@ return {
 	},
 
 	{
-		"lukas-reineke/indent-blankline.nvim",
+		"ritzier/indent-blankline.nvim",
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
-
 		config = require("plugins.ui.config.indent-blankline"),
 	},
 
