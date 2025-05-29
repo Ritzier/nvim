@@ -15,8 +15,8 @@ return function()
 		scope = {
 			enabled = true,
 			char = "┊",
-			show_start = true,
-			show_end = true,
+			show_start = false,
+			show_end = false,
 			show_exact_scope = true,
 			injected_languages = true,
 			priority = 1000,
@@ -61,11 +61,14 @@ return function()
 						"while",
 						"while_statement",
 						"with",
+
+						-- Rust
 						"tuple_expression",
 						"macro",
 						"macro_invocation",
 						"delim_nodes",
 						"element_node",
+						"use_declaration",
 					},
 				},
 			},
