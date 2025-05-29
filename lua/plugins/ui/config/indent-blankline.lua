@@ -1,20 +1,23 @@
 return function()
 	require("ibl").setup({
 		enabled = true,
-		debounce = 200,
+		debounce = 100,
 		indent = {
 			char = "│",
 			tab_char = "│",
 			smart_indent_cap = true,
 			priority = 2,
 		},
-		whitespace = { remove_blankline_trail = true },
+		whitespace = {
+			remove_blankline_trail = true,
+		},
 		-- Note: The `scope` field requires treesitter to be set up
 		scope = {
 			enabled = true,
-			char = "┃",
-			show_start = false,
-			show_end = false,
+			char = "┊",
+			show_start = true,
+			show_end = true,
+			show_exact_scope = true,
 			injected_languages = true,
 			priority = 1000,
 			include = {
@@ -58,6 +61,11 @@ return function()
 						"while",
 						"while_statement",
 						"with",
+						"tuple_expression",
+						"macro",
+						"macro_invocation",
+						"delim_nodes",
+						"element_node",
 					},
 				},
 			},
