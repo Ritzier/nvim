@@ -76,7 +76,7 @@ return {
 	},
 
 	{
-		"j-hui/fidget.nvim",
+		"ritzier/fidget.nvim",
 		lazy = true,
 		event = "LspAttach",
 		config = require("plugins.ui.config.fidget"),
