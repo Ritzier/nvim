@@ -37,14 +37,12 @@ return vim.schedule_wrap(function()
 		},
 		highlight = {
 			enable = true,
-			disable = function(ft, bufnr)
+			disable = function(ft)
 				if vim.tbl_contains({ "vim" }, ft) then
 					return true
 				end
-
-				local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "bigfile_disable_treesitter")
-				return ok and is_large_file
 			end,
+
 			additional_vim_regex_highlighting = false,
 		},
 		textobjects = {
@@ -70,5 +68,13 @@ return vim.schedule_wrap(function()
 		},
 		indent = { enable = false },
 		endwise = { enable = true },
+
+		disable = function(lang, buf)
+			local max_filesize = 150 * 1024 -- 150 KB
+			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+			if ok and stats and stats.size > max_filesize then
+				return true
+			end
+		end,
 	})
 end)
