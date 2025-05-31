@@ -69,6 +69,7 @@ return function()
 						"delim_nodes",
 						"element_node",
 						"use_declaration",
+						"let_declaration",
 					},
 				},
 			},
