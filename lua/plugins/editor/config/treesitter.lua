@@ -66,7 +66,7 @@ return vim.schedule_wrap(function()
 				},
 			},
 		},
-		indent = { enable = true },
+		-- indent = { enable = true },
 		endwise = { enable = true },
 
 		disable = function(lang, buf)
