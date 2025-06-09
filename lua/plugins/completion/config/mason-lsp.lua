@@ -3,16 +3,12 @@ return function()
 	local mason_lspconfig = require("mason-lspconfig")
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	vim.diagnostic.config({
+		reverity_sort = true,
 		signs = true,
 		underline = true,
-		virtual_text = false, -- set update_in_insert to false because it was enabled by lspsaga
 		update_in_insert = false,
-	})
-
-	vim.diagnostic.config({
 		virtual_text = false,
-		reverity_sort = true,
 	})
 
 	vim.fn.sign_define("DiagnosticSignError", { text = "●", texthl = "DiagnosticSignError" })
