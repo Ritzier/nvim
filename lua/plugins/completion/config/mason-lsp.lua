@@ -1,18 +1,19 @@
 return function()
-	local nvim_lsp = require("lspconfig")
-	local mason_lspconfig = require("mason-lspconfig")
+	local lsp_list = require("plugins.completion.server_list").lsp_list
+
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	require("mason-lspconfig").setup({
+		ensure_installed = lsp_list,
+		automatic_installation = false, -- Would run all the LSP which installed in Mason
+	})
+
+	vim.diagnostic.config({
+		reverity_sort = true,
 		signs = true,
 		underline = true,
 		virtual_text = false, -- set update_in_insert to false because it was enabled by lspsaga
 		update_in_insert = false,
-	})
-
-	vim.diagnostic.config({
-		virtual_text = false,
-		reverity_sort = true,
 	})
 
 	vim.fn.sign_define("DiagnosticSignError", { text = "●", texthl = "DiagnosticSignError" })
@@ -35,20 +36,19 @@ return function()
 		local ok, custom_handler = pcall(require, "plugins.completion.server." .. lsp_name)
 
 		if not ok then
-			nvim_lsp[lsp_name].setup({
-				capabilities = opts.capabilities,
-			})
+			vim.lsp.config(lsp_name, opts)
 		elseif type(custom_handler) == "function" then
 			custom_handler(opts)
+			vim.lsp.enable(lsp_name)
 		elseif type(custom_handler) == "table" then
-			nvim_lsp[lsp_name].setup(vim.tbl_deep_extend("force", opts, custom_handler))
+			vim.lsp.enable(lsp_name)
 		end
 	end
-
-	mason_lspconfig.setup_handlers({ mason_lsp_handler })
 
 	-- INFO: Manually setup `ltex_plus`
 	-- require("plugins.completion.server.ltex_plus")(opts)
 
-	vim.api.nvim_command([[LspStart]])
+	for _, lsp in ipairs(lsp_list) do
+		mason_lsp_handler(lsp)
+	end
 end
