@@ -19,9 +19,4 @@ return function()
 			},
 		},
 	})
-
-	require("mason-lspconfig").setup({
-		ensure_installed = require("plugins.completion.server_list").lsp_list,
-		automatic_installation = false, -- Would run all the LSP which installed in Mason
-	})
 end
