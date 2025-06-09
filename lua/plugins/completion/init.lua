@@ -17,11 +17,11 @@ return {
 		config = require("plugins.completion.config.mason-lsp"),
 		dependencies = {
 			{
-				"williamboman/mason.nvim",
+				"mason-org/mason.nvim",
 				config = require("plugins.completion.config.mason"),
 				version = "1.11",
 			},
-			{ "williamboman/mason-lspconfig.nvim", version = "1.32" },
+			{ "mason-org/mason-lspconfig.nvim", version = "1.32" },
 			"nvim-lua/plenary.nvim",
 		},
 		keys = {
