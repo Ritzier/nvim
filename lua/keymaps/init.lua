@@ -12,4 +12,13 @@ vim.keymap.set("i", "<S-CR>", "<CR><Esc>O", { noremap = true, silent = true })
 vim.keymap.set("i", "<A-CR>", "<Esc>O", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-CR>", "<Esc>o", { noremap = true, silent = true })
 
+-- `;` for Mark
+vim.keymap.set("n", ";", "m")
+
+-- Disable Command History
+vim.keymap.set("n", "q:", "<nop>")
+
+vim.keymap.set("i", "<A-,>", "</><Left><Left>", { noremap = true, silent = true })
+vim.keymap.set("i", "<A-S-[>", "{};<Left><Left>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })

@@ -45,6 +45,11 @@ return {
 				"<cmd>BufDelOthers<CR>",
 				"Delete Other Buffers",
 			},
+			{
+				"<A-x>",
+				"<cmd>BufDelOthers<CR>",
+				"Delete Other Buffers",
+			},
 		},
 	},
 	{
