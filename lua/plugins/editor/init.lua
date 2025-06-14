@@ -142,6 +142,7 @@ return {
 		lazy = true,
 		event = { "InsertEnter" },
 		config = require("plugins.editor.config.better-escape"),
+		enabled = false,
 	},
 
 	{
