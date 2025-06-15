@@ -12,7 +12,7 @@ return function()
 			python = { "isort", "black" },
 			rust = { "rustfmt", "leptosfmt" },
 			scss = { "prettierd" },
-			sh = { "beautysh" },
+			sh = { "shfmt" },
 			sql = { "sql_formatter" },
 			toml = { "taplo" },
 			tsx = { "prettier" },
