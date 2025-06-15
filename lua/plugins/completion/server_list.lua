@@ -13,6 +13,10 @@ M["lsp_list"] = {
 	"taplo",
 	"ts_ls",
 	"yamlls",
+
+	-- Sass
+	"somesass_ls",
+	"stylelint_lsp",
 	-- "ltex", -- replace with `ltex-plus`, but mason haven't add `ltex-plus` to packages
 }
 
@@ -35,6 +39,7 @@ M["null_ls"] = {
 
 	-- Linter
 	"ruff",
+	"stylelint",
 }
 
 return M
