@@ -21,6 +21,14 @@ return function()
 			injected_languages = true,
 			priority = 1000,
 			include = {
+				-- Get the node type at current cursor:
+				-- local ts_utils = require("nvim-treesitter.ts_utils")
+				-- local node = ts_utils.get_node_at_cursor()
+				--
+				-- if node then
+				--     local node_type = node:type()
+				--     print("Node type: " .. node_type)
+				-- end
 				node_type = {
 					["*"] = {
 						"argument_list",
