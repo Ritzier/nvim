@@ -70,6 +70,8 @@ return function()
 						"element_node",
 						"use_declaration",
 						"let_declaration",
+						"field_expression",
+						"declaration_list",
 					},
 				},
 			},
