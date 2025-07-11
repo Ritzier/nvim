@@ -1,12 +1,5 @@
 return {
 
-	{
-		"dnlhc/glance.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = require("plugins.completion.config.glance"),
-	},
-
 	-- Formatter without LSP, seperate from it
 
 	-- Downloader formatter, lint, lsp
@@ -97,21 +90,6 @@ return {
 	},
 
 	{
-		"MysticalDevil/inlay-hints.nvim",
-		event = "LspAttach",
-		dependencies = { "neovim/nvim-lspconfig" },
-		config = require("plugins.completion.config.inlay-hints"),
-		keys = {
-			{
-				"<space>i",
-				"<cmd>InlayHintsToggle<CR>",
-				desc = "InlayHintsToggle",
-				mode = "n",
-			},
-		},
-	},
-
-	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		lazy = false,
 		event = "LspAttach",
@@ -122,5 +100,9 @@ return {
 				":lua require('tiny-inline-diagnostic').toggle()<CR>",
 			},
 		},
+	},
+
+	{
+		url = "git@github.com:Ritzier/lsp-tool.nvim.git",
 	},
 }

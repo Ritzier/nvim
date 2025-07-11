@@ -1,28 +1,30 @@
-# Neovim Configuration
+# Pure LSP
 
-## ColorScheme
+## TODO
 
-<details open>
-    <summary>Kanagawa (default)</summary>
-    <img src="https://files.catbox.moe/y7aczj.png" alt="kanagawa">
-</details>
+- `<space>e`: current line diagnostic
+- `<space>E`: current buffer diagnostic
+- `<space>D`: workspace diagnostic
+- `<C-a>` `<C-/>`: Code Action
+- `<space-n>` Rename (variable, file name)
+- `K`: Hover doc
+- `gd` Peek defination
+- `gD` Goto defination
+- LSP loading notification (lualine)
 
-<details>
-    <summary>Catppuccin</summary>
-    <img src="https://files.catbox.moe/ngqx39.png" alt="catppuccin">
-</details>
+## LSP
 
-## Performance
-
-![performance](https://8upload.com/image/681d7e19afcf4/09-05-2025__11-57-50.png)
-
-## Customize
-
-- `LSP` & `linter`: `lua/plugins/completion/server_list.lua`
-- `formatter`: `lua/plugins/completion/config/conform.lua`
-
-## Other Awesome Repository:
-
-- [ayamir/nvimdots](https://github.com/ayamir/nvimdots)
-- [glepnir/nvim](https://github.com/glepnir/nvim)
-- [nshen/learn-neovim-lua](https://github.com/nshen/learn-neovim-lua)
+- Current line diagnostic
+- Current buffer diagnostic
+- Workspace diagnostic
+- Code action current line
+- Code action buffer
+- Rename cross file(variable, file name)
+- Hover doc
+- Peek defination (open win in current buffer)
+- Goto defination (jump to the doc)
+- LSP loading in lualine
+- References
+- Type defination
+- Implementation defination
+- Resume previosly closed session
