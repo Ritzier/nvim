@@ -1,5 +1,5 @@
 return function(opts)
-	require("lspconfig")["ltex_plus"].setup({
+	vim.lsp.config("ltex_plus", {
 		capabilities = opts.capabilities,
 		settings = {
 			ltex = {

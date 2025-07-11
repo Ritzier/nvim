@@ -2,7 +2,7 @@ return function(opts)
 	-- Reenable for snippet support for HTML-lsp
 	opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-	require("lspconfig")["cssls"].setup({
+	vim.lsp.config("cssls", {
 		capabilities = opts.capabilities,
 	})
 end
