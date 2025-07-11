@@ -36,7 +36,7 @@ return {
 
 	-- Mason download, configuration in conform and none-ls
 	{
-		"jay-babu/mason-null-ls.nvim",
+		"ritzier/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{ "williamboman/mason.nvim", version = "1.11" },
@@ -50,7 +50,7 @@ return {
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
 		dependencies = {
-			"jay-babu/mason-null-ls.nvim",
+			"ritzier/mason-null-ls.nvim",
 		},
 		config = require("plugins.completion.config.conform"),
 		keys = {
