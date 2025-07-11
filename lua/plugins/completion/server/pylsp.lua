@@ -1,5 +1,5 @@
 return function(opts)
-	require("lspconfig").pylsp.setup({
+	vim.lsp.config("pylsp", {
 		capabilities = opts.capabilities,
 		on_attach = opts.on_attach,
 		settings = {
