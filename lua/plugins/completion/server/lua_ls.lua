@@ -1,32 +1,25 @@
 return function(opts)
-	require("lspconfig").lua_ls.setup({
+	vim.lsp.config("lua_ls", {
 		capabilities = opts.capabilities,
 		on_attach = opts.on_attach,
 		settings = {
 			Lua = {
 				runtime = {
-					-- Tell the language server which version of Lua you're using
-					-- (most likely LuaJIT in the case of Neovim)
 					version = "LuaJIT",
-				},
-				diagnostics = {
-					-- Get the language server to recognize the `vim` global
-					globals = {
-						"vim",
-						"require",
+					path = {
+						"lua/?.lua",
+						"lua/?/init.lua",
 					},
 				},
 				workspace = {
-					-- Make the server aware of Neovim runtime files
-					library = vim.api.nvim_get_runtime_file("", true),
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME,
+					},
 				},
-				-- Do not send telemetry data containing a randomized but unique identifier
 				telemetry = {
 					enable = false,
 				},
-				-- hint = {
-				-- 	enable = true,
-				-- },
 			},
 		},
 	})
