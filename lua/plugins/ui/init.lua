@@ -76,13 +76,6 @@ return {
 	},
 
 	{
-		"ritzier/fidget.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = require("plugins.ui.config.fidget"),
-	},
-
-	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
