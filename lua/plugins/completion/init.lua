@@ -104,5 +104,7 @@ return {
 
 	{
 		url = "git@github.com:Ritzier/lsp-tool.nvim.git",
+		config = require("plugins.completion.config.lsp_tool"),
+		cmd = "Glance",
 	},
 }
