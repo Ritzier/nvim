@@ -4,6 +4,9 @@ return function(opts)
 		on_attach = opts.on_attach,
 		settings = {
 			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+				},
 				runtime = {
 					version = "LuaJIT",
 					path = {
@@ -12,14 +15,19 @@ return function(opts)
 					},
 				},
 				workspace = {
-					checkThirdParty = false,
 					library = {
 						vim.env.VIMRUNTIME,
+						vim.fn.expand("$VIMRUNTIME/lua"),
+						vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
 					},
+					maxPreload = 100000,
+					preloadFileSize = 10000,
 				},
-				telemetry = {
-					enable = false,
-				},
+				hint = { enable = true, setType = true },
+				format = { enable = false },
+				telemetry = { enable = false },
+				-- Do not override treesitter lua highlighting with lua_ls's highlighting
+				semantic = { enable = false },
 			},
 		},
 	})
