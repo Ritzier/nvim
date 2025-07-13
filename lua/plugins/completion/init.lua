@@ -109,17 +109,16 @@ return {
 				vim.lsp.buf.rename,
 				desc = "Rename",
 			},
-			-- WARNING: not working, replace with `trouble`
-			-- {
-			-- 	"<space>e",
-			-- 	"<cmd>Lspsaga show_line_diagnostics<CR>",
-			-- 	desc = "Show Diagnostic",
-			-- },
-			-- {
-			-- 	"<space>D",
-			-- 	"<cmd>Lspsaga show_workspace_diagnostics<CR>",
-			-- 	desc = "Show Workspace Diagnostic",
-			-- },
+			{
+				"<space>e",
+				"<cmd>Lspsaga show_line_diagnostics<CR>",
+				desc = "Show Diagnostic",
+			},
+			{
+				"<space>D",
+				"<cmd>Lspsaga show_workspace_diagnostics<CR>",
+				desc = "Show Workspace Diagnostic",
+			},
 			{
 				"<C-a>",
 				"<cmd>Lspsaga code_action<CR>",
