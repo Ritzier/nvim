@@ -4,19 +4,21 @@ return function(opts)
 		on_attach = opts.on_attach,
 		settings = {
 			Lua = {
+				diagnostics = {
+					globals = { "vim" },
+				},
 				runtime = {
 					version = "LuaJIT",
-					-- path = {
-					-- 	"lua/?.lua",
-					-- 	"lua/?/init.lua",
-					-- },
+					path = {
+						"lua/?.lua",
+						"lua/?/init.lua",
+					},
 				},
 				workspace = {
-					checkThirdParty = false,
 					library = {
+						vim.env.VIMRUNTIME,
 						vim.fn.expand("$VIMRUNTIME/lua"),
 						vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
-						vim.env.VIMRUNTIME,
 					},
 					maxPreload = 100000,
 					preloadFileSize = 10000,
