@@ -28,3 +28,5 @@ vim.keymap.set("i", "<A-,>", "</><Left><Left>", { noremap = true, silent = true 
 vim.keymap.set("i", "<A-S-[>", "{};<Left><Left>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })
+
+vim.keymap.set({ "n", "v", "i" }, "<C-A-q>", ":quitall!<CR>", { noremap = true, silent = true })
