@@ -5,7 +5,7 @@ return function()
 
 	require("mason-lspconfig").setup({
 		ensure_installed = lsp_list,
-		automatic_installation = false, -- Would run all the LSP which installed in Mason
+		automatic_enable = false,
 	})
 
 	vim.diagnostic.config({
@@ -37,6 +37,7 @@ return function()
 
 		if not ok then
 			vim.lsp.config(lsp_name, opts)
+			vim.lsp.enable(lsp_name)
 		elseif type(custom_handler) == "function" then
 			custom_handler(opts)
 			vim.lsp.enable(lsp_name)
