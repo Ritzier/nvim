@@ -16,14 +16,8 @@ return function()
 						},
 					},
 					checkOnSave = true,
-					cachePriming = {
-						enable = false,
-					},
 					diagnostics = {
 						disabled = { "inactive-code" },
-						experimental = {
-							enable = true,
-						},
 					},
 					procMacro = {
 						enable = true,
