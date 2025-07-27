@@ -124,7 +124,7 @@ return {
 			{
 				"<space>f",
 				"<cmd>Lspsaga finder<CR>",
-				decs = "Finder",
+				desc = "Finder",
 			},
 		},
 	},
