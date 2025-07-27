@@ -106,6 +106,31 @@ return function()
 		outline = {
 			win_position = "left",
 		},
+		finder = {
+			max_height = 0.5,
+			left_width = 0.4,
+			methods = {},
+			default = "ref+imp",
+			layout = "float",
+			silent = false,
+			filter = {},
+			fname_sub = nil,
+			sp_inexist = false,
+			sp_global = false,
+			ly_botright = false,
+			number = vim.o.number,
+			relativenumber = vim.o.relativenumber,
+			keys = {
+				shuttle = "[w",
+				toggle_or_open = "o",
+				vsplit = "s",
+				split = "i",
+				tabe = "<cr>",
+				tabnew = "r",
+				quit = "q",
+				close = "<C-c>k",
+			},
+		},
 		request_timeout = 3000,
 	})
 end
