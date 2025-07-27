@@ -54,14 +54,6 @@ return {
 		config = require("plugins.completion.config.conform"),
 		keys = {
 			{
-				"<space>f",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				desc = "Format",
-				mode = "n",
-			},
-			{
 				"<C-f>",
 				function()
 					require("conform").format({ async = true, lsp_fallback = true })
@@ -128,6 +120,11 @@ return {
 				"<C-/>",
 				"<cmd>Lspsaga code_action<CR>",
 				desc = "Code Action",
+			},
+			{
+				"<space>f",
+				"<cmd>Lspsaga finder<CR>",
+				decs = "Finder",
 			},
 		},
 	},
