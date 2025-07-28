@@ -163,7 +163,7 @@ return function()
 
 			["<C-e>"] = { "show", "show_documentation", "hide_documentation" },
 
-			["<A-CR>"] = { "accept" },
+			["<A-CR>"] = { "accept", "fallback" },
 		},
 	})
 end
