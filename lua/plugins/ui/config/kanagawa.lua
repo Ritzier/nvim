@@ -27,6 +27,15 @@ return function()
 				PmenuSbar = { bg = theme.ui.bg_m1 },
 				PmenuThumb = { bg = theme.ui.bg_p2 },
 
+				BlinkCmpMenuBorder = { fg = theme.ui.float.fg_border, bg = palette.sumiInk3 },
+				BlinkCmpLabelMatch = { fg = palette.waveRed, bold = true },
+
+				BlinkCmpMenuBorder = { fg = theme.ui.float.fg_border, bg = palette.sumiInk3 },
+				BlinkCmpLabelMatch = { fg = palette.waveRed, bold = true },
+
+				BlinkCmpMenuBorder = { fg = theme.ui.float.fg_border, bg = palette.sumiInk3 },
+				BlinkCmpLabelMatch = { fg = palette.waveRed, bold = true },
+
 				CmpItemAbbr = { fg = palette.dragonGray },
 				CmpItemAbbrDeprecated = { fg = palette.dragonGray },
 				CmpItemAbbrMatch = { fg = palette.crystalBlue, bold = true },
