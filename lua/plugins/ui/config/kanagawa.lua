@@ -66,6 +66,11 @@ return function()
 
 				-- Cursor
 				Cursor = { bg = "fg", fg = "bg" },
+
+				-- Saga
+				SagaValue = { fg = palette.sakuraPink },
+				SagaVariable = { fg = palette.sakuraPink },
+				SagaParameter = { fg = palette.lotusBlue5 },
 			}
 		end,
 		theme = "wave", -- Load "wave" theme when 'background' option is not set
