@@ -180,6 +180,10 @@ return {
 		event = "InsertEnter",
 		config = require("plugins.completion.config.blink"),
 		version = "1.*",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"onsails/lspkind.nvim",
+		},
 	},
 
 	{
