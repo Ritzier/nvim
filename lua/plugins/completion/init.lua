@@ -1,12 +1,5 @@
 return {
 
-	{
-		"dnlhc/glance.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = require("plugins.completion.config.glance"),
-	},
-
 	-- Formatter without LSP, seperate from it
 
 	-- Downloader formatter, lint, lsp
