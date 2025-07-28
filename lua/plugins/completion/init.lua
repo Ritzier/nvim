@@ -22,6 +22,7 @@ return {
 			},
 			{ "mason-org/mason-lspconfig.nvim" },
 			"nvim-lua/plenary.nvim",
+			"rachartier/tiny-inline-diagnostic.nvim",
 		},
 		keys = {
 			{
@@ -199,7 +200,7 @@ return {
 
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		lazy = false,
+		lazy = true,
 		event = "LspAttach",
 		config = require("plugins.completion.config.tiny-inline-diagnostic"),
 		keys = {
