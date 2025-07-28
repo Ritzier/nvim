@@ -49,6 +49,9 @@ return function()
 				CmpItemKindFeature = { fg = palette.crystalBlue, bold = true },
 				CmpItemKindText = { fg = palette.crystalBlue, bold = true },
 
+				-- Lualine
+				StatusLine = { link = "lualine_c_normal" },
+
 				-- Dressing INFO: not work
 				DressingTitle = { bg = "NONE", fg = palette.springGreen },
 				DressingBorder = { bg = palette.springGreen, fg = palette.springGreen },
