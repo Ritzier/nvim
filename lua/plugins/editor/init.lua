@@ -27,6 +27,7 @@ return {
 	{
 		"ojroques/nvim-bufdel",
 		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "BufDel", "BufDelAll", "BufDelOthers" },
 		keys = {
 			{
@@ -71,14 +72,9 @@ return {
 	{
 		"lambdalisue/suda.vim",
 		lazy = true,
+		event = "CmdlineEnter",
 		cmd = { "SudaRead", "SudaWrite" },
 		config = require("plugins.editor.config.suda"),
-	},
-
-	{
-		"tpope/vim-sleuth",
-		lazy = true,
-		event = { "BufNewFile", "BufReadPost", "BufFilePost" },
 	},
 
 	{
@@ -127,6 +123,7 @@ return {
 
 	{
 		"abecodes/tabout.nvim",
+		lazy = true,
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = require("plugins.editor.config.tabout"),
 		keys = {
