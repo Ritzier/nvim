@@ -56,12 +56,24 @@ return function()
 					status = nil, -- List of task statuses to display
 					status_not = false, -- When true, invert the status search
 				},
+
+				{
+					function()
+						local ok, bar = pcall(require("lspsaga.symbol.winbar").get_bar)
+						if not ok or bar == nil then
+							return ""
+						end
+						return bar
+					end,
+				},
 			},
 
 			lualine_x = {
-				function()
-					return require("lsp-progress").progress()
-				end,
+				{
+					function()
+						return require("lsp-progress").progress()
+					end,
+				},
 			},
 
 			lualine_y = {
