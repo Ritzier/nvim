@@ -6,6 +6,7 @@ return {
 		branch = "refactor/syntax-highlighting",
 		name = "catppuccin",
 		config = require("plugins.ui.config.catppuccin"),
+		enabled = false,
 	},
 
 	{
