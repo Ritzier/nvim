@@ -24,12 +24,6 @@ return {
 		lazy = true,
 	},
 
-	-- {
-	-- 	"LunarVim/bigfile.nvim",
-	-- 	lazy = false,
-	-- 	config = require("plugins.editor.config.bigfile"),
-	-- },
-
 	{
 		"ojroques/nvim-bufdel",
 		lazy = true,
@@ -60,14 +54,6 @@ return {
 	},
 
 	{
-		"numToStr/Comment.nvim",
-		enabled = false,
-		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
-		config = require("plugins.editor.config.comment"),
-	},
-
-	{
 		"smoka7/hop.nvim",
 		lazy = true,
 		version = "*",
@@ -80,15 +66,6 @@ return {
 				desc = "hop",
 			},
 		},
-	},
-
-	{
-		"tzachar/local-highlight.nvim",
-		enabled = false,
-		lazy = true,
-		event = { "CursorHold", "CursorHoldI" },
-
-		config = require("plugins.editor.config.local-highlight"),
 	},
 
 	{
@@ -135,19 +112,6 @@ return {
 				end,
 			},
 		},
-	},
-
-	{
-		"max397574/better-escape.nvim",
-		lazy = true,
-		event = { "InsertEnter" },
-		config = function()
-			require("better_escape").setup({
-				mappings = {
-					v = {},
-				},
-			})
-		end,
 	},
 
 	{
