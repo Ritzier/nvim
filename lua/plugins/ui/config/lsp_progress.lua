@@ -1,6 +1,15 @@
 return function()
 	require("lsp-progress").setup({
 		decay = 1200,
+
+		format = function(messages)
+			-- local sign = "LSP"
+			if #messages > 0 then
+				return table.concat(messages, " ")
+			end
+			return ""
+		end,
+
 		series_format = function(title, message, percentage, done)
 			local builder = {}
 			local has_title = false
@@ -18,6 +27,7 @@ return function()
 			end
 			return { msg = table.concat(builder, " "), done = done }
 		end,
+
 		client_format = function(client_name, spinner, series_messages)
 			if #series_messages == 0 then
 				return nil
