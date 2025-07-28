@@ -175,15 +175,11 @@ return {
 	},
 
 	{
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
 		lazy = true,
 		event = "InsertEnter",
-		config = require("plugins.completion.config.cmp"),
-		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-path" },
-			{ "onsails/lspkind.nvim" },
-		},
+		config = require("plugins.completion.config.blink"),
+		version = "1.*",
 	},
 
 	{
