@@ -163,7 +163,7 @@ return {
 
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		lazy = true,
+		lazy = false, -- Not working with rust-analyzer
 		event = "LspAttach",
 		config = require("plugins.completion.config.tiny-inline-diagnostic"),
 		keys = {
