@@ -31,17 +31,6 @@ return {
 	},
 
 	{
-		"michaelb/sniprun",
-		lazy = true,
-		-- You need to cd to `~/.local/share/nvim/site/lazy/sniprun/` and execute `bash ./install.sh`,
-		-- if you encountered error about no executable sniprun found.
-		event = { "CursorHold", "CursorHoldI" },
-		build = "bash ./install.sh",
-		cmd = { "SnipRun", "SnipReset", "SnipInfo" },
-		config = require("plugins.tool.config.sniprun"),
-	},
-
-	{
 		"akinsho/toggleterm.nvim",
 		event = "CmdlineEnter",
 		keys = {
@@ -130,28 +119,6 @@ return {
 	-- }
 
 	{
-		"amitds1997/remote-nvim.nvim",
-		lazy = true,
-		event = "CmdlineEnter",
-		version = "*",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		config = true,
-		-- config = require("plugins.tool.config.remote-nvim"),
-	},
-
-	{
-		"nosduco/remote-sshfs.nvim",
-		lazy = true,
-		event = "CmdlineEnter",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = require("plugins.tool.config.remote-sshfs"),
-	},
-
-	{
 		"sindrets/diffview.nvim",
 		lazy = true,
 		event = "CmdlineEnter",
@@ -180,13 +147,6 @@ return {
 		keys = {
 			{ "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "UndoTree Toggle" },
 		},
-	},
-
-	{
-		"jbyuki/venn.nvim",
-		lazy = true,
-		event = "CmdlineEnter",
-		config = require("plugins.tool.config.venn"),
 	},
 
 	{
