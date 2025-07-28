@@ -21,8 +21,17 @@ return function()
 	vim.fn.sign_define("DiagnosticSignInfo", { text = "●", texthl = "DiagnosticSignInfo" })
 	vim.fn.sign_define("DiagnosticSignHint", { text = "●", texthl = "DiagnosticSignHint" })
 
+	local capabilities = {
+		textDocument = {
+			foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			},
+		},
+	}
+
 	local opts = {
-		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		capabilities = require("blink.cmp").get_lsp_capabilities(capabilities),
 	}
 
 	opts.capabilities.textDocument.foldingRange = {
