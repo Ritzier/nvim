@@ -65,9 +65,7 @@ return {
 			},
 			{
 				"<leader>cc",
-				function()
-					require("crates").open_cratesio()
-				end,
+				"<cmd>Crates open_cratesio<CR>",
 				desc = "Open Crates",
 			},
 			{
