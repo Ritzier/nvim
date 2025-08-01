@@ -1,4 +1,6 @@
 return function()
+	local config_path = vim.fn.stdpath("config")
+
 	require("conform").setup({
 		formatters_by_ft = {
 			css = { "prettierd" },
@@ -45,6 +47,10 @@ return function()
 
 	require("conform").formatters.prettierd = {
 		prepend_args = { "--tab-width=4" },
+	}
+
+	require("conform").formatters.leptosfmt = {
+		prepend_args = { "--config-file", config_path .. "/lua/plugins/completion/conform/leptosfmt.toml" },
 	}
 
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
