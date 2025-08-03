@@ -186,4 +186,13 @@ return {
 			},
 		},
 	},
+
+	{
+		"jmbuhr/otter.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = require("plugins.tool.config.otter"),
+	},
 }
