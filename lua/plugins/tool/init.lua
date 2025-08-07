@@ -195,4 +195,13 @@ return {
 		},
 		config = require("plugins.tool.config.otter"),
 	},
+
+	-- `TSSort`: sorting css attribute
+	{
+		"mtrajano/tssorter.nvim",
+		lazy = true,
+		event = "CmdlineEnter",
+		ft = { "css", "scss", "less" }, -- Only load for CSS files
+		config = require("plugins.tool.config.tssorter"),
+	},
 }
