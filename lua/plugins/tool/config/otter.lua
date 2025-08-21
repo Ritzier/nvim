@@ -1,4 +1,6 @@
 return function()
+	local otter = require("otter")
+
 	require("otter").setup({
 		-- Whether to enable completion
 		lsp = {
@@ -24,11 +26,16 @@ return function()
 		handle_leading_whitespace = true,
 	})
 
-	vim.api.nvim_create_autocmd({ "FileType" }, {
-		pattern = { "toml" },
-		group = vim.api.nvim_create_augroup("EmbedToml", {}),
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "toml",
+		group = vim.api.nvim_create_augroup("EmbedToml", { clear = true }),
 		callback = function()
-			require("otter").activate()
+			vim.defer_fn(function()
+				local ok, err = pcall(otter.activate)
+				if not ok then
+					vim.notify("Otter activation failed: " .. err, vim.log.levels.WARN)
+				end
+			end, 100) -- Small delay to ensure buffer is ready
 		end,
 	})
 

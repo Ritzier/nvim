@@ -187,6 +187,7 @@ return {
 		},
 	},
 
+	-- TODO: currently just support embedded toml bash
 	{
 		"jmbuhr/otter.nvim",
 		lazy = false,
@@ -194,6 +195,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = require("plugins.tool.config.otter"),
+		ft = { "toml" },
 	},
 
 	-- `TSSort`: sorting css attribute
