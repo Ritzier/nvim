@@ -15,8 +15,8 @@ M["lsp_list"] = {
 	"yamlls",
 
 	-- Sass
-	"somesass_ls",
-	"stylelint_lsp",
+	-- "somesass_ls",
+	-- "stylelint_lsp",
 	-- "ltex", -- replace with `ltex-plus`, but mason haven't add `ltex-plus` to packages
 }
 
@@ -39,7 +39,7 @@ M["null_ls"] = {
 
 	-- Linter
 	"ruff",
-	"stylelint",
+	-- "stylelint",
 }
 
 return M
