@@ -17,7 +17,9 @@ return function()
 					},
 					checkOnSave = true,
 					diagnostics = {
-						disabled = { "inactive-code" },
+						disabled = {
+							"inactive-code",
+						},
 					},
 					procMacro = {
 						enable = true,
