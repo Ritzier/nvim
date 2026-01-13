@@ -131,4 +131,12 @@ return {
 			{ "<C-[>", "<Plug>(TaboutBackMulti)", mode = "i" },
 		},
 	},
+
+	-- Escape from insert
+	{
+		"max397574/better-escape.nvim",
+		lazy = true,
+		event = { "InsertEnter", "CmdlineEnter" },
+		config = require("plugins.editor.config.better_escape"),
+	},
 }
