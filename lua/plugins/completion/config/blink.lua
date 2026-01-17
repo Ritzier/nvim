@@ -40,8 +40,8 @@ return function()
 
 			documentation = {
 				auto_show = true,
-				auto_show_delay_ms = 1,
-				update_delay_ms = 50,
+				auto_show_delay_ms = 150,
+				update_delay_ms = 200,
 				window = { border = "rounded", min_width = 10, max_width = 80, max_height = 20, scrollbar = true },
 			},
 
