@@ -131,7 +131,7 @@ return {
 		version = "1.*",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			"onsails/lspkind.nvim",
+			{ "onsails/lspkind.nvim", config = require("plugins.completion.config.lspkind") },
 		},
 	},
 
