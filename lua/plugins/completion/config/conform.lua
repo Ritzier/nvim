@@ -4,6 +4,7 @@ return function()
 	require("conform").setup({
 		formatters_by_ft = {
 			css = { "prettierd" },
+			cucumber = { "reformat-gherkin" },
 			html = { "prettierd" },
 			htmldjango = { "prettierd" },
 			javascript = { "prettierd" },
