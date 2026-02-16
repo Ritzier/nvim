@@ -133,6 +133,19 @@ return function()
 		sources = {
 			default = { "lsp", "path", "snippets" },
 			providers = {
+				lsp = {
+					score_offset = 0, -- Default for most LSP servers
+					transform_items = function(_, items)
+						-- Boost score for crates.nvim completions
+						for _, item in ipairs(items) do
+							if item.client_name == "crates.nvim" then
+								item.score_offset = 50 -- Higher than taplo's 28
+							end
+						end
+						return items
+					end,
+				},
+
 				path = {
 					opts = {
 						get_cwd = function(_)
