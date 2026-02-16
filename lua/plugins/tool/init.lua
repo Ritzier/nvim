@@ -150,42 +150,12 @@ return {
 		},
 	},
 
+	-- Color highlight
 	{
-		"uga-rosa/ccc.nvim",
+		"eero-lehtinen/oklch-color-picker.nvim",
 		lazy = true,
-		event = "CmdlineEnter",
-		keys = {
-			{
-				"<leader>pp",
-				":CccPick<CR>",
-				desc = "CccPick",
-				silent = true,
-			},
-		},
-		config = require("plugins.tool.config.ccc"),
-	},
-
-	{
-		"NTBBloodbath/color-converter.nvim",
-		lazy = true,
-		event = "CmdlineEnter",
-		keys = {
-			{
-				"<leader>pc",
-				"<Plug>ColorConvertCycle<CR>",
-				desc = "Convert Cycle",
-			},
-			{
-				"<leader>ph",
-				"<Plug>ColorConvertHEX<CR>",
-				desc = "To Hex",
-			},
-			{
-				"<leader>pr",
-				"<Plug>ColorConvertHEX<CR>",
-				desc = "To RGB",
-			},
-		},
+		event = "VeryLazy",
+		config = require("plugins.tool.config.oklch_color_picker"),
 	},
 
 	-- TODO: currently just support embedded toml bash
