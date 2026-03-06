@@ -34,8 +34,8 @@ return {
 		"akinsho/toggleterm.nvim",
 		event = "CmdlineEnter",
 		keys = {
-			{ [[<C-\>]] },
-			{ [[<C-S-\>]], ":ToggleTerm direction=horizontal<CR>" },
+			{ [[<F1>]] },
+			{ "<S-F1>", ":ToggleTerm direction=horizontal<CR>" }, -- FIX:Not work
 		},
 		lazy = true,
 		cmd = {
