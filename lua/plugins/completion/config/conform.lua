@@ -21,7 +21,7 @@ return function()
 			tsx = { "prettier" },
 			typescript = { "prettier" },
 			typescriptreact = { "prettier" },
-			yaml = { "yamlfmt" },
+			yaml = { "prettier" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
