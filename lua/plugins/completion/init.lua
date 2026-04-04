@@ -147,21 +147,6 @@ return {
 	},
 
 	{
-		"MysticalDevil/inlay-hints.nvim",
-		event = "LspAttach",
-		dependencies = { "neovim/nvim-lspconfig" },
-		config = require("plugins.completion.config.inlay-hints"),
-		keys = {
-			{
-				"<space>i",
-				"<cmd>InlayHintsToggle<CR>",
-				desc = "InlayHintsToggle",
-				mode = "n",
-			},
-		},
-	},
-
-	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		lazy = false, -- Not working with rust-analyzer
 		event = "LspAttach",

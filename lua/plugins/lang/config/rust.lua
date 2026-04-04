@@ -9,11 +9,11 @@ return function()
 					cargo = {
 						features = "all",
 						allFeatures = true,
-						loadOutDirFromCheck = true,
-						runBuildScripts = true,
-						buildScripts = {
-							enable = true,
-						},
+						-- loadOutDirFromCheck = true,
+						-- runBuildScripts = true,
+						-- buildScripts = {
+						-- 	enable = true,
+						-- },
 					},
 					checkOnSave = true,
 					diagnostics = {

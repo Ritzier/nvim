@@ -31,14 +31,16 @@ return {
 		enabled = false,
 	},
 
-	------------------------------------------------------------------------------
-
 	{
 		"akinsho/bufferline.nvim",
 		lazy = true,
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.config.bufferline"),
 		keys = {
+			{ "<A-h>", ":BufferLineCycleNext<CR>", desc = "Focus Next Buffer", mode = "n", silent = true },
+			{ "<A-t>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer", mode = "n", silent = true },
+			{ "<A-S-h>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer", mode = "n", silent = true },
+			{ "<A-S-t>", ":BufferLineMovePrev<CR>", desc = "Move Prev Buffer", mode = "n", silent = true },
 			{ "<A-j>", ":BufferLineCycleNext<CR>", desc = "Focus Next Buffer", mode = "n", silent = true },
 			{ "<A-k>", ":BufferLineCyclePrev<CR>", desc = "Focus Prev Buffer", mode = "n", silent = true },
 			{ "<A-S-j>", ":BufferLineMoveNext<CR>", desc = "Move Next Buffer", mode = "n", silent = true },
@@ -75,13 +77,6 @@ return {
 	},
 
 	{
-		"ritzier/fidget.nvim",
-		lazy = true,
-		event = "LspAttach",
-		config = require("plugins.ui.config.fidget"),
-	},
-
-	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		event = { "CursorHold", "CursorHoldI" },
@@ -102,6 +97,10 @@ return {
 		config = require("plugins.ui.config.lualine"),
 		dependencies = {
 			"stevearc/overseer.nvim",
+			{
+				"linrongbin16/lsp-progress.nvim",
+				config = require("plugins.ui.config.lsp_progress"),
+			},
 		},
 	},
 

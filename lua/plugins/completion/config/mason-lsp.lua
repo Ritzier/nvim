@@ -12,8 +12,8 @@ return function()
 		reverity_sort = true,
 		signs = true,
 		underline = true,
-		virtual_text = false, -- set update_in_insert to false because it was enabled by lspsaga
 		update_in_insert = false,
+		virtual_text = false,
 	})
 
 	vim.fn.sign_define("DiagnosticSignError", { text = "●", texthl = "DiagnosticSignError" })
@@ -40,6 +40,8 @@ return function()
 	}
 
 	opts.capabilities.textDocument.completion.completionItem.snippetSupport = false
+
+	vim.lsp.inlay_hint.enable(true)
 
 	local function mason_lsp_handler(lsp_name)
 		local ok, custom_handler = pcall(require, "plugins.completion.server." .. lsp_name)
