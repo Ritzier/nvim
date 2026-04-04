@@ -79,19 +79,14 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
-		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
 		config = require("plugins.editor.config.treesitter"),
 		dependencies = {
 			{ "RRethy/nvim-treesitter-endwise" },
 			{ "mfussenegger/nvim-treehopper" },
-			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-			{
-				"hiphish/rainbow-delimiters.nvim",
-				config = require("plugins.editor.config.rainbow_delims"),
-			},
 			{
 				"nvim-treesitter/nvim-treesitter-context",
 				config = require("plugins.editor.config.ts-context"),
@@ -101,8 +96,20 @@ return {
 				config = require("plugins.editor.config.ts-context-commentstring"),
 			},
 			{
+				"JoosepAlviste/nvim-ts-context-commentstring",
+				config = require("plugins.editor.config.ts-context-commentstring"),
+			},
+
+			-- INFO: currently using nvim `0.11` api, error in `0.12` version
+			{
+				"hiphish/rainbow-delimiters.nvim",
+				submodules = false,
+				config = require("plugins.editor.config.rainbow_delims"),
+				enabled = false,
+			},
+
+			{
 				"rayliwell/tree-sitter-rstml",
-				build = ":TSUpdate",
 				config = function()
 					require("tree-sitter-rstml").setup()
 				end,

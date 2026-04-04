@@ -1,8 +1,5 @@
-return vim.schedule_wrap(function()
-	vim.api.nvim_set_option_value("foldmethod", "expr", {})
-	vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
-
-	require("nvim-treesitter").install({
+return function()
+	local deps = {
 		"bash",
 		"c",
 		"c_sharp",
@@ -36,5 +33,24 @@ return vim.schedule_wrap(function()
 		"tsx",
 		"typescript",
 		"yaml",
+	}
+
+	-- -- Enable `rstml`
+	vim.treesitter.language.register("rust_with_rstml", "rust")
+
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = deps,
+		callback = function(args)
+			local ok, ts = pcall(require, "nvim-treesitter")
+			if not ok then
+				return
+			end
+			local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].ft)
+			if lang then
+				ts.install({ lang }):await() -- Await install
+				vim.treesitter.start(args.buf, lang)
+				vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
+		end,
 	})
-end)
+end
