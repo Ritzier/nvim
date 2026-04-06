@@ -1,6 +1,7 @@
 require("config.options")
 require("config.lazy")
 require("keymaps")
+require("event")
 
 -- TODO:
 require("keymaps.comment")

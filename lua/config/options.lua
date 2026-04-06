@@ -11,7 +11,6 @@ local global_local = {
 	backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
 	breakat = [[\ \	;:,!?]],
 	breakindentopt = "shift:2,min:20",
-	clipboard = "unnamedplus",
 	cmdheight = 1, -- 0, 1, 2
 	cmdwinheight = 5,
 	complete = ".,w,b,k",
