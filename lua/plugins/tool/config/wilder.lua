@@ -41,7 +41,7 @@ return function()
 					),
 				},
 
-				left = { " ", wilder.popupmenu_devicons() },
+				-- left = { " ", wilder.popupmenu_devicons() },
 				right = { " ", wilder.popupmenu_scrollbar() },
 				max_height = "28%",
 			})),
