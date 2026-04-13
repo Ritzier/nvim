@@ -16,6 +16,7 @@ return function()
 		"html",
 		"htmldjango",
 		"javascript",
+		"lisp",
 		"json",
 		"json5",
 		"julia",
