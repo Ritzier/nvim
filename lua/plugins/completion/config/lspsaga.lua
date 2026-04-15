@@ -97,6 +97,7 @@ return function()
 		ui = {
 			border = "single", -- Can be single, double, rounded, solid, shadow.
 			lines = { "┗", "┣", "┃", "━", "┏" },
+			code_action = "",
 		},
 		-- Scrolling Keymaps: https://nvimdev.github.io/lspsaga/misc/#scrolling-keymaps
 		scroll_preview = {
