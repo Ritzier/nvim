@@ -100,12 +100,10 @@ return {
 				config = require("plugins.editor.config.ts-context-commentstring"),
 			},
 
-			-- INFO: currently using nvim `0.11` api, error in `0.12` version
 			{
-				"hiphish/rainbow-delimiters.nvim",
+				"ritzier/rainbow-delimiters.nvim",
 				submodules = false,
 				config = require("plugins.editor.config.rainbow_delims"),
-				enabled = false,
 			},
 
 			{
