@@ -110,4 +110,15 @@ return {
 		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		config = require("plugins.ui.config.neoscroll"),
 	},
+
+	{
+		"rcarriga/nvim-notify",
+		opts = {},
+		lazy = false,
+		config = function(_, opts)
+			local notify = require("notify")
+			notify.setup(opts)
+			vim.notify = notify
+		end,
+	},
 }
