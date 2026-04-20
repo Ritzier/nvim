@@ -38,6 +38,7 @@ return function()
 			markdown_prettier = {
 				command = "prettier",
 				args = {
+					"--tab-width=4",
 					"--print-width=120",
 					"--prose-wrap=always",
 					"$FILENAME",
