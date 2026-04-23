@@ -11,6 +11,10 @@ return function()
 					k = "<Esc>",
 					j = "<Esc>",
 				},
+				k = {
+					k = "<Esc>",
+					j = "<Esc>",
+				},
 			},
 			c = {
 				j = {
