@@ -1,5 +1,4 @@
 return function()
-	local overseer = require("overseer")
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
