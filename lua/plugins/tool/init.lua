@@ -29,6 +29,7 @@ return {
 		"dstein64/vim-startuptime",
 		lazy = true,
 		event = "CmdlineEnter",
+		enabled = false,
 	},
 
 	{
@@ -66,6 +67,7 @@ return {
 		dependencies = {
 			"romgrk/fzy-lua-native",
 		},
+		enabled = false,
 	},
 
 	{
@@ -89,6 +91,7 @@ return {
 			{ "<leader>tf", "<cmd>Telescope find_files<CR>", desc = "Find Files", mode = "n" },
 			{ "<leader>tu", "<cmd>Telescope undo<CR>", desc = "Undo" },
 		},
+		enabled = false,
 	},
 
 	-- TODO:
@@ -127,6 +130,7 @@ return {
 			{ "<leader>dd", "<cmd>DiffviewOpen", desc = "DiffView Open" },
 			{ "<leader>dc", "<cmd>DiffviewClose", desc = "DiffView Close" },
 		},
+		enabled = false,
 	},
 
 	{
@@ -140,6 +144,7 @@ return {
 			{ "<leader>oa", "<cmd>OverseerTaskAction<CR>", desc = "Overseer Task Action" },
 			{ "<leader>os", "<cmd>OverseerShell<CR>", desc = "Overseer Shell" },
 		},
+		enabled = false,
 	},
 
 	{
@@ -149,6 +154,7 @@ return {
 		keys = {
 			{ "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "UndoTree Toggle" },
 		},
+		enabled = false,
 	},
 
 	-- Color highlight
@@ -157,6 +163,7 @@ return {
 		lazy = true,
 		event = "VeryLazy",
 		config = require("plugins.tool.config.oklch_color_picker"),
+		enabled = false,
 	},
 
 	-- TODO: currently just support embedded toml bash
@@ -168,6 +175,7 @@ return {
 		},
 		config = require("plugins.tool.config.otter"),
 		ft = { "toml" },
+		enabled = false,
 	},
 
 	-- `TSSort`: sorting css attribute
@@ -177,5 +185,6 @@ return {
 		event = "CmdlineEnter",
 		ft = { "css", "scss", "less" }, -- Only load for CSS files
 		config = require("plugins.tool.config.tssorter"),
+		enabled = false,
 	},
 }
