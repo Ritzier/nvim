@@ -3,9 +3,16 @@ return function()
 		tools = {},
 		-- LSP configuration
 		server = {
+			cmd = { "lspmux", "client" },
 			default_settings = {
 				["rust-analyzer"] = {
 					["rustfmt.overrideCommand"] = { "leptosfmt", "--stdin", "--rustfmt" },
+					lspMux = {
+						version = "1",
+						method = "connect",
+						socket = "/run/user/1000/lspmux.sock",
+						server = "rust-analyzer",
+					},
 					cargo = {
 						features = "all",
 						allFeatures = true,
