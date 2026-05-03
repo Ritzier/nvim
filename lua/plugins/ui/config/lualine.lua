@@ -1,3 +1,11 @@
+local function truncate_branch(branch)
+	local max_len = 20
+	if branch and #branch > max_len then
+		return branch:sub(1, max_len) .. "…"
+	end
+	return branch
+end
+
 return function()
 	local overseer = require("overseer")
 	require("lualine").setup({
@@ -23,6 +31,7 @@ return function()
 			lualine_b = {
 				{
 					"branch",
+					fmt = truncate_branch,
 				},
 
 				{
