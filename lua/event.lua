@@ -21,3 +21,14 @@ if vim.env.SSH_TTY then
 else
 	vim.opt.clipboard = "unnamedplus"
 end
+
+-- ============ Create parent path when folder not exists ========
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		local dir = vim.fn.expand("<afile>:p:h")
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
+		end
+	end,
+})
