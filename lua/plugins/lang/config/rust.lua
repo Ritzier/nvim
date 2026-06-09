@@ -13,16 +13,24 @@ return function()
 						socket = "/run/user/1000/lspmux.sock",
 						server = "rust-analyzer",
 					},
+					cachePriming = {
+						numThreads = 0,
+					},
 					cargo = {
 						features = "all",
 						allFeatures = true,
-						-- loadOutDirFromCheck = true,
+						loadOutDirFromCheck = true,
 						-- runBuildScripts = true,
 						-- buildScripts = {
 						-- 	enable = true,
 						-- },
 					},
 					checkOnSave = true,
+					check = {
+						enable = true,
+						command = "clippy",
+						features = "all",
+					},
 					diagnostics = {
 						disabled = {
 							"inactive-code",
@@ -49,7 +57,7 @@ return function()
 					},
 					inlayHints = {
 						bindingModeHints = {
-							enable = false,
+							enable = true,
 						},
 						chainingHints = {
 							enable = true,
