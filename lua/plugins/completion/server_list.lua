@@ -3,6 +3,7 @@ local M = {}
 -- Add lsp server at here, and will be automate configure it or add custom configuration at ./server/`lsp`
 M["lsp_list"] = {
 	"bashls",
+	"clangd",
 	"cssls",
 	"html",
 	"jsonls",
