@@ -3,6 +3,7 @@ return function()
 
 	require("conform").setup({
 		formatters_by_ft = {
+			cpp = { "clang_allman" },
 			css = { "prettierd" },
 			cucumber = { "reformat-gherkin" },
 			html = { "prettierd" },
@@ -42,6 +43,13 @@ return function()
 					"--print-width=120",
 					"--prose-wrap=always",
 					"$FILENAME",
+				},
+			},
+
+			clang_allman = {
+				command = "clang-format",
+				args = {
+					"--style={BasedOnStyle: LLVM, BreakBeforeBraces: Allman, IndentWidth: 4, TabWidth: 4, UseTab: Never}",
 				},
 			},
 		},
