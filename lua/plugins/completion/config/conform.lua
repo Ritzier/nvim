@@ -5,7 +5,6 @@ return function()
 		formatters_by_ft = {
 			cpp = { "clang_allman" },
 			css = { "prettierd" },
-			cucumber = { "reformat-gherkin" },
 			html = { "prettierd" },
 			htmldjango = { "prettierd" },
 			javascript = { "prettierd" },

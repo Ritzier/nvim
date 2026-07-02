@@ -36,7 +36,6 @@ M["null_ls"] = {
 	"sql-formatter",
 	"stylua",
 	"taplo",
-	"reformat-gherkin",
 
 	-- Linter
 	"ruff",
