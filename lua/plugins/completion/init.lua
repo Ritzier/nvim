@@ -59,7 +59,7 @@ return {
 	},
 
 	{
-		"ritzier/lspsaga.nvim",
+		"nvimdev/lspsaga.nvim",
 		lazy = true,
 		event = "LspAttach",
 		config = require("plugins.completion.config.lspsaga"),
