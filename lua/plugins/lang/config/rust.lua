@@ -10,7 +10,6 @@ return function()
 					lspMux = {
 						version = "1",
 						method = "connect",
-						socket = "/run/user/1000/lspmux.sock",
 						server = "rust-analyzer",
 					},
 					cachePriming = {
