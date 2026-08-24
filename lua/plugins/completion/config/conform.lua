@@ -1,5 +1,5 @@
 return function()
-	local config_path = vim.fn.stdpath("config")
+	local config_path = vim.fn.stdpath("config") .. "/lua/plugins/completion/conform/"
 
 	require("conform").setup({
 		formatters_by_ft = {
@@ -51,30 +51,30 @@ return function()
 					"--style={BasedOnStyle: LLVM, BreakBeforeBraces: Allman, IndentWidth: 4, TabWidth: 4, UseTab: Never}",
 				},
 			},
+
+			prettierd = {
+				prepend_args = { "--tab-width=4" },
+			},
+
+			leptosfmt = {
+				prepend_args = { "--config-file", config_path .. "leptosfmt.toml" },
+			},
+
+			taplo = {
+				args = {
+					"format",
+					-- Config path
+					"--config",
+					config_path .. "taplo.toml",
+
+					-- Write to the file
+					"--stdin-filepath",
+					"$FILENAME",
+					"-",
+				},
+			},
 		},
 	})
-
-	require("conform").formatters.prettierd = {
-		prepend_args = { "--tab-width=4" },
-	}
-
-	require("conform").formatters.leptosfmt = {
-		prepend_args = { "--config-file", config_path .. "/lua/plugins/completion/conform/leptosfmt.toml" },
-	}
-
-	require("conform").formatters.taplo = {
-		args = {
-			"format",
-			-- Config path
-			"--config",
-			config_path .. "/lua/plugins/completion/conform/taplo.toml",
-
-			-- Write to the file
-			"--stdin-filepath",
-			"$FILENAME",
-			"-",
-		},
-	}
 
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 end
