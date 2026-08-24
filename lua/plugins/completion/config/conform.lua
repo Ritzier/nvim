@@ -62,5 +62,19 @@ return function()
 		prepend_args = { "--config-file", config_path .. "/lua/plugins/completion/conform/leptosfmt.toml" },
 	}
 
+	require("conform").formatters.taplo = {
+		args = {
+			"format",
+			-- Config path
+			"--config",
+			config_path .. "/lua/plugins/completion/conform/taplo.toml",
+
+			-- Write to the file
+			"--stdin-filepath",
+			"$FILENAME",
+			"-",
+		},
+	}
+
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 end
