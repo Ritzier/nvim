@@ -72,7 +72,11 @@ return function()
 					local ok2, parser2 = pcall(vim.treesitter.get_parser, args.buf, lang)
 					if ok2 and parser2 then
 						vim.treesitter.start(args.buf, lang)
-						vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+						-- Exclude Rust and Lua
+						if vim.bo[args.buf].filetype ~= "rust" and vim.bo[args.buf].filetype ~= "lua" then
+							vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+						end
 						return
 					end
 
@@ -87,7 +91,11 @@ return function()
 			end
 
 			vim.treesitter.start(args.buf, lang)
-			vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+			-- Exclude Rust and Lua
+			if vim.bo[args.buf].filetype ~= "rust" and vim.bo[args.buf].filetype ~= "lua" then
+				vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
 		end,
 	})
 end
