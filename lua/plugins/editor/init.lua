@@ -95,10 +95,6 @@ return {
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				config = require("plugins.editor.config.ts-context-commentstring"),
 			},
-			{
-				"JoosepAlviste/nvim-ts-context-commentstring",
-				config = require("plugins.editor.config.ts-context-commentstring"),
-			},
 
 			{
 				"ritzier/rainbow-delimiters.nvim",
