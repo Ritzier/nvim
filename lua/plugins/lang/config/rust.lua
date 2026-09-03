@@ -32,7 +32,8 @@ return function()
 					},
 					diagnostics = {
 						disabled = {
-							"inactive-code",
+							-- "inactive-code", -- deprecated, does nothing in newer `RustAnalyzer`
+							"inactive_code", -- current diagnostic name for inactive code
 						},
 					},
 					procMacro = {

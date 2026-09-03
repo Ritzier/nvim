@@ -10,8 +10,9 @@ return {
 
 	{
 		"mrcjkb/rustaceanvim",
-		lazy = true,
+		lazy = false,
 		ft = "rust",
+		version = "^9",
 		init = require("plugins.lang.config.rust"),
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
