@@ -5,6 +5,7 @@ require("event")
 
 -- TODO:
 require("keymaps.comment")
+require("keymaps.sort_comments")
 
 -- vim.cmd([[colorscheme catppuccin]])
 vim.cmd([[colorscheme kanagawa]])
