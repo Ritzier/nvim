@@ -49,8 +49,6 @@ local function sort_cargo_groups()
 		vim.list_extend(result, group)
 	end
 
-	print(start_line, end_line)
-
 	vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, result)
 end
 
