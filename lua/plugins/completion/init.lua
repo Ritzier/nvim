@@ -72,6 +72,8 @@ return {
 			},
 			{ "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition", mode = "n" },
 			{ "gD", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition", mode = "n" },
+			{ "gy", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek Type Definition", mode = "n" },
+			{ "gY", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Goto Type Definition", mode = "n" },
 			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Jump prev Diagnostic" },
 			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Jump next Diagnostic" },
 			{
