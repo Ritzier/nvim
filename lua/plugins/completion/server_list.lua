@@ -27,6 +27,7 @@ M["lsp_list"] = {
 M["null_ls"] = {
 	-- Formatter
 	"beautysh",
+	"biome",
 	"black",
 	"clang-format",
 	"djlint",

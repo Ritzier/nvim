@@ -9,6 +9,7 @@ return function()
 			htmldjango = { "prettierd" },
 			javascript = { "prettierd" },
 			jinja = { "djlint" },
+			json = { "biome" },
 			lua = { "stylua" },
 			markdown = { "markdown_prettier" },
 			proto = { "clang-format" },
